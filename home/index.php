@@ -274,7 +274,7 @@
                         <div class="footer__logo">
                             <a href="#"><img src="img/about/icon-alt.png" alt=""></a>
                         </div>
-                        <p>The customer is at the heart of our unique business model, which includes design.</p>
+                        <p>Best Cinema in SEA</p>
                     
                     </div>
                 </div>
