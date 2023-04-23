@@ -1,0 +1,471 @@
+
+table.seat{
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+}
+td.list-htd {
+    font-size: 14px;
+    font-family: helvetica,arial,tahoma;
+}
+table.seat a.btn-default {
+    background: url(../images/booking2/seat.png) no-repeat center top transparent;
+    background-color: transparent !important;
+    background-size: contain;
+    border: 0px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: none;
+    position: relative;
+}
+.list-td a {
+    padding: 0;
+    line-height: 30px;
+    width: 100%;
+    position: relative;
+    max-width: 28px;
+}
+
+span.notshowtext {
+    visibility: hidden;
+}
+.btn-default:hover, .btn-default:focus{}
+a.btn-danger{border:none;}
+a.btn-danger:before{background: url(../images/booking2/seatbookingSym.png) no-repeat center top transparent !important;
+    background-size: contain !important;width:100%;height:28px;position: absolute;top:0;left:0;content:"";display: block;}
+a.btn-danger span:before {display: none;}
+
+a.btn-heart,a.btn-danger{border:none;background:none !important;}
+a.btn-heart:before{background: url(../images/booking2/seatheart.png) no-repeat center top transparent !important;
+    background-size: contain !important;width:100% !important;height:28px;position: absolute;top:38%;left:50%;content:"";display: block;
+    transform: translate(-50%, -50%);}
+a.btn-heart span:before {display: none;}
+
+
+.book_seat_chairicon a.category_chair{
+    border: 0px;
+    color: #fff;
+    font-size: 62px;
+    font-weight: bold;
+    box-shadow: none;
+    display: inline-block;
+    width: 50px;
+    height: 28px;
+    margin-top: -5px;
+}
+.book_seat_price {overflow: hidden;}
+
+/*.seat-movie.seat-type-2[data-reserve="rs"]{
+    background: url(../images/booking2/seatreserve.png) no-repeat center top transparent !important;background-size: contain !important;
+}
+.seat-movie.seat-type-3[data-reserve="rs"]{
+    background: url(../images/booking2/seatreserve2.png) no-repeat center top transparent !important;background-size: contain !important;
+}
+.seat-type-2[data-reserve="rs"]{
+    background: url(../images/booking2/seatreserve.png) no-repeat center top transparent !important;background-size: contain !important;
+}
+.seat-type-3[data-reserve="rs"]{
+    background: url(../images/booking2/seatreserve2.png) no-repeat center top transparent !important;background-size: contain !important;
+}
+.seat-type-16[data-reserve="rs"]{
+    background: url(../images/booking2/seatreserve3.png) no-repeat center top transparent !important;background-size: contain !important;
+}
+.seat-type-8[data-reserve="rs"]{
+    background: url(../images/booking2/seatreserve4.png) no-repeat center top transparent !important;background-size: contain !important;
+}*/
+
+/*.seat-movie.btn-default[data-reserve="rs"]:before {
+    background: url(../images/booking2/seatreserveSym.png) no-repeat center top transparent !important;background-size: contain !important;width:100%;height:28px;position: absolute;top:0;left:0;content:"";display: block;}
+*/
+
+.seat-movie.btn-success:before,.seat-movie.btn-success[data-reserve="rs"]:before,.btn-success[data-reserve="rs"]:before,.btn-success[data-reserve="nrs"]:before {
+    background: url(../images/booking2/seatsuccessSym.png) no-repeat center top transparent !important;
+    background-size: contain !important;width:100%;height:20px;position: absolute;top:2px;left:0;content:"";display: block;}
+table.seat a {opacity: 1 !important;}
+table.seat a.seat-type-1,a.seat-type-1{
+    background: url(../images/booking2/seat-1.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-2,a.seat-type-2{
+    background: url(../images/booking2/seat-2.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-3,a.seat-type-3{
+    background: url(../images/booking2/seat-3.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-4,a.seat-type-4{
+    background: url(../images/booking2/seat-4.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-5,a.seat-type-5{
+    background: url(../images/booking2/seat-5.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-6,a.seat-type-6{
+    background: url(../images/booking2/seat-6.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-7,a.seat-type-7{
+    background: url(../images/booking2/seat-7.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-8,a.seat-type-8{
+    background: url(../images/booking2/seat-8.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-9,a.seat-type-9{
+    background: url(../images/booking2/seat-9.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-10,a.seat-type-10{
+    background: url(../images/booking2/seat-10.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-11,a.seat-type-11{
+    background: url(../images/booking2/seat-11.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-12, a.seat-type-12{
+    background: url(../images/booking2/seat-12.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-13,a.seat-type-13{
+    background: url(../images/booking2/seat-13.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-14,a.seat-type-14{
+    background: url(../images/booking2/seat-14.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-15,a.seat-type-15{
+    background: url(../images/booking2/seat-15.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-16,a.seat-type-16{
+    background: url(../images/booking2/seat-16.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-17,a.seat-type-17{
+    background: url(../images/booking2/seat-17.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-18,a.seat-type-18{
+    background: url(../images/booking2/seat-18.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-19,a.seat-type-19{
+    background: url(../images/booking2/seat-19.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-20,a.seat-type-20{
+    background: url(../images/booking2/seat-20.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-21,a.seat-type-21{
+    background: url(../images/booking2/seat-21.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-22,a.seat-type-22{
+    background: url(../images/booking2/seat-22.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-23,a.seat-type-23{
+    background: url(../images/booking2/seat-23.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-24,a.seat-type-24{
+    background: url(../images/booking2/seat-24.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-25,a.seat-type-25{
+    background: url(../images/booking2/seat-25.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-26,a.seat-type-26{
+    background: url(../images/booking2/seat-26.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-27,a.seat-type-27{
+    background: url(../images/booking2/seat-27.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-28,a.seat-type-28{
+    background: url(../images/booking2/seat-28.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-29,a.seat-type-29{
+    background: url(../images/booking2/seat-29.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-30,a.seat-type-30{
+    background: url(../images/booking2/seat-30.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-31,a.seat-type-31{
+    background: url(../images/booking2/seat-31.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-32,a.seat-type-32{
+    background: url(../images/booking2/seat-32.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-33,a.seat-type-33{
+    background: url(../images/booking2/seat-33.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-34,a.seat-type-34{
+    background: url(../images/booking2/seat-34.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-35,a.seat-type-35{
+    background: url(../images/booking2/seat-35.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-36,a.seat-type-36{
+    background: url(../images/booking2/seat-36.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-37,a.seat-type-37{
+    background: url(../images/booking2/seat-37.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-38,a.seat-type-38{
+    background: url(../images/booking2/seat-38.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-39,a.seat-type-39{
+    background: url(../images/booking2/seat-39.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-40,a.seat-type-40{
+    background: url(../images/booking2/seat-40.png) no-repeat center top transparent;
+    background-size: contain;
+}
+table.seat a.seat-type-41,a.seat-type-41{
+    background: url(../images/booking2/seat-41.png) no-repeat center top transparent;
+    background-size: contain;
+}
+
+table.seat a.btn-info{
+    background:url(../images/booking2/seatinfo.png) no-repeat center top transparent;
+    font-size: 16px;
+    font-weight: bold;
+    background-color:transparent !important ;
+    background-size:contain;
+    border:none;
+}
+table.seat a.btn-success {
+    /*background:url(../images/booking2/seatselect.png) no-repeat center top transparent;*/
+    font-size: 16px;
+    font-weight: bold;
+    background-color:transparent !important ;
+    background-size:contain;
+    border:none;}
+
+table.seat .btn-success:hover,
+table.seat .btn-success:focus{
+    background-position:center top;
+    border: none;
+    box-shadow:none;
+}
+.book_seat_submit button.disabled{
+    cursor: default;
+    opacity: 0.5;
+}
+.btn-default, .btn-primary, .btn-success, .btn-info, .btn-warning, .btn-danger{box-shadow: none}
+
+.meter {
+    height: 30px;  /* Can be anything */
+    position: relative;
+    margin: 50px 0 20px 0; /* Just for demo spacing */
+    background: #555;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding: 3px 5px;
+    top:50%;left:50%;width:60%;
+    -webkit-box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
+    -moz-box-shadow   : inset 0 -1px 1px rgba(255,255,255,0.3);
+    box-shadow        : inset 0 -1px 1px rgba(255,255,255,0.3);
+    transform: translate(-50%, -50%);
+}
+.meter > span {
+    width:100%;
+    display: block;
+    height: 24px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    -moz-border-radius-bottomright: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: rgb(43,194,83);
+    background-image: -webkit-gradient(
+            linear,
+            left bottom,
+            left top,
+            color-stop(0, rgb(43,194,83)),
+            color-stop(1, rgb(84,240,84))
+    );
+    background-image: -moz-linear-gradient(
+            center bottom,
+            rgb(43,194,83) 37%,
+            rgb(84,240,84) 69%
+    );
+    -webkit-box-shadow:
+            inset 0 2px 9px  rgba(255,255,255,0.3),
+            inset 0 -2px 6px rgba(0,0,0,0.4);
+    -moz-box-shadow:
+            inset 0 2px 9px  rgba(255,255,255,0.3),
+            inset 0 -2px 6px rgba(0,0,0,0.4);
+    box-shadow:
+            inset 0 2px 9px  rgba(255,255,255,0.3),
+            inset 0 -2px 6px rgba(0,0,0,0.4);
+    position: relative;
+    overflow: hidden;
+}
+.meter > span:after, .animate > span > span {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background-image:
+            -webkit-gradient(linear, 0 0, 100% 100%,
+            color-stop(.25, rgba(255, 255, 255, .2)),
+            color-stop(.25, transparent), color-stop(.5, transparent),
+            color-stop(.5, rgba(255, 255, 255, .2)),
+            color-stop(.75, rgba(255, 255, 255, .2)),
+            color-stop(.75, transparent), to(transparent)
+            );
+    background-image:
+            -moz-linear-gradient(
+                    -45deg,
+                    rgba(255, 255, 255, .2) 25%,
+                    transparent 25%,
+                    transparent 50%,
+                    rgba(255, 255, 255, .2) 50%,
+                    rgba(255, 255, 255, .2) 75%,
+                    transparent 75%,
+                    transparent
+            );
+    z-index: 1;
+    -webkit-background-size: 50px 50px;
+    -moz-background-size: 50px 50px;
+    -webkit-animation: move 2s linear infinite;
+    -webkit-border-top-right-radius: 8px;
+    -webkit-border-bottom-right-radius: 8px;
+    -moz-border-radius-topright: 8px;
+    -moz-border-radius-bottomright: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    -webkit-border-top-left-radius: 20px;
+    -webkit-border-bottom-left-radius: 20px;
+    -moz-border-radius-topleft: 20px;
+    -moz-border-radius-bottomleft: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    overflow: hidden;
+}
+
+.animate > span:after {
+    display: none;
+}
+
+@-webkit-keyframes move {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 50px 50px;
+    }
+}
+
+.orange > span {
+    background-color: #f1a165;
+    background-image: -moz-linear-gradient(top, #f1a165, #f36d0a);
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #f1a165),color-stop(1, #f36d0a));
+    background-image: -webkit-linear-gradient(#f1a165, #f36d0a);
+}
+
+.red > span {
+    background-color: #f0a3a3;
+    background-image: -moz-linear-gradient(top, #f0a3a3, #f42323);
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #f0a3a3),color-stop(1, #f42323));
+    background-image: -webkit-linear-gradient(#f0a3a3, #f42323);
+}
+
+.nostripes > span > span, .nostripes > span:after {
+    -webkit-animation: none;
+    background-image: none;
+}
+
+
+.book_seat_pricebox {
+    float: none;
+    margin: 10px 0;
+    display: inline-table;
+    margin-left: 7px;
+    margin-right: 7px;
+    text-align: center;
+    border: 1px solid #d2aa5a;
+    width: 100px;
+    height: 91px;
+    background: #2d2d2d;
+    padding-top: 12px;
+    border-radius: 10px;
+}
+.book_seat_chairicon {float:none;}
+.book_seat_pricedesc {float:none;font-size:13.5px;}
+
+.book_seat_chairicon a.category_chair{
+    border: 0px;
+    color: #fff;
+    font-size: 62px;
+    font-weight: bold;
+    box-shadow: none;
+    display: inline-block;
+    width: 49px;
+    height: 19px;
+    margin-top: -5px;
+}
+.book_seat_price_initial{text-align: center}
+.book_seat_pricedesc b{display: block;}
+@media all and (max-width: 960px){
+    .book_seat_pricebox {
+        float: none;
+        margin: 10px 0;
+        display: inline-table;
+        margin-left: 7px;
+        margin-right: 7px;
+        text-align: center;
+        border: 1px solid #d2aa5a;
+        width: 95px;
+        height: 85px;
+        background: #2d2d2d;
+        padding-top: 12px;
+        border-radius: 10px;
+    }
+    .book_seat_chairicon {float:none;}
+    .book_seat_pricedesc {float:none;font-size:13.5px;}
+
+    .book_seat_chairicon a.category_chair{
+        border: 0px;
+        color: #fff;
+        font-size: 62px;
+        font-weight: bold;
+        box-shadow: none;
+        display: inline-block;
+        width: 49px;
+        height: 19px;
+        margin-top: -5px;
+    }
+    .book_seat_price_initial{text-align: center}
+    .book_seat_pricedesc b{display: block;}
+}
