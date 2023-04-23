@@ -78,7 +78,7 @@
                             <li><a href="./theatre.php">Theatre</a></li>
                             <li class="active"><a href="./movie.php">Movie</a></li>
                             <li ><a href="./promotion.php">Promotion</a></li>
-                            <li><a href="./#">Snack&Drink</a></li>
+                            <li><a href="./snack.php">Snack&Drink</a></li>
                         </ul>
                     </nav>
                 </div>

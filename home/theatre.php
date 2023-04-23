@@ -73,7 +73,7 @@
                             <li class="active"><a href="./theatre.php">Branch</a></li>
                             <!-- <li><a href="./movie.php">Movie</a></li> -->
                             <li><a href="./promotion.php">Promotion</a></li>
-                            <li><a href="./#">Snack&Drink</a></li>
+                            <li><a href="./snack.php">Snack&Drink</a></li>
                         </ul>
                     </nav>
                 </div>
