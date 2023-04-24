@@ -51,9 +51,9 @@
 
 <body>
     <!-- Page Preloder -->
-    <div id="preloder">
+    <!-- <div id="preloder">
         <div class="loader"></div>
-    </div>
+    </div> -->
 
 
     
@@ -70,11 +70,11 @@
                 <div class="col-lg-7 col-md-6">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li class="active"><a href="./index.php">Home</a></li>
+                            <li ><a href="./index.php">Home</a></li>
                             <li><a href="./theatre.php">Branch</a></li>
                             <!-- <li><a href="./movie.php">Movie</a></li> -->
                             <li><a href="./promotion.php">Promotion</a></li>
-                            <li><a href="./snack.php">Snack&Drink</a></li>
+                            <li class="active"><a href="./snack.php">Snack&Drink</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -107,7 +107,7 @@
     <section class="shop spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-2">
                     <div class="shop__sidebar">
                         <div class="shop__sidebar__search">
                             <form action="#">
@@ -116,26 +116,7 @@
                             </form>
                         </div>
                         <div class="shop__sidebar__accordion">
-                            <div class="accordion" id="accordionExample">
-                                
-                                <div class="card">
-                                    <div class="card-heading">
-                                        <a data-toggle="collapse" data-target="#collapseTwo">Branding</a>
-                                    </div>
-                                    <div id="collapseTwo" class="collapse show" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <div class="shop__sidebar__brand">
-                                                <ul>
-                                                    <li><a href="#">Louis Vuitton</a></li>
-                                                    <li><a href="#">Chanel</a></li>
-                                                    <li><a href="#">Hermes</a></li>
-                                                    <li><a href="#">Gucci</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
+                            <div class="accordion" id="accordionExample">                              
                                 
                                 <div class="card">
                                     <div class="card-heading">
@@ -165,56 +146,46 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                    <?php   
-                   
-                    $sql = "SELECT * FROM foodinfo i JOIN foodsize s ON s.food_type = i.food_type";
-                    $result = mysqli_query($conn, $sql);
+                
 
-                    if (!$result) {
-                        die('Invalid query: ' . mysqli_error($conn));
-                    }
-                 
-                    
-                    while ($row = mysqli_fetch_assoc($result)) {
-                     $food_id = $row['food_id'];
-                     $food_type = $row['food_type'];
-                     $size = $row['size'];
-                     $price = $row['price'];
-                     $category = $row['category'];
-                     $description = $row['description'];
-                        
-                    ?>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="movie-container" data-movie-id="<?php echo $food_id; ?>">
-                                <a href="showings.php?movie_id=<?php echo $food_id; ?>">
-                                        <div class="product__item">
-                                            <div class="product__item__pic set-bg" data-setbg="./img/snack/<?php echo $food_type?>.png">
-                                                <ul class="product__hover">
-                                                    <li>
-                                                        <?php echo $description?>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="product__item__text">
-                                                <h6>
-                                                    <?php echo $food_type ?>
-                                                </h6>
-                                                
-                                                <h5>
-                                                    <?php echo $price ?>
-                                                </h5>
-                                            </div>
+                <section class ="product spad">
+                    <div class ="container">
+                        <div class="row">
+                            
+                                    <div class="col-lg-3 md-3 xs-1">
+                                        <div class="row">
+                                        <div class="container">
+                                            <?php   
+                                                $sql = "SELECT * FROM foodinfo f
+                                                JOIN foodsize s ON f.food_type = s.food_type
+                                                ORDER BY f.food_type, s.price
+                                                ";
+                                                    $result = $conn->query($sql);
+                                                    $current_food_type = null;
+                                                    
+                                                    
+                                                    while ($row = mysqli_fetch_assoc($result)) {
+                                                    // If this is a new food type, display its name
+                                                    if ($row['food_type'] !== $current_food_type) {
+                                                        echo '<img src="./img/snack/'.$current_food_type.'.png" width=30px height=80px>';
+                                                        echo '<h2>' . htmlspecialchars($row['food_type']) . '</h2>';
+                                                        $current_food_type = $row['food_type'];
+                                                        
+                                                    }
+                                                    // Display a box for each size and price
+                                                    echo '<div class="food-size-box">';
+                                                    echo '<div class="food-size">' . htmlspecialchars($row['size']) . '</div>';
+                                                    echo '<div class="food-price">$' . htmlspecialchars($row['price']) . '</div>';
+                                                    echo '</div>';
+                                                    }
+                                            ?>
+                                        </div>
                                         </div>
                                     </div>
-                                </a>
-                            </div>
-                        <?php } ?>
-                        </div>
-                       
-                     
-                       
-                       
+                                </div>    
+                           
+                    </div>
+                </div>
                        
 
                     <div class="row">

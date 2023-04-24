@@ -304,6 +304,21 @@
                 }
             });
         }
+
+        function addToCart(drinkId) {
+            var size = document.getElementById(drinkId + "_size").value;
+            var quantity = document.getElementById(drinkId + "_quantity").value;
+            var item = {
+              "id": drinkId,
+              "size": size,
+              "quantity": quantity
+            };
+            var cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cart.push(item);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            alert("Item added to cart.");
+          }
+          
     });
 
 
