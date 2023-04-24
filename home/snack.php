@@ -135,12 +135,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card">
-                                    <div class="card-heading">
-                                        <a data-toggle="collapse" data-target="#collapseThree">Filter Price</a>
-                                    </div>
-                                   
-                                </div>
                                 
                                 
                                 <div class="card">
@@ -195,7 +189,7 @@
                             <div class="movie-container" data-movie-id="<?php echo $food_id; ?>">
                                 <a href="showings.php?movie_id=<?php echo $food_id; ?>">
                                         <div class="product__item">
-                                            <div class="product__item__pic set-bg" data-setbg="./img/poster/<?php echo $food_id ?>.jpg">
+                                            <div class="product__item__pic set-bg" data-setbg="./img/snack/<?php echo $food_type?>.png">
                                                 <ul class="product__hover">
                                                     <li>
                                                         <?php echo $description?>
@@ -204,7 +198,7 @@
                                             </div>
                                             <div class="product__item__text">
                                                 <h6>
-                                                    <?php echo $movie_name ?>
+                                                    <?php echo $food_type ?>
                                                 </h6>
                                                 
                                                 <h5>
