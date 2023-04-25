@@ -104,7 +104,7 @@
     <!-- Breadcrumb Section End -->
 
     <!-- Shop Section Begin -->
-    <section class="shop spad">
+    <section class="product spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-2">
@@ -146,47 +146,45 @@
                             </div>
                         </div>
                     </div>
-                
 
-                <section class ="product spad">
-                    <div class ="container">
+                    <div class="container">
                         <div class="row">
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
+                            <?php
+                            $sql = "SELECT * FROM foodinfo f
+                                JOIN foodsize s ON f.food_type = s.food_type
+                                ORDER BY f.food_type, s.price
+                                ";
+                            $result = $conn->query($sql);
+                            $current_food_type = null;
+
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $food_type = $row['food_type'];
+                                $size = $row['size'];
+                                $price = $row['price'];
+                                $catefory = $row['category'];
+                                $food_id = $row['food_id'];
+                                $description = $row['description'];
+                            ?>
+
+
+                            <div class="food-container">
+                                <div class="food-text">
+                                    <h2><?php if($current_food_type != $food_type){echo $food_type;} 
+                                    $current_food_type = $food_type;
+                                    ?></h2>
+                                
+                                </div>
+                            </div>
+
                             
-                                    <div class="col-lg-3 md-3 xs-1">
-                                        <div class="row">
-                                        <div class="container">
-                                            <?php   
-                                                $sql = "SELECT * FROM foodinfo f
-                                                JOIN foodsize s ON f.food_type = s.food_type
-                                                ORDER BY f.food_type, s.price
-                                                ";
-                                                    $result = $conn->query($sql);
-                                                    $current_food_type = null;
-                                                    
-                                                    
-                                                    while ($row = mysqli_fetch_assoc($result)) {
-                                                    // If this is a new food type, display its name
-                                                    if ($row['food_type'] !== $current_food_type) {
-                                                        echo '<img src="./img/snack/'.$current_food_type.'.png" width=30px height=80px>';
-                                                        echo '<h2>' . htmlspecialchars($row['food_type']) . '</h2>';
-                                                        $current_food_type = $row['food_type'];
-                                                        
-                                                    }
-                                                    // Display a box for each size and price
-                                                    echo '<div class="food-size-box">';
-                                                    echo '<div class="food-size">' . htmlspecialchars($row['size']) . '</div>';
-                                                    echo '<div class="food-price">$' . htmlspecialchars($row['price']) . '</div>';
-                                                    echo '</div>';
-                                                    }
-                                            ?>
-                                        </div>
-                                        </div>
-                                    </div>
-                                </div>    
-                           
+                    <?php } ?>
+                            </div>
+                            
+                        </div>
                     </div>
-                </div>
-                       
+
+
 
                     <div class="row">
                         <div class="col-lg-12">
@@ -203,7 +201,7 @@
             </div>
         </div>
     </section>
-    <!-- Shop Section End -->
+    <!-- Shop Sectio End -->
 
     
     <!-- Footer Section Begin -->

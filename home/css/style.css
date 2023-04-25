@@ -3825,8 +3825,9 @@ ol {
 		font-weight: bold;
 		color: green;
 	    }
-
+	    
 	    .food-item {
+		position: relative; /* added position */
 		bottom: 20px;
 		right: 30px;
 		opacity: 1;
@@ -3834,10 +3835,17 @@ ol {
 		width: 200px;
 		height: 100px;
 		text-align: center;
-		padding-left: 5%;
-		padding-right: 5%;
-	
-	}
+		padding: 5%; /* combined padding-left and padding-right */
+	    }
+
+	    .food-container{
+		position: relative;
+		margin: 5%;
+	    }
+	    
+	    .food-text{
+		padding: 5%;
+	    }
 
 	
 
