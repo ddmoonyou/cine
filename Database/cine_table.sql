@@ -21,8 +21,6 @@ CREATE TABLE `staffinfo` (
   `staff_first_name` text NOT NULL,
   `staff_last_name` text NOT NULL,
   `staff_tel` text NOT NULL,
-  year_autonum varchar(20),
-
   PRIMARY KEY (`staff_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT = 840200001 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
