@@ -92,11 +92,13 @@
     </header>
     <!-- Header Section End -->
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-blog set-bg" data-setbg="img/promotion-bg.jpg">
+    <section class="breadcrumb-option">
         <div class="container">
             <div class="row">
-                <div class ="col-lg-12">
-                    <h2>Snack & Drink List</h2>
+                <div class="col-lg-12">
+                    <div class="breadcrumb__text">
+                        <h4>Snack & Drink</h4>
+                    </div>
                 </div>
             </div>
         </div>
@@ -104,11 +106,17 @@
     <!-- Breadcrumb Section End -->
 
     <!-- Shop Section Begin -->
-    <section class="shop spad" id="drinks">
+    <section class="shop spad">
        <div class="container">
            <div class="row">
                 <div class="col-lg-3">
                     <div class="shop__sidebar">
+                        <div class="shop__sidebar__search">
+                            <form action="#">
+                                <input type="text" placeholder="Search...">
+                                <button type="submit"><span class="icon_search"></span></button>
+                            </form>
+                        </div>
                         <div class="shop__sidebar__accordion">
                             <div class="accordion" id="accordionExample">
                                 <div class="card">
@@ -118,7 +126,7 @@
                                     <div id="collapseSix" class="collapse show" data-parent="#accordionExample">
                                         <div class="card-body">
                                             <div class="shop__sidebar__tags">
-                                                <a href="#drinks">Drinks</a>
+                                                <a href="#">Drinks</a>
                                                 <a href="#">Snacks</a>
                                                 <a href="#">Popcorn</a>
                                             </div>
@@ -130,50 +138,83 @@
                     </div>
                 </div>
                 <div class="col-lg-9">
-                    <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <ul class="filter__controls">
-                                <?php
-                                $sql = "SELECT * FROM foodinfo WHERE category='Drinks'";
-                                $result = mysqli_query($conn, $sql);
-
-                                if (!$result) {
-                                    die('Invalid query: ' . mysqli_error($conn));
-                                }
-                                ?>
-                            <h3 class="active" data-filter="*">Drink List</h3>
-                            </ul>
+                    <div class="shop__product__option">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="shop__product__option__left">
+                                    <p>Showing 1–12 of 126 results</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="shop__product__option__right">
+                                    <p>Sort by Price:</p>
+                                    <select>
+                                        <option value="">Low To High</option>
+                                        <option value="">$0 - $55</option>
+                                        <option value="">$55 - $100</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    
+                    <!-- Qurey a data -->
+                    <?php
+                        $sql = "SELECT * FROM foodinfo  ORDER BY food_type";
+                        $result = $conn->query($sql);
+                        $current_food_type = null;
+                    ?>
 
-                    <div class="row product__filter">
-                        
-                        <?php   
-                            // Loop through the result set and generate HTML code for each movie    url('<?php echo $movie_poster;
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <?php 
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    $food_type = $row['food_type'];
+                                    $category = $row['category'];
+                                    $description = $row['description'];
+                            ?>
                             
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                $food_type = $row['food_type'];
-                                $category = $row['category'];
-                                $description = $row['description'];
-                              
-                        ?>
-                                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
+                            <div class="product__item">
+                                
+                                <div class="product__item__text">
+                                
+                                    <?php if ($current_food_type != $food_type) { ?>
+                                        <img src="./img/snack/<?php echo $food_type ?>.png" width="100" height="200">
+                                        <h6><?php echo $food_type; ?></h6>
                                         
-                                            <div class="product__item">
-                                                <div class="product__item__pic set-bg" data-setbg="./img/snack/<?php echo $food_type; ?>.png">  
-                                                </div>
-                                                <div class="product__item__text">
-                                                    <h6><?php echo $food_type; ?></h6>
-                                                    <h5><?php echo $description; ?></h5>
-                                                </div> 
-                                            </div>
-                                  
+                                    <?php  }
+                                        $current_food_type = $food_type;
+                                        $sql = "SELECT * FROM foodsize WHERE food_type = '$current_food_type'";
+                                        $result = $conn->query($sql);
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                          $size = $row['size'];
+                                          $price= $row['price'];
+                                          $food_id = $row['food_id'];
+                                        
+                                    ?>
+                                          <h6><?php echo $size.$price; } ?></h6>
+
+                                    
                                 </div>
-                        <?php } ?>
+                                
+                            </div>
+                            <?php } ?>    
+                        </div>
                     </div>
-                </div>
-                            
+                    
+                    
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="product__pagination">
+                                <a class="active" href="#">1</a>
+                                <a href="#">2</a>
+                                <a href="#">3</a>
+                                <span>...</span>
+                                <a href="#">21</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

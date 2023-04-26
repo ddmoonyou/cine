@@ -254,10 +254,6 @@
                         </div>
                 <?php } ?>
             </div>
-
-            
-                    
-
         </div>
         
     </section>
