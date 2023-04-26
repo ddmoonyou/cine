@@ -334,8 +334,29 @@ ol {
 -----------------------*/
 
 .header {
+	padding: 10px 16px;
 	background: #ffffff;
+	color: #f1f1f1;
+	height: 9%;
+	box-shadow: 0px 0px 8px black;
+	z-index: 999;
 }
+/* Page content */
+.content {
+	padding: 16px;
+  }
+
+/* The sticky class is added to the header with JS when it reaches its scroll position */
+.sticky {
+	position: fixed;
+	top: 0;
+	width: 100%
+  }
+  
+  /* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+  .sticky + .content {
+	padding-top: 102px;
+  }
 
 .header__top {
 	background: #111111;
@@ -2613,8 +2634,8 @@ ol {
 }
 
 .blog__item:hover .blog__item__text {
-	-webkit-box-shadow: 0px 15px 60px rgba(67, 69, 70, 0.05);
-	box-shadow: 0px 15px 60px rgba(67, 69, 70, 0.05);
+	-webkit-box-shadow: 0px 13px 60px rgba(67, 69, 70, 0.15);
+	box-shadow: 0px 13px 60px rgba(67, 69, 70, 0.15);
 }
 .blog__alt .blog__item__alt {
 	padding: auto;

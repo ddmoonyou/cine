@@ -12,9 +12,8 @@
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Rubik+Glitch&family=Vollkorn&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Rubik+Glitch&family=Vollkorn&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -61,7 +60,7 @@
 
 
     <!-- Header Section Begin -->
-    <header class="header">
+    <header class="header" id="myHeader">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-3">
@@ -295,70 +294,8 @@
     </section>
     <!-- Snack Section End -->
 
-
-    <!-- Footer Section Begin -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="footer__about">
-                        <div class="footer__logo">
-                            <a href="#"><img src="img/about/icon-alt.png" alt=""></a>
-                        </div>
-                        <p>Best Cinema in SEA</p>
-
-                    </div>
-                </div>
-                <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
-                    <div class="footer__widget">
-                        <h6>Menu</h6>
-                        <ul>
-                            <li><a href="theatre.php">Theatre</a></li>
-                            <li><a href="#">Movie</a></li>
-                            <li><a href="#">Promotion</a></li>
-                            <li><a href="#">Snack&Drink</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-3 col-sm-6">
-                    <div class="footer__widget">
-                        <h6>Shopping</h6>
-                        <ul>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#">Payment Methods</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 offset-lg-1 col-md-6 col-sm-6">
-                    <div class="footer__widget">
-                        <h6>NewsLetter</h6>
-                        <div class="footer__newslatter">
-                            <p>Be the first to know about new movies & promos!</p>
-                            <form action="#">
-                                <input type="text" placeholder="Your email">
-                                <!-- <button type="submit"><span class="icon_mail_alt"></span></button> -->
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="footer__copyright__text">
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        <p>Copyright ©
-                            <script>
-                                document.write(new Date().getFullYear());
-                            </script>2020
-                            All rights reserved</a>
-                        </p>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- Footer Section End -->
+    <!-- Include footer -->
+    <?php include('footer.php'); ?>
 
     <!-- Search Begin -->
     <div class="search-model">
