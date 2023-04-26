@@ -92,7 +92,7 @@
     </header>
     <!-- Header Section End -->
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-blog set-bg" data-setbg="img/promotion-bg.jpg">
+    <section class="breadcrumb-blog set-bg" data-setbg="img/delicious-popcorn-bg.png">
         <div class="container">
             <div class="row">
                 <div class ="col-lg-12">

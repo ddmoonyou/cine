@@ -90,7 +90,7 @@
     <!-- Header Section End -->
 
     <!-- Background Section Begin -->
-    <section class="breadcrumb-blog set-bg" data-setbg="img/cinema-bg.jpg">
+    <section class="breadcrumb-blog set-bg" data-setbg="img/theatre-bg.png">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">

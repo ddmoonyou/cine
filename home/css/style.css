@@ -1971,6 +1971,7 @@ ol {
 
 .breadcrumb-blog h2 {
 	color: #ffffff;
+	text-shadow: 0px 0px 15px black;
 	font-size: 45px;
 	font-weight: 700;
 }
