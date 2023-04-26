@@ -53,9 +53,9 @@
 
 <body>
     <!-- Page Preloder -->
-    <!-- <div id="preloder">
+    <div id="preloder">
         <div class="loader"></div>
-    </div> -->
+    </div>
 
 
 
@@ -103,8 +103,8 @@
     </section>
     <!-- Breadcrumb Section End -->
 
-    <!-- Shop Section Begin -->
-    <section class="shop spad" id="drinks">
+    <!-- Popcorn Section Begin -->
+    <section class="shop spad" id="popcorn">
        <div class="container">
            <div class="row">
                 <div class="col-lg-3">
@@ -119,8 +119,8 @@
                                         <div class="card-body">
                                             <div class="shop__sidebar__tags">
                                                 <a href="#drinks">Drinks</a>
-                                                <a href="#">Snacks</a>
-                                                <a href="#">Popcorn</a>
+                                                <a href="#snack">Snacks</a>
+                                                <a href="#popcorn">Popcorn</a>
                                             </div>
                                         </div>
                                     </div>
@@ -135,14 +135,14 @@
                         <div class="col-lg-12">
                             <ul class="filter__controls">
                                 <?php
-                                $sql = "SELECT * FROM foodinfo WHERE category='Drinks'";
+                                $sql = "SELECT * FROM foodinfo WHERE category='popcorn'";
                                 $result = mysqli_query($conn, $sql);
 
                                 if (!$result) {
                                     die('Invalid query: ' . mysqli_error($conn));
                                 }
                                 ?>
-                            <h3 class="active" data-filter="*">Drink List</h3>
+                            <h3 class="active" data-filter="*">Popcorn List</h3>
                             </ul>
                         </div>
                     </div>
@@ -178,7 +178,122 @@
             </div>
         </div>
     </section>
-    <!-- Shop Sectio End -->
+    <!-- Popcorn Section End -->
+
+    <!-- Drinks Section Begin -->
+    <section class="shop spad" id="drinks">
+       <div class="container">
+           <div class="row">
+                <div class="col-lg-3">
+                    
+                </div>
+                <div class="col-lg-9">
+                    <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <ul class="filter__controls">
+                                <?php
+                                $sql = "SELECT * FROM foodinfo WHERE category='drinks'";
+                                $result = mysqli_query($conn, $sql);
+
+                                if (!$result) {
+                                    die('Invalid query: ' . mysqli_error($conn));
+                                }
+                                ?>
+                            <h3 class="active" data-filter="*">Drink List</h3>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row product__filter">
+                        
+                        <?php   
+                            // Loop through the result set and generate HTML code for each movie    url('<?php echo $movie_poster;
+                            
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $food_type = $row['food_type'];
+                                $category = $row['category'];
+                                $description = $row['description'];
+                              
+                        ?>
+                                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
+                                        
+                                            <div class="product__item">
+                                                <div class="product__item__pic set-bg" data-setbg="./img/snack/<?php echo $food_type; ?>.png">  
+                                                </div>
+                                                <div class="product__item__text">
+                                                    <h6><?php echo $food_type; ?></h6>
+                                                    <h5><?php echo $description; ?></h5>
+                                                </div> 
+                                            </div>
+                                </div>
+                        <?php } ?>
+                    </div>
+                </div>
+                            
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Drinks Section End -->
+
+    <!-- Snack Section Begin -->
+    <section class="shop spad" id="snack">
+       <div class="container">
+           <div class="row">
+                <div class="col-lg-3">
+                    
+                </div>
+                <div class="col-lg-9">
+                    <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <ul class="filter__controls">
+                                <?php
+                                $sql = "SELECT * FROM foodinfo WHERE category='snack'";
+                                $result = mysqli_query($conn, $sql);
+
+                                if (!$result) {
+                                    die('Invalid query: ' . mysqli_error($conn));
+                                }
+                                ?>
+                            <h3 class="active" data-filter="*">Snack List</h3>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row product__filter">
+                        
+                        <?php   
+                            // Loop through the result set and generate HTML code for each movie    url('<?php echo $movie_poster;
+                            
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $food_type = $row['food_type'];
+                                $category = $row['category'];
+                                $description = $row['description'];
+                              
+                        ?>
+                                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
+                                        
+                                            <div class="product__item">
+                                                <div class="product__item__pic set-bg" data-setbg="./img/snack/<?php echo $food_type; ?>.png">  
+                                                </div>
+                                                <div class="product__item__text">
+                                                    <h6><?php echo $food_type; ?></h6>
+                                                    <h5><?php echo $description; ?></h5>
+                                                </div> 
+                                            </div>
+                                  
+                                </div>
+                        <?php } ?>
+                    </div>
+                </div>
+                            
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Snack Section End -->
 
 
     <!-- Footer Section Begin -->
