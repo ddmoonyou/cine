@@ -55,6 +55,9 @@
     <div id="preloder">
         <div class="loader"></div>
     </div>
+    <div class="offcanvas-menu-wrapper">
+        <div id="mobile-menu-wrap"></div>
+    </div>
 
 
 
