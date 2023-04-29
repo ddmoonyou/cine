@@ -48,16 +48,5 @@ if (!$result) {
   die('Invalid query: ' . mysqli_error($conn));
 }
 
-// Generate HTML code for the available seats
-$html = '<table>';
-while ($row = mysqli_fetch_assoc($result)) {
-  $seatID = $row['seat_id'];
-  $reserveID = $row['reserve_id'];
-  $html .= '<tr><td>' . $seatID . '</td><td>' . $reserveID . '</td></tr>';
-}
-$html .= '</table>';
-
-// Return the HTML code as a response
-echo $html;
 
 ?>

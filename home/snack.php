@@ -90,6 +90,13 @@
         </div>
     </header>
     <!-- Header Section End -->
+
+    <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-wrapper">
+        <div id="mobile-menu-wrap"></div>
+    </div>
+    <!-- Offcanvas Menu End -->
+    
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-blog set-bg" data-setbg="img/delicious-popcorn-bg.png">
         <div class="container">

@@ -34,10 +34,10 @@
 
     <!-- Connect to database -->
     <?php
-    $servername = "127.0.0.1";  // server name localhost
-    $username = "root";    // username to access database id20613770_cinebyhansa
-    $password = "";    // password to access database %1tcYSTb0gf}1+YM
-    $dbname = "cine"; // name of the database
+    $servername = "127.0.0.1";  
+    $username = "root";   
+    $password = "";    
+    $dbname = "cine"; 
 
     // Create a connection to MySQL database
     $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -46,8 +46,6 @@
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
     }
-
-    //echo "Connected successfully";
 
     ?> 
 
@@ -59,6 +57,11 @@
         <div class="loader"></div>
     </div>
 
+    <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-wrapper">
+        
+    </div>
+    <!-- Offcanvas Menu End -->
 
     
 
@@ -74,9 +77,8 @@
                 <div class="col-lg-7 col-md-6">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li><a href="./index.php">Home</a></li>
+                            <li class="active"><a href="./index.php">Home</a></li>
                             <li><a href="./theatre.php">Theatre</a></li>
-                            <li class="active"><a href="./movie.php">Movie</a></li>
                             <li ><a href="./promotion.php">Promotion</a></li>
                             <li><a href="./snack.php">Snack&Drink</a></li>
                         </ul>
@@ -118,8 +120,8 @@
                     <div class="breadcrumb__text">
                         <div class="row">
                               <div class="image-container">
-                                    <img src ="./img/poster/<?php echo $movie_id?>.jpg" alt="Movie Poster" width="240" height="320" class="movie-poster">
-                                    <!-- <iframe width="560" height="315" src="<?php echo $trailer; ?>" 
+                                    <img class="movie-poster" src ="./img/poster/<?php echo $movie_id?>.jpg" alt="Movie Poster" width="240" height="320">
+                                    <!-- <iframe width="560" height="315" src=" <?php echo $trailer; ?>" 
                                     frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                     allowfullscreen></iframe> -->
                               </div>
@@ -129,7 +131,6 @@
                                     <ul><p>Release Date: <?php echo $_start_date ?><p><ul>
                                     <ul><p>Director: <?php echo $director ?><p><ul>
                                     <ul><p>Length: <?php echo $movie_length ?>min<p><ul>
-
                               </div>
                         </div> 
                     </div>
@@ -141,7 +142,7 @@
 
     <!-- Query a showings of each movie -->
     <?php
-    $sql = "SELECT s.*, b.branch_name, t.*
+    $sql = "SELECT s.*, b.*, t.*
     FROM (
         SELECT DATE(date_time) AS date_only
         FROM showings
@@ -154,6 +155,7 @@
         INNER JOIN theaterinfo t ON s.theater_no = t.theater_no
         WHERE s.movie_id = $movie_id
         AND s.date_time BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 3 DAY)
+        GROUP BY s.showing_id , b.branch_id
         ORDER BY s.date_time ASC";
     $result = mysqli_query($conn, $sql);
     $displayed_date = null;
@@ -161,13 +163,22 @@
 
 
     <!-- Product Section Begin -->
-    <section class="blog spad">
+    <section class="shop spad">
+            <div class="container">
+                <h4>Select a Date</h4> 
+                
+                <h4>Select a Branch</h4>
+                <div class="row justify-content-center"> 
+                </div>
+            </div>
+
+
             <?php       // generate each showing
                 while ($row = mysqli_fetch_assoc($result)) {
                     $showingID = $row['showing_id'];
                     $branch_name = $row['branch_name'];
                     $date_time = $row['date_time'];
-                    $time = date('h:i', strtotime($date_time));
+                    $time = date('H:i', strtotime($date_time));
                     $date = date('d M Y', strtotime($date_time));
                     $theatre_no = $row['theater_no'];
                     $language_sub = $row['language_sub'];
@@ -181,20 +192,25 @@
                     }
             ?>
             
+           
+            
             <div class="container">
                 <div class="row no-gutters">
                     <div class="col-lg-12 md-8 xs-3">
                         <div class="showings-container" data-movie-id="<?php echo $showingID; ?>">
-                            <a href="reservation.php?showing_id=<?php echo $showingID; ?>">
-                                <div class="blog__item">                  
-                                    <div class="blog__item__text">
-                                        <h5><img src="./img/icon/clock.png" width=20px height=20px> <?php echo $time; ?></h5>
+                            
+                                <div class="blog__item__text">                  
+                                    <div class="blog__item__text"> <img src="./img/icon/clock.png" width=25px height=25px>
+                                    <a href="reservation.php?showing_id=<?php echo $showingID; ?>"> 
+                                        <button class="btn site-btn" data-showingid="<?php echo $showingID?>"> 
+                                            <?php echo $time; ?>
+                                        </button> </a>
                                         <h6><img src="./img/icon/location.png" width=20px height=20px> <?php echo $branch_name; ?></h6>
                                         <p>Theatre No: <?php echo $theatre_no; ?> </p>
                                         <p><img src="./img/icon/video-camera.png" width=20px height=20px> System Type: <?php echo $system_type ?> </p>   
                                     </div>
                                 </div>
-                            </a>
+                            
                         </div>
                     </div>
                 </div>
@@ -205,69 +221,9 @@
     </section>
     <!-- Product Section End -->
 
-    <!-- Footer Section Begin -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="footer__about">
-                        <div class="footer__logo">
-                            <a href="./index.php"><img src="img/about/icon-alt.png" alt=""></a>
-                        </div>
-                        <p>Best Cinema in SEA.</p>
-                    
-                    </div>
-                </div>
-                <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
-                    <div class="footer__widget">
-                        <h6>Menu</h6>
-                        <ul>
-                            <li><a href="theatre.php">Theatre</a></li>
-                            <li><a href="#">Movie</a></li>
-                            <li><a href="#">Promotion</a></li>
-                            <li><a href="#">Snack&Drink</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-3 col-sm-6">
-                    <div class="footer__widget">
-                        <h6>Shopping</h6>
-                        <ul>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#">Payment Methods</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 offset-lg-1 col-md-6 col-sm-6">
-                    <div class="footer__widget">
-                        <h6>NewsLetter</h6>
-                        <div class="footer__newslatter">
-                            <p>Be the first to know about new movies & promos!</p>
-                            <form action="#">
-                                <input type="text" placeholder="Your email">
-                                <!-- <button type="submit"><span class="icon_mail_alt"></span></button> -->
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="footer__copyright__text">
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        <p>Copyright ©
-                            <script>
-                                document.write(new Date().getFullYear());
-                            </script>2020
-                            All rights reserved</a>
-                        </p>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- Footer Section End -->
+    
+    <!-- Include footer -->
+    <?php include('footer.php'); ?>
 
     <!-- Search Begin -->
     <div class="search-model">
