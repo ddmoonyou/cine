@@ -337,12 +337,11 @@
             alert("Item added to cart.");
           }
           
-          function order() {
-            var size = document.getElementById("size").value;
-            var quantity = document.getElementById("quantity").value;
-            alert("You ordered " + quantity + " " + size + " drinks.");
-        }
           
+            
+            
+        });
+        
     });
-   
-})(jQuery);
+    
+(jQuery);

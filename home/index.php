@@ -55,7 +55,12 @@
     <div id="preloder">
         <div class="loader"></div>
     </div>
-
+    
+    <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-wrapper">
+        <div id="mobile-menu-wrap"></div>
+    </div>
+    <!-- Offcanvas Menu End -->
 
     
 
@@ -94,53 +99,39 @@
     <!-- Hero Section Begin -->
     <section class="hero">
         <div class="hero__slider owl-carousel">
-            <div class="hero__items set-bg" data-setbg="img/hero/john_wick4.jpg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-5 col-lg-7 col-md-8">
-                            <div class="hero__text">
-                                <div class="container-bg">
-                                    <h6>Now Showings</h6>
-                                    <h2>John Wick: Chapter 4</h2>
-                                </div>
-                                <a href="#" class="primary-btn">BOOK NOW <span class="arrow_right"></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <?php
+            $sql = "SELECT * FROM movieinfo  WHERE promote = 1";
+            $result = mysqli_query($conn, $sql);
 
-            <div class="hero__items set-bg" data-setbg="img/hero/avatar.jpg">
+            if (!$result) {
+                die('Invalid query: ' . mysqli_error($conn));
+            }
+            while ($row = mysqli_fetch_assoc($result)) {
+                $movie_name = $row['movie_name'];
+                $releasedate = $row['releaseDate'];
+                $movie_length = $row['movie_length'];
+                $movie_poster = $row['movie_poster'];
+                $formatted_date = date("d M Y", strtotime($releasedate));
+                $movie_id = $row['movie_id'];
+                $director = $row['director_info'];
+            ?>
+            <div class="hero__items set-bg" data-setbg="img/promote/<?php echo $movie_id ?>.jpg">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-5 col-lg-7 col-md-8">
                             <div class="hero__text">
                                 <div class="container-bg">
-                                    <h6>Now Showings</h6>
-                                    <h2>Avatar: The Way Of Water</h2>
-                                </div>
-                                <a href="#" class="primary-btn">BOOK NOW<span class="arrow_right"></span></a>        
+                                    <h6><?php echo $formatted_date ?></h6>
+                                    <h2><?php echo $movie_name ?></h2>
+                                </div> 
+                                <a href="showings.php?movie_id=<?php echo $movie_id; ?>" class="primary-btn">BOOK NOW <span class="arrow_right"></span></a>
+                                
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="hero__items set-bg" data-setbg="img/hero/gotg.jpg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-5 col-lg-7 col-md-8">
-                            <div class="hero__text">
-                                <div class="container-bg">
-                                    <h6>03 May 2023</h6>
-                                    <h2>Guardian of The Galaxy Vol.3</h2>
-                                </div>
-                                <a href="#" class="primary-btn">BOOK NOW<span class="arrow_right"></span></a>        
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php } ?>
         </div>
     </section>
     <!-- Hero Section End -->
