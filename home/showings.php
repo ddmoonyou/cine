@@ -145,20 +145,11 @@
 
     <!-- Query a showings of each movie -->
     <?php
-    $sql = "SELECT s.*, b.branch_name, t.*
-    FROM (
-        SELECT DATE(date_time) AS date_only
-        FROM showings
-        WHERE movie_id = $movie_id
-        AND date_time BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 3 DAY)
-        GROUP BY DATE(date_time)
-        ) d
-        INNER JOIN showings s ON DATE(s.date_time) = d.date_only
-        INNER JOIN branchinfo b ON s.branch_id = b.branch_id 
-        INNER JOIN theaterinfo t ON s.theater_no = t.theater_no
-        WHERE s.movie_id = $movie_id
-        AND s.date_time BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 3 DAY)
-        ORDER BY s.date_time ASC";
+    $sql = "SELECT s.*, b.*, t.* FROM showings s
+    INNER JOIN theaterinfo t ON s.theater_no = t.theater_no
+    INNER JOIN branchinfo b ON b.branch_id = s.branch_id
+    WHERE s.movie_id = $movie_id 
+    ORDER BY s.date_time ASC";
     $result = mysqli_query($conn, $sql);
     $displayed_date = null;
     ?>
@@ -171,7 +162,7 @@
                     $showingID = $row['showing_id'];
                     $branch_name = $row['branch_name'];
                     $date_time = $row['date_time'];
-                    $time = date('h:i', strtotime($date_time));
+                    $time = date('H:i', strtotime($date_time));
                     $date = date('d M Y', strtotime($date_time));
                     $theatre_no = $row['theater_no'];
                     $language_sub = $row['language_sub'];
@@ -189,10 +180,12 @@
                 <div class="row no-gutters">
                     <div class="col-lg-12 md-8 xs-3">
                         <div class="showings-container" data-movie-id="<?php echo $showingID; ?>">
-                            <a href="reservation.php?showing_id=<?php echo $showingID; ?>">
-                                <div class="blog__item">                  
-                                    <div class="blog__item__text">
-                                        <h5><img src="./img/icon/clock.png" width=20px height=20px> <?php echo $time; ?></h5>
+                        <div class="blog__item__text">                  
+                            <div class="blog__item__text"> <img src="./img/icon/clock.png" width=25px height=25px>
+                                <a href="reservation.php?showing_id=<?php echo $showingID; ?>"> 
+                                            <button class="btn site-btn" data-showingid="<?php echo $showingID?>"> 
+                                                <?php echo $time; ?>
+                                        </button> </a>
                                         <h6><img src="./img/icon/location.png" width=20px height=20px> <?php echo $branch_name; ?></h6>
                                         <p>Theatre No: <?php echo $theatre_no; ?> </p>
                                         <p><img src="./img/icon/video-camera.png" width=20px height=20px> System Type: <?php echo $system_type ?> </p>   
@@ -209,69 +202,7 @@
     </section>
     <!-- Product Section End -->
 
-    <!-- Footer Section Begin -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="footer__about">
-                        <div class="footer__logo">
-                            <a href="./index.php"><img src="img/about/icon-alt.png" alt=""></a>
-                        </div>
-                        <p>Best Cinema in SEA.</p>
-                    
-                    </div>
-                </div>
-                <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
-                    <div class="footer__widget">
-                        <h6>Menu</h6>
-                        <ul>
-                            <li><a href="theatre.php">Theatre</a></li>
-                            <li><a href="#">Movie</a></li>
-                            <li><a href="#">Promotion</a></li>
-                            <li><a href="#">Snack&Drink</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-3 col-sm-6">
-                    <div class="footer__widget">
-                        <h6>Shopping</h6>
-                        <ul>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#">Payment Methods</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 offset-lg-1 col-md-6 col-sm-6">
-                    <div class="footer__widget">
-                        <h6>NewsLetter</h6>
-                        <div class="footer__newslatter">
-                            <p>Be the first to know about new movies & promos!</p>
-                            <form action="#">
-                                <input type="text" placeholder="Your email">
-                                <!-- <button type="submit"><span class="icon_mail_alt"></span></button> -->
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="footer__copyright__text">
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        <p>Copyright ©
-                            <script>
-                                document.write(new Date().getFullYear());
-                            </script>2020
-                            All rights reserved</a>
-                        </p>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- Footer Section End -->
+    <?php include('footer.php'); ?>
 
     <!-- Search Begin -->
     <div class="search-model">
