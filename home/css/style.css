@@ -101,7 +101,6 @@ p {
 
 img {
 	max-width: 100%;
-	border-radius: 20px;
 }
 
 input:focus,
@@ -181,47 +180,22 @@ ol {
 	font-size: 13px;
 	font-weight: 700;
 	text-transform: uppercase;
-	padding: 5%;
+	padding: 14px 30px;
 	color: #ffffff;
 	background: #000000;
 	letter-spacing: 4px;
 }
 
 .site-btn {
-	font-size: 15px;
+	font-size: 14px;
 	color: #ffffff;
 	background: #111111;
 	font-weight: 700;
 	border: none;
 	text-transform: uppercase;
 	display: inline-block;
-	/* padding: 5%; */
+	padding: 14px 30px;
 }
-
-.date-btn {
-	display: inline-block;
-	font-size: 15px;
-	font-weight: 700;
-	text-transform: uppercase;
-	padding: 3%;
-	color: #ffffff;
-	background: #525151;
-	letter-spacing: 4px;
-	border-color: #000;
-}
-
-.square-btn {
-	width: 70px;
-	height: 70px;
-	border-radius: 0;
-	background-color: rgb(56, 56, 56);
-	color: white;
-	border-color: black;
-	font-size: 15px;
-	display: inline-block;
-	margin: 1%;
-	border-radius: 10%;
-    }
 
 /* Preloder */
 
@@ -363,6 +337,7 @@ ol {
 	padding: 10px 16px;
 	background: #ffffff;
 	color: #f1f1f1;
+	height: 9%;
 	box-shadow: 0px 0px 8px black;
 	z-index: 999;
 }
@@ -3817,13 +3792,18 @@ ol {
 		display: none;
 	  }
 
-	  .movie-poster img{
+	  .movie-poster img {
 		width: 240px;
 		height: 320px;
 		border-radius: 20px;
 		
 	    }
 
+	    .image-container{ 
+		padding-top: 100px;
+		padding-bottom: 100px;
+		padding-right: 300px;
+	    }
 
 	.h2-movie{
 		font-weight: bold;
@@ -3888,8 +3868,9 @@ ol {
 	    .food-text{
 		padding: 5%;
 	    }
-
 	   
+	
+
 
 
 }
