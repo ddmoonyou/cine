@@ -145,17 +145,48 @@
 
     <!-- Query a showings of each movie -->
     <?php
-    $sql = "SELECT s.*, b.*, t.* FROM showings s
-    INNER JOIN theaterinfo t ON s.theater_no = t.theater_no
-    INNER JOIN branchinfo b ON b.branch_id = s.branch_id
-    WHERE s.movie_id = $movie_id 
-    ORDER BY s.date_time ASC";
+    $sql = "SELECT DISTINCT * FROM showings s,theaterinfo t,branchinfo b
+    where s.theater_no = t.theater_no
+    and s.branch_id = t.branch_id
+    and b.branch_id = s.branch_id
+    and s.movie_id = $movie_id
+    ORDER BY s.date_time ASC;
+    ";
     $result = mysqli_query($conn, $sql);
     $displayed_date = null;
     ?>
 
-
+    
     <!-- Product Section Begin -->
+    <div class="container">
+        <div class="col-lg-12 md-8 xs-3">
+            <div class='col-lg-8 xd-2'> <h3>Select a Date: </h3> </div>
+            <?php
+            // get the current date and calculate the max date (one week from today)
+            $currentDate = date('Y-m-d');
+            $maxDate = date('Y-m-d', strtotime('+1 week'));
+
+            // loop through each day within the range and generate a button for each day
+            for ($date = strtotime($currentDate); $date <= strtotime($maxDate); $date += 86400) {
+                $dateString = date('d M Y', $date);
+                echo "<button class='square-btn' onclick='selectDate(\"$dateString\")'>$dateString</button>";
+            }
+            ?>
+            
+            <script>
+                function selectDate(dateString) {
+                    // do something with the selected date, such as submitting a form
+                    document.getElementById("selectedDate").value = dateString;
+                    document.getElementById("myForm").submit();
+                }
+            </script>
+            
+            <form id="myForm" action="showings.php" method="POST">
+                <input type="hidden" id="selectedDate" name="date">
+            </form>
+        </div>
+    </div>
+
     <section class="blog spad">
             <?php       // generate each showing
                 while ($row = mysqli_fetch_assoc($result)) {
@@ -180,7 +211,7 @@
                 <div class="row no-gutters">
                     <div class="col-lg-12 md-8 xs-3">
                         <div class="showings-container" data-movie-id="<?php echo $showingID; ?>">
-                        <div class="blog__item__text">                  
+                        <div class="blog__item__text">
                             <div class="blog__item__text"> <img src="./img/icon/clock.png" width=25px height=25px>
                                 <a href="reservation.php?showing_id=<?php echo $showingID; ?>"> 
                                             <button class="btn site-btn" data-showingid="<?php echo $showingID?>"> 
@@ -191,7 +222,7 @@
                                         <p><img src="./img/icon/video-camera.png" width=20px height=20px> System Type: <?php echo $system_type ?> </p>   
                                     </div>
                                 </div>
-                            </a>
+                                </div>
                         </div>
                     </div>
                 </div>

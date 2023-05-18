@@ -237,7 +237,8 @@ label {
 }
 
 button {
-      border-radius: 0
+      border-radius: 0;
+      text-decoration:none
 }
 
 button:focus {
@@ -2872,12 +2873,14 @@ textarea.form-control.is-invalid {
       font-size: 1rem;
       line-height: 1.5;
       border-radius: .25rem;
-      transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
+      transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+      text-decoration: none
 }
 
 @media (prefers-reduced-motion:reduce) {
       .btn {
-            transition: none
+            transition: none;
+            text-decoration: none
       }
 }
 
@@ -2889,7 +2892,8 @@ textarea.form-control.is-invalid {
 .btn.focus,
 .btn:focus {
       outline: 0;
-      box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25)
+      box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25);      
+      text-decoration: none
 }
 
 .btn.disabled,
@@ -2919,7 +2923,8 @@ fieldset:disabled a.btn {
       color: #fff;
       background-color: #0069d9;
       border-color: #0062cc;
-      box-shadow: 0 0 0 .2rem rgba(38, 143, 255, .5)
+      box-shadow: 0 0 0 .2rem rgba(38, 143, 255, .5);
+      text-decoration: none
 }
 
 .btn-primary.disabled,
@@ -11329,7 +11334,7 @@ a.text-dark:hover {
       }
 
       a:not(.btn) {
-            text-decoration: underline
+            text-decoration: none
       }
 
       abbr[title]::after {
@@ -11415,5 +11420,9 @@ a.text-dark:hover {
       .table .thead-dark th {
             color: inherit;
             border-color: #dee2e6
+      }
+
+      a{
+            text-decoration: none
       }
 }

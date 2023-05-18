@@ -110,6 +110,8 @@ textarea:focus {
 	outline: none;
 }
 
+
+
 a:hover,
 a:focus {
 	text-decoration: none;
@@ -195,6 +197,7 @@ ol {
 	border: none;
 	text-transform: uppercase;
 	display: inline-block;
+	text-decoration: none;
 	/* padding: 5%; */
 }
 
@@ -3895,6 +3898,7 @@ ol {
 	    .food-text{
 		padding: 5%;
 	    }
+
 	   
 	
 
