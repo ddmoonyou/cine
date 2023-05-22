@@ -66,6 +66,7 @@ CREATE TABLE `movieinfo` (
   `movie_poster` text DEFAULT NULL,
   `movie_length` int(10) unsigned DEFAULT 0,
   `releaseDate` date DEFAULT NULL,
+  `promote` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`movie_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=100000001 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
