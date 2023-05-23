@@ -263,6 +263,29 @@
         });
     });
 
+    $(document).ready(function() {
+        // Attach a click event to all elements with the showings-link class
+        $('.showings-date-link').click(function(e) {
+            e.preventDefault(); // Prevent the default behavior of the link
+            
+            var selectedDate = $(this).data('selectedDate'); // Get the movie_id from the data attribute
+            
+            // Send an AJAX request to the get_showings.php file with the movie_id parameter
+            $.ajax({
+                url: 'get_showings.php',
+                type: 'GET',
+                data: { movie_id: movie_id , selectedDate: selectedDate},
+                success: function(response) {
+                    // On success, replace the contents of the product__filter element with the response
+                    $('.product__filter').html(response);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log('Error: ' + textStatus + ' - ' + errorThrown); // Log any errors to the console
+                }
+            });
+        });
+    });
+
 
     /*------------------
         Reservation
@@ -323,25 +346,26 @@
             });
         }
 
-        function addToCart(drinkId) {
-            var size = document.getElementById(drinkId + "_size").value;
-            var quantity = document.getElementById(drinkId + "_quantity").value;
-            var item = {
-              "id": drinkId,
-              "size": size,
-              "quantity": quantity
-            };
-            var cart = JSON.parse(localStorage.getItem("cart")) || [];
-            cart.push(item);
-            localStorage.setItem("cart", JSON.stringify(cart));
-            alert("Item added to cart.");
+        function addToCart() {
+            var selectedSeats = document.querySelectorAll('.seat.selected'); // Get all selected seats
+        
+            // Iterate over selected seats and perform desired actions
+            for (var i = 0; i < selectedSeats.length; i++) {
+              var seat = selectedSeats[i];
+              // Add seat information to the cart (e.g., seat ID, row, etc.)
+              // You can use AJAX or any other method to send the data to your server or update the cart accordingly
+              console.log('Added to cart:', seat.textContent);
+            }
+        
+            // Reset the selected seats after adding them to the cart
+            selectedSeats.forEach(function(seat) {
+              seat.classList.remove('selected');
+            });
           }
-          
-          function order() {
-            var size = document.getElementById("size").value;
-            var quantity = document.getElementById("quantity").value;
-            alert("You ordered " + quantity + " " + size + " drinks.");
-        }
+        
+          // Event listener for the Add to Cart button
+          var addToCartBtn = document.getElementById('addToCartBtn');
+          addToCartBtn.addEventListener('click', addToCart);
           
     });
    

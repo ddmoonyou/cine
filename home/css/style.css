@@ -2650,6 +2650,12 @@ ol {
 	margin-top: 30px;
 }
 
+.blog-center {
+	padding-bottom: 55px;
+	margin-top: 30px;
+	margin-left: 10%;
+}
+
 .latest {
 	padding-bottom: 55px;
 }
@@ -3898,6 +3904,12 @@ ol {
 	    .food-text{
 		padding: 5%;
 	    }
+
+
+	    .seat.selected {
+		background-color: yellow;
+	    }
+
 
 	   
 	
