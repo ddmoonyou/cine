@@ -143,9 +143,11 @@
                 //$seat_price = $row['price'];
                 $layouttype = $row['layout_type'];
                 
+                
+                
             ?>
             <tr>
-                <td><p>Seat Row: <?php echo $seat_column.' '.$seat_row?></p></td>
+                <td><p>Seat Row: <?php echo $seat_column.' '.$seat_row.' '.$seat_type ?> <button id="addToCartBtn">Select a seat</button> </p></td>
             </tr> 
            
         

@@ -3905,6 +3905,12 @@ ol {
 		padding: 5%;
 	    }
 
+
+	    .seat.selected {
+		background-color: yellow;
+	    }
+
+
 	   
 	
 
