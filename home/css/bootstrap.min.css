@@ -584,6 +584,7 @@ pre code {
 }
 
 
+
 @media (min-width:576px) {
       .container {
             max-width: 540px
@@ -1990,16 +1991,21 @@ pre code {
 }
 
 .table {
-      width: 100%;
-      margin-bottom: 1rem;
-      color: #212529
+      width: 70%;
+      margin-bottom: 0.5rem;
+      /* color: #212529 */
+      margin-top: 1rem;
+      padding: auto;
+      padding-bottom: 5%;
 }
+
 
 .table td,
 .table th {
-      padding: .75rem;
+      padding: .5rem;
       vertical-align: top;
-      border-top: 1px solid #dee2e6
+      /* border-top: 1px solid #000000 */
+      
 }
 
 .table thead th {

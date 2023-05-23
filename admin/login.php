@@ -19,14 +19,14 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="index.php" class="h1"><b>Admin</b>LTE</a>
+      <a href="index.php" class="h1"><b>Admin</b>CINE</a>
     </div>
     <div class="card-body">
       <p class="login-box-msg">Sign in to start your session</p>
 
       <form name="form1" action="check_login.php" method="post">
         <div class="input-group mb-3">
-          <input name="txtUsername" id="txtUsername" type="text" pattern="[0-9]+"class="form-control" placeholder="Staff ID">
+          <input name="txtUsername" id="txtUsername" type="text" pattern="[0-9]+" class="form-control" placeholder="Staff ID">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>

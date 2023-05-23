@@ -21,9 +21,8 @@
 
 	if(!isset($_SESSION['staff_id']))
 	{
-		echo "<a href=\"login.php\" class=\"nav-link\"><button type=\"submit\">  Please Login!</button></a>
-    
-    ";
+    header('Location: login.php');
+		// echo "<a href=\"login.php\" class=\"nav-link\"><button type=\"submit\">  Please Login!</button></a>";
 		exit();
 	}
 	
@@ -35,7 +34,9 @@
 	$strSQL = "SELECT * FROM staffinfo WHERE staff_id = '".$_SESSION['staff_id']."' ";
 	$objQuery = mysqli_query($con,$strSQL);
 	$objResult = mysqli_fetch_array($objQuery,MYSQLI_ASSOC);
-?>
+  ?>
+<!-- ./connect-to-database -->
+
 <!--
 `body` tag options:
 
@@ -85,11 +86,22 @@
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">AdminCINE</span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
+
+      <!-- Welcome user to AdminCINE -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block"><?php echo $objResult["staff_first_name"]. " ".$objResult["staff_last_name"] ;?></a>
+        </div>
+      </div>
+      <!-- ./welcome-user -->
 
       <!-- SidebarSearch Form -->
       <div class="form-inline">
@@ -127,7 +139,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/analysis.php" class="nav-link">
+                <a href="pages/analysis.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Analysis Report</p>
                 </a>
@@ -176,13 +188,17 @@
               <p>Documentation</p>
             </a>
           </li>
-          <li class="nav-header">You are logging in.</li>
-          <li class="nav-header"><?php echo $objResult["staff_first_name"]. " ".$objResult["staff_last_name"] ;?></li>
-          <li class="nav-item">
-              <a href="logout.php" class="nav-link">
-              <p>Logout</p>
-            </a>
-          </li>
+
+          <!-- Logout from website -->
+          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="logout">
+              <a href="../logout.php" class="nav-link">
+                <p><button class="btn btn-danger btn-block">Logout</button></p>
+              </a>
+            </div>
+          </div>
+          <!-- /.logout-from-website -->
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -471,7 +487,7 @@
 
   <!-- Main Footer -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+    <strong>Copyright &copy; 2014-2021 <a href="#">AdminLTE.io</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 3.2.0
