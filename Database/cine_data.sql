@@ -110,6 +110,26 @@ INSERT INTO `layouttype` (`layout_type`) VALUES
 ('F');
 
 --
+-- Dumping data for table `systemtype`
+--
+
+INSERT INTO `systemtype` (`system_type`) VALUES
+('4D'),
+('Bed Cinema'),
+('IMAX'),
+('Laser');
+
+--
+-- Dumping data for table `seatprice`
+--
+
+INSERT INTO `seatprice` (`seat_type`, `price`) VALUES
+('Honeymoon Seat', 400),
+('Premium Bed', 2500),
+('Premium Seat', 180);
+
+
+--
 -- Dumping data for table `movieinfo`
 --
 
@@ -124,7 +144,7 @@ INSERT INTO `movieinfo` (`movie_id`, `movie_name`, `movie_description`, `movie_t
 (100000008, 'Operation Fortune: Ruse de guerre', 'Special agent Orson Fortune and his team of operatives recruit one of Hollywood\'s biggest movie stars to help them on an undercover mission when the sale of a deadly new weapons technology threatens to disrupt the world order.', 'https://www.youtube.com/watch?v=W8Sqk1GcqxY', 'Guy Ritchie', 'https://www.imdb.com/title/tt7985704/mediaviewer/rm576532737/?ref_=tt_ov_i', 114, '2023-04-20', 0),
 (100000009, 'Spider-Man: Across the Spider-Verse', 'Miles Morales catapults across the Multiverse, where he encounters a team of Spider-People charged with protecting its very existence. When the heroes clash on how to handle a new threat, Miles must redefine what it means to be a hero.', 'https://www.youtube.com/watch?v=cqGjhVJWtEg', 'Joaquim Dos, SantosKemp Powers, Justin K. Thompson', 'https://www.imdb.com/title/tt9362722/mediaviewer/rm2758622721/?ref_=tt_ov_i', 120, '2023-06-02', 0),
 (100000010, 'Guardians of the Galaxy Vol. 3', 'Still reeling from the loss of Gamora, Peter Quill rallies his team to defend the universe and one of their own - a mission that could mean the end of the Guardians if not successful.', 'https://www.youtube.com/watch?v=u3V5KDHRQvk', 'James Gunn', 'https://lumiere-a.akamaihd.net/v1/images/th-guardiansofthegalaxy-vol3-payoffposter_bdad006d.jpeg?region=0%2C0%2C600%2C900', 150, '2023-05-05', 1),
-(100000011, '65', 'An astronaut crash lands on a mysterious planet only to discover he\'s not alone.', 'https://www.youtube.com/watch?v=bHXejJq5vr0', 'Scott Beck, Bryan Woods', 'https://m.media-amazon.com/images/M/MV5BYzFhM2M1MDUtNDhmNC00YzEzLThiMzctYWYxZTc0MGJhNWYyXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_FMjpg_UX1000_.jpg', 93, '2023-04-12', 0),
+(100000011, '65', 'An astronaut crash lands on a mysterious planet only to discover he\'s not alone.', 'https://www.youtube.com/watch?v=bHXejJq5vr0', 'Scott BecBryan Woods', 'https://m.media-amazon.com/images/M/MV5BYzFhM2M1MDUtNDhmNC00YzEzLThiMzctYWYxZTc0MGJhNWYyXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_FMjpg_UX1000_.jpg', 93, '2023-04-12', 0),
 (100000012, 'Detective Conan The Movie 26 : Black Iron Submarine', 'This time\'s location is set in the sea near the Hachijo-jima island, Tokyo. Engineers from around the world have gathered for the full-scale operation of \"Pacific Buoy,\" an offshore facility to connect security cameras owned by the worldwide police forces. A test of a certain \"new technology\" based on a face recognition system is underway there.\r\n\r\nMeanwhile, Conan and the Detective Boys visit Hachijo-jima at Sonoko\'s invitation and receive a phone call from Subaru Okiya informing them that a Europol employee was murdered in Germany by the Black Organization\'s Jin.\r\n\r\nConan, who is disquieted, sneaks into the facility and finds that a female engineer has been kidnapped by the Black Organization...! Furthermore, a USB drive containing certain information in her possession ends up in the hands of the organization... A black shadow also creeps up on Ai Haibara ...', 'https://www.youtube.com/watch?v=gGynIKMklkI', 'Tachikawa Yuzaru', 'https://www.metalbridges.com/wp-content/uploads/2023/04/Detective-Conan-The-Movie-26-Kurogane-no-Submarine-1.jpg', 110, '2023-04-26', 0);
 
 --
@@ -426,15 +446,25 @@ INSERT INTO `seatlayout` ( `seat_type`, `layout_type`, `seat_row`, `seat_column`
 ('Premium Seat', 'F', 'G', 17),
 ('Premium Seat', 'F', 'G', 18);
 
-
 --
--- Dumping data for table `seatprice`
+-- Dumping data for table `theaterinfo`
 --
 
-INSERT INTO `seatprice` (`seat_type`, `price`) VALUES
-('Honeymoon Seat', 400),
-('Premium Bed', 2500),
-('Premium Seat', 180);
+INSERT INTO `theaterinfo` (`branch_id`, `theater_no`, `layout_type`, `system_type`) VALUES
+(1001, 1, 'A', 'Bed Cinema'),
+(1001, 2, 'B', 'Bed Cinema'),
+(1001, 3, 'C', 'Bed Cinema'),
+(1001, 4, 'A', '4D'),
+(1001, 5, 'B', '4D'),
+(1001, 6, 'A', 'IMAX'),
+(1001, 7, 'A', 'IMAX'),
+(1001, 8, 'A', 'Laser'),
+(1001, 9, 'B', 'Laser'),
+(1001, 10,'C', 'Laser'),
+(1002, 1, 'A', 'Bed Cinema'),
+(1002, 2, 'A', '4D'),
+(1002, 3, 'B', '4D'),
+(1002, 4, 'C', '4D');
 
 --
 -- Dumping data for table `showings`
@@ -465,35 +495,10 @@ INSERT INTO `staffinfo` (`staff_id`, `branch_id`, `staff_role`, `staff_first_nam
 (840200001, 1001, 'Manager', 'Neramit', 'Matarat', '0992866777', '1234', '0000-00-00 00:00:00', 0),
 (840200002, 1001, 'Staff', 'Chayarob', 'Chantrapiwat', '0922747419', '1234', '2023-05-23 15:07:54', 1);
 
---
--- Dumping data for table `systemtype`
---
 
-INSERT INTO `systemtype` (`system_type`) VALUES
-('4D'),
-('Bed Cinema'),
-('IMAX'),
-('Laser');
 
---
--- Dumping data for table `theaterinfo`
---
 
-INSERT INTO `theaterinfo` (`branch_id`, `theater_no`, `layout_type`, `system_type`) VALUES
-(1001, 1, 'A', 'Bed Cinema'),
-(1001, 2, 'B', 'Bed Cinema'),
-(1001, 3, 'C', 'Bed Cinema'),
-(1001, 4, 'A', '4D'),
-(1001, 5, 'B', '4D'),
-(1001, 6, 'A', 'IMAX'),
-(1001, 7, 'A', 'IMAX'),
-(1001, 8, 'A', 'Laser'),
-(1001, 9, 'B', 'Laser'),
-(1001, 10, 'C', 'Laser'),
-(1002, 1, 'A', 'Bed Cinema'),
-(1002, 2, 'A', '4D'),
-(1002, 3, 'B', '4D'),
-(1002, 4, 'C', '4D');
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
