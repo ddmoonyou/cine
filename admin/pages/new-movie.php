@@ -53,7 +53,7 @@
         <div class="col-md-6">
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">General</h3>
+              <h3 class="card-title">Information</h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -62,30 +62,38 @@
               </div>
             </div>
             <div class="card-body">
+              <div div class="form-group">
+                <label for="inputPosterImage">Poster image</label>
+                  <div class="input-group">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" name="inputPosterImage"id="inputPosterImage">
+                        <label class="custom-file-label" for="inputPosterImage">Choose image</label>
+                    </div>
+                    <div class="input-group-append">
+                        <span class="input-group-text" name="upload">Upload</span>
+                    </div>
+                  </div>
+              </div>
+
               <div class="form-group">
-                <label for="inputName">Project Name</label>
-                <input type="text" id="inputName" class="form-control">
+                <label for="inputName">Movie Name</label>
+                <input type="text" id="inputMovieName" class="form-control" placeholder="Avengers: Endgame">
               </div>
               <div class="form-group">
-                <label for="inputDescription">Project Description</label>
-                <textarea id="inputDescription" class="form-control" rows="4"></textarea>
+                <label for="inputName">Movie lenght</label>
+                <input type="number" id="inputLenght" class="form-control" placeholder="182(min)">
               </div>
               <div class="form-group">
-                <label for="inputStatus">Status</label>
-                <select id="inputStatus" class="form-control custom-select">
-                  <option selected disabled>Select one</option>
-                  <option>On Hold</option>
-                  <option>Canceled</option>
-                  <option>Success</option>
-                </select>
+                <label for="inputDescription">Movie Description</label>
+                <textarea id="inputDescription" class="form-control" rows="4" placeholder="Avengers: ENDGAME  เรื่องราวการปิดจักรวาลมาร์เวลเฟส 3 เหตุการณ์ภายหลังจากที่ธานอสดีดนิ้วล้างครึ่งจักรวาล เหล่าฮีโร่ที่เหลือรอดจะหาทางกอบกู้จักรวาลนี้คืนมาได้อย่างไร โดยในภาคนี้จะมีตัวเด็ดอย่างกัปตันมาร์เวลมาร่วมเสริมทัพด้วย"></textarea>
               </div>
               <div class="form-group">
-                <label for="inputClientCompany">Client Company</label>
-                <input type="text" id="inputClientCompany" class="form-control">
+                <label for="inputClientCompany">Director Info</label>
+                <input type="text" id="inputClientCompany" class="form-control" placeholder="Anthony Russo, Joe Russo">
               </div>
               <div class="form-group">
-                <label for="inputProjectLeader">Project Leader</label>
-                <input type="text" id="inputProjectLeader" class="form-control">
+                <label for="inputClientCompany">Promote</label>
+                <input type="datetime-local" name="input"id="inputClientCompany" class="form-control" placeholder="Anthony Russo, Joe Russo">
               </div>
             </div>
             <!-- /.card-body -->
@@ -95,7 +103,7 @@
         <div class="col-md-6">
           <div class="card card-secondary">
             <div class="card-header">
-              <h3 class="card-title">Budget</h3>
+              <h3 class="card-title">Premiere ticket</h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -105,16 +113,38 @@
             </div>
             <div class="card-body">
               <div class="form-group">
-                <label for="inputEstimatedBudget">Estimated budget</label>
+                <label for="inputEstimatedBudget">Branch ID</label>
                 <input type="number" id="inputEstimatedBudget" class="form-control">
               </div>
               <div class="form-group">
-                <label for="inputSpentBudget">Total amount spent</label>
+                <label for="inputSpentBudget">Theater No.</label>
                 <input type="number" id="inputSpentBudget" class="form-control">
               </div>
               <div class="form-group">
-                <label for="inputEstimatedDuration">Estimated project duration</label>
-                <input type="number" id="inputEstimatedDuration" class="form-control">
+                <label for="inputEstimatedDuration">Datetime</label>
+                <input type="datetime-local" id="inputEstimatedDuration" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="inputStatus">Audio</label>
+                <select id="inputStatus" class="form-control custom-select">
+                  <option selected disabled>Select one</option>
+                  <option>ENG</option>
+                  <option>TH</option>
+                  <option>JPN</option>
+                  <option>KR</option>
+                  <option>RU</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="inputStatus">Subtitle</label>
+                <select id="inputStatus" class="form-control custom-select">
+                  <option selected disabled>Select one</option>
+                  <option>ENG</option>
+                  <option>TH</option>
+                  <option>JPN</option>
+                  <option>KR</option>
+                  <option>RU</option>
+                </select>
               </div>
             </div>
             <!-- /.card-body -->
@@ -156,5 +186,14 @@
 <script src="../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
+<!-- bs-custom-file-input -->
+<script src="../../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+<!-- Page specific script -->
+<script>
+$(function () {
+  bsCustomFileInput.init();
+});
+</script>
+
 </body>
 </html>

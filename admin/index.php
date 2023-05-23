@@ -192,7 +192,7 @@
           <!-- Logout from website -->
           <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="logout">
-              <a href="../logout.php" class="nav-link">
+              <a href="logout.php" class="nav-link">
                 <p><button class="btn btn-danger btn-block">Logout</button></p>
               </a>
             </div>
