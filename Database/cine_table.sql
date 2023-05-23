@@ -6,6 +6,8 @@
 -- Generation Time: May 23, 2023 at 10:21 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
+ CREATE DATABASE IF NOT EXISTS `cine` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `cine`;  
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
