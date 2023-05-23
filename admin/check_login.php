@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	
 
 	require_once("connect_db.php");
 	
@@ -12,7 +13,7 @@
 	$objResult = mysqli_fetch_array($objQuery);
 	if(!$objResult)
 	{
-		echo "Username and Password Incorrect!";
+		echo "<script> alert('Username or Password Incorrect!'); window.location.href='login.php'; </script>";
 		exit();
 	}
 	else

@@ -26,7 +26,7 @@
 
       <form name="form1" action="check_login.php" method="post">
         <div class="input-group mb-3">
-          <input name="txtUsername" id="txtUsername" type="text" pattern="[0-9]+"class="form-control" placeholder="Staff ID">
+          <input name="txtUsername" id="txtUsername" type="text" pattern="[0-9]+" class="form-control" placeholder="Staff ID">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>

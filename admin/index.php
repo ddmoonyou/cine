@@ -21,9 +21,8 @@
 
 	if(!isset($_SESSION['staff_id']))
 	{
-		echo "<a href=\"login.php\" class=\"nav-link\"><button type=\"submit\">  Please Login!</button></a>
-    
-    ";
+    header('Location: login.php');
+		// echo "<a href=\"login.php\" class=\"nav-link\"><button type=\"submit\">  Please Login!</button></a>";
 		exit();
 	}
 	
