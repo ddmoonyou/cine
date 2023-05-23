@@ -107,6 +107,26 @@ INSERT INTO `layouttype` (`layout_type`) VALUES
 ('C');
 
 --
+-- Dumping data for table `systemtype`
+--
+
+INSERT INTO `systemtype` (`system_type`) VALUES
+('4D'),
+('Bed Cinema'),
+('IMAX'),
+('Laser');
+
+--
+-- Dumping data for table `seatprice`
+--
+
+INSERT INTO `seatprice` (`seat_type`, `price`) VALUES
+('Honeymoon Seat', 400),
+('Premium Bed', 2500),
+('Premium Seat', 180);
+
+
+--
 -- Dumping data for table `movieinfo`
 --
 
@@ -185,13 +205,23 @@ INSERT INTO `seatlayout` (`seat_id`, `seat_type`, `layout_type`, `seat_row`, `se
 (310042, 'Premium Seat', 'A', 'D', 12);
 
 --
--- Dumping data for table `seatprice`
+-- Dumping data for table `theaterinfo`
 --
-
-INSERT INTO `seatprice` (`seat_type`, `price`) VALUES
-('Honeymoon Seat', 400),
-('Premium Bed', 2500),
-('Premium Seat', 180);
+INSERT INTO `theaterinfo` (`branch_id`, `theater_no`, `layout_type`, `system_type`) VALUES
+(1001, 1, 'A', 'Bed Cinema'),
+(1001, 2, 'B', 'Bed Cinema'),
+(1001, 3, 'C', 'Bed Cinema'),
+(1001, 4, 'A', '4D'),
+(1001, 5, 'B', '4D'),
+(1001, 6, 'A', 'IMAX'),
+(1001, 7, 'A', 'IMAX'),
+(1001, 8, 'A', 'Laser'),
+(1001, 9, 'B', 'Laser'),
+(1001, 10, 'C', 'Laser'),
+(1002, 1, 'A', 'Bed Cinema'),
+(1002, 2, 'A', '4D'),
+(1002, 3, 'B', '4D'),
+(1002, 4, 'C', '4D');
 
 --
 -- Dumping data for table `showings`
@@ -222,35 +252,10 @@ INSERT INTO `staffinfo` (`staff_id`, `branch_id`, `staff_role`, `staff_first_nam
 (840200001, 1001, 'Manager', 'Neramit', 'Matarat', '0992866777', '1234', '0000-00-00 00:00:00', 0),
 (840200002, 1001, 'Staff', 'Chayarob', 'Chantrapiwat', '0922747419', '1234', '2023-05-23 15:07:54', 1);
 
---
--- Dumping data for table `systemtype`
---
 
-INSERT INTO `systemtype` (`system_type`) VALUES
-('4D'),
-('Bed Cinema'),
-('IMAX'),
-('Laser');
 
---
--- Dumping data for table `theaterinfo`
---
 
-INSERT INTO `theaterinfo` (`branch_id`, `theater_no`, `layout_type`, `system_type`) VALUES
-(1001, 1, 'A', 'Bed Cinema'),
-(1001, 2, 'B', 'Bed Cinema'),
-(1001, 3, 'C', 'Bed Cinema'),
-(1001, 4, 'A', '4D'),
-(1001, 5, 'B', '4D'),
-(1001, 6, 'A', 'IMAX'),
-(1001, 7, 'A', 'IMAX'),
-(1001, 8, 'A', 'Laser'),
-(1001, 9, 'B', 'Laser'),
-(1001, 10, 'C', 'Laser'),
-(1002, 1, 'A', 'Bed Cinema'),
-(1002, 2, 'A', '4D'),
-(1002, 3, 'B', '4D'),
-(1002, 4, 'C', '4D');
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
