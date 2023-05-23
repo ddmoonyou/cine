@@ -92,6 +92,17 @@
     <!-- Sidebar -->
     <div class="sidebar">
 
+      <!-- Welcome user to AdminCINE -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block"><?php echo $objResult["staff_first_name"]. " ".$objResult["staff_last_name"] ;?></a>
+        </div>
+      </div>
+      <!-- ./welcome-user -->
+
       <!-- SidebarSearch Form -->
       <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
@@ -179,13 +190,13 @@
           </li>
 
           <!-- Logout from website -->
-          <li class="nav-header">You are logging in.</li>
-          <li class="nav-header"><?php echo $objResult["staff_first_name"]. " ".$objResult["staff_last_name"] ;?></li>
-          <li class="nav-item">
-              <a href="logout.php" class="nav-link">
-              <p><button class="btn btn-danger btn-block">Logout</button></p>
-            </a>
-          </li>
+          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="logout">
+              <a href="../logout.php" class="nav-link">
+                <p><button class="btn btn-danger btn-block">Logout</button></p>
+              </a>
+            </div>
+          </div>
           <!-- /.logout-from-website -->
 
         </ul>
