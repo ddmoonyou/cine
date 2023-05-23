@@ -98,7 +98,7 @@
     <section class="hero">
         <div class="hero__slider owl-carousel">
         <?php
-            $sql = "SELECT * FROM movieinfo  WHERE promote = 1";
+            $sql = "SELECT * FROM movieinfo  WHERE promote >= CURRENT_DATE() or releaseDate <= CURRENT_DATE() and promote != NULL";
             $result = mysqli_query($conn, $sql);
             if (!$result) {
                 die('Invalid query: ' . mysqli_error($conn));
