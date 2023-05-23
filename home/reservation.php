@@ -177,10 +177,13 @@ if (!$result) {
                 {
                     $seat_column = $column['seat_column'];
                     echo "<td><img src='./img/icon/";
+
+                    $status=0;
                     if(strcmp($seat_type,'Premium Bed')==0)
                     {
                         if(in_array($seat_column, $available_seat))
                         {
+                            $status=1;
                             echo "u-bed.png";
 
                         }
@@ -194,6 +197,7 @@ if (!$result) {
                     {
                         if(in_array($seat_column, $available_seat))
                         {
+                            $status=1;
                             echo "u-chair.png";
                         }
                         else
@@ -205,6 +209,7 @@ if (!$result) {
                     {
                         if(in_array($seat_column, $available_seat))
                         {
+                            $status=1;
                             echo "u-chair.png";
                         }
                         else
@@ -212,8 +217,15 @@ if (!$result) {
                             echo "chair2.png";
                         }
                     }
-                    echo "' width=40px hight=40px> <input type=\"checkbox\" name=\"select_seat[]\" value=\"{ \"row\" : \"$seat_row\",\"column\" :$seat_column}}\" />".$seat_row.$seat_column."</td>";
-                    
+
+                    if($status==0)
+                    {
+                        echo "' width=40px hight=40px> <input type=\"checkbox\" name=\"select_seat[]\" value=\"{ \"row\" : \"$seat_row\",\"column\" :$seat_column}}\" />".$seat_row.$seat_column."</td>";
+                    }
+                    else
+                    {
+                        echo "' width=40px hight=40px>".$seat_row.$seat_column."</td>";
+                    }
                 }
                 unset($available_seat)
             ?>
