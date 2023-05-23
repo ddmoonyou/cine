@@ -140,7 +140,7 @@
                     <div class="filter__controls">
 
                         <?php
-                        $sql = "SELECT * FROM movieinfo  WHERE releaseDate <= CURDATE()";
+                        $sql = "SELECT * FROM movieinfo WHERE DATEDIFF(CURRENT_DATE(),releaseDate)<=60 and DATEDIFF(CURRENT_DATE(),releaseDate)>0;";
                         $result = mysqli_query($conn, $sql);
 
                         if (!$result) {
@@ -195,7 +195,7 @@
                 <div class="col-lg-12">
                     <ul class="filter__controls">
                         <?php
-                        $sql = "SELECT * FROM movieinfo  WHERE releaseDate > CURDATE()";
+                        $sql = "SELECT * FROM movieinfo  WHERE releaseDate >= CURDATE()";
                         $result = mysqli_query($conn, $sql);
 
                         if (!$result) {
