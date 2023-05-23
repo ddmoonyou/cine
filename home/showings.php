@@ -150,6 +150,7 @@
     and s.branch_id = t.branch_id
     and b.branch_id = s.branch_id
     and s.movie_id = $movie_id
+    and date(s.date_time) = CURRENT_DATE()
     ORDER BY s.date_time ASC;
     ";
     $result = mysqli_query($conn, $sql);
