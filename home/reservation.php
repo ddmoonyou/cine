@@ -74,7 +74,7 @@
                     <nav class="header__menu mobile-menu">
                         <ul>
                             <li><a href="./index.php">Home</a></li>
-                            <li><a href="./theatre.php">Theatre</a></li>
+                            <li><a href="./theatre.php">Branch</a></li>
                             <li class="active"><a href="./movie.php">Movie</a></li>
                             <li><a href="./promotion.php">Promotion</a></li>
                             <li><a href="./#">Snack&Drink</a></li>
@@ -106,119 +106,87 @@
     <!-- Background Section End -->
 
 
-<section class="product spad">
+    <section class="product spad">
 
-    <?php
-    $showingID = $_GET['showing_id'];
-    $sql = "SELECT se.*, r.*, t.*,sh.*,re.*
-    FROM reserveinfo r
-        JOIN showings sh ON r.showing_id = sh.showing_id
-        JOIN reserveseats re ON re.reserve_id =  r.reserve_id
-        JOIN seatlayout se ON re.seat_id = se.seat_id
-        JOIN theaterinfo t ON sh.theater_no = t.theater_no AND t.branch_id = sh.branch_id
-    WHERE sh.showing_id = $showingID
-    ORDER BY se.seat_row, se.seat_column;";
-    $result = mysqli_query($conn, $sql);
-    
-    if (!$result) {
-        die('Invalid query: ' . mysqli_error($conn));
-    }
-    ?>
+<?php
+$showingID = $_GET['showing_id'];
+$sql = "SELECT DISTINCT seat_row FROM
+(
+SELECT * FROM seatlayout
+WHERE seat_id NOT IN
+(
+    SELECT seat_id FROM reserveseats
+    WHERE reserve_id IN
+    (
+        SELECT reserve_id FROM reserveinfo
+        WHERE showing_id = $showingID
+    )
+)
+) AS a;";
+$result = mysqli_query($conn, $sql);
 
-    
-    <div class="table-responsive">
-        <table class="table">
-            <?php // generate all avialable seats
-            while ($row = mysqli_fetch_assoc($result)) {
-                $showingID = $row['showing_id'];
-                $seatID = $row['seat_id'];
-                $reserveID = $row['reserve_id'];
-                $payment = $row['payment_method'];
+if (!$result) {
+    die('Invalid query: ' . mysqli_error($conn));
+}
+?>
 
-                $seat_row = $row['seat_row'];
-                $seat_column = $row['seat_column'];
-                $seat_type = $row['seat_type'];
-                $seat_price = $row['price'];
-                $layouttype = $row['layout_type'];
-                
-            ?>
-            <tr>
-                <td><h2>hhg<?php echo $seat_id ?></h2></td>
-            </tr>
 
+
+<div class="container">
+    <table class="table">
+        <?php // generate all avialable seats
+        while ($row = mysqli_fetch_assoc($result)) {
             
             
-            <?php } ?>
-
+            $seat_row = $row['seat_row'];
+           
             
-            
-        </table>
-    </div>
-</section>
+        ?>
+        <tr>
+            <td><p>Row: <?php echo $seat_row?></p></td>
+            <?php 
+                $sql = "SELECT seat_column FROM
+                        (
+                            SELECT * FROM seatlayout
+                            WHERE seat_id NOT IN
+                            (
+                                SELECT seat_id FROM reserveseats
+                                WHERE reserve_id IN
+                                (
+                                    SELECT reserve_id FROM reserveinfo
+                                    WHERE showing_id = $showingID
+                                )
+                            )
+                            AND seat_row = '".$seat_row."'
+                        ) AS a
+                        ;";
 
-    <!-- Footer Section Begin -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="footer__about">
-                        <div class="footer__logo">
-                            <a href="./index.php"><img src="img/about/icon-alt.png" alt=""></a>
-                        </div>
-                        <p>Best Cinema in SEA.</p>
+                $column_res = mysqli_query($conn, $sql);
+                if (!$column_res) {
+                    die('Invalid query: ' . mysqli_error($conn));
+                }
+                while ($column= mysqli_fetch_assoc($column_res)) 
+                {
+                    $seat_column = $column['seat_column'];
+                    echo "<td><img src='./img/icon/chair.png' width=40px hight=40px>".$seat_row.$seat_column."</td>";
                     
-                    </div>
-                </div>
-                <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
-                    <div class="footer__widget">
-                        <h6>Menu</h6>
-                        <ul>
-                            <li><a href="theatre.php">Theatre</a></li>
-                            <li><a href="#">Movie</a></li>
-                            <li><a href="#">Promotion</a></li>
-                            <li><a href="#">Snack&Drink</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-3 col-sm-6">
-                    <div class="footer__widget">
-                        <h6>Shopping</h6>
-                        <ul>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#">Payment Methods</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 offset-lg-1 col-md-6 col-sm-6">
-                    <div class="footer__widget">
-                        <h6>NewsLetter</h6>
-                        <div class="footer__newslatter">
-                            <p>Be the first to know about new movies & promos!</p>
-                            <form action="#">
-                                <input type="text" placeholder="Your email">
-                                <!-- <button type="submit"><span class="icon_mail_alt"></span></button> -->
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="footer__copyright__text">
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        <p>Copyright ©
-                            <script>
-                                document.write(new Date().getFullYear());
-                            </script>2020
-                            All rights reserved</a>
-                        </p>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- Footer Section End -->
+                }
+            ?>
+
+
+        </tr> 
+       
+    
+        <?php } ?>
+
+       
+
+        
+        
+    </table>
+</div>
+
+    <?php include('footer.php'); ?>
 
     <!-- Search Begin -->
     <div class="search-model">
