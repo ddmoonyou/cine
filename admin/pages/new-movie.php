@@ -69,9 +69,6 @@
                         <input type="file" class="custom-file-input" name="inputPosterImage"id="inputPosterImage">
                         <label class="custom-file-label" for="inputPosterImage">Choose image</label>
                     </div>
-                    <div class="input-group-append">
-                        <span class="input-group-text" name="upload">Upload</span>
-                    </div>
                   </div>
               </div>
 
@@ -154,8 +151,7 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <a href="#" class="btn btn-secondary">Cancel</a>
-          <input type="submit" value="Create new Project" class="btn btn-success float-right">
+          <input type="submit" value="Submit" class="btn btn-success float-right">
         </div>
       </div>
     </section>
