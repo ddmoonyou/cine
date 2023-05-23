@@ -86,8 +86,8 @@ CREATE TABLE `movieinfo` (
   `movie_poster` text DEFAULT NULL,
   `movie_length` int(10) UNSIGNED DEFAULT 0,
   `releaseDate` date DEFAULT NULL,
-  `promote` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `promote` date DEFAULT NULL)
+  ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 

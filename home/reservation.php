@@ -110,18 +110,9 @@
 
 <?php
 $showingID = $_GET['showing_id'];
-$sql = "SELECT DISTINCT seat_row FROM
+$sql = "SELECT DISTINCT seat_row,seat_type FROM
 (
 SELECT * FROM seatlayout
-WHERE seat_id NOT IN
-(
-    SELECT seat_id FROM reserveseats
-    WHERE reserve_id IN
-    (
-        SELECT reserve_id FROM reserveinfo
-        WHERE showing_id = $showingID
-    )
-)
 ) AS a;";
 $result = mysqli_query($conn, $sql);
 
@@ -133,31 +124,48 @@ if (!$result) {
 
 
 <div class="container">
+
     <table class="table">
         <?php // generate all avialable seats
         while ($row = mysqli_fetch_assoc($result)) {
             
             
             $seat_row = $row['seat_row'];
-           
-            
+            $seat_type = $row['seat_type'];
         ?>
         <tr>
             <td><p>Row: <?php echo $seat_row?></p></td>
             <?php 
+
+                $sql2 = "SELECT seat_column FROM seatlayout
+                        WHERE seat_id IN
+                        (
+                            SELECT seat_id FROM reserveseats
+                            WHERE reserve_id IN
+                            (
+                                SELECT reserve_id FROM reserveinfo
+                                WHERE showing_id = $showingID
+                            )
+                            
+                        )
+                        AND seat_row = '$seat_row';";
+                $available = mysqli_query($conn, $sql2);
+                if (!$available) {
+                    die('Invalid query: ' . mysqli_error($conn));
+                }
+                $i=0;
+                $available_seat = array();
+                foreach($available as $a)
+                {
+                    $i++;
+                    $available_seat[$i]= $a['seat_column'];
+                }
+
+                
                 $sql = "SELECT seat_column FROM
                         (
                             SELECT * FROM seatlayout
-                            WHERE seat_id NOT IN
-                            (
-                                SELECT seat_id FROM reserveseats
-                                WHERE reserve_id IN
-                                (
-                                    SELECT reserve_id FROM reserveinfo
-                                    WHERE showing_id = $showingID
-                                )
-                            )
-                            AND seat_row = '".$seat_row."'
+                            WHERE seat_row = '".$seat_row."'
                         ) AS a
                         ;";
 
@@ -168,9 +176,58 @@ if (!$result) {
                 while ($column= mysqli_fetch_assoc($column_res)) 
                 {
                     $seat_column = $column['seat_column'];
-                    echo "<td><img src='./img/icon/chair.png' width=40px hight=40px>".$seat_row.$seat_column."</td>";
-                    
+                    echo "<td><img src='./img/icon/";
+
+                    $status=0;
+                    if(strcmp($seat_type,'Premium Bed')==0)
+                    {
+                        if(in_array($seat_column, $available_seat))
+                        {
+                            $status=1;
+                            echo "u-bed.png";
+
+                        }
+                        else
+                        {
+                            echo "sofa-bed.png";                            
+                        }
+                        
+                    }
+                    else if(strcmp($seat_type,'Honeymoon Seat')==0)
+                    {
+                        if(in_array($seat_column, $available_seat))
+                        {
+                            $status=1;
+                            echo "u-chair.png";
+                        }
+                        else
+                        {
+                            echo "chair.png";
+                        }
+                    }
+                    else if(strcmp($seat_type,'Premium Seat')==0)
+                    {
+                        if(in_array($seat_column, $available_seat))
+                        {
+                            $status=1;
+                            echo "u-chair.png";
+                        }
+                        else
+                        {
+                            echo "chair2.png";
+                        }
+                    }
+
+                    if($status==0)
+                    {
+                        echo "' width=40px hight=40px> <input type=\"checkbox\" name=\"select_seat[]\" value=\"{ \"row\" : \"$seat_row\",\"column\" :$seat_column}}\" />".$seat_row.$seat_column."</td>";
+                    }
+                    else
+                    {
+                        echo "' width=40px hight=40px>".$seat_row.$seat_column."</td>";
+                    }
                 }
+                unset($available_seat)
             ?>
 
 
@@ -184,6 +241,7 @@ if (!$result) {
         
         
     </table>
+
 </div>
 
     <?php include('footer.php'); ?>
