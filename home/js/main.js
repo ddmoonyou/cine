@@ -263,6 +263,29 @@
         });
     });
 
+    $(document).ready(function() {
+        // Attach a click event to all elements with the showings-link class
+        $('.showings-date-link').click(function(e) {
+            e.preventDefault(); // Prevent the default behavior of the link
+            
+            var selectedDate = $(this).data('selectedDate'); // Get the movie_id from the data attribute
+            
+            // Send an AJAX request to the get_showings.php file with the movie_id parameter
+            $.ajax({
+                url: 'get_showings.php',
+                type: 'GET',
+                data: { movie_id: movie_id , selectedDate: selectedDate},
+                success: function(response) {
+                    // On success, replace the contents of the product__filter element with the response
+                    $('.product__filter').html(response);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log('Error: ' + textStatus + ' - ' + errorThrown); // Log any errors to the console
+                }
+            });
+        });
+    });
+
 
     /*------------------
         Reservation
