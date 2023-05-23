@@ -110,7 +110,7 @@
 
 <?php
 $showingID = $_GET['showing_id'];
-$sql = "SELECT DISTINCT seat_row FROM
+$sql = "SELECT DISTINCT seat_row,seat_type FROM
 (
 SELECT * FROM seatlayout
 WHERE seat_id NOT IN
@@ -133,12 +133,14 @@ if (!$result) {
 
 
 <div class="container">
+
     <table class="table">
         <?php // generate all avialable seats
         while ($row = mysqli_fetch_assoc($result)) {
             
             
             $seat_row = $row['seat_row'];
+            $seat_type = $row['seat_type']
            
             
         ?>
@@ -168,7 +170,20 @@ if (!$result) {
                 while ($column= mysqli_fetch_assoc($column_res)) 
                 {
                     $seat_column = $column['seat_column'];
-                    echo "<td><img src='./img/icon/chair.png' width=40px hight=40px>".$seat_row.$seat_column."</td>";
+                    echo "<td><img src='./img/icon/";
+                    if(strcmp($seat_type,'Premium Bed')==0)
+                    {
+                        echo "sofa-bed.png";
+                    }
+                    else if(strcmp($seat_type,'Honeymoon Seat')==0)
+                    {
+                        echo "chair.png";
+                    }
+                    else if(strcmp($seat_type,'Premium Seat')==0)
+                    {
+                        echo "chair2.png";
+                    }
+                    echo "' width=40px hight=40px> <input type=\"checkbox\" name=\"select_seat[]\" value=\"{ \"row\" : \"$seat_row\",\"column\" :$seat_column}}\" />".$seat_row.$seat_column."</td>";
                     
                 }
             ?>
@@ -184,6 +199,7 @@ if (!$result) {
         
         
     </table>
+
 </div>
 
     <?php include('footer.php'); ?>

@@ -20,7 +20,7 @@
 	{
 		if($objResult["loginstatus"] == 1)
 		{
-			echo "'".$strUsername."' Exists login!";
+			echo "<script> alert('$strUsername already loged in!'); window.location.href='login.php'; </script>";
 			exit();
 		}
 		else
