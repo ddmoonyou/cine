@@ -113,15 +113,6 @@ $showingID = $_GET['showing_id'];
 $sql = "SELECT DISTINCT seat_row,seat_type FROM
 (
 SELECT * FROM seatlayout
-WHERE seat_id NOT IN
-(
-    SELECT seat_id FROM reserveseats
-    WHERE reserve_id IN
-    (
-        SELECT reserve_id FROM reserveinfo
-        WHERE showing_id = $showingID
-    )
-)
 ) AS a;";
 $result = mysqli_query($conn, $sql);
 
@@ -140,26 +131,41 @@ if (!$result) {
             
             
             $seat_row = $row['seat_row'];
-            $seat_type = $row['seat_type']
-           
-            
+            $seat_type = $row['seat_type'];
         ?>
         <tr>
             <td><p>Row: <?php echo $seat_row?></p></td>
             <?php 
+
+                $sql2 = "SELECT seat_column FROM seatlayout
+                        WHERE seat_id IN
+                        (
+                            SELECT seat_id FROM reserveseats
+                            WHERE reserve_id IN
+                            (
+                                SELECT reserve_id FROM reserveinfo
+                                WHERE showing_id = $showingID
+                            )
+                            
+                        )
+                        AND seat_row = '$seat_row';";
+                $available = mysqli_query($conn, $sql2);
+                if (!$available) {
+                    die('Invalid query: ' . mysqli_error($conn));
+                }
+                $i=0;
+                $available_seat = array();
+                foreach($available as $a)
+                {
+                    $i++;
+                    $available_seat[$i]= $a['seat_column'];
+                }
+
+                
                 $sql = "SELECT seat_column FROM
                         (
                             SELECT * FROM seatlayout
-                            WHERE seat_id NOT IN
-                            (
-                                SELECT seat_id FROM reserveseats
-                                WHERE reserve_id IN
-                                (
-                                    SELECT reserve_id FROM reserveinfo
-                                    WHERE showing_id = $showingID
-                                )
-                            )
-                            AND seat_row = '".$seat_row."'
+                            WHERE seat_row = '".$seat_row."'
                         ) AS a
                         ;";
 
@@ -173,19 +179,43 @@ if (!$result) {
                     echo "<td><img src='./img/icon/";
                     if(strcmp($seat_type,'Premium Bed')==0)
                     {
-                        echo "sofa-bed.png";
+                        if(in_array($seat_column, $available_seat))
+                        {
+                            echo "u-bed.png";
+
+                        }
+                        else
+                        {
+                            echo "sofa-bed.png";                            
+                        }
+                        
                     }
                     else if(strcmp($seat_type,'Honeymoon Seat')==0)
                     {
-                        echo "chair.png";
+                        if(in_array($seat_column, $available_seat))
+                        {
+                            echo "u-chair.png";
+                        }
+                        else
+                        {
+                            echo "chair.png";
+                        }
                     }
                     else if(strcmp($seat_type,'Premium Seat')==0)
                     {
-                        echo "chair2.png";
+                        if(in_array($seat_column, $available_seat))
+                        {
+                            echo "u-chair.png";
+                        }
+                        else
+                        {
+                            echo "chair2.png";
+                        }
                     }
                     echo "' width=40px hight=40px> <input type=\"checkbox\" name=\"select_seat[]\" value=\"{ \"row\" : \"$seat_row\",\"column\" :$seat_column}}\" />".$seat_row.$seat_column."</td>";
                     
                 }
+                unset($available_seat)
             ?>
 
 
