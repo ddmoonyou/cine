@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Project Add</title>
+  <title>AdminCINE | New Movie</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -67,7 +67,17 @@
                   <div class="input-group">
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" name="inputPosterImage"id="inputPosterImage">
-                        <label class="custom-file-label" for="inputPosterImage">Choose image</label>
+                        <label class="custom-file-label" for="inputPosterImage">Choose poster image</label>
+                    </div>
+                  </div>
+              </div>
+
+              <div div class="form-group">
+                <label for="inputPromoteImage">Promote image</label>
+                  <div class="input-group">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" name="inputPromoteImage"id="inputPromoteImage">
+                        <label class="custom-file-label" for="inputPromoteImage">Choose promote image</label>
                     </div>
                   </div>
               </div>
@@ -85,12 +95,12 @@
                 <textarea id="inputDescription" class="form-control" rows="4" placeholder="Avengers: ENDGAME  เรื่องราวการปิดจักรวาลมาร์เวลเฟส 3 เหตุการณ์ภายหลังจากที่ธานอสดีดนิ้วล้างครึ่งจักรวาล เหล่าฮีโร่ที่เหลือรอดจะหาทางกอบกู้จักรวาลนี้คืนมาได้อย่างไร โดยในภาคนี้จะมีตัวเด็ดอย่างกัปตันมาร์เวลมาร่วมเสริมทัพด้วย"></textarea>
               </div>
               <div class="form-group">
-                <label for="inputClientCompany">Director Info</label>
-                <input type="text" id="inputClientCompany" class="form-control" placeholder="Anthony Russo, Joe Russo">
+                <label for="inputDirector">Director Info</label>
+                <input type="text" id="inputDirector" class="form-control" placeholder="Anthony Russo, Joe Russo">
               </div>
               <div class="form-group">
-                <label for="inputClientCompany">Promote</label>
-                <input type="datetime-local" name="input"id="inputClientCompany" class="form-control" placeholder="Anthony Russo, Joe Russo">
+                <label for="inputPromoteDate">Promote date</label>
+                <input type="datetime-local" name="input"id="inputPromoteDate" class="form-control" placeholder="Anthony Russo, Joe Russo">
               </div>
             </div>
             <!-- /.card-body -->
