@@ -1,17 +1,24 @@
 <?php
-  $servername = "127.0.0.1";  // server name localhost
-  $username = "root";    // username to access database id20613770_cinebyhansa
-  $password = "";    // password to access database %1tcYSTb0gf}1+YM
-  $dbname = "cine"; // name of the database
+	
+	ini_set('display_errors', 1);
+	error_reporting(~0);
 
-  // Create a connection to MySQL database
-  $conn = mysqli_connect($servername, $username, $password, $dbname);
+	$serverName	  = "localhost";
+	$userName	  = "root";
+	$userPassword	  = "";
+	$dbName	  = "cine";
 
-  // Check if the connection is successful
-  if (!$conn) {
-      die("Connection failed: " . mysqli_connect_error());
-  }
+	$con = mysqli_connect($serverName,$userName,$userPassword,$dbName);
 
-  //echo "Connected successfully";
+	if (mysqli_connect_errno())
+	{
+		echo "Database Connect Failed : " . mysqli_connect_error();
+		exit();
+	}
 
-  ?> 
+	//*** Reject user not online
+	$intRejectTime = 5; // Minute
+	$sql = "UPDATE staffinfo SET loginstatus = 0, session = '0000-00-00 00:00:00'  WHERE 1 AND DATE_ADD(session, INTERVAL $intRejectTime MINUTE) <= NOW() ";
+	$query = mysqli_query($con,$sql);
+
+?>

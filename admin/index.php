@@ -16,24 +16,24 @@
 
   <!-- Connect to database -->
   <?php
-  $servername = "127.0.0.1";  // server name localhost
-  $username = "root";    // username to access database id20613770_cinebyhansa
-  $password = "";    // password to access database %1tcYSTb0gf}1+YM
-  $dbname = "cine"; // name of the database
+	session_start();
+	require_once("connect_db.php");
 
-  // Create a connection to MySQL database
-  $conn = mysqli_connect($servername, $username, $password, $dbname);
+	if(!isset($_SESSION['staff_id']))
+	{
+		echo "<a href=\"login.php\" class=\"nav-link\"> Please Login!</a>";
+		exit();
+	}
+	
+	//*** Update Last Stay in Login System
+	$sql = "UPDATE staffinfo SET session = NOW() WHERE staff_id = '".$_SESSION["staff_id"]."' ";
+	$query = mysqli_query($con,$sql);
 
-  // Check if the connection is successful
-  if (!$conn) {
-      die("Connection failed: " . mysqli_connect_error());
-  }
-
-  //echo "Connected successfully";
-
-  ?> 
-
-</head>
+	//*** Get User Login
+	$strSQL = "SELECT * FROM staffinfo WHERE staff_id = '".$_SESSION['staff_id']."' ";
+	$objQuery = mysqli_query($con,$strSQL);
+	$objResult = mysqli_fetch_array($objQuery,MYSQLI_ASSOC);
+?>
 <!--
 `body` tag options:
 
@@ -172,6 +172,13 @@
             <a href="https://adminlte.io/docs/3.1/" class="nav-link">
               <i class="nav-icon fas fa-file"></i>
               <p>Documentation</p>
+            </a>
+          </li>
+          <li class="nav-header">You are logging in.</li>
+          <li class="nav-header"><?php echo $objResult["staff_first_name"]. " ".$objResult["staff_last_name"] ;?></li>
+          <li class="nav-item">
+              <a href="logout.php" class="nav-link">
+              <p>Logout</p>
             </a>
           </li>
         </ul>
