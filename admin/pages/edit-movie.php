@@ -49,14 +49,20 @@
     </section>
 
     <!-- Main content -->
+    <?php
+      $sql = "SELECT movie_id,movie_name FROM movieinfo;";
+      $result = mysqli_query($con, $sql);
+      if (!$result) {
+          die('Invalid query: ' . mysqli_error($con));
+      }
+    ?>
     <section class="content">
-    <form action="addmovie.php" method="POST" enctype="multipart/form-data">
+    <form action="updatemovie.php" method="POST" enctype="multipart/form-data">
       <div class="row">
         <div class="col-md-6">
           <div class="card card-primary">
             <div class="card-header">
               <h3 class="card-title">Information</h3>
-
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                   <i class="fas fa-minus"></i>
@@ -66,41 +72,54 @@
             <div class="card-body">
               <div class="form-group">
                 <label for="inputMovieID">Movie ID</label>
-                <input name="movie_id" type="number" id="inputMovieID" class="form-control" placeholder="100000001">
+                  <select name="movie_id" id="movie_name" class="form-control custom-select">
+                    <option selected disabled>Select one</option>
+                    <?php
+                      foreach($result as $branch)
+                      {
+                        $b_id = $branch['movie_id'];
+                        $b_name = $branch['movie_name'];
+                        echo "<option value=$b_id>$b_id: $b_name</option>";
+                      }
+                    ?>
+                  </select>
               </div>
               <div class="form-group">
-                <label for="inputBranchID">Branch ID</label>
-                <input name="branch_id" type="number" id="inputBranchID" class="form-control" placeholder="1003">
+                <label for="inputMoviename">Movie Name(Edit)</label>
+                <input name="movie_name" type="text" id="inputMoviename" class="form-control"  >
               </div>
               <div class="form-group">
-                <label for="inputTheaterNo">Theater No.</label>
-                <input name="theater_no" type="text" id="inputTheaterNo" class="form-control" placeholder="1">
+              <label for="inputMovieDescription">Movie Description(Edit)</label>
+                <input name="movie_description" type="text" id="inputMovieDescription" class="form-control"  >
               </div>
               <div class="form-group">
-                <label for="inputShowingDate">Datetime</label>
-                <input name="time" type="datetime-local" id="inputShowingDate" class="form-control">
+              <label for="inputMovieTrailer">Movie Trailer URL(Edit)</label>
+                <input name="movie_trailer" type="text" id="inputMovieDescription" class="form-control"  >
               </div>
               <div class="form-group">
-                <label for="inputAudio">Audio</label>
-                <select name="audio" id="inputAudio" class="form-control custom-select">
-                  <option selected disabled>Select one</option>
-                  <option value="ENG">ENG</option>
-                  <option value="TH">TH</option>
-                  <option value="JPN">JPN</option>
-                  <option value="KR">KR</option>
-                  <option value="RU">RU</option>
-                </select>
+              <label for="inputDirectorInfo">Director info(Edit)</label>
+                <input name="director_info" type="text" id="inputDirectorInfo" class="form-control"  >
               </div>
               <div class="form-group">
-                <label for="inputSubtitle">Subtitle</label>
-                <select name="subtitle" id="inputSubtitle" class="form-control custom-select">
-                  <option selected disabled>Select one</option>
-                  <option value="ENG">ENG</option>
-                  <option value="TH">TH</option>
-                  <option value="JPN">JPN</option>
-                  <option value="KR">KR</option>
-                  <option value="RU">RU</option>
-                </select>
+              <label for="inputMovieLength">Movie Length(Edit)</label>
+                <input name="movie_length" type="number" id="inputMovieLength" class="form-control"  >
+              </div>
+              <div class="form-group">
+                <label for="inputPosterImage">Poster image(Edit)</label>
+                  <div class="input-group">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" name="movie_poster"id="inputPosterImage" accept="image/jpeg, image/png, image/jpg">
+                        <label class="custom-file-label" for="inputPosterImage">Choose promote image</label>
+                    </div>
+                  </div>
+              </div>
+              <div class="form-group">
+                <label for="inputReleaseDate">Release Date(Edit)</label>
+                <input name="releaseDate" type="datetime-local" id="inputReleaseDate" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="inputPromote">Promote Date(Edit)</label>
+                <input name="promote" type="datetime-local" id="inputPromote" class="form-control">
               </div>
             </div>
             <!-- /.card-body -->
