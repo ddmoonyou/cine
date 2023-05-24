@@ -33,6 +33,7 @@
 	$strSQL = "SELECT * FROM staffinfo WHERE staff_id = '".$_SESSION['staff_id']."' ";
 	$objQuery = mysqli_query($con,$strSQL);
 	$objResult = mysqli_fetch_array($objQuery,MYSQLI_ASSOC);
+  $role = $objResult['staff_role']
   ?>
 <!-- ./connect-to-database -->
 
@@ -129,8 +130,11 @@
               </p>
             </a>
           </li>
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+
+          <?php if(strcmp($role,"Manager")==0) { ?>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
                 Charts
@@ -146,8 +150,10 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+          <?php } ?>
+
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Pages
@@ -155,12 +161,7 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-            <li class="nav-item">
-                <a href="./new-branch.php" class="nav-link">
-                  <i class="nav-icon far fa-circle text-danger"></i>
-                  <p>New Branch</p>
-                </a>
-              </li>
+            
               <li class="nav-item">
                 <a href="./new-movie.php" class="nav-link">
                   <i class="nav-icon far fa-circle text-danger"></i>
@@ -185,6 +186,14 @@
                   <p>New Showing</p>
                 </a>
               </li>
+
+              <?php if(strcmp($role,"Manager")==0) { ?>
+              <li class="nav-item">
+                <a href="./new-branch.php" class="nav-link">
+                  <i class="nav-icon far fa-circle text-danger"></i>
+                  <p>New Branch</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="./new-staff.php" class="nav-link">
                   <i class="nav-icon far fa-circle text-danger"></i>
@@ -198,17 +207,20 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./edit-movie.php" class="nav-link">
-                  <i class="nav-icon far fa-circle text-warning"></i>
-                  <p>Edit Movie</p>
-                </a>
-              </li>
-              <li class="nav-item">
                 <a href="./edit-staff.php" class="nav-link">
                   <i class="nav-icon far fa-circle text-warning"></i>
                   <p>Edit Staff</p>
                 </a>
               </li>
+              <?php }?>
+              <li class="nav-item">
+                <a href="./edit-movie.php" class="nav-link">
+                  <i class="nav-icon far fa-circle text-warning"></i>
+                  <p>Edit Movie</p>
+                </a>
+              </li>
+              
+
             </ul>
           </li>
           <li class="nav-header">MISCELLANEOUS</li>
