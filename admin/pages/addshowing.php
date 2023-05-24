@@ -37,19 +37,23 @@
         $movie_id =  $_POST["movie_id"];
         $branch_id =  $_POST["branch_id"];
         $theater_no =  $_POST["theater_no"];
-        $time =  $_POST["time"];
+        $t =  $_POST["time"];
         $audio =  $_POST["audio"];
         $subtitle =  $_POST["subtitle"];    
         
-        $mysqltime = date ('Y-m-d H:i:s', strtotime($time));
-        $sql ="INSERT INTO showings(movie_id,branch_id,theater_no,date_time,language_dub,language_sub)
-                VALUES ($movie_id,$branch_id,$theater_no,'$mysqltime','$audio','$subtitle');";
-        
-        if (!mysqli_query($con, $sql)) {
-			die('Error: ' . mysqli_error($con));
-		}
+        foreach($t as $time)
+        {
+            
+            $mysqltime = date ('Y-m-d H:i:s', strtotime($time));
+            echo "<p> $mysqltime</p>";
+            $sql ="INSERT INTO showings(movie_id,branch_id,theater_no,date_time,language_dub,language_sub)
+                    VALUES ($movie_id,$branch_id,$theater_no,'$mysqltime','$audio','$subtitle');";
+            if ($mysqltime!='1970-01-01 01:00:00' &&!mysqli_query($con, $sql)) {
+                die('Error: ' . mysqli_error($con));
+            }
+        }
 
-        echo "<script> alert('Add new showing succesful!'); window.location.href='new-showing.php'; </script>";
+        echo "<script> alert('Add new showing succesful! $a'); window.location.href='new-showing.php'; </script>";
     } 
     
 

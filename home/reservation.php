@@ -75,7 +75,7 @@
                         <ul>
                             <li><a href="./index.php">Home</a></li>
                             <li><a href="./theatre.php">Branch</a></li>
-                            <li class="active"><a href="./movie.php">Movie</a></li>
+                            <li class="active"><a href="./index.php">Movie</a></li>
                             <li><a href="./promotion.php">Promotion</a></li>
                             <li><a href="./#">Snack&Drink</a></li>
                         </ul>
@@ -93,27 +93,25 @@
     </header>
     <!-- Header Section End -->
 
-    <!-- Background Section Begin -->
-    <section class="breadcrumb-blog set-bg" data-setbg="img/cinema-bg.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2>Reservation</h2>
-                </div>
+    
+    <div class="container" style="margin-top: 30px;"> 
+            <div class="col-lg-12">
+                  <div class="filter__controls">
+                  <h3>Reservation</h3>
+                  </div>
             </div>
-        </div>
-    </section>
-    <!-- Background Section End -->
+      </div>
 
 
-    <section class="product spad">
-    <div class=""> </div>
     <?php
 
 
     $showingID = $_GET['showing_id'];
 
-    $sql = "SELECT branch_id,theater_no FROM showings
+    $sql = "SELECT * FROM showings
+            JOIN branchinfo ON branchinfo.branch_id = showings.branch_id
+            JOIN theaterinfo ON theaterinfo.branch_id = showings.branch_id AND 
+                                theaterinfo.theater_no = showings.theater_no
             WHERE showing_id=$showingID;";
     $result = mysqli_query($conn, $sql);
     if (!$result) {
@@ -122,8 +120,21 @@
     $data = mysqli_fetch_assoc($result);
     $b_id = $data["branch_id"];
     $theater = $data["theater_no"];
+    $branch_name = $data["branch_name"];
+    $date = $data["date_time"];
+    $f_date = date("F d, Y", strtotime($date));
+    $system_type = $data["system_type"]; ?>
+    
+    <div class="row justify-content-center">
+        <div class="col-7">
+            <h4>Showings Information</h4>
+            <ul>Theater No: <?php echo $theater.' '.$system_type?></ul>
+            <ul>Branch: <?php echo $branch_name?></ul>
+            <ul>Date: <?php echo $f_date?></ul><br>
+        </div>
+    </div>
 
-
+    <?php
     $sql = "SELECT DISTINCT seat_row,seat_type FROM
     (
     SELECT * FROM seatlayout
@@ -273,9 +284,217 @@
         <div class="col-3"> <img src="./img/icon/seat_price.png">  <button type="submit" class="primary-btn" id="submit"> Book </button> </form> </div>
         
     </div>
+    <div class="col-lg-9 md-8">
     <div class="row"> <img src="./img/icon/screen.png" height="80px"></div>
+    </div>
 
 </div>
+
+<!-- Snack Section -->
+
+    <div class="container" style="margin-top: 100px;"> 
+            <div class="col-lg-12">
+                  <div class="filter__controls">
+                  <h3>Snack & Drink List</h3>
+                  </div>
+            </div>
+      </div>
+
+      <section class="shop snack" id="popcorn">
+       <div class="container">
+           <div class="row">
+                <div class="col-lg-2">
+                    <div class="shop__sidebar">
+                        <div class="shop__sidebar__accordion">
+                            <div class="accordion" id="accordionExample">
+                                <div class="card">
+                                    <div class="card-heading">
+                                        <a data-toggle="collapse" data-target="#collapseSix">Tags</a>
+                                    </div>
+                                    <div id="collapseSix" class="collapse show" data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            <div class="shop__sidebar__tags">
+                                                <a href="#drinks">Drinks</a>
+                                                <a href="#snack">Snacks</a>
+                                                <a href="#popcorn">Popcorn</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <ul class="filter__controls">
+                                <?php
+                                $sql = "SELECT DISTINCT * FROM foodinfo 
+                                WHERE category='popcorn'";
+                                $result = mysqli_query($conn, $sql);
+
+                                if (!$result) {
+                                    die('Invalid query: ' . mysqli_error($conn));
+                                }
+                                ?>
+                                <h4 class="active" data-filter="*">Popcorn List</h4>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row product__filter">
+                        
+                        <?php   
+                            // Loop through the result set and generate HTML code for each movie    url('<?php echo $movie_poster;
+                            
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $food_type = $row['food_type'];
+                                $category = $row['category'];
+                                $description = $row['description'];
+                                //$food_id = $row['food_id'];
+                                //$price = $row['price'];
+                              
+                        ?>
+                                <div class="col-lg-3 col-md-6 col-sm-6 mix new-arrivals">
+                                        
+                                            <div class="product__item">
+                                                <div class="product__item__pic set-bg" data-setbg="./img/snack/<?php echo $food_type; ?>.png">  
+                                                </div>
+                                                <div class="product__item__text">
+                                                    <h5><?php echo $food_type; ?></h5>
+                                                    <p><?php echo $description; ?></p>
+                                                    <div >
+                                                        <button id="decrement">-</button><input type="number" id="quantity" value="0" min="0" style="width: 50px;"> <button id="increment">+</button>
+                                                    </div>
+                                                </div> 
+                                            </div>
+                                  
+                                </div>
+                        <?php } ?>
+                    </div>
+                </div>
+                            
+                </div>
+            </div>
+                    <button id="submit">Submit</button>
+        </div>
+    </section>
+
+
+    <section class="shop snack" id="drinks">
+       <div class="container">
+           <div class="row">
+                <div class="col-lg-2">
+                    
+                </div>
+                <div class="col-lg-10">
+                    <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <ul class="filter__controls">
+                                <?php
+                                $sql = "SELECT * FROM foodinfo WHERE category='drinks'";
+                                $result = mysqli_query($conn, $sql);
+
+                                if (!$result) {
+                                    die('Invalid query: ' . mysqli_error($conn));
+                                }
+                                ?>
+                            <h4 class="active" data-filter="*">Drink List</h4>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row product__filter">
+                        
+                        <?php   
+                            // Loop through the result set and generate HTML code for each movie    url('<?php echo $movie_poster;
+                            
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $food_type = $row['food_type'];
+                                $category = $row['category'];
+                                $description = $row['description'];
+                              
+                        ?>
+                                <div class="col-lg-3 col-md-6 col-sm-6 mix new-arrivals">
+                                        
+                                            <div class="product__item">
+                                                <div class="product__item__pic set-bg" data-setbg="./img/snack/<?php echo $food_type; ?>.png">  
+                                                </div>
+                                                <div class="product__item__text">
+                                                    <h5><?php echo $food_type; ?></h5>
+                                                    <p><?php echo $description; ?></p>
+                                                </div> 
+                                            </div>
+                                </div>
+                        <?php } ?>
+                    </div>
+                </div>
+                            
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Snack Section Begin -->
+    <section class="shop spad" id="snack">
+       <div class="container">
+           <div class="row">
+                <div class="col-lg-2">
+                    
+                </div>
+                <div class="col-lg-10">
+                    <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <ul class="filter__controls">
+                                <?php
+                                $sql = "SELECT * FROM foodinfo WHERE category='snack'";
+                                $result = mysqli_query($conn, $sql);
+
+                                if (!$result) {
+                                    die('Invalid query: ' . mysqli_error($conn));
+                                }
+                                ?>
+                            <h4 class="active" data-filter="*">Snack List</h4>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row product__filter">
+                        
+                        <?php   
+                            // Loop through the result set and generate HTML code for each movie    url('<?php echo $movie_poster;
+                            
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $food_type = $row['food_type'];
+                                $category = $row['category'];
+                                $description = $row['description'];
+                              
+                        ?>
+                                <div class="col-lg-3 col-md-6 col-sm-6  mix new-arrivals">
+                                        
+                                            <div class="product__item">
+                                                <div class="product__item__pic set-bg" data-setbg="./img/snack/<?php echo $food_type; ?>.png">  
+                                                </div>
+                                                <div class="product__item__text">
+                                                    <h5><?php echo $food_type; ?></h5>
+                                                    <p><?php echo $description; ?></p>
+                                                </div> 
+                                            </div>
+                                  
+                                </div>
+                        <?php } ?>
+                    </div>
+                </div>
+                            
+                </div>
+            </div>
+        </div>
+    </section>
 
     
 

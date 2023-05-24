@@ -17,7 +17,15 @@
   <?php
   include('../connect_db.php');
   ?> 
-  
+
+  <!-- Query Branch ID -->
+  <?php
+    $sql = "SELECT branch_id,branch_name FROM branchinfo;";
+    $result = mysqli_query($con, $sql);
+    if (!$result) {
+        die('Invalid query: ' . mysqli_error($con));
+    }
+  ?>
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -50,7 +58,7 @@
 
     <!-- Main content -->
     <section class="content">
-    <form action="addmovie.php" method="POST" enctype="multipart/form-data">
+    <form action="addstaff.php" method="POST" enctype="multipart/form-data">
       <div class="row">
         <div class="col-md-6">
           <div class="card card-primary">
@@ -65,41 +73,38 @@
             </div>
             <div class="card-body">
               <div class="form-group">
-                <label for="inputMovieID">Movie ID</label>
-                <input name="movie_id" type="number" id="inputMovieID" class="form-control" placeholder="100000001">
+                <label for="inputMovieID">First Name</label>
+                <input name="firstname" type="text" id="inputMovieID" class="form-control" placeholder="Neramit">
+              </div>
+              <div class="form-group">
+                <label for="inputLastName">Last Name</label>
+                <input name="lastname" type="text" id="inputLastName" class="form-control" placeholder="Matarat">
+              </div>
+              <div class="form-group">
+                <label for="inputLastName">Telephone Number</label>
+                <input name="telephone" type="text" id="inputLastName" class="form-control" placeholder="0812345678">
               </div>
               <div class="form-group">
                 <label for="inputBranchID">Branch ID</label>
-                <input name="branch_id" type="number" id="inputBranchID" class="form-control" placeholder="1003">
-              </div>
-              <div class="form-group">
-                <label for="inputTheaterNo">Theater No.</label>
-                <input name="theater_no" type="text" id="inputTheaterNo" class="form-control" placeholder="1">
-              </div>
-              <div class="form-group">
-                <label for="inputShowingDate">Datetime</label>
-                <input name="time" type="datetime-local" id="inputShowingDate" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="inputAudio">Audio</label>
-                <select name="audio" id="inputAudio" class="form-control custom-select">
+                <select name="branch_id" id="branchID" class="form-control custom-select">
                   <option selected disabled>Select one</option>
-                  <option value="ENG">ENG</option>
-                  <option value="TH">TH</option>
-                  <option value="JPN">JPN</option>
-                  <option value="KR">KR</option>
-                  <option value="RU">RU</option>
+                  <?php
+                    foreach($result as $branch)
+                    {
+                      $b_id = $branch['branch_id'];
+                      $b_name = $branch['branch_name'];
+                      echo "<option value=$b_id>$b_id: $b_name</option>";
+                    }
+                  ?>
                 </select>
+
               </div>
               <div class="form-group">
-                <label for="inputSubtitle">Subtitle</label>
-                <select name="subtitle" id="inputSubtitle" class="form-control custom-select">
+                <label for="inputRole">Role</label>
+                <select name="staff_role" id="inputRole" class="form-control custom-select">
                   <option selected disabled>Select one</option>
-                  <option value="ENG">ENG</option>
-                  <option value="TH">TH</option>
-                  <option value="JPN">JPN</option>
-                  <option value="KR">KR</option>
-                  <option value="RU">RU</option>
+                  <option value="Staff">Staff</option>
+                  <option value="Manager">Manager</option>
                 </select>
               </div>
             </div>
@@ -107,9 +112,45 @@
           </div>
           <!-- /.card -->
         </div>
+        <div class="col-md-6">
+          <div class="card card-teal">
+            <div class="card-header">
+              <h3 class="card-title">Security</h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+            <label for="inputMovieID">Password</label>
+              <div class="input-group mb-3">
+                <input name="passwords" id="pswd1"type="password" class="form-control" placeholder="Password" maxlength=30>
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <span class="fas fa-lock"></span>
+                  </div>
+                </div>
+              </div>
+              <label for="inputMovieID">Retype Password</label>
+              <div class="input-group mb-3">
+                <input id="pswd2" type="password" class="form-control" placeholder="Retype password" maxlength=30>
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <span class="fas fa-lock"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+
       </div>
       <div class="row">
-        <div class="col-6">
+        <div class="col-12">
           <input type="submit" value="Submit" class="btn btn-success float-right">
         </div>
       </div>
