@@ -50,7 +50,7 @@
 
     <!-- Main content -->
     <section class="content">
-    <form action="addmovie.php" method="POST" enctype="multipart/form-data">
+    <form action="addpromotion.php" method="POST" enctype="multipart/form-data">
       <div class="row">
         <div class="col-md-6">
           <div class="card card-primary">
@@ -69,7 +69,7 @@
               </div>
               <div class="form-group">
                 <label for="inputDiscount">Discount(%)</label>
-                <input name="discount_percent" type="number" id="inputDiscount" class="form-control" placeholder="50">
+                <input name="discount_percent" type="number" id="inputDiscount" class="form-control" placeholder="50" min=0 max=100>
               </div>
               <div class="form-group">
                 <label for="inputDescriptionPM">Promotion Description</label>
@@ -77,35 +77,45 @@
               </div>
               <h4>Terms of Use</h4>
               <div class="form-group">
-                <label for="inputAudio">Audio</label>
-                <select name="audio" id="inputAudio" class="form-control custom-select">
+                <label for="seat_type">Seat type</label>
+                <select name="seat_type" id="seat_type" class="form-control custom-select">
                   <option selected disabled>Select one</option>
-                  <option value="ENG">ENG</option>
-                  <option value="TH">TH</option>
-                  <option value="JPN">JPN</option>
-                  <option value="KR">KR</option>
-                  <option value="RU">RU</option>
+                  <option value="none">All</option>
+                  <?php
+                    $sql = "SELECT DISTINCT seat_type FROM seatprice";
+                    $res = mysqli_query($con,$sql);
+                    foreach($res as $seat)
+                    {
+                      $s= $seat['seat_type'];
+                      echo "<option value=$s>$s</option>";
+                    }
+                  ?>
                 </select>
               </div>
               <div class="form-group">
-                <label for="inputSubtitle">Subtitle</label>
-                <select name="subtitle" id="inputSubtitle" class="form-control custom-select">
+                <label for="system_type">System type</label>
+                <select name="system_type" id="system_type" class="form-control custom-select">
                   <option selected disabled>Select one</option>
-                  <option value="ENG">ENG</option>
-                  <option value="TH">TH</option>
-                  <option value="JPN">JPN</option>
-                  <option value="KR">KR</option>
-                  <option value="RU">RU</option>
+                  <option value="none">All</option>
+                  <?php
+                    $sql = "SELECT DISTINCT system_type FROM systemtype";
+                    $res = mysqli_query($con,$sql);
+                    foreach($res as $sys)
+                    {
+                      $s= $sys['system_type'];
+                      echo "<option value=$s>$s</option>";
+                    }
+                  ?>
                 </select>
               </div>
               <h4>Promotion period</h4>
               <div class="form-group">
                 <label for="inputShowingDate">Start Date</label>
-                <input name="time" type="datetime-local" id="inputShowingDate" class="form-control">
+                <input name="s_date" type="datetime-local" id="inputShowingDate" class="form-control">
               </div>
               <div class="form-group">
                 <label for="inputShowingDate">End Date</label>
-                <input name="time" type="datetime-local" id="inputShowingDate" class="form-control">
+                <input name="e_date" type="datetime-local" id="inputShowingDate" class="form-control">
               </div>
             </div>
             <!-- /.card-body -->
