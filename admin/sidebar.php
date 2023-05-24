@@ -155,28 +155,58 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./new-movie.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>New Movie</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./new-snackdrink.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>New Snack&Drink</p>
-                </a>
-              </li>
-              <li class="nav-item">
+            <li class="nav-item">
                 <a href="./new-branch.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="nav-icon far fa-circle text-danger"></i>
                   <p>New Branch</p>
                 </a>
               </li>
               <li class="nav-item">
+                <a href="./new-movie.php" class="nav-link">
+                  <i class="nav-icon far fa-circle text-danger"></i>
+                  <p>New Movie</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./new-promotion.php" class="nav-link">
+                  <i class="nav-icon far fa-circle text-danger"></i>
+                  <p>New Promotion</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./new-snackdrink.php" class="nav-link">
+                  <i class="nav-icon far fa-circle text-danger"></i>
+                  <p>New Snack&Drink</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./new-showing.php" class="nav-link">
+                  <i class="nav-icon far fa-circle text-danger"></i>
+                  <p>New Showing</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./new-staff.php" class="nav-link">
+                  <i class="nav-icon far fa-circle text-danger"></i>
+                  <p>New Staff</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="./new-seatlayout.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="nav-icon far fa-circle text-danger"></i>
                   <p>New Seat Layout</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./edit-movie.php" class="nav-link">
+                  <i class="nav-icon far fa-circle text-warning"></i>
+                  <p>Edit Movie</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./edit-staff.php" class="nav-link">
+                  <i class="nav-icon far fa-circle text-warning"></i>
+                  <p>Edit Staff</p>
                 </a>
               </li>
             </ul>
