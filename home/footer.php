@@ -41,7 +41,7 @@
                         <div class="footer__logo">
                             <a href="#"><img src="img/about/icon-alt.png" alt=""></a>
                         </div>
-                        <p>Best Cinema in SEA</p>
+                        
                     
                     </div>
                 </div>

@@ -3909,11 +3909,15 @@ ol {
 		margin-top: 5%;
 		
 		}
-	    }
+		
+		.screen{
+			margin: 5%;
+			padding-bottom: 40px;
+		}
+}
 
 	   
 	
 
 
 
-}

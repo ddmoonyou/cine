@@ -33,10 +33,10 @@
 
     <!-- Connect to database -->
     <?php
-    $servername = "127.0.0.1";  // server name localhost
-    $username = "root";    // username to access database id20613770_cinebyhansa
-    $password = "";    // password to access database %1tcYSTb0gf}1+YM
-    $dbname = "cine"; // name of the database
+    $servername = "127.0.0.1";  
+    $username = "root";   
+    $password = "";    
+    $dbname = "cine"; 
 
     // Create a connection to MySQL database
     $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -107,37 +107,44 @@
 
 
     <section class="product spad">
+    <div class=""> </div>
+    <?php
+    $showingID = $_GET['showing_id'];
+    $sql = "SELECT DISTINCT seat_row,seat_type FROM
+    (
+    SELECT * FROM seatlayout
+    ) AS a;";
+    $result = mysqli_query($conn, $sql);
 
-<?php
-$showingID = $_GET['showing_id'];
-$sql = "SELECT DISTINCT seat_row,seat_type FROM
-(
-SELECT * FROM seatlayout
-) AS a;";
-$result = mysqli_query($conn, $sql);
-
-if (!$result) {
-    die('Invalid query: ' . mysqli_error($conn));
-}
-?>
+    if (!$result) {
+        die('Invalid query: ' . mysqli_error($conn));
+    }
+    ?>
 
 
 
 <div class="container">
+    <div class="row">
+        <div class="col-lg-9 md-8">
+            <div class="text-left">
+            <table class="table">
+            <form action="booking.php" method="POST"> 
+            <?php // generate all avialable seats
+                while ($row = mysqli_fetch_assoc($result)) {
 
-    <table class="table">
-        <?php // generate all avialable seats
-        while ($row = mysqli_fetch_assoc($result)) {
-            
-            
-            $seat_row = $row['seat_row'];
-            $seat_type = $row['seat_type'];
-        ?>
-        <tr>
-            <td><p>Row: <?php echo $seat_row?></p></td>
-            <?php 
 
-                $sql2 = "SELECT seat_column FROM seatlayout
+                    $seat_row = $row['seat_row'];
+                    $seat_type = $row['seat_type'];
+                    ?>
+                    <tr>
+                        <td>
+                            <p>Row:
+                                <?php echo $seat_row ?>
+                            </p>
+                        </td>
+                        <?php
+
+                        $sql2 = "SELECT seat_column FROM seatlayout
                         WHERE seat_id IN
                         (
                             SELECT seat_id FROM reserveseats
@@ -149,101 +156,95 @@ if (!$result) {
                             
                         )
                         AND seat_row = '$seat_row';";
-                $available = mysqli_query($conn, $sql2);
-                if (!$available) {
-                    die('Invalid query: ' . mysqli_error($conn));
-                }
-                $i=0;
-                $available_seat = array();
-                foreach($available as $a)
-                {
-                    $i++;
-                    $available_seat[$i]= $a['seat_column'];
-                }
+                        $available = mysqli_query($conn, $sql2);
+                        if (!$available) {
+                            die('Invalid query: ' . mysqli_error($conn));
+                        }
+                        $i = 0;
+                        $available_seat = array();
+                        foreach ($available as $a) {
+                            $i++;
+                            $available_seat[$i] = $a['seat_column'];
+                        }
 
-                
-                $sql = "SELECT seat_column FROM
+
+                        $sql = "SELECT seat_column FROM
                         (
                             SELECT * FROM seatlayout
-                            WHERE seat_row = '".$seat_row."'
+                            WHERE seat_row = '" . $seat_row . "'
                         ) AS a
                         ;";
 
-                $column_res = mysqli_query($conn, $sql);
-                if (!$column_res) {
-                    die('Invalid query: ' . mysqli_error($conn));
-                }
-                while ($column= mysqli_fetch_assoc($column_res)) 
-                {
-                    $seat_column = $column['seat_column'];
-                    echo "<td><img src='./img/icon/";
-
-                    $status=0;
-                    if(strcmp($seat_type,'Premium Bed')==0)
-                    {
-                        if(in_array($seat_column, $available_seat))
-                        {
-                            $status=1;
-                            echo "u-bed.png";
-
+                        $column_res = mysqli_query($conn, $sql);
+                        if (!$column_res) {
+                            die('Invalid query: ' . mysqli_error($conn));
                         }
-                        else
-                        {
-                            echo "sofa-bed.png";                            
-                        }
-                        
-                    }
-                    else if(strcmp($seat_type,'Honeymoon Seat')==0)
-                    {
-                        if(in_array($seat_column, $available_seat))
-                        {
-                            $status=1;
-                            echo "u-chair.png";
-                        }
-                        else
-                        {
-                            echo "chair.png";
-                        }
-                    }
-                    else if(strcmp($seat_type,'Premium Seat')==0)
-                    {
-                        if(in_array($seat_column, $available_seat))
-                        {
-                            $status=1;
-                            echo "u-chair.png";
-                        }
-                        else
-                        {
-                            echo "chair2.png";
-                        }
-                    }
+                        while ($column = mysqli_fetch_assoc($column_res)) {
+                            $seat_column = $column['seat_column'];
+                            echo "<td><img src='./img/icon/";
 
-                    if($status==0)
-                    {
-                        echo "' width=40px hight=40px> <input type=\"checkbox\" name=\"select_seat[]\" value=\"{ \"row\" : \"$seat_row\",\"column\" :$seat_column}}\" />".$seat_row.$seat_column."</td>";
-                    }
-                    else
-                    {
-                        echo "' width=40px hight=40px>".$seat_row.$seat_column."</td>";
-                    }
-                }
-                unset($available_seat)
-            ?>
+                            $status = 0;
+                            if (strcmp($seat_type, 'Premium Bed') == 0) {
+                                if (in_array($seat_column, $available_seat)) {
+                                    $status = 1;
+                                    echo "u-bed.png";
+
+                                } else {
+                                    echo "sofa-bed.png";
+                                }
+
+                            } else if (strcmp($seat_type, 'Honeymoon Seat') == 0) {
+                                if (in_array($seat_column, $available_seat)) {
+                                    $status = 1;
+                                    echo "u-chair.png";
+                                } else {
+                                    echo "chair.png";
+                                }
+                            } else if (strcmp($seat_type, 'Premium Seat') == 0) {
+                                if (in_array($seat_column, $available_seat)) {
+                                    $status = 1;
+                                    echo "u-chair.png";
+                                } else {
+                                    echo "chair2.png";
+                                }
+                            }
+                            
+                                
+                            if ($status == 0) {
+                                echo "' width=40px hight=40px> <input type=\"checkbox\" name=\"select_seat[]\" value=\"{ \"row\" : \"$seat_row\",\"column\" :$seat_column}}\" />" . $seat_row . $seat_column . "</td>";
+                            } else {
+                                echo "' width=40px hight=40px>" . $seat_row . $seat_column . "</td>";
+                            }
+                        }
+                        unset($available_seat)
+                            ?>
+
+                    </tr>
 
 
-        </tr> 
-       
-    
-        <?php } ?>
+                <?php } ?>
 
-       
+            </table>
+            </div>
+        </div>
 
+        <div class="col-3"> <img src="./img/icon/seat_price.png">  <button type="submit" class="primary-btn" id="submit"> Book </button> </form> </div>
         
-        
-    </table>
+    </div>
+    <div class="row"> <img src="./img/icon/screen.png" height="80px"></div>
 
 </div>
 
+    
+
+
+
+
+
+
+
+
+    <!-- Footer Section -->
     <?php include('footer.php'); ?>
 
     <!-- Search Begin -->

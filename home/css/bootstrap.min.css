@@ -215,9 +215,7 @@ svg {
       vertical-align: middle
 }
 
-table {
-      border-collapse: collapse
-}
+
 
 caption {
       padding-top: .75rem;
@@ -1994,7 +1992,7 @@ pre code {
       width: 70%;
       margin-bottom: 0.5rem;
       /* color: #212529 */
-      margin-top: 1rem;
+
       padding: auto;
       padding-bottom: 5%;
 }
