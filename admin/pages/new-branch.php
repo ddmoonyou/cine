@@ -123,7 +123,7 @@
                             <?php
                               /* layout type drown down query from db */
                               $result = mysqli_query($con,'SELECT DISTINCT layout_type FROM theaterinfo');    
-                              echo '<select name=layout0>Layout Type</option>';
+                              echo '<select class="form-control custom-select" name=layout0>Layout Type</option>';
                               foreach ($result as $row){
                                 echo "<option value=$row[layout_type]>$row[layout_type]</option>"; 
                                 }
@@ -136,7 +136,7 @@
                             <?php
                               /* system type drown down query from db */
                               $result = mysqli_query($con,'SELECT DISTINCT system_type FROM theaterinfo');    
-                              echo '<select name=system0>System Type</option>';
+                              echo '<select class="form-control custom-select" name=system0>System Type</option>';
                               foreach ($result as $row){
                                 echo "<option value=$row[system_type]>$row[system_type]</option>"; 
                                 }
@@ -205,7 +205,7 @@ $(document).ready(function() {
   $("#add_row").click(function() {
 
   /* add button functionality */
-  $('#addr' + i).html("<td>" + (i + 1) + "</td> <td> <select name=layout" + i + ">Layout Type</option> <?php
+  $('#addr' + i).html("<td>" + (i + 1) + "</td> <td> <select class=\"form-control custom-selec\" name=layout" + i + ">Layout Type</option> <?php
     /* repeat code from earlier as string in html()*/
     $result = mysqli_query($con,'SELECT DISTINCT layout_type FROM theaterinfo');    
     foreach ($result as $row){
@@ -213,7 +213,7 @@ $(document).ready(function() {
     }
     echo '</select>';
     ?>
-    </td>  <td> <select name=system" + i + ">System Type</option> <?php
+    </td>  <td> <select class=\"form-control custom-selec\"  name=system" + i + ">System Type</option> <?php
     $result = mysqli_query($con,'SELECT DISTINCT system_type FROM theaterinfo');    
     foreach ($result as $row){
       echo "<option value=$row[system_type]>$row[system_type]</option>"; 
