@@ -20,7 +20,7 @@
 
 	if(!isset($_SESSION['staff_id']))
 	{
-    header('Location: login.php');
+    header('Location: http://localhost/cine/admin/login.php');
 		// echo "<a href=\"login.php\" class=\"nav-link\"><button type=\"submit\">  Please Login!</button></a>";
 		exit();
 	}
