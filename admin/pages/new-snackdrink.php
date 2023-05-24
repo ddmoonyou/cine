@@ -50,6 +50,7 @@
 
     <!-- Main content -->
     <section class="content">
+    <form action="addstaff.php" method="POST" enctype="multipart/form-data">
       <div class="row">
         <div class="col-md-6">
           <div class="card card-primary">
@@ -64,39 +65,39 @@
             </div>
             <div class="card-body">
               <div class="form-group">
-                <label for="inputName">Project Name</label>
-                <input type="text" id="inputName" class="form-control">
+                <label for="inputSnackName">Snack Name</label>
+                <input type="snack_name" id="inputSnackName" class="form-control">
               </div>
               <div class="form-group">
-                <label for="inputDescription">Project Description</label>
-                <textarea id="inputDescription" class="form-control" rows="4"></textarea>
+                <label for="inputSnackDescription">Snack Description</label>
+                <input type="snack_description" id="inputSnackDescription" class="form-control">
               </div>
               <div class="form-group">
-                <label for="inputStatus">Status</label>
-                <select id="inputStatus" class="form-control custom-select">
+                <label for="inputCategory">Category</label>
+                <select name="snack_category" id="inputCategory" class="form-control custom-select">
                   <option selected disabled>Select one</option>
-                  <option>On Hold</option>
-                  <option>Canceled</option>
-                  <option>Success</option>
+                  <option value="Staff">Snack</option>
+                  <option value="Manager">Drinks</option>
+                  <option value="Manager">Popcorn</option>
                 </select>
               </div>
-              <div class="form-group">
-                <label for="inputClientCompany">Client Company</label>
-                <input type="text" id="inputClientCompany" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="inputProjectLeader">Project Leader</label>
-                <input type="text" id="inputProjectLeader" class="form-control">
+              <label for="inputSnackImage">Snack image</label>
+                  <div class="input-group">
+                    <div class="custom-file">
+                        <input name="snack_img" type="file" class="custom-file-input" id="inputSnackImage" accept="image/jpeg, image/png, image/jpg">
+                        <label class="custom-file-label" for="inputSnackImage">Choose snack image</label>
+                    </div>
+                  </div>
               </div>
             </div>
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
-        </div>
-        <div class="col-md-6">
+
+          <div class="col-md-6">
           <div class="card card-secondary">
             <div class="card-header">
-              <h3 class="card-title">Budget</h3>
+              <h3 class="card-title">Premiere ticket</h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -105,17 +106,65 @@
               </div>
             </div>
             <div class="card-body">
-              <div class="form-group">
-                <label for="inputEstimatedBudget">Estimated budget</label>
-                <input type="number" id="inputEstimatedBudget" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="inputSpentBudget">Total amount spent</label>
-                <input type="number" id="inputSpentBudget" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="inputEstimatedDuration">Estimated project duration</label>
-                <input type="number" id="inputEstimatedDuration" class="form-control">
+              <div class="container">
+                <!-- add snack size&price-->
+                <div class="row clearfix">
+                  <div class="col-md-12 column">
+                    <table class="table table-bordered table-hover" id="tab_logic">
+                      <thead>
+                        <tr>
+                          <th class="text-center">
+                            #
+                          </th>
+                          <th class="text-center">
+                            Price
+                          </th>
+                          <th class="text-center">
+                            Size
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr id='addr0'>
+                          
+                          <td>
+                            1
+                          </td>
+
+                          <td>
+                            
+                            <?php
+                              /* layout type drown down query from db */
+                              $result = mysqli_query($con,'SELECT DISTINCT layout_type FROM theaterinfo');    
+                              echo '<select class="form-control custom-select" name=layout0>Layout Type</option>';
+                              foreach ($result as $row){
+                                echo "<option value=$row[layout_type]>$row[layout_type]</option>"; 
+                                }
+                               echo '</select>';
+                            ?>
+                          </td>
+
+                          <td>
+
+                            <?php
+                              /* system type drown down query from db */
+                              $result = mysqli_query($con,'SELECT DISTINCT system_type FROM theaterinfo');    
+                              echo '<select class="form-control custom-select" name=system0>System Type</option>';
+                              foreach ($result as $row){
+                                echo "<option value=$row[system_type]>$row[system_type]</option>"; 
+                                }
+                               echo '</select>';
+                            ?>
+
+                          </td>
+
+                        </tr>
+                        <tr id='addr1'></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <button id="add_row" type="button" class="btn btn-primary btn-lg pull-left"><i class="fas fa-plus"></i> Add Snack</button>
               </div>
             </div>
             <!-- /.card-body -->
@@ -125,10 +174,10 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <a href="#" class="btn btn-secondary">Cancel</a>
-          <input type="submit" value="Create new Project" class="btn btn-success float-right">
+          <input type="submit" value="Submit" class="btn btn-success float-right">
         </div>
       </div>
+    </form>
     </section>
     <!-- /.content -->
   </div>
@@ -157,5 +206,41 @@
 <script src="../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
+<!-- bs-custom-file-input -->
+<script src="../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+<script>
+$(function () {
+  bsCustomFileInput.init();
+});
+
+$(document).ready(function() {
+  var i = 1;
+  $("#add_row").click(function() {
+
+  /* add button functionality */
+  $('#addr' + i).html("<td>" + (i + 1) + "</td> <td> <select class=\"form-control custom-selec\" name=layout" + i + ">Layout Type</option> <?php
+    /* repeat code from earlier as string in html()*/
+    $result = mysqli_query($con,'SELECT DISTINCT layout_type FROM theaterinfo');    
+    foreach ($result as $row){
+      echo "<option value=$row[layout_type]>$row[layout_type]</option>"; 
+    }
+    echo '</select>';
+    ?>
+    </td>  <td> <select class=\"form-control custom-selec\"  name=system" + i + ">System Type</option> <?php
+    $result = mysqli_query($con,'SELECT DISTINCT system_type FROM theaterinfo');    
+    foreach ($result as $row){
+      echo "<option value=$row[system_type]>$row[system_type]</option>"; 
+    }
+    echo '</select>';
+    ?>
+    </td>");
+
+    $('#tab_logic').append('<tr id="addr' + (i + 1) + '"></tr>');
+    i++;
+  });
+});
+
+</script>
+
 </body>
 </html>

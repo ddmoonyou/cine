@@ -151,7 +151,7 @@
                     </table>
                   </div>
                 </div>
-                <button id="add_row" type="button" class="btn btn-primary btn-lg pull-left">Add Theater</button>
+                <button id="add_row" type="button" class="btn btn-primary btn-lg pull-left"><i class="fas fa-plus"></i> Add Theater</button>
               </div>
 
 

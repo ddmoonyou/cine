@@ -18,7 +18,7 @@
   include('../connect_db.php');
   ?> 
 
-  <!-- Query Branch ID -->
+  <!-- Query branch ID -->
   <?php
     $sql = "SELECT branch_id,branch_name FROM branchinfo;";
     $result = mysqli_query($con, $sql);
@@ -215,7 +215,6 @@
 <script src="../dist/js/demo.js"></script>
 <!-- bs-custom-file-input -->
 <script src="../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
-<!-- Page specific script -->
 <script>
 $(function () {
   bsCustomFileInput.init();
