@@ -91,7 +91,7 @@
               </div>
               <div class="form-group">
                 <label for="inputBranchID">Branch ID</label>
-                <select name="branch_id" id="branchID" class="form-control custom-select">
+                <select name="branch_id" id="branchID" class="form-control custom-select" disabled=true>
                   <?php
                     $sql = "SELECT branch_name FROM branchinfo
                     WHERE branch_id = '$objResult[branch_id]';";
@@ -126,7 +126,7 @@
               </div>
               <div class="form-group">
                 <label for="inputRole">Role</label>
-                <select name="staff_role" id="inputRole" class="form-control custom-select">
+                <select name="staff_role" id="inputRole" class="form-control custom-select" disabled=true>
                   <?php
                     echo "<option selected disabled>$objResult[staff_role]</option>";
                   ?>
