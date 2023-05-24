@@ -79,6 +79,7 @@ CREATE TABLE `foodinfo` (
 -- Dumping data for table `foodinfo`
 --
 
+
 INSERT INTO `foodinfo` (`food_type`, `category`, `description`) VALUES
 ('Coca-Cola', 'Drinks', 'Soft Drinks Coca-Cola'),
 ('Coca-Cola Zero', 'Drinks', 'Soft Drinks sugar-free Coca-Cola'),
@@ -89,7 +90,15 @@ INSERT INTO `foodinfo` (`food_type`, `category`, `description`) VALUES
 ('Minera Water', 'Drinks', 'Mineral water from Norway'),
 ('Pepsi', 'Drinks', 'Refreshing Pepsi'),
 ('Pepsi Max', 'Drinks', 'Refreshing sugar-free Pepsi'),
-('Sprite', 'Drinks', 'Soft Drinks Sprite');
+('Sprite', 'Drinks', 'Soft Drinks Sprite'),
+('Salty Popcron', 'Popcron', 'Salty flavour'),
+('Caramel Popcron', 'Popcron', 'Caramel flavour '),
+('Cheese Popcron', 'Popcron', 'Cheese flavour'),
+('BBQ Popcron', 'Popcron', 'BBQ flavour'),
+('Lay Nori seaweed', 'Snack', 'Nori seaweed flavour chips'),
+('Lay BBQ', 'Snack', 'BBQ flavour chips'),
+('Cornae', 'Snack', 'Corn chips'),
+('Pringles', 'Snack', 'Fried potato chips');
 
 -- --------------------------------------------------------
 
@@ -136,7 +145,28 @@ INSERT INTO `foodsize` (`food_id`, `food_type`, `size`, `price`) VALUES
 (125, 'Fanta Orange', 'L', 190),
 (126, 'Fanta Grape', 'S', 90),
 (127, 'Fanta Grape', 'M', 140),
-(128, 'Fanta Grape', 'L', 190);
+(128, 'Fanta Grape', 'L', 190),
+(129, 'Salty Popcron', 'S', 150),
+(130, 'Salty Popcron', 'M', 250),
+(131, 'Salty Popcron', 'L', 400),
+(132, 'Caramel Popcron', 'S', 150),
+(133, 'Caramel Popcron', 'M', 250),
+(134, 'Caramel Popcron', 'L', 400),
+(135, 'Cheese Popcron', 'S', 150),
+(136, 'Cheese Popcron', 'M', 250),
+(137, 'Cheese Popcron', 'L', 400),
+(138, 'BBQ Popcron', 'S', 150),
+(139, 'BBQ Popcron', 'M', 250),
+(140, 'BBQ Popcron', 'L', 400),
+(141, 'Lay Nori seaweed', 'S', 40),
+(142, 'Lay Nori seaweed', 'M', 80),
+(143, 'Lay BBQ', 'S', 40),
+(144, 'Lay BBQ', 'M', 80),
+(145, 'Cornae', 'S', 40),
+(146, 'Cornae', 'M', 80),
+(147, 'Pringles', 'S', 40),
+(148, 'Pringles', 'M', 80);
+
 
 -- --------------------------------------------------------
 
