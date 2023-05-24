@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminCINE | New Movie</title>
+  <title>AdminCINE | New Showing</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -35,12 +35,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>New Movie</h1>
+            <h1>New Showing</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">New Movie</li>
+              <li class="breadcrumb-item active">New Showing</li>
             </ol>
           </div>
         </div>
@@ -64,67 +64,16 @@
             </div>
             <div class="card-body">
               <div class="form-group">
-                <label for="inputPosterImage">Poster image</label>
-                  <div class="input-group">
-                    <div class="custom-file">
-                        <input type="file"  name="inputPosterImage" id="inputPosterImage" accept="image/jpeg, image/png, image/jpg">
-                        <label class="custom-file-label" for="inputPosterImage">Choose poster image</label>
-                    </div>
-                  </div>
+                <label for="inputMovieID">Movie ID</label>
+                <input name="movie_id" type="number" id="inputMovieID" class="form-control" placeholder="100000001">
               </div>
               <div class="form-group">
-                <label for="inputPromoteImage">Promote image</label>
-                  <div class="input-group">
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" name="inputPromoteImage"id="inputPromoteImage" accept="image/jpeg, image/png, image/jpg">
-                        <label class="custom-file-label" for="inputPromoteImage">Choose promote image</label>
-                    </div>
-                  </div>
-              </div>
-
-              <div class="form-group">
-                <label for="inputName">Movie Name</label>
-                <input name="name" type="text" id="inputMovieName" class="form-control" placeholder="Avengers: Endgame">
+                <label for="inputBranchID">Branch ID</label>
+                <input name="branch_id" type="number" id="inputBranchID" class="form-control" placeholder="1003">
               </div>
               <div class="form-group">
-                <label for="inputName">Movie lenght</label>
-                <input name="lenght" type="number" id="inputLenght" class="form-control" placeholder="182(min)">
-              </div>
-              <div class="form-group">
-                <label for="inputDescription">Movie Description</label>
-                <input name="description" type="text" id="inputDescription" class="form-control" placeholder="Avengers: ENDGAME  เรื่องราวการปิดจักรวาลมาร์เวลเฟส 3 เหตุการณ์ภายหลังจากที่ธานอสดีดนิ้วล้างครึ่งจักรวาล เหล่าฮีโร่ที่เหลือรอดจะหาทางกอบกู้จักรวาลนี้คืนมาได้อย่างไร โดยในภาคนี้จะมีตัวเด็ดอย่างกัปตันมาร์เวลมาร่วมเสริมทัพด้วย">              </div>
-              <div class="form-group">
-                <label for="inputDirector">Director Info</label>
-                <input name="director" type="text" id="inputDirector" class="form-control" placeholder="Anthony Russo, Joe Russo">
-              </div>
-              <div class="form-group">
-                <label for="inputPromoteDate">Promote date</label>
-                <input name="promote" type="datetime-local" id="inputPromoteDate" class="form-control" placeholder="Anthony Russo, Joe Russo">
-              </div>
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-        </div>
-        <div class="col-md-6">
-          <div class="card card-secondary">
-            <div class="card-header">
-              <h3 class="card-title">Premiere ticket</h3>
-
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                  <i class="fas fa-minus"></i>
-                </button>
-              </div>
-            </div>
-            <div class="card-body">
-              <div class="form-group">
-                <label for="inputEstimatedBudget">Branch ID</label>
-                <input name="branch_id" type="number" id="inputEstimatedBudget" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="inputSpentBudget">Theater No.</label>
-                <input name="theater" type="number" id="inputTheaterNo" class="form-control">
+                <label for="inputTheaterNo">Theater No.</label>
+                <input name="theater_no" type="text" id="inputTheaterNo" class="form-control" placeholder="1">
               </div>
               <div class="form-group">
                 <label for="inputShowingDate">Datetime</label>
@@ -159,7 +108,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-12">
+        <div class="col-6">
           <input type="submit" value="Submit" class="btn btn-success float-right">
         </div>
       </div>
