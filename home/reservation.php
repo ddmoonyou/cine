@@ -109,10 +109,30 @@
     <section class="product spad">
     <div class=""> </div>
     <?php
+
+
     $showingID = $_GET['showing_id'];
+
+    $sql = "SELECT branch_id,theater_no FROM showings
+            WHERE showing_id=$showingID;";
+    $result = mysqli_query($conn, $sql);
+    if (!$result) {
+        die('Invalid query: ' . mysqli_error($conn));
+    }
+    $data = mysqli_fetch_assoc($result);
+    $b_id = $data["branch_id"];
+    $theater = $data["theater_no"];
+
+
     $sql = "SELECT DISTINCT seat_row,seat_type FROM
     (
     SELECT * FROM seatlayout
+        WHERE layout_type IN 
+        (
+            SELECT layout_type from theaterinfo
+            WHERE branch_id = $b_id
+            AND theater_no = $theater
+         )
     ) AS a;";
     $result = mysqli_query($conn, $sql);
 
@@ -171,7 +191,14 @@
                         $sql = "SELECT seat_column FROM
                         (
                             SELECT * FROM seatlayout
-                            WHERE seat_row = '" . $seat_row . "'
+                            WHERE 
+                            layout_type IN 
+                            (
+                                SELECT layout_type from theaterinfo
+                                WHERE branch_id = $b_id
+                                AND theater_no = $theater
+                             )
+                             AND seat_row = '" . $seat_row . "'
                         ) AS a
                         ;";
 
@@ -209,9 +236,24 @@
                                 }
                             }
                             
+
+                            $sql_id = "SELECT seat_id FROM seatlayout
+                            WHERE seat_row = '$seat_row' AND seat_column = $seat_column
+                            AND layout_type IN 
+                            (
+                                SELECT layout_type from theaterinfo
+                                WHERE branch_id = $b_id
+                                AND theater_no = $theater
+                            );";
+                            $r = mysqli_query($conn, $sql_id);
+                            if (!$r) {
+                                die('Invalid query: ' . mysqli_error($conn));
+                            }
+                            $s = mysqli_fetch_assoc($r);
+                            $seat_id = $s["seat_id"];
                                 
                             if ($status == 0) {
-                                echo "' width=40px hight=40px> <input type=\"checkbox\" name=\"select_seat[]\" value=\"{ \"row\" : \"$seat_row\",\"column\" :$seat_column}}\" />" . $seat_row . $seat_column . "</td>";
+                                echo "' width=40px hight=40px> <input type=\"checkbox\" name=\"select_seat[]\" value=$seat_id />" . $seat_row . $seat_column . "</td>";
                             } else {
                                 echo "' width=40px hight=40px>" . $seat_row . $seat_column . "</td>";
                             }

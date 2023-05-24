@@ -15,16 +15,26 @@
 
 
       //print_r($_POST);
-      var_dump($selectedSeats);
+      //var_dump($select_seat);
       
       if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if (isset($_POST['select_seat'])) {
               // Loop through the selected seats
               foreach ($_POST['select_seat'] as $selectedSeat) {
                 // Access the seat information
-                $seatInfo = json_decode($selectedSeat, true);
-                $row = $seatInfo['seat_row'];
-                $column = $seatInfo['seat_column'];
+                $seatID = $selectedSeat;
+
+                echo "ID: ".$seatID."  ";
+                $sql = "SELECT seat_row,seat_column FROM seatlayout
+                        WHERE seat_id = $seatID";
+
+                $result = mysqli_query($conn, $sql);
+                if (!$result) {
+                    die('Invalid query: ' . mysqli_error($conn));
+                }
+                $data = mysqli_fetch_assoc($result);
+                $row = $data["seat_row"];
+                $column = $data["seat_column"];
           
                 // Perform further processing with the seat information
                 // For example, store the selected seat in the database or perform validation
