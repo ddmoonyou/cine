@@ -205,11 +205,11 @@ INSERT INTO `movieinfo` (`movie_id`, `movie_name`, `movie_description`, `movie_t
 CREATE TABLE `promotion` (
   `promotion_code` varchar(15) NOT NULL,
   `discount_percent` float NOT NULL,
-  `_start_date` datetime NOT NULL,
+  `start_date` datetime NOT NULL,
   `end_date` datetime NOT NULL,
   `seat_type` char(50) DEFAULT NULL,
   `system_type` char(50) DEFAULT NULL,
-  `_description` text NOT NULL
+  `description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
