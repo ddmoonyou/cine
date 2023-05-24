@@ -79,7 +79,7 @@
 			die('Error: ' . mysqli_error($con));
 		}
 
-        echo "<script> alert('Add new movie succesful!'); window.location.href='new-movie.php'; </script>";
+        echo "<script> alert('Add new movie successful!'); window.location.href='new-movie.php'; </script>";
     } 
     
 
