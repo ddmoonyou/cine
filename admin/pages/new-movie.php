@@ -108,8 +108,12 @@
                 <input name="director" type="text" id="inputDirector" class="form-control" placeholder="Anthony Russo, Joe Russo">
               </div>
               <div class="form-group">
+                <label for="inputRelease">Release date</label>
+                <input name="release" type="datetime-local" id="inputPromoteDate" class="form-control">
+              </div>
+              <div class="form-group">
                 <label for="inputPromoteDate">Promote date</label>
-                <input name="promote" type="datetime-local" id="inputPromoteDate" class="form-control" placeholder="Anthony Russo, Joe Russo">
+                <input name="promote" type="datetime-local" id="inputPromoteDate" class="form-control">
               </div>
             </div>
             <!-- /.card-body -->

@@ -24,7 +24,7 @@
     || empty($_POST["description"]) || empty($_POST["director"])
     || empty($_POST["promote"]) || empty($_POST["branch_id"])
     || empty($_POST["theater"]) || empty($_POST["time"])
-    || empty($_POST["audio"]) || empty($_POST["subtitle"])
+    || empty($_POST["audio"]) || empty($_POST["subtitle"]) || empty($_POST["release"])
     )
     {
         echo "<script> alert('Data is invalid!'); window.location.href='new-movie.php'; </script>";
@@ -35,17 +35,18 @@
         $length =  $_POST["lenght"];
         $description =  mysqli_real_escape_string($con,$_POST["description"]);
         $director =  mysqli_real_escape_string($con,$_POST["director"]);
-        $promote =  mysqli_real_escape_string($con,$_POST["promote"]);
-
+        $p =  mysqli_real_escape_string($con,$_POST["promote"]);
+        $r =  mysqli_real_escape_string($con,$_POST["release"]);
         $branch_id =  mysqli_real_escape_string($con,$_POST["branch_id"]);
         $theater =  mysqli_real_escape_string($con,$_POST["theater"]);
         $time = $_POST["time"];
         $audio =  mysqli_real_escape_string($con,$_POST["audio"]);
         $subtitle =  mysqli_real_escape_string($con,$_POST["subtitle"]);
 
-
-        $sql ="INSERT INTO movieinfo(movie_name,movie_length,movie_description,director_info)
-                VALUES ('$name',$length,'$description','$director');";
+        $promote = date ('Y-m-d H:i:s', strtotime($p));
+        $releaseDate = date ('Y-m-d H:i:s', strtotime($r));
+        $sql ="INSERT INTO movieinfo(movie_name,movie_length,movie_description,director_info,promote,releaseDate)
+                VALUES ('$name',$length,'$description','$director','$promote','$releaseDate');";
 
         if (!mysqli_query($con, $sql)) {
 			die('Error: ' . mysqli_error($con));

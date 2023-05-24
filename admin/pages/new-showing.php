@@ -145,7 +145,7 @@
                             #
                           </th>
                           <th class="text-center">
-                            Layout Type
+                            Date & Time
                           </th>
                         </tr>
                       </thead>
@@ -158,8 +158,7 @@
 
                           <td>
                             
-                            <?php
-                              /* layout type drown down query from db */    
+                            <?php   
                               echo '<input name="time[]" type="datetime-local" id="inputShowingDate" class="form-control">';
                             ?>
                           </td>

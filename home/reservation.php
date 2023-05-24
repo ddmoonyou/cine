@@ -355,6 +355,14 @@
                                 $description = $row['description'];
                                 //$food_id = $row['food_id'];
                                 //$price = $row['price'];
+
+                                $select_size ="SELECT food_id,size,price FROM foodsize WHERE food_type = '$food_type';";
+                                $price = mysqli_query($conn, $select_size);
+                                if (!$price) {
+                                    die('Invalid query: ' . mysqli_error($conn));
+                                }
+
+
                               
                         ?>
                                 <div class="col-lg-3 col-md-6 col-sm-6 mix new-arrivals">
@@ -364,7 +372,17 @@
                                                 </div>
                                                 <div class="product__item__text">
                                                     <h5><?php echo $food_type; ?></h5>
-                                                    <p><?php echo $description; ?></p>
+                                                    <p><?php echo $description; ?>
+                                                    <?php
+                                                        foreach($price as $p)
+                                                        {
+                                                            $food_id = $p["food_id"];
+                                                            $size = $p["size"];
+                                                            $price = $p["price"];
+                                                            echo "ID: $food_id size: $size price: $priceTHB";
+                                                        }
+                                                    ?>
+                                                    </p>
                                                     <div >
                                                         <button id="decrement">-</button><input type="number" id="quantity" value="0" min="0" style="width: 50px;"> <button id="increment">+</button>
                                                     </div>
@@ -416,6 +434,12 @@
                                 $food_type = $row['food_type'];
                                 $category = $row['category'];
                                 $description = $row['description'];
+
+                                $select_size ="SELECT food_id,size,price FROM foodsize WHERE food_type = '$food_type';";
+                                $price = mysqli_query($conn, $select_size);
+                                if (!$price) {
+                                    die('Invalid query: ' . mysqli_error($conn));
+                                }
                               
                         ?>
                                 <div class="col-lg-3 col-md-6 col-sm-6 mix new-arrivals">
@@ -426,6 +450,15 @@
                                                 <div class="product__item__text">
                                                     <h5><?php echo $food_type; ?></h5>
                                                     <p><?php echo $description; ?></p>
+                                                    <?php
+                                                        foreach($price as $p)
+                                                        {
+                                                            $food_id = $p["food_id"];
+                                                            $size = $p["size"];
+                                                            $price = $p["price"];
+                                                            echo "ID: $food_id size: $size price: $price THB";
+                                                        }
+                                                    ?>
                                                 </div> 
                                             </div>
                                 </div>
