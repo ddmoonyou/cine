@@ -79,7 +79,7 @@
                     <nav class="header__menu mobile-menu">
                         <ul>
                             <li><a href="./index.php">Home</a></li>
-                            <li><a href="./theatre.php">Theatre</a></li>
+                            <li><a href="./theatre.php">Branch</a></li>
                             <li class="active"><a href="./movie.php">Movie</a></li>
                             <li ><a href="./promotion.php">Promotion</a></li>
                             <li><a href="./snack.php">Snack&Drink</a></li>
