@@ -206,13 +206,13 @@
                   <p>New Seat Layout</p>
                 </a>
               </li>
+              <?php }?>
               <li class="nav-item">
                 <a href="./edit-staff.php" class="nav-link">
                   <i class="nav-icon far fa-circle text-warning"></i>
-                  <p>Edit Staff</p>
+                  <p>Edit Profile</p>
                 </a>
               </li>
-              <?php }?>
               <li class="nav-item">
                 <a href="./edit-movie.php" class="nav-link">
                   <i class="nav-icon far fa-circle text-warning"></i>
