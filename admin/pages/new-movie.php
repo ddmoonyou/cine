@@ -49,6 +49,7 @@
 
     <!-- Main content -->
     <section class="content">
+    <form action="addmovie.php" method="POST" enctype="multipart/form-data">
       <div class="row">
         <div class="col-md-6">
           <div class="card card-primary">
@@ -66,7 +67,7 @@
                 <label for="inputPosterImage">Poster image</label>
                   <div class="input-group">
                     <div class="custom-file">
-                        <input type="file"  name="inputPosterImage" id="inputPosterImage">
+                        <input type="file"  name="inputPosterImage" id="inputPosterImage" accept="image/jpeg, image/png, image/jpg">
                         <label class="custom-file-label" for="inputPosterImage">Choose poster image</label>
                     </div>
                   </div>
@@ -75,7 +76,7 @@
                 <label for="inputPromoteImage">Promote image</label>
                   <div class="input-group">
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" name="inputPromoteImage"id="inputPromoteImage">
+                        <input type="file" class="custom-file-input" name="inputPromoteImage"id="inputPromoteImage" accept="image/jpeg, image/png, image/jpg">
                         <label class="custom-file-label" for="inputPromoteImage">Choose promote image</label>
                     </div>
                   </div>
@@ -83,23 +84,22 @@
 
               <div class="form-group">
                 <label for="inputName">Movie Name</label>
-                <input type="text" id="inputMovieName" class="form-control" placeholder="Avengers: Endgame">
+                <input name="name" type="text" id="inputMovieName" class="form-control" placeholder="Avengers: Endgame">
               </div>
               <div class="form-group">
                 <label for="inputName">Movie lenght</label>
-                <input type="number" id="inputLenght" class="form-control" placeholder="182(min)">
+                <input name="lenght" type="number" id="inputLenght" class="form-control" placeholder="182(min)">
               </div>
               <div class="form-group">
                 <label for="inputDescription">Movie Description</label>
-                <textarea id="inputDescription" class="form-control" rows="4" placeholder="Avengers: ENDGAME  เรื่องราวการปิดจักรวาลมาร์เวลเฟส 3 เหตุการณ์ภายหลังจากที่ธานอสดีดนิ้วล้างครึ่งจักรวาล เหล่าฮีโร่ที่เหลือรอดจะหาทางกอบกู้จักรวาลนี้คืนมาได้อย่างไร โดยในภาคนี้จะมีตัวเด็ดอย่างกัปตันมาร์เวลมาร่วมเสริมทัพด้วย"></textarea>
-              </div>
+                <input name="description" type="text" id="inputDescription" class="form-control" placeholder="Avengers: ENDGAME  เรื่องราวการปิดจักรวาลมาร์เวลเฟส 3 เหตุการณ์ภายหลังจากที่ธานอสดีดนิ้วล้างครึ่งจักรวาล เหล่าฮีโร่ที่เหลือรอดจะหาทางกอบกู้จักรวาลนี้คืนมาได้อย่างไร โดยในภาคนี้จะมีตัวเด็ดอย่างกัปตันมาร์เวลมาร่วมเสริมทัพด้วย">              </div>
               <div class="form-group">
                 <label for="inputDirector">Director Info</label>
-                <input type="text" id="inputDirector" class="form-control" placeholder="Anthony Russo, Joe Russo">
+                <input name="director" type="text" id="inputDirector" class="form-control" placeholder="Anthony Russo, Joe Russo">
               </div>
               <div class="form-group">
                 <label for="inputPromoteDate">Promote date</label>
-                <input type="datetime-local" name="input"id="inputPromoteDate" class="form-control" placeholder="Anthony Russo, Joe Russo">
+                <input name="promote" type="datetime-local" name="input"id="inputPromoteDate" class="form-control" placeholder="Anthony Russo, Joe Russo">
               </div>
             </div>
             <!-- /.card-body -->
@@ -120,36 +120,36 @@
             <div class="card-body">
               <div class="form-group">
                 <label for="inputEstimatedBudget">Branch ID</label>
-                <input type="number" id="inputEstimatedBudget" class="form-control">
+                <input name="branch_id" type="number" id="inputEstimatedBudget" class="form-control">
               </div>
               <div class="form-group">
                 <label for="inputSpentBudget">Theater No.</label>
-                <input type="number" id="inputSpentBudget" class="form-control">
+                <input name="theater" type="number" id="inputSpentBudget" class="form-control">
               </div>
               <div class="form-group">
                 <label for="inputEstimatedDuration">Datetime</label>
-                <input type="datetime-local" id="inputEstimatedDuration" class="form-control">
+                <input name="time" type="datetime-local" id="inputEstimatedDuration" class="form-control">
               </div>
               <div class="form-group">
                 <label for="inputStatus">Audio</label>
-                <select id="inputStatus" class="form-control custom-select">
+                <select name="audio" id="inputStatus" class="form-control custom-select">
                   <option selected disabled>Select one</option>
-                  <option>ENG</option>
-                  <option>TH</option>
-                  <option>JPN</option>
-                  <option>KR</option>
-                  <option>RU</option>
+                  <option value="ENG">ENG</option>
+                  <option value="TH">TH</option>
+                  <option value="JPN">JPN</option>
+                  <option value="KR">KR</option>
+                  <option value="RU">RU</option>
                 </select>
               </div>
               <div class="form-group">
                 <label for="inputStatus">Subtitle</label>
-                <select id="inputStatus" class="form-control custom-select">
+                <select name="subtitle" id="inputStatus" class="form-control custom-select">
                   <option selected disabled>Select one</option>
-                  <option>ENG</option>
-                  <option>TH</option>
-                  <option>JPN</option>
-                  <option>KR</option>
-                  <option>RU</option>
+                  <option value="ENG">ENG</option>
+                  <option value="TH">TH</option>
+                  <option value="JPN">JPN</option>
+                  <option value="KR">KR</option>
+                  <option value="RU">RU</option>
                 </select>
               </div>
             </div>
@@ -163,6 +163,7 @@
           <input type="submit" value="Submit" class="btn btn-success float-right">
         </div>
       </div>
+    </form>
     </section>
     <!-- /.content -->
   </div>
