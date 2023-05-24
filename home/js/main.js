@@ -349,5 +349,33 @@
          addToCartBtn.addEventListener('click', addToCart);
           
     });
+
+
+
+    const quantityInput = document.getElementById('quantity');
+  
+    // Get the increment and decrement buttons
+    const incrementButton = document.getElementById('increment');
+    const decrementButton = document.getElementById('decrement');
+    
+    // Add event listeners to the buttons
+    incrementButton.addEventListener('click', () => {
+        quantityInput.value = parseInt(quantityInput.value) + 1;
+    });
+    
+    decrementButton.addEventListener('click', () => {
+        const currentValue = parseInt(quantityInput.value);
+        if (currentValue > 0) {
+        quantityInput.value = currentValue - 1;
+        }
+    });
+    
+    // Handle submit button click
+    const submitButton = document.getElementById('submit');
+    submitButton.addEventListener('click', () => {
+        const quantity = parseInt(quantityInput.value);
+        alert(`Submitted quantity: ${quantity}`);
+        // Add your logic for handling the submission here
+    });
    
 })(jQuery);

@@ -4,7 +4,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AdminCINE | New Showing</title>
-  <link rel = "icon" href = "../dist/img/AdminLTELogo.png" type = "image/x-icon">
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -96,10 +95,6 @@
                 <input name="theater_no" type="number" min="1" max="20" id="inputTheaterNo" class="form-control" placeholder="1">
               </div>
               <div class="form-group">
-                <label for="inputShowingDate">Datetime</label>
-                <input name="time" type="datetime-local" id="inputShowingDate" class="form-control">
-              </div>
-              <div class="form-group">
                 <label for="inputAudio">Audio</label>
                 <select name="audio" id="inputAudio" class="form-control custom-select">
                   <option selected disabled>Select one</option>
@@ -121,6 +116,63 @@
                   <option value="RU">RU</option>
                 </select>
               </div>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <div class="col-md-6">
+          <div class="card card-secondary">
+            <div class="card-header">
+              <h3 class="card-title">Showing time</h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="container">
+
+                <!-- add theater stuff-->
+                <div class="row clearfix">
+                  <div class="col-md-12 column">
+                    <table class="table table-bordered table-hover" id="tab_logic">
+                      <thead>
+                        <tr>
+                          <th class="text-center">
+                            #
+                          </th>
+                          <th class="text-center">
+                            Date & Time
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr id='addr0'>
+                          
+                          <td>
+                            1
+                          </td>
+
+                          <td>
+                            
+                            <?php   
+                              echo '<input name="time[]" type="datetime-local" id="inputShowingDate" class="form-control">';
+                            ?>
+                          </td>
+
+                        </tr>
+                        <tr id='addr1'></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <button id="add_row" type="button" class="btn btn-primary btn-lg pull-left">Add showing</button>
+              </div>
+
+
             </div>
             <!-- /.card-body -->
           </div>
@@ -169,6 +221,17 @@ $(function () {
   bsCustomFileInput.init();
 });
 </script>
+<script>
+$(document).ready(function() {
+  var i = 1;
+  $("#add_row").click(function() {
+ 
+    $('#addr' + i).html("<td>" + (i + 1) + "</td><td><input type='datetime-local' name=\"time[]\" placeholder='Date' class='form-control input-md'/></td>");
 
+    $('#tab_logic').append('<tr id="addr' + (i + 1) + '"></tr>');
+    i++;
+  });
+});
+</script>
 </body>
 </html>

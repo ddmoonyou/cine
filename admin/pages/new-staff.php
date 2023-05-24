@@ -135,7 +135,7 @@
               </div>
               <label for="inputMovieID">Retype Password</label>
               <div class="input-group mb-3">
-                <input id="pswd2" type="password" class="form-control" placeholder="Retype password" maxlength=30>
+                <input name="passwords2" id="pswd2" type="password" class="form-control" placeholder="Retype password" maxlength=30>
                 <div class="input-group-append">
                   <div class="input-group-text">
                     <span class="fas fa-lock"></span>
