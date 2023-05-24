@@ -20,6 +20,10 @@
 
     //empty($_POST["inputPosterImage"]) || empty($_POST["inputPromoteImage"]) || 
     
+    if( !($_POST["passwords"] == $_POST["passwords2"]))
+    {
+        echo "<script> alert('Password must match!'); window.location.href='edit-staff.php'; </script>";
+    }
 
     if( empty($_POST["firstname"]) || empty($_POST["lastname"])
     || empty($_POST["telephone"]) || empty($_POST["staff_role"])
@@ -38,7 +42,7 @@
         $staff_role =  mysqli_real_escape_string($con,$_POST["staff_role"]);
 
         $sql ="INSERT INTO staffinfo(branch_id,staff_role,staff_first_name,staff_last_name,staff_tel,password)
-                VALUES ($branch_id,'$staff_role','$firstname','$lastname','$telephone',$passwords);";
+                VALUES ('$branch_id','$staff_role','$firstname','$lastname','$telephone',$passwords);";
         
         if (!mysqli_query($con, $sql)) {
 			die('Error: ' . mysqli_error($con));
