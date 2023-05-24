@@ -62,17 +62,16 @@
               </div>
             </div>
             <div class="card-body">
-              <div div class="form-group">
+              <div class="form-group">
                 <label for="inputPosterImage">Poster image</label>
                   <div class="input-group">
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" name="inputPosterImage"id="inputPosterImage">
+                        <input type="file"  name="inputPosterImage" id="inputPosterImage">
                         <label class="custom-file-label" for="inputPosterImage">Choose poster image</label>
                     </div>
                   </div>
               </div>
-
-              <div div class="form-group">
+              <div class="form-group">
                 <label for="inputPromoteImage">Promote image</label>
                   <div class="input-group">
                     <div class="custom-file">
@@ -193,7 +192,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
 <!-- bs-custom-file-input -->
-<script src="../../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+<script src="../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <!-- Page specific script -->
 <script>
 $(function () {
