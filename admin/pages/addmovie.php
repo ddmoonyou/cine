@@ -39,7 +39,7 @@
 
         $branch_id =  mysqli_real_escape_string($con,$_POST["branch_id"]);
         $theater =  mysqli_real_escape_string($con,$_POST["theater"]);
-        $time =  mysqli_real_escape_string($con,$_POST["time"]);
+        $time = $_POST["time"];
         $audio =  mysqli_real_escape_string($con,$_POST["audio"]);
         $subtitle =  mysqli_real_escape_string($con,$_POST["subtitle"]);
 
@@ -69,6 +69,15 @@
         $filename = $_FILES["inputPromoteImage"]["name"];
         $path = "../../home/img/promote/".$id.".jpg";
         move_uploaded_file($_FILES['inputPromoteImage']['tmp_name'],$path); 
+        
+        
+        $mysqltime = date ('Y-m-d H:i:s', strtotime($time));
+        $sql ="INSERT INTO showings(movie_id,branch_id,theater_no,date_time,language_dub,language_sub)
+                VALUES ($id,$branch_id,$theater,'$mysqltime','$audio','$subtitle');";
+        
+        if (!mysqli_query($con, $sql)) {
+			die('Error: ' . mysqli_error($con));
+		}
 
         echo "<script> alert('Add new movie succesful!'); window.location.href='new-movie.php'; </script>";
     } 
