@@ -65,15 +65,15 @@
             <div class="card-body">
               <div class="form-group">
                 <label for="branchName">Branch Name</label>
-                <input type="text" id="branchName" name="branchname" class="form-control">
+                <input type="text" id="branchName" name="branchname" class="form-control" placeholder="Bang Mod Flag Ship Cinema">
               </div>
               <div class="form-group">
                 <label for="branchAddress">Branch Address</label>
-                <input type="text" id="branchAddress" name="branchaddress" class="form-control">
+                <input type="text" id="branchAddress" name="branchaddress" class="form-control" placeholder="126 Pracha Uthit Rd., Bang Mod, Thung Khru, Bangkok 10140, Thailand">
               </div>
               <div class="form-group">
                 <label for="branchTelephone">Branch Telephone</label>
-                <input type="text" id="branchTelephone" name="branchtel" class="form-control">
+                <input type="text" id="branchTelephone" name="branchtel" class="form-control" placeholder="021111111">
               </div>
             </div>
             <!-- /.card-body -->
