@@ -48,8 +48,15 @@
     </section>
 
     <!-- Main content -->
+    <?php
+      $sql = "SELECT branch_id,branch_name FROM branchinfo;";
+      $result = mysqli_query($con, $sql);
+      if (!$result) {
+          die('Invalid query: ' . mysqli_error($con));
+      }
+    ?>
     <section class="content">
-    <form action="addmovie.php" method="POST" enctype="multipart/form-data">
+    <form action="addshowing.php" method="POST" enctype="multipart/form-data">
       <div class="row">
         <div class="col-md-6">
           <div class="card card-primary">
@@ -65,15 +72,27 @@
             <div class="card-body">
               <div class="form-group">
                 <label for="inputMovieID">Movie ID</label>
-                <input name="movie_id" type="number" id="inputMovieID" class="form-control" placeholder="100000001">
+                <input name="movie_id" type="number" min = "100000001"id="inputMovieID" class="form-control" placeholder="100000012">
               </div>
               <div class="form-group">
-                <label for="inputBranchID">Branch ID</label>
-                <input name="branch_id" type="number" id="inputBranchID" class="form-control" placeholder="1003">
+              <label for="inputBranchID">Branch</label>
+                <select name="branch_id" id="branchID" class="form-control custom-select">
+                  <option selected disabled>Select one</option>
+                  <?php
+                    foreach($result as $branch)
+                    {
+                      $b_id = $branch['branch_id'];
+                      $b_name = $branch['branch_name'];
+                      echo "<option value=$b_id>$b_id: $b_name</option>";
+                    }
+                  ?>
+                </select>
+                
+                
               </div>
               <div class="form-group">
                 <label for="inputTheaterNo">Theater No.</label>
-                <input name="theater_no" type="text" id="inputTheaterNo" class="form-control" placeholder="1">
+                <input name="theater_no" type="number" min="1" max="20" id="inputTheaterNo" class="form-control" placeholder="1">
               </div>
               <div class="form-group">
                 <label for="inputShowingDate">Datetime</label>
