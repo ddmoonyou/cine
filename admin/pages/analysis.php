@@ -17,7 +17,7 @@
 <div class="wrapper">
   <!-- Sidebar Menu -->
   <?php
-      include('../sidebar.php');
+      include('../sidebarCharts.php');
   ?> 
   <!-- /.sidebar-menu -->
 
