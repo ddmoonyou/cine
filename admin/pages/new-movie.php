@@ -17,6 +17,15 @@
   <?php
   include('../connect_db.php');
   ?> 
+
+  <!-- Query Branch ID -->
+  <?php
+    $sql = "SELECT branch_id,branch_name FROM branchinfo;";
+    $result = mysqli_query($con, $sql);
+    if (!$result) {
+        die('Invalid query: ' . mysqli_error($con));
+    }
+  ?>
   
 </head>
 <body class="hold-transition sidebar-mini">
@@ -120,8 +129,19 @@
             </div>
             <div class="card-body">
               <div class="form-group">
-                <label for="inputEstimatedBudget">Branch ID</label>
-                <input name="branch_id" type="number" id="inputEstimatedBudget" class="form-control">
+                <label for="inputBranchID">Branch ID</label>
+                <select name="branch_id" id="branchID" class="form-control custom-select">
+                  <option selected disabled>Select one</option>
+                  <?php
+                    foreach($result as $branch)
+                    {
+                      $b_id = $branch['branch_id'];
+                      $b_name = $branch['branch_name'];
+                      echo "<option value=$b_id>$b_id: $b_name</option>";
+                    }
+                  ?>
+                </select>
+
               </div>
               <div class="form-group">
                 <label for="inputSpentBudget">Theater No.</label>
