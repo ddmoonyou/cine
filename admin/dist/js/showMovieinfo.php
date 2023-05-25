@@ -1,8 +1,5 @@
 <?php
-
-    ini_set('display_errors', 1);
-	session_start();
-	require_once("../connect_db.php");
+	require_once("../../connect_db.php");
 
     $k = $_POST["x"];
 

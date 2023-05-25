@@ -7,6 +7,32 @@
 
 /* eslint-disable camelcase */
 
+function fetchemp(){
+  var id = document.getElementById("movie_id").value;
+
+  $.ajax({
+    url:"../pages/showMovieinfo.php",
+    method:"POST",
+    data:{
+      x : id
+    },
+    dataType: "JSON",
+
+    success: function(data){
+      document.getElementById("movie_name").value = data.name;
+      document.getElementById("movie_description").value = data.description;
+      document.getElementById("movie_trailer").value = data.trailer;
+      document.getElementById("director_info").value = data.director;
+      document.getElementById("movie_length").value = data.length;
+      document.getElementById("releaseDate").value = data.release_date;
+      document.getElementById("start_promote").value = data.startPromote;
+      document.getElementById("end_promote").value = data.endPromote;
+
+    }
+
+  })
+}
+
 (function ($) {
   'use strict'
 
@@ -18,21 +44,6 @@
   //   }
   // }, 1000)
 
-  function selectMovieinfo(){
-    var x = document.getElementById("movie_id").value;
-    
-    $.ajax({
-      url:"showMovieinfo.php",
-      method: "POST",
-      data:{
-        id : x
-      },
-      success:function(data){
-        $("#ans").html(data);
-
-      }
-    })
-  }
 
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1)

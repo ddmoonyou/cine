@@ -13,6 +13,8 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
   <!-- Connect to database -->
   <?php
   include('../connect_db.php');
@@ -22,7 +24,6 @@
   <?php
   $sql = "SELECT * FROM movieinfo";
   $res = mysqli_query($con, $sql);
-  $rows = mysqli_fetch_array($res);
   
   ?>
   
@@ -80,7 +81,7 @@
             <div class="card-body">
               <div class="form-group">
                 <label for="inputMovieID">Movie ID</label>
-                  <select name="movie_id" id="movie_id" class="form-control custom-select">
+                  <select name="movie_id" id="movie_id" onchange="fetchemp()" class="form-control custom-select">
                     <option selected disabled>Select one</option>
                     <?php
                       foreach($result as $branch)
@@ -94,23 +95,23 @@
               </div>
                 <div class="form-group">
                   <label for="inputMoviename">Movie Name(Edit)</label>
-                  <input name="movie_name" type="text" id="inputMoviename" class="form-control">
+                  <input name="movie_name" type="text" id="movie_name" class="form-control">
                 </div>
                 <div class="form-group">
                 <label for="inputMovieDescription">Movie Description(Edit)</label>
-                  <input name="movie_description" type="text" id="inputMovieDescription" class="form-control"  >
+                  <input name="movie_description" type="text" id="movie_description" class="form-control"  >
                 </div>
                 <div class="form-group">
                 <label for="inputMovieTrailer">Movie Trailer URL(Edit)</label>
-                  <input name="movie_trailer" type="text" id="inputMovieDescription" class="form-control"  >
+                  <input name="movie_trailer" type="text" id="movie_trailer" class="form-control"  >
                 </div>
                 <div class="form-group">
                 <label for="inputDirectorInfo">Director info(Edit)</label>
-                  <input name="director_info" type="text" id="inputDirectorInfo" class="form-control"  >
+                  <input name="director_info" type="text" id="director_info" class="form-control"  >
                 </div>
                 <div class="form-group">
                 <label for="inputMovieLength">Movie Length(Edit)</label>
-                  <input name="movie_length" type="number" id="inputMovieLength" class="form-control"  >
+                  <input name="movie_length" type="number" id="movie_length" class="form-control"  >
                 </div>
                 <div class="form-group">
                   <label for="inputPosterImage">Poster image(Edit)</label>
@@ -123,15 +124,15 @@
                 </div>
                 <div class="form-group">
                   <label for="inputReleaseDate">Release Date(Edit)</label>
-                  <input name="releaseDate" type="datetime-local" id="inputReleaseDate" class="form-control">
+                  <input name="releaseDate" type="datetime-local" id="releaseDate" class="form-control">
                 </div>
                 <div class="form-group">
                   <label for="inputStartPromote">Start Promote Date(Edit)</label>
-                  <input name="start_promote" type="datetime-local" id="inputStartPromote" class="form-control">
+                  <input name="start_promote" type="datetime-local" id="start_promote" class="form-control">
                 </div>
                 <div class="form-group">
                   <label for="inputEndPromote">End Promote Date(Edit)</label>
-                  <input name="end_promote" type="datetime-local" id="inputEndPromote" class="form-control">
+                  <input name="end_promote" type="datetime-local" id="end_promote" class="form-control">
                 </div>
             </div>
             <!-- /.card-body -->
