@@ -370,33 +370,38 @@
                                             <div class="product__item">
                                                 <div class="product__item__pic set-bg" data-setbg="./img/snack/<?php echo $food_type; ?>.png">  
                                                 </div>
+                                                
                                                 <div class="product__item__text">
                                                     <h5><?php echo $food_type; ?></h5>
-                                                    <p><?php echo $description; ?>
-                                                    <?php
-                                                        foreach($price as $p)
-                                                        {
-                                                            $food_id = $p["food_id"];
-                                                            $size = $p["size"];
-                                                            $price = $p["price"];
-                                                            echo "ID: $food_id size: $size price: $priceTHB";
-                                                        }
-                                                    ?>
-                                                    </p>
-                                                    <div >
-                                                        <button id="decrement">-</button><input type="number" id="quantity" value="0" min="0" style="width: 50px;"> <button id="increment">+</button>
-                                                    </div>
+                                                    <p><?php echo $description; ?></p>
+                                                                            
+                                                    <select name="select_size" id="select_size">
+                                                        <option selected disabled>Select Size</option>
+                                                            <?php
+                                                                foreach($price as $p)
+                                                                {
+                                                                    $food_id = $p["food_id"];
+                                                                    $size = $p["size"];
+                                                                    $price = $p["price"];
+                                                                    //echo "ID: $food_id size: $size price: $price";
+                                                                    echo "<option value=$food_id>$size: $price</option>";
+                                                                }
+                                                            ?>
+                                                    </select>
+                                                    
+                                                    
                                                 </div> 
+                                           
                                             </div>
                                   
-                                </div>
+                                </div> 
                         <?php } ?>
                     </div>
                 </div>
                             
                 </div>
             </div>
-                    <button id="submit">Submit</button>
+                    
         </div>
     </section>
 
