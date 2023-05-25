@@ -18,6 +18,26 @@
   //   }
   // }, 1000)
 
+  function selectMovieinfo(){
+    var x = document.getElementById("movie_id").value;
+    
+    $.ajax({
+      url:"showMovieinfo.php",
+      method: "POST",
+      data:{
+        id : x
+      },
+      success:function(data){
+        $("#ans").html(data);
+
+      }
+
+
+
+    
+    })
+  }
+
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1)
   }

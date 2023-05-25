@@ -17,6 +17,14 @@
   <?php
   include('../connect_db.php');
   ?> 
+
+  <!-- Select from Drop-down list and display data -->
+  <?php
+  $sql = "SELECT * FROM movieinfo";
+  $res = mysqli_query($con, $sql);
+  $rows = mysqli_fetch_array($res);
+  
+  ?>
   
 </head>
 <body class="hold-transition sidebar-mini">
@@ -72,7 +80,7 @@
             <div class="card-body">
               <div class="form-group">
                 <label for="inputMovieID">Movie ID</label>
-                  <select name="movie_id" id="movie_name" class="form-control custom-select">
+                  <select name="movie_id" id="movie_id" onchange="selectMovieinfo()" class="form-control custom-select">
                     <option selected disabled>Select one</option>
                     <?php
                       foreach($result as $branch)
@@ -83,48 +91,63 @@
                       }
                     ?>
                   </select>
+
+                  <?php
+                    if(!empty($_POST['movie_id']))
+                      $result2 = mysqli_query($con, "SELECT movie_name, movie_description FROM movieinfo WHERE movie_id= ".$_POST["movie_id"] );
+                    else
+                      $result2 = mysqli_query($con, "SELECT movie_name, movie_description FROM movieinfo");
+                  ?>
               </div>
-              <div class="form-group">
-                <label for="inputMoviename">Movie Name(Edit)</label>
-                <input name="movie_name" type="text" id="inputMoviename" class="form-control"  >
-              </div>
-              <div class="form-group">
-              <label for="inputMovieDescription">Movie Description(Edit)</label>
-                <input name="movie_description" type="text" id="inputMovieDescription" class="form-control"  >
-              </div>
-              <div class="form-group">
-              <label for="inputMovieTrailer">Movie Trailer URL(Edit)</label>
-                <input name="movie_trailer" type="text" id="inputMovieDescription" class="form-control"  >
-              </div>
-              <div class="form-group">
-              <label for="inputDirectorInfo">Director info(Edit)</label>
-                <input name="director_info" type="text" id="inputDirectorInfo" class="form-control"  >
-              </div>
-              <div class="form-group">
-              <label for="inputMovieLength">Movie Length(Edit)</label>
-                <input name="movie_length" type="number" id="inputMovieLength" class="form-control"  >
-              </div>
-              <div class="form-group">
-                <label for="inputPosterImage">Poster image(Edit)</label>
-                  <div class="input-group">
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" name="movie_poster"id="inputPosterImage" accept="image/jpeg, image/png, image/jpg">
-                        <label class="custom-file-label" for="inputPosterImage">Choose promote image</label>
+              <tbody id="ans">
+                <div class="form-group">
+                  <label for="inputMoviename">Movie Name(Edit)</label>
+                  <input name="movie_name" type="text" id="inputMoviename" class="form-control">
+
+                  <?php
+                    while($row = mysqli_fetch_array($result2)){
+                      echo "<input name='movie_name' type='text' id='inputMoviename' class='form-control' Value=$row[movie_name]>";
+                    }
+                  ?>
+                </div>
+                <div class="form-group">
+                <label for="inputMovieDescription">Movie Description(Edit)</label>
+                  <input name="movie_description" type="text" id="inputMovieDescription" class="form-control"  >
+                </div>
+                <div class="form-group">
+                <label for="inputMovieTrailer">Movie Trailer URL(Edit)</label>
+                  <input name="movie_trailer" type="text" id="inputMovieDescription" class="form-control"  >
+                </div>
+                <div class="form-group">
+                <label for="inputDirectorInfo">Director info(Edit)</label>
+                  <input name="director_info" type="text" id="inputDirectorInfo" class="form-control"  >
+                </div>
+                <div class="form-group">
+                <label for="inputMovieLength">Movie Length(Edit)</label>
+                  <input name="movie_length" type="number" id="inputMovieLength" class="form-control"  >
+                </div>
+                <div class="form-group">
+                  <label for="inputPosterImage">Poster image(Edit)</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                          <input type="file" class="custom-file-input" name="movie_poster"id="inputPosterImage" accept="image/jpeg, image/png, image/jpg">
+                          <label class="custom-file-label" for="inputPosterImage">Choose promote image</label>
+                      </div>
                     </div>
-                  </div>
-              </div>
-              <div class="form-group">
-                <label for="inputReleaseDate">Release Date(Edit)</label>
-                <input name="releaseDate" type="datetime-local" id="inputReleaseDate" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="inputStartPromote">Start Promote Date(Edit)</label>
-                <input name="start_promote" type="datetime-local" id="inputStartPromote" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="inputEndPromote">End Promote Date(Edit)</label>
-                <input name="end_promote" type="datetime-local" id="inputEndPromote" class="form-control">
-              </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputReleaseDate">Release Date(Edit)</label>
+                  <input name="releaseDate" type="datetime-local" id="inputReleaseDate" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="inputStartPromote">Start Promote Date(Edit)</label>
+                  <input name="start_promote" type="datetime-local" id="inputStartPromote" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="inputEndPromote">End Promote Date(Edit)</label>
+                  <input name="end_promote" type="datetime-local" id="inputEndPromote" class="form-control">
+                </div>
+              </tbody>
             </div>
             <!-- /.card-body -->
           </div>
