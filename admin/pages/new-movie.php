@@ -98,7 +98,7 @@
               </div>
               <div class="form-group">
                 <label for="inputName">Movie lenght</label>
-                <input name="lenght" type="number" id="inputLenght" class="form-control" placeholder="182(min)">
+                <input name="lenght" type="number" id="inputLenght" class="form-control" placeholder="182(min)" min=10>
               </div>
               <div class="form-group">
                 <label for="inputDescription">Movie Description</label>

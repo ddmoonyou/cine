@@ -50,7 +50,7 @@
 
     <!-- Main content -->
     <section class="content">
-    <form action="addstaff.php" method="POST" enctype="multipart/form-data">
+    <form action="addsnackdrink.php" method="POST" enctype="multipart/form-data">
       <div class="row">
         <div class="col-md-6">
           <div class="card card-primary">
@@ -66,19 +66,19 @@
             <div class="card-body">
               <div class="form-group">
                 <label for="inputSnackName">Snack Name</label>
-                <input type="snack_name" id="inputSnackName" class="form-control">
+                <input type ="text" name="snack_name" id="inputSnackName" class="form-control" placeholder="PopcornCheese">
               </div>
               <div class="form-group">
                 <label for="inputSnackDescription">Snack Description</label>
-                <input type="snack_description" id="inputSnackDescription" class="form-control">
+                <input type="text" name="snack_description" id="inputSnackDescription" class="form-control"placeholder="Popcorn with cheese flavor">
               </div>
               <div class="form-group">
                 <label for="inputCategory">Category</label>
                 <select name="snack_category" id="inputCategory" class="form-control custom-select">
                   <option selected disabled>Select one</option>
-                  <option value="Staff">Snack</option>
-                  <option value="Manager">Drinks</option>
-                  <option value="Manager">Popcorn</option>
+                  <option value="Snack">Snack</option>
+                  <option value="Drinks">Drinks</option>
+                  <option value="Popcorn">Popcorn</option>
                 </select>
               </div>
               <label for="inputSnackImage">Snack image</label>
@@ -97,7 +97,7 @@
           <div class="col-md-6">
           <div class="card card-secondary">
             <div class="card-header">
-              <h3 class="card-title">Premiere ticket</h3>
+              <h3 class="card-title">Set Price</h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -106,65 +106,17 @@
               </div>
             </div>
             <div class="card-body">
-              <div class="container">
-                <!-- add snack size&price-->
-                <div class="row clearfix">
-                  <div class="col-md-12 column">
-                    <table class="table table-bordered table-hover" id="tab_logic">
-                      <thead>
-                        <tr>
-                          <th class="text-center">
-                            #
-                          </th>
-                          <th class="text-center">
-                            Price
-                          </th>
-                          <th class="text-center">
-                            Size
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr id='addr0'>
-                          
-                          <td>
-                            1
-                          </td>
-
-                          <td>
-                            
-                            <?php
-                              /* layout type drown down query from db */
-                              $result = mysqli_query($con,'SELECT DISTINCT layout_type FROM theaterinfo');    
-                              echo '<select class="form-control custom-select" name=layout0>Layout Type</option>';
-                              foreach ($result as $row){
-                                echo "<option value=$row[layout_type]>$row[layout_type]</option>"; 
-                                }
-                               echo '</select>';
-                            ?>
-                          </td>
-
-                          <td>
-
-                            <?php
-                              /* system type drown down query from db */
-                              $result = mysqli_query($con,'SELECT DISTINCT system_type FROM theaterinfo');    
-                              echo '<select class="form-control custom-select" name=system0>System Type</option>';
-                              foreach ($result as $row){
-                                echo "<option value=$row[system_type]>$row[system_type]</option>"; 
-                                }
-                               echo '</select>';
-                            ?>
-
-                          </td>
-
-                        </tr>
-                        <tr id='addr1'></tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-                <button id="add_row" type="button" class="btn btn-primary btn-lg pull-left"><i class="fas fa-plus"></i> Add Snack</button>
+              <div class="form-group">
+                <label for="size S"><input name="s_check" type="checkbox" id="sizeS" value=1>  Size S (THB)</label>
+                <input name="s" type="number" id="sizeS" class="form-control" placeholder="0 THB" min=10>
+              </div>
+              <div class="form-group">
+                <label for="inputSubtitle"><input name="m_check" type="checkbox" id="sizeM" value=1>  Size M (THB)</label>
+                <input name="m" type="number" id="sizeM" class="form-control" placeholder="0 THB" min=10>
+              </div>
+              <div class="form-group">
+                <label for="inputSubtitle"><input name="l_check" type="checkbox" id="sizeL" value=1>  Size L (THB)</label>
+                <input name="l" type="number" id="sizeL" class="form-control" placeholder="0 THB" min=10>
               </div>
             </div>
             <!-- /.card-body -->
@@ -208,37 +160,7 @@
 <script src="../dist/js/demo.js"></script>
 <!-- bs-custom-file-input -->
 <script src="../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
-<script>
-$(function () {
-  bsCustomFileInput.init();
-});
 
-$(document).ready(function() {
-  var i = 1;
-  $("#add_row").click(function() {
-
-  /* add button functionality */
-  $('#addr' + i).html("<td>" + (i + 1) + "</td> <td> <select class=\"form-control custom-selec\" name=layout" + i + ">Layout Type</option> <?php
-    /* repeat code from earlier as string in html()*/
-    $result = mysqli_query($con,'SELECT DISTINCT layout_type FROM theaterinfo');    
-    foreach ($result as $row){
-      echo "<option value=$row[layout_type]>$row[layout_type]</option>"; 
-    }
-    echo '</select>';
-    ?>
-    </td>  <td> <select class=\"form-control custom-selec\"  name=system" + i + ">System Type</option> <?php
-    $result = mysqli_query($con,'SELECT DISTINCT system_type FROM theaterinfo');    
-    foreach ($result as $row){
-      echo "<option value=$row[system_type]>$row[system_type]</option>"; 
-    }
-    echo '</select>';
-    ?>
-    </td>");
-
-    $('#tab_logic').append('<tr id="addr' + (i + 1) + '"></tr>');
-    i++;
-  });
-});
 
 </script>
 
