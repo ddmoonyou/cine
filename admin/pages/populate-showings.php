@@ -65,11 +65,11 @@
                                 $curtheater = 1+$theater;
                                 echo "<p>$curbranch_id $curtheater $curmovie_id $mysqltime $audio $subtitle</p>";
                                 $count++;
-                                $sql ="INSERT INTO showings(movie_id,branch_id,theater_no,date_time,language_dub,language_sub)
+                                /*$sql ="INSERT INTO showings(movie_id,branch_id,theater_no,date_time,language_dub,language_sub)
                                     VALUES ($curmovie_id,$curbranch_id,$curtheater,'$mysqltime','$audio','$subtitle');";
                                 if (!mysqli_query($con, $sql)) {
                                     die('Error: ' . mysqli_error($con));
-                                }
+                                }*/
                                 
                             }
                         }
