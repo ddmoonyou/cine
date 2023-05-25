@@ -118,8 +118,12 @@
                 <input name="releaseDate" type="datetime-local" id="inputReleaseDate" class="form-control">
               </div>
               <div class="form-group">
-                <label for="inputPromote">Promote Date(Edit)</label>
-                <input name="promote" type="datetime-local" id="inputPromote" class="form-control">
+                <label for="inputStartPromote">Start Promote Date(Edit)</label>
+                <input name="start_promote" type="datetime-local" id="inputStartPromote" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="inputEndPromote">End Promote Date(Edit)</label>
+                <input name="end_promote" type="datetime-local" id="inputEndPromote" class="form-control">
               </div>
             </div>
             <!-- /.card-body -->

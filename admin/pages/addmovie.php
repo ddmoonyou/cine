@@ -22,7 +22,7 @@
     if($_FILES['inputPosterImage']['name'] == '' || $_FILES['inputPromoteImage']['name'] == ''
     ||    empty($_POST["name"]) || empty($_POST["lenght"])
     || empty($_POST["description"]) || empty($_POST["director"])
-    || empty($_POST["promote"]) || empty($_POST["branch_id"])
+    || empty($_POST["start_promote"]) || empty($_POST["end_promote"]) || empty($_POST["branch_id"])
     || empty($_POST["theater"]) || empty($_POST["time"])
     || empty($_POST["audio"]) || empty($_POST["subtitle"]) || empty($_POST["release"])
     )
@@ -35,18 +35,20 @@
         $length =  $_POST["lenght"];
         $description =  mysqli_real_escape_string($con,$_POST["description"]);
         $director =  mysqli_real_escape_string($con,$_POST["director"]);
-        $p =  mysqli_real_escape_string($con,$_POST["promote"]);
-        $r =  mysqli_real_escape_string($con,$_POST["release"]);
+        $sp_date =  mysqli_real_escape_string($con,$_POST["start_promote"]);
+        $np_date =  mysqli_real_escape_string($con,$_POST["end_promote"]);
+        $r_date =  mysqli_real_escape_string($con,$_POST["release"]);
         $branch_id =  mysqli_real_escape_string($con,$_POST["branch_id"]);
         $theater =  mysqli_real_escape_string($con,$_POST["theater"]);
         $time = $_POST["time"];
         $audio =  mysqli_real_escape_string($con,$_POST["audio"]);
         $subtitle =  mysqli_real_escape_string($con,$_POST["subtitle"]);
 
-        $promote = date ('Y-m-d H:i:s', strtotime($p));
-        $releaseDate = date ('Y-m-d H:i:s', strtotime($r));
-        $sql ="INSERT INTO movieinfo(movie_name,movie_length,movie_description,director_info,promote,releaseDate)
-                VALUES ('$name',$length,'$description','$director','$promote','$releaseDate');";
+        $start_promote = date ('Y-m-d H:i:s', strtotime($sp_date));
+        $end_promote = date ('Y-m-d H:i:s', strtotime($np_date));
+        $releaseDate = date ('Y-m-d H:i:s', strtotime($r_date));
+        $sql ="INSERT INTO movieinfo(movie_name,movie_length,movie_description,director_info,start_promote,end_promote,releaseDate)
+                VALUES ('$name',$length,'$description','$director','$start_promote','$end_promote','$releaseDate');";
 
         if (!mysqli_query($con, $sql)) {
 			die('Error: ' . mysqli_error($con));
