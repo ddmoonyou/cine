@@ -111,7 +111,7 @@
 
                         <?php
                         // Assume you have already established a connection to your database
-                        $sql = "SELECT * FROM promotion WHERE _start_date <= NOW() AND end_date >= NOW();";
+                        $sql = "SELECT * FROM promotion WHERE start_date <= NOW() AND end_date >= NOW();";
                         $result = mysqli_query($conn, $sql);
 
                         if (!$result) {
@@ -131,11 +131,11 @@
                     while ($row = mysqli_fetch_assoc($result)) {
                         $code = $row['promotion_code'];
                         $discount_percent = $row['discount_percent'];
-                        $start_date = $row['_start_date'];
+                        $start_date = $row['start_date'];
                         $end_date = $row['end_date'];
                         $formatted_start_date = date("d M Y", strtotime($start_date)); 
                         $formatted_end_date = date("d M Y", strtotime($end_date)); 
-                        $description = $row['_description'];
+                        $description = $row['description'];
                 ?>
                         <div class="col-lg-4 col-md-6 col-sm-6 col-md-6 col-sm-6 mix">
                             <div class="blog__item">
