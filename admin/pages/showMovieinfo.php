@@ -15,7 +15,9 @@
         $data['trailer'] = $rows["movie_trailer"];
         $data['director'] = $rows["director_info"];
         $data['length'] = $rows["movie_length"];
-        $data['release_date'] = $rows["releaseDate"];
+        $data['release_date'] =  $rows["releaseDate"];
+        // date("c", strtotime($rows['releaseDate']))
+        // strtotime($rows["releaseDate"]);
         $data['startPromote'] = $rows["start_promote"];
         $data['endPromote'] = $rows["end_promote"];
 
