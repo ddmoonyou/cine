@@ -57,7 +57,7 @@
       }
     ?>
     <section class="content">
-    <form action="updatemovie.php" method="POST" enctype="multipart/form-data">
+    <form action="edit-movie-sql.php" method="POST" enctype="multipart/form-data">
       <div class="row">
         <div class="col-md-6">
           <div class="card card-primary">
