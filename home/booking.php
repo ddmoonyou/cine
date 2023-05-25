@@ -220,12 +220,11 @@
             <div class="row justify-content-end">
                 <div class="col-3" style="margin:10px"> <h4>Total <?php echo $total;?> THB </h4></div>
                 <div class="col-lg-1">
-                    <button type="confirm" class="primary-btn" id="confirm"> Confirm </button>
+                   <form action="payment.php" method="POST"> <button type="confirm" class="primary-btn" id="confirm"> Confirm </button> </form>
                 </div>
             </div>
     </div>
 
-      
    
     
 </body>

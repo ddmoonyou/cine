@@ -102,7 +102,7 @@
             </div>
       </div>
 
-
+<form action="booking.php" method="POST"> 
     <?php
 
 
@@ -153,7 +153,7 @@
     ?>
 
 
-<form action="booking.php" method="POST"> 
+
 <div class="container">
     <div class="row">
         <div class="col-lg-9 md-8">
@@ -560,7 +560,10 @@
         </div>
     </section>
 
-   <div class="container" style="padding-bottom:30px"> <div class="row justify-content-end"><div class="col-1">  <button type="submit" class="primary-btn" id="submit"> Book </button></div></div></div>
+   <div class="container" style="padding-bottom:30px"> 
+        <div class="row justify-content-end"><div class="col-1">  
+    <button type="submit" class="primary-btn" id="submit"> Book </button>
+    </div></div></div>
 </form>
 
 
