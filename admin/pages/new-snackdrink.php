@@ -55,7 +55,7 @@
         <div class="col-md-6">
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">General</h3>
+              <h3 class="card-title">Information</h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -64,6 +64,15 @@
               </div>
             </div>
             <div class="card-body">
+              <div class="form-group">
+                <label for="inputSnackImage">Snack image</label>
+                  <div class="input-group">
+                    <div class="custom-file">
+                        <input name="snack_img" type="file" class="custom-file-input" id="inputSnackImage" accept="image/jpeg, image/png, image/jpg">
+                        <label class="custom-file-label" for="inputSnackImage">Choose snack image</label>
+                    </div>
+                  </div>
+              </div>
               <div class="form-group">
                 <label for="inputSnackName">Snack Name</label>
                 <input type ="text" name="snack_name" id="inputSnackName" class="form-control" placeholder="PopcornCheese">
@@ -74,20 +83,13 @@
               </div>
               <div class="form-group">
                 <label for="inputCategory">Category</label>
-                <select name="snack_category" id="inputCategory" class="form-control custom-select">
-                  <option selected disabled>Select one</option>
-                  <option value="Snack">Snack</option>
-                  <option value="Drinks">Drinks</option>
-                  <option value="Popcorn">Popcorn</option>
-                </select>
-              </div>
-              <label for="inputSnackImage">Snack image</label>
-                  <div class="input-group">
-                    <div class="custom-file">
-                        <input name="snack_img" type="file" class="custom-file-input" id="inputSnackImage" accept="image/jpeg, image/png, image/jpg">
-                        <label class="custom-file-label" for="inputSnackImage">Choose snack image</label>
-                    </div>
-                  </div>
+                  <select name="snack_category" id="inputCategory" class="form-control custom-select">
+                    <option selected disabled>Select one</option>
+                    <option value="Snack">Snack</option>
+                    <option value="Drinks">Drinks</option>
+                    <option value="Popcorn">Popcorn</option>
+                  </select>
+                </div>
               </div>
             </div>
             <!-- /.card-body -->
@@ -108,15 +110,15 @@
             <div class="card-body">
               <div class="form-group">
                 <label for="size S"><input name="s_check" type="checkbox" id="sizeS" value=1>  Size S (THB)</label>
-                <input name="s" type="number" id="sizeS" class="form-control" placeholder="0 THB" min=10>
+                <input name="s" type="number" id="sizeS" class="form-control" placeholder="139" min=10>
               </div>
               <div class="form-group">
                 <label for="inputSubtitle"><input name="m_check" type="checkbox" id="sizeM" value=1>  Size M (THB)</label>
-                <input name="m" type="number" id="sizeM" class="form-control" placeholder="0 THB" min=10>
+                <input name="m" type="number" id="sizeM" class="form-control" placeholder="159" min=10>
               </div>
               <div class="form-group">
                 <label for="inputSubtitle"><input name="l_check" type="checkbox" id="sizeL" value=1>  Size L (THB)</label>
-                <input name="l" type="number" id="sizeL" class="form-control" placeholder="0 THB" min=10>
+                <input name="l" type="number" id="sizeL" class="form-control" placeholder="189" min=10>
               </div>
             </div>
             <!-- /.card-body -->
@@ -160,7 +162,11 @@
 <script src="../dist/js/demo.js"></script>
 <!-- bs-custom-file-input -->
 <script src="../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
-
+<script>
+$(function () {
+  bsCustomFileInput.init();
+});
+</script>
 
 </script>
 
