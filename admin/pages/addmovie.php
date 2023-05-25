@@ -73,8 +73,8 @@
         
         
         $mysqltime = date ('Y-m-d H:i:s', strtotime($time));
-        $sql ="INSERT INTO showings(movie_id,branch_id,theater_no,date_time,language_dub,language_sub)
-                VALUES ($id,$branch_id,$theater,'$mysqltime','$audio','$subtitle');";
+        $sql ="INSERT INTO showings(movie_id,branch_id,theater_no,date_time,language_dub,language_sub,premiere_ticket)
+                VALUES ($id,$branch_id,$theater,'$mysqltime','$audio','$subtitle',1);";
         
         if (!mysqli_query($con, $sql)) {
 			die('Error: ' . mysqli_error($con));
