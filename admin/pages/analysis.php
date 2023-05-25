@@ -91,9 +91,10 @@
             <!-- /.card -->
 
             <!-- PIE CHART -->
+          <div class="col-md-4">
             <div class="card card-danger">
               <div class="card-header">
-                <h3 class="card-title">Pie Chart</h3>
+                <h3 class="card-title">System Type</h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -109,14 +110,15 @@
               </div>
               <!-- /.card-body -->
             </div>
+          </div>
             <!-- /.card -->
           <!-- /.col (LEFT) -->
 
-          <div class="col-md-6">
-            <!-- LINE CHART -->
+          <div class="col-md-5">
+            <!-- FOOD CHART -->
             <div class="card card-info">
               <div class="card-header">
-                <h3 class="card-title">Line Chart</h3>
+                <h3 class="card-title">Food Chart</h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -129,7 +131,7 @@
               </div>
               <div class="card-body">
                 <div class="chart">
-                  <canvas id="lineChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                  <canvas id="stackedBarChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
                 </div>
               </div>
               <!-- /.card-body -->
@@ -289,28 +291,27 @@
       }
     }
 
-    // This will get the first returned node in the jQuery collection.
     new Chart(areaChartCanvas, {
       type: 'line',
       data: areaChartData,
       options: areaChartOptions
     })
 
-    //-------------
-    //- LINE CHART -
-    //--------------
-    var lineChartCanvas = $('#lineChart').get(0).getContext('2d')
-    var lineChartOptions = $.extend(true, {}, areaChartOptions)
-    var lineChartData = $.extend(true, {}, areaChartData)
-    lineChartData.datasets[0].fill = false;
-    lineChartData.datasets[1].fill = false;
-    lineChartOptions.datasetFill = false
+    // //-------------
+    // //- LINE CHART -
+    // //--------------
+    // var lineChartCanvas = $('#lineChart').get(0).getContext('2d')
+    // var lineChartOptions = $.extend(true, {}, areaChartOptions)
+    // var lineChartData = $.extend(true, {}, areaChartData)
+    // lineChartData.datasets[0].fill = false;
+    // lineChartData.datasets[1].fill = false;
+    // lineChartOptions.datasetFill = false
 
-    var lineChart = new Chart(lineChartCanvas, {
-      type: 'line',
-      data: lineChartData,
-      options: lineChartOptions
-    })
+    // var lineChart = new Chart(lineChartCanvas, {
+    //   type: 'line',
+    //   data: lineChartData,
+    //   options: lineChartOptions
+    // })
 
     //-------------
     //- DONUT CHART -
@@ -350,8 +351,18 @@
     //- PIE CHART -
     //-------------
     // Get context with jQuery - using jQuery's .get() method.
+    var pieData        = {
+      labels: [
+          '4D','IMAX','LASER','Bed Cinema'
+      ],
+      datasets: [
+        {
+          data: [32,42,150,21],
+          backgroundColor : ['#00FFFF', '#DC143C', '#DCDCDC', '#DAA520'],
+        }
+      ]
+    }
     var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
-    var pieData        = donutData;
     var pieOptions     = {
       maintainAspectRatio : false,
       responsive : true,
@@ -420,12 +431,56 @@
     //---------------------
     //- STACKED BAR CHART -
     //---------------------
+
+    var FoodData = {
+      labels  : ['Pepsi', 'Pepsi-Max', 'Coca-Cola', 'Coca-Cola-Zero','Sprite', 'Lemon-Soda', 'Mineral-Water', 'Fanta-Strawberry-Soda', 'Fanta-Orange', 'Fanta-Grape', 
+      'Salty-Popcorn', 'Caramel-Popcorn', 'Cheese-Popcorn', 'BBQ-Popcorn', 'Lay-Nori-seaweed', 'Lay-BBQ', 'Cornae', 'Pringles'],
+      datasets: [
+        {
+          label               : 'S',
+          backgroundColor     : 'rgba(60,141,188,0.9)',
+          borderColor         : 'rgba(60,141,188,0.8)',
+          pointRadius          : false,
+          pointColor          : '#3b8bba',
+          pointStrokeColor    : 'rgba(60,141,188,1)',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(60,141,188,1)',
+          data                : [28, 48, 40, 0, 86, 27, 28, 48, 0, 0, 86, 27
+                                ,28, 48, 40, 19, 0, 0]
+        },
+        {
+          label               : 'M',
+          backgroundColor     : 'rgba(210, 214, 222, 1)',
+          borderColor         : 'rgba(210, 214, 222, 1)',
+          pointRadius         : false,
+          pointColor          : 'rgba(210, 214, 222, 1)',
+          pointStrokeColor    : '#c1c7d1',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(220,220,220,1)',
+          data                : [12, 40, 21, 34, 67, 23, 54, 12, 32, 21, 37, 55
+                                ,76, 65, 43, 45, 73, 46]
+        },
+        {
+          label               : 'L',
+          backgroundColor     : 'rgba(20, 230, 125, 1)',
+          borderColor         : 'rgba(20, 230, 125, 1)',
+          pointRadius         : false,
+          pointColor          : 'rgba(20, 230, 125, 1)',
+          pointStrokeColor    : '#c1a1f1',
+          pointHighlightFill  : '#fee',
+          pointHighlightStroke: 'rgba(20, 230, 125, 1)',
+          data                : [12, 40, 43, 34, 67, 35, 54, 23, 98, 23, 37, 55
+                                ,34, 21, 43, 59, 73, 32]
+        },
+    
+      ]
+    }
     var stackedBarChartCanvas = $('#stackedBarChart').get(0).getContext('2d')
-    var stackedBarChartData = $.extend(true, {}, barChartData)
+    var stackedBarChartData = $.extend(true, {}, FoodData)
 
     var stackedBarChartOptions = {
       responsive              : true,
-      maintainAspectRatio     : false,
+      maintainAspectRatio     : true,
       scales: {
         xAxes: [{
           stacked: true,
