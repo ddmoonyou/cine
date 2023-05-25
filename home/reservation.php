@@ -153,13 +153,12 @@
     ?>
 
 
-
+<form action="booking.php" method="POST"> 
 <div class="container">
     <div class="row">
         <div class="col-lg-9 md-8">
             <div class="text-left">
             <table class="table">
-            <form action="booking.php" method="POST"> 
             <?php // generate all avialable seats
                 while ($row = mysqli_fetch_assoc($result)) {
 
@@ -382,9 +381,9 @@
                                                             $price = $p["price"];
                                                             echo "<div class='col-3'> <div class='row'>";
                                                             echo "<span>$size: $price</span>";
-                                                            echo "<input type='number' id='quantity' name='select_seat[]' value='$quantity' min='0' max='10'>";
-                                                            echo "<input type='hidden' name='select_seat[]' value='$food_id'>";
-                                                            echo "</div></div> </form>";
+                                                            echo "<input type='number' id='quantity' name='food_quantity[]' value='$quantity' min='0' max='10'>";
+                                                            echo "<input type='hidden' name='food_id[]' value='$food_id'>";
+                                                            echo "</div></div>";
                                                         }
                                                         ?>
                                             </div> 
@@ -527,7 +526,7 @@
             </div>
         </div>
     </section>
-
+</form>
     
 
 

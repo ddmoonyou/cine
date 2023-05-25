@@ -120,6 +120,7 @@
                 if (!$result) {
                     die('Invalid query: ' . mysqli_error($conn));
                 }
+
                 $data = mysqli_fetch_assoc($result);
                 $row = $data["seat_row"];
                 $column = $data["seat_column"];
@@ -146,6 +147,12 @@
             } else {
               echo "No seats selected";
             }
+
+            foreach (array_combine($_POST['food_id'],$_POST['food_quantity']) as $id => $quantity)
+            {
+                echo "<h6>$id:$quantity";
+            }
+
           }
       ?>
       
