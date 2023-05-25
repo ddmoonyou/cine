@@ -98,12 +98,32 @@
 
     }
 
-    // $fileToDelete = "../../home/img/poster/".$movie_id.".jpg";
-    // unlink($fileToDelete);
+    $sql = "SELECT movie_id FROM movieinfo
+              WHERE movie_id = '$movie_id';";
+        
+    $res = mysqli_query($con, $sql);
+    if (!$res) {
+			die('Error: ' . mysqli_error($con));
+		}
+    foreach($res as $a)
+    {
+      $id = $a["movie_id"];
+    }
+
+    $filename = "../../home/img/poster/".$id.".jpg";
+    unlink($filename);
+
+    $filename = "../../home/img/promote/".$id.".jpg";
+    unlink($filename);
     
-    // $filename = $_FILES["inputPosterImage"]["movie_name"];
-    // $path = "../../home/img/poster/".$movie_id.".jpg";
-    // move_uploaded_file($_FILES['inputPosterImage']['tmp_name'],$path);
+    $filename = $_FILES["inputPosterImage"]["movie_name"];
+    $path = "../../home/img/poster/".$id.".jpg";
+    move_uploaded_file($_FILES['inputPosterImage']['tmp_name'],$path);
+
+    
+    $filename = $_FILES["inputPromoteImage"]["movie_name"];
+    $path = "../../home/img/promote/".$id.".jpg";
+    move_uploaded_file($_FILES['inputPromoteImage']['tmp_name'],$path);
 
     
 

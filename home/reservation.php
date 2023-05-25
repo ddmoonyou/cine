@@ -280,7 +280,7 @@
             </div>
         </div>
 
-        <div class="col-3"> <img src="./img/icon/seat_price.png">  <button type="submit" class="primary-btn" id="submit"> Book </button>  </div>
+        <div class="col-3"> <img src="./img/icon/seat_price.png">    </div>
         
     </div>
     <div class="col-lg-9 md-8">
@@ -411,14 +411,97 @@
                         <div class="col-lg-12">
                             <ul class="filter__controls">
                                 <?php
-                                $sql = "SELECT * FROM foodinfo WHERE category='drinks'";
+                                $sql = "SELECT DISTINCT * FROM foodinfo 
+                                WHERE category='drinks'";
                                 $result = mysqli_query($conn, $sql);
 
                                 if (!$result) {
                                     die('Invalid query: ' . mysqli_error($conn));
                                 }
                                 ?>
-                            <h4 class="active" data-filter="*">Drink List</h4>
+                                <h4 class="active" data-filter="*">Drinks List</h4>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row product__filter">
+                        
+                        <?php   
+                            // Loop through the result set and generate HTML code for each movie    url('<?php echo $movie_poster;
+                            
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $food_type = $row['food_type'];
+                                $category = $row['category'];
+                                $description = $row['description'];
+                                //$food_id = $row['food_id'];
+                                //$price = $row['price'];
+
+                                $select_size ="SELECT food_id,size,price FROM foodsize WHERE food_type = '$food_type';";
+                                $price = mysqli_query($conn, $select_size);
+                                if (!$price) {
+                                    die('Invalid query: ' . mysqli_error($conn));
+                                }
+
+
+                              
+                        ?>
+                                <div class="col-lg-3 col-md-6 col-sm-6 mix new-arrivals">
+                                    <div class="product__item">
+                                        <div class="product__item__pic set-bg" data-setbg="./img/snack/<?php echo $food_type; ?>.png">   </div>
+                                            <div class="product__item__text">
+                                                <h5><?php echo $food_type; ?></h5>
+                                                <p><?php echo $description; ?></p>
+                                                                            
+                                                    
+                                                        <!-- <option selected disabled>Select Size</option> -->
+                                                        <?php
+                                                        $quantity = 0;
+                                                        foreach($price as $p) {
+                                                            $food_id = $p["food_id"];
+                                                            $size = $p["size"];
+                                                            $price = $p["price"];
+                                                            echo "<div class='col-3'> <div class='row'>";
+                                                            echo "<span>$size: $price</span>";
+                                                            echo "<input type='number' id='quantity' name='food_quantity[]' value='$quantity' min='0' max='10'>";
+                                                            echo "<input type='hidden' name='food_id[]' value='$food_id'>";
+                                                            echo "</div></div>";
+                                                        }
+                                                        ?>
+                                            </div> 
+                                        </div>
+                                    </div> 
+                        <?php } ?>
+                                </div>
+                    </div>
+                </div>
+                            
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="shop snack" id="snack">
+       <div class="container">
+           <div class="row">
+                <div class="col-lg-2">
+                    
+                </div>
+                <div class="col-lg-10">
+                    <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <ul class="filter__controls">
+                                <?php
+                                $sql = "SELECT DISTINCT * FROM foodinfo 
+                                WHERE category='snack'";
+                                $result = mysqli_query($conn, $sql);
+
+                                if (!$result) {
+                                    die('Invalid query: ' . mysqli_error($conn));
+                                }
+                                ?>
+                                <h4 class="active" data-filter="*">Popcorn List</h4>
                             </ul>
                         </div>
                     </div>
@@ -438,29 +521,37 @@
                                 if (!$price) {
                                     die('Invalid query: ' . mysqli_error($conn));
                                 }
+
+
                               
                         ?>
                                 <div class="col-lg-3 col-md-6 col-sm-6 mix new-arrivals">
-                                        
-                                            <div class="product__item">
-                                                <div class="product__item__pic set-bg" data-setbg="./img/snack/<?php echo $food_type; ?>.png">  
-                                                </div>
-                                                <div class="product__item__text">
-                                                    <h5><?php echo $food_type; ?></h5>
-                                                    <p><?php echo $description; ?></p>
-                                                    <?php
-                                                        foreach($price as $p)
-                                                        {
+                                    <div class="product__item">
+                                        <div class="product__item__pic set-bg" data-setbg="./img/snack/<?php echo $food_type; ?>.png">   </div>
+                                            <div class="product__item__text">
+                                                <h5><?php echo $food_type; ?></h5>
+                                                <p><?php echo $description; ?></p>
+                                                                            
+                                                    
+                                                        <!-- <option selected disabled>Select Size</option> -->
+                                                        <?php
+                                                        $quantity = 0;
+                                                        foreach($price as $p) {
                                                             $food_id = $p["food_id"];
                                                             $size = $p["size"];
                                                             $price = $p["price"];
-                                                            echo "ID: $food_id size: $size price: $price THB";
+                                                            echo "<div class='col-3'> <div class='row'>";
+                                                            echo "<span>$size: $price</span>";
+                                                            echo "<input type='number' id='quantity' name='food_quantity[]' value='$quantity' min='0' max='10'>";
+                                                            echo "<input type='hidden' name='food_id[]' value='$food_id'>";
+                                                            echo "</div></div>";
                                                         }
-                                                    ?>
-                                                </div> 
-                                            </div>
-                                </div>
+                                                        ?>
+                                            </div> 
+                                        </div>
+                                    </div> 
                         <?php } ?>
+                                </div>
                     </div>
                 </div>
                             
@@ -469,64 +560,10 @@
         </div>
     </section>
 
-
-    <!-- Snack Section Begin -->
-    <section class="shop spad" id="snack">
-       <div class="container">
-           <div class="row">
-                <div class="col-lg-2">
-                    
-                </div>
-                <div class="col-lg-10">
-                    <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <ul class="filter__controls">
-                                <?php
-                                $sql = "SELECT * FROM foodinfo WHERE category='snack'";
-                                $result = mysqli_query($conn, $sql);
-
-                                if (!$result) {
-                                    die('Invalid query: ' . mysqli_error($conn));
-                                }
-                                ?>
-                            <h4 class="active" data-filter="*">Snack List</h4>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="row product__filter">
-                        
-                        <?php   
-                            // Loop through the result set and generate HTML code for each movie    url('<?php echo $movie_poster;
-                            
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                $food_type = $row['food_type'];
-                                $category = $row['category'];
-                                $description = $row['description'];
-                              
-                        ?>
-                                <div class="col-lg-3 col-md-6 col-sm-6  mix new-arrivals">
-                                        
-                                            <div class="product__item">
-                                                <div class="product__item__pic set-bg" data-setbg="./img/snack/<?php echo $food_type; ?>.png">  
-                                                </div>
-                                                <div class="product__item__text">
-                                                    <h5><?php echo $food_type; ?></h5>
-                                                    <p><?php echo $description; ?></p>
-                                                </div> 
-                                            </div>
-                                  
-                                </div>
-                        <?php } ?>
-                    </div>
-                </div>
-                            
-                </div>
-            </div>
-        </div>
-    </section>
+   <div class="container" style="padding-bottom:30px"> <div class="row justify-content-end"><div class="col-1">  <button type="submit" class="primary-btn" id="submit"> Book </button></div></div></div>
 </form>
+
+
     
 
 

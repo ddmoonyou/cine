@@ -48,7 +48,7 @@
     }
 
     //echo "Connected successfully";
-
+    $total = 0;
     ?> 
 
 </head>
@@ -102,8 +102,28 @@
                   </div>
             </div>
       </div>
-
+    
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-5 align-item-center">
+                    <div class="container" style="margin:1%">
+                        <h4><element class="bold">Product</element></h4>
+                    </div>
+                </div>
+                <div class="col-4 align-item-center">
+                    <div class="container" style="margin:1%">
+                        <h4><element class="bold">Quantity</element></h4>
+                    </div>
+                </div>
+                <div class="col-2 align-item-left">
+                    <div class="container" style="margin:1%">
+                        <h4><element class="bold">Subtotal</element></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
       <?php
+     
       if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if (isset($_POST['select_seat'])) {
               // Loop through the selected seats
@@ -126,20 +146,25 @@
                 $column = $data["seat_column"];
                 $seat_price = $data["price"];
                 $seat_type = $data["seat_type"];
-                //$food_id = $data["food_id"];
-                //<h6>Food: <?php echo$food_id></h4>
+                
                 ?>
                   <div class="row justify-content-center">
+                        <div class="col-4 align-item-center">
+                              <div class="container" style="margin:1.5%">
+                                    <h5>Seat: <?php echo $row.$column.'  '.$seat_type?></h5>
+                                    
+                              </div>
+                        </div>
                         <div class="col-2 align-item-center">
                               <div class="container" style="margin:1%">
-                                    <h6>Seat: <?php echo $row.$column.'  '.$seat_type?></h4>
-                                    
+                                    <h5>1</h5>
                               </div>
                         </div>
                         
                         <div class="col-2">
                               <div class="container" style="margin:1%">
-                                    <h6> <?php echo $seat_price?>THB</h4>
+                                    <h5> <?php echo $seat_price?> THB</h5>
+                                    <?php $total = $total + $seat_price ;?>
                               </div>
                         </div>
                   </div>
@@ -149,23 +174,56 @@
             }
 
             foreach (array_combine($_POST['food_id'],$_POST['food_quantity']) as $id => $quantity)
-            {
-                echo "<h6>$id:$quantity";
-            }
+            { 
+                $sql = "SELECT * FROM foodsize
+                        WHERE food_id = $id";
+
+                $result = mysqli_query($conn, $sql);
+                if (!$result) {
+                    die('Invalid query: ' . mysqli_error($conn));
+                }
+                $data = mysqli_fetch_assoc($result);
+                $food_type = $data["food_type"];
+                $food_price = $data["price"];
+                $food_size = $data["size"];
+                
+                
+                if($quantity > 0) {?>
+                <div class="row justify-content-center">
+                        <div class="col-4 align-item-center">
+                              <div class="container" style="margin:1.5%">
+                                    <h5>Food: <?php { echo $food_type; }?> Size <?php { echo $food_size; }?></h5>
+                              </div>
+                        </div>
+                        <div class="col-2 align-item-center">
+                              <div class="container" style="margin:1%">
+                                    <h5><?php { echo $quantity; }?></h5>
+                              </div>
+                        </div>
+                        <div class="col-2">
+                              <div class="container" style="margin:1%">
+                                    <h5> <?php echo $food_price*$quantity ?>THB</h5>
+                                    <?php $total = $total + $food_price*$quantity ;?>
+                              </div>
+                        </div>
+                </div>
+                  
+                
+           <?php }}
 
           }
       ?>
       
-      <div class="container">
-            <div class="col-lg-10">
-                  
-            </div>
+    <div class="container">
+        <div class="col-lg-10">
+        </div>
             <div class="row justify-content-end">
-            <div class="col-lg-3">
-            <button type="confirm" class="primary-btn" id="confirm"> Confirm </button>
+                <div class="col-3" style="margin:10px"> <h4>Total <?php echo $total;?> THB </h4></div>
+                <div class="col-lg-1">
+                    <button type="confirm" class="primary-btn" id="confirm"> Confirm </button>
+                </div>
             </div>
-</div>
-      </div>
+    </div>
 
       
    
