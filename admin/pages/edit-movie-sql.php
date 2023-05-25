@@ -25,9 +25,11 @@
     $director_info = mysqli_real_escape_string($con,$_POST["director_info"]);
     $movie_length = $_POST["movie_length"];
     $r_Date = $_POST["releaseDate"];
-    $p_date = $_POST["promote"];
+    $sp_date = $_POST["start_promote"];
+    $np_date = $_POST["end_promote"];
     $releaseDate = date ('Y-m-d H:i:s', strtotime($r_Date));
-    $promote = date ('Y-m-d H:i:s', strtotime($p_date));
+    $start_promote = date ('Y-m-d H:i:s', strtotime($sp_date));
+    $end_promote = date ('Y-m-d H:i:s', strtotime($np_date));
 
     if(!empty($_POST["movie_name"]))
     {
@@ -79,9 +81,17 @@
 		}
 
     }
-    if(!empty($_POST["promote"]))
+    if(!empty($_POST["start_promote"]))
     {
-      $sql = "UPDATE movieinfo SET promote = '$promote' WHERE movie_id =  $movie_id";
+      $sql = "UPDATE movieinfo SET start_promote = '$start_promote' WHERE movie_id =  $movie_id";
+      if (!mysqli_query($con, $sql)) {
+			die('Error: ' . mysqli_error($con));
+		}
+
+    }
+    if(!empty($_POST["end_promote"]))
+    {
+      $sql = "UPDATE movieinfo SET end_promote = '$end_promote' WHERE movie_id =  $movie_id";
       if (!mysqli_query($con, $sql)) {
 			die('Error: ' . mysqli_error($con));
 		}
