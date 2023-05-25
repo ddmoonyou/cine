@@ -28,12 +28,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>ChartJS</h1>
+            <h1>Analysis Report</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">ChartJS</li>
+              <li class="breadcrumb-item active">Analysis Report</li>
             </ol>
           </div>
         </div>
@@ -191,11 +191,14 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+  
+  <!-- Main Footer -->
   <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
+    <strong>Copyright &copy; 2022-2023 <a href="#">CINE (BEST CINEMA IN SEA)</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 3.2.0
     </div>
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->

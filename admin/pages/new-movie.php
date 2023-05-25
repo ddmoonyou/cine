@@ -102,7 +102,11 @@
               </div>
               <div class="form-group">
                 <label for="inputDescription">Movie Description</label>
-                <input name="description" type="text" id="inputDescription" class="form-control" placeholder="Avengers: ENDGAME  เรื่องราวการปิดจักรวาลมาร์เวลเฟส 3 เหตุการณ์ภายหลังจากที่ธานอสดีดนิ้วล้างครึ่งจักรวาล เหล่าฮีโร่ที่เหลือรอดจะหาทางกอบกู้จักรวาลนี้คืนมาได้อย่างไร โดยในภาคนี้จะมีตัวเด็ดอย่างกัปตันมาร์เวลมาร่วมเสริมทัพด้วย">              </div>
+                <input name="description" type="text" id="inputDescription" class="form-control" placeholder="Avengers: ENDGAME  เรื่องราวการปิดจักรวาลมาร์เวลเฟส 3 เหตุการณ์ภายหลังจากที่ธานอสดีดนิ้วล้างครึ่งจักรวาล เหล่าฮีโร่ที่เหลือรอดจะหาทางกอบกู้จักรวาลนี้คืนมาได้อย่างไร โดยในภาคนี้จะมีตัวเด็ดอย่างกัปตันมาร์เวลมาร่วมเสริมทัพด้วย">  </div>
+              <div class="form-group">
+                <label for="inputMovieTrailer">Movie Trailer URL</label>
+                <input name="movie_trailer" type="text" id="inputMovieDescription" class="form-control"  >
+              </div>
               <div class="form-group">
                 <label for="inputDirector">Director Info</label>
                 <input name="director" type="text" id="inputDirector" class="form-control" placeholder="Anthony Russo, Joe Russo">
@@ -200,11 +204,13 @@
   </div>
   <!-- /.content-wrapper -->
 
+  <!-- Main Footer -->
   <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
+    <strong>Copyright &copy; 2022-2023 <a href="#">CINE (BEST CINEMA IN SEA)</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 3.2.0
     </div>
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->

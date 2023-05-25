@@ -372,7 +372,7 @@
           pointStrokeColor    : 'rgba(60,141,188,1)',
           pointHighlightFill  : '#fff',
           pointHighlightStroke: 'rgba(60,141,188,1)',
-          data                : [28, 48, 40, 19, 86, 27, 90]
+          data                : [32, 48, 40, 19, 86, 27, 90]
         },
         {
           label               : 'Electronics',
@@ -383,7 +383,7 @@
           pointStrokeColor    : '#c1c7d1',
           pointHighlightFill  : '#fff',
           pointHighlightStroke: 'rgba(220,220,220,1)',
-          data                : [65, 59, 80, 81, 56, 55, 40]
+          data                : [70, 50, 80, 80, 50, 50, 40]
         },
       ]
     }
@@ -447,7 +447,7 @@
       ],
       datasets: [
         {
-          data: [700,500,400,600,300,100],
+          data: [70,50,40,60,30,10],
           backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
         }
       ]

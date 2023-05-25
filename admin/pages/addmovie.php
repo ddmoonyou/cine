@@ -34,6 +34,7 @@
         $name =  mysqli_real_escape_string($con,$_POST["name"]);
         $length =  $_POST["lenght"];
         $description =  mysqli_real_escape_string($con,$_POST["description"]);
+        $movie_trailer = mysqli_real_escape_string($con,$_POST["movie_trailer"]);
         $director =  mysqli_real_escape_string($con,$_POST["director"]);
         $sp_date =  mysqli_real_escape_string($con,$_POST["start_promote"]);
         $np_date =  mysqli_real_escape_string($con,$_POST["end_promote"]);
@@ -47,8 +48,8 @@
         $start_promote = date ('Y-m-d H:i:s', strtotime($sp_date));
         $end_promote = date ('Y-m-d H:i:s', strtotime($np_date));
         $releaseDate = date ('Y-m-d H:i:s', strtotime($r_date));
-        $sql ="INSERT INTO movieinfo(movie_name,movie_length,movie_description,director_info,start_promote,end_promote,releaseDate)
-                VALUES ('$name',$length,'$description','$director','$start_promote','$end_promote','$releaseDate');";
+        $sql ="INSERT INTO movieinfo(movie_name,movie_length,movie_description,director_info,start_promote,end_promote,releaseDate,movie_trailer)
+                VALUES ('$name',$length,'$description','$director','$start_promote','$end_promote','$releaseDate','$movie_trailer');";
 
         if (!mysqli_query($con, $sql)) {
 			die('Error: ' . mysqli_error($con));

@@ -100,7 +100,7 @@
           <img src="dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block"><?php echo $objResult["staff_first_name"]. " ".$objResult["staff_last_name"] ;?></a>
+          <a href="pages/edit-staff.php" class="d-block"><?php echo $objResult["staff_first_name"]. " ".$objResult["staff_last_name"] ;?></a>
         </div>
       </div>
       <!-- ./welcome-user -->
@@ -122,13 +122,10 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
+          <li class="nav-item">
             <a href="index.php" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Dashboard
-                <i class="right fas fa-angle-left"></i>
-              </p>
+              <p>Dashboard</p>
             </a>
           </li>
 
@@ -152,7 +149,6 @@
             </ul>
           </li>
           <?php } ?>
-
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
@@ -211,27 +207,19 @@
               <?php }?>
 
               <li class="nav-item">
-                <a href="pages/edit-staff.php" class="nav-link">
-                  <i class="nav-icon far fa-circle text-warning"></i>
-                  <p>Edit Profile</p>
-                </a>
-              </li>
-
-              <li class="nav-item">
                 <a href="pages/edit-movie.php" class="nav-link">
                   <i class="nav-icon far fa-circle text-warning"></i>
                   <p>Edit Movie</p>
                 </a>
               </li>
-              
 
             </ul>
           </li>
-          <li class="nav-header">MISCELLANEOUS</li>
+          <li class="nav-header">SETTING</li>
           <li class="nav-item">
-            <a href="https://adminlte.io/docs/3.1/" class="nav-link">
+            <a href="pages/edit-staff.php" class="nav-link">
               <i class="nav-icon fas fa-file"></i>
-              <p>Edit profile</p>
+              <p>Edit Profile</p>
             </a>
           </li>
 
@@ -259,12 +247,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard v3</h1>
+            <h1 class="m-0">Dashboard</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard v3</li>
+              <li class="breadcrumb-item active">Dashboard</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
