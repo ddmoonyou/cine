@@ -48,7 +48,7 @@
             <!-- AREA CHART -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Area Chart</h3>
+                <h3 class="card-title">Income By Month(Mar-Aug) Chart</h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -66,12 +66,13 @@
               </div>
               <!-- /.card-body -->
             </div>
+          </div>
             <!-- /.card -->
 
             <!-- DONUT CHART -->
             <div class="card card-danger">
               <div class="card-header">
-                <h3 class="card-title">Donut Chart</h3>
+                <h3 class="card-title">Income By Day</h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -109,9 +110,8 @@
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
-
-          </div>
           <!-- /.col (LEFT) -->
+
           <div class="col-md-6">
             <!-- LINE CHART -->
             <div class="card card-info">
@@ -134,12 +134,15 @@
               </div>
               <!-- /.card-body -->
             </div>
-            <!-- /.card -->
-
+          </div>
+          <!-- /.card -->
+          
+          
             <!-- BAR CHART -->
+          <div class="col-md-10">
             <div class="card card-success">
               <div class="card-header">
-                <h3 class="card-title">Bar Chart</h3>
+                <h3 class="card-title">Bracnh Customer&Income</h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -157,32 +160,36 @@
               </div>
               <!-- /.card-body -->
             </div>
-            <!-- /.card -->
-
-            <!-- STACKED BAR CHART -->
-            <div class="card card-success">
-              <div class="card-header">
-                <h3 class="card-title">Stacked Bar Chart</h3>
-
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                  <button type="button" class="btn btn-tool" data-card-widget="remove">
-                    <i class="fas fa-times"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="chart">
-                  <canvas id="stackedBarChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-                </div>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-
           </div>
+            <!-- /.card -->
+            <!-- STACKED BAR CHART -->
+          <!-- <div class="col-md-5">
+              <div class="card card-success">
+                <div class="card-header">
+                  <h3 class="card-title">Stacked Bar Chart</h3>
+
+                  <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="chart">
+                    <canvas id="stackedBarChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                  </div>
+                </div> -->
+                <!-- /.card-body -->
+              <!-- </div>
+          </div> -->
+            <!-- /.card -->
+
+            
+
+          
           <!-- /.col (RIGHT) -->
         </div>
         <!-- /.row -->
@@ -235,10 +242,10 @@
     var areaChartCanvas = $('#areaChart').get(0).getContext('2d')
 
     var areaChartData = {
-      labels  : ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      labels  : ['March', 'April', 'May', 'June', 'July', 'August'],
       datasets: [
         {
-          label               : 'Digital Goods',
+          label               : '2022',
           backgroundColor     : 'rgba(60,141,188,0.9)',
           borderColor         : 'rgba(60,141,188,0.8)',
           pointRadius          : false,
@@ -246,10 +253,10 @@
           pointStrokeColor    : 'rgba(60,141,188,1)',
           pointHighlightFill  : '#fff',
           pointHighlightStroke: 'rgba(60,141,188,1)',
-          data                : [28, 48, 40, 19, 86, 27, 90]
+          data                : [28, 48, 40, 19, 86, 27]
         },
         {
-          label               : 'Electronics',
+          label               : '2023',
           backgroundColor     : 'rgba(210, 214, 222, 1)',
           borderColor         : 'rgba(210, 214, 222, 1)',
           pointRadius         : false,
@@ -257,7 +264,7 @@
           pointStrokeColor    : '#c1c7d1',
           pointHighlightFill  : '#fff',
           pointHighlightStroke: 'rgba(220,220,220,1)',
-          data                : [65, 59, 80, 81, 56, 55, 40]
+          data                : [65, 59, 80, 81, 56, 55]
         },
       ]
     }
@@ -312,17 +319,18 @@
     var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
     var donutData        = {
       labels: [
-          'Chrome',
-          'IE',
-          'FireFox',
-          'Safari',
-          'Opera',
-          'Navigator',
+          'Sun',
+          'Mon',
+          'Tue',
+          'Wed',
+          'Thu',
+          'Fri',
+          'Sat',
       ],
       datasets: [
         {
-          data: [700,500,400,600,300,100],
-          backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
+          data: [720,500,400,600,300,400,620],
+          backgroundColor : ['#FF4500', '#FFD700', '#FFC0CB', '#7CFC00', '#FFA500', '#00BFFF', '#8A2BE2'],
         }
       ]
     }
@@ -359,12 +367,43 @@
     //-------------
     //- BAR CHART -
     //-------------
+    var BarData = {
+      labels  : ['1001', '1002', '1003', '1004', '1005', '1006', '1007', '1008', '1009', 
+      '1010', '1011', '1012', '1013', '1014', '1015', '1016', '1017', '1018', '1019','1020'],
+      datasets: [
+        {
+          label               : 'Income',
+          backgroundColor     : 'rgba(60,141,188,0.9)',
+          borderColor         : 'rgba(60,141,188,0.8)',
+          pointRadius          : false,
+          pointColor          : '#3b8bba',
+          pointStrokeColor    : 'rgba(60,141,188,1)',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(60,141,188,1)',
+          data                : [28, 48, 40, 19, 86, 27, 28, 48, 40, 19, 86, 27
+                                ,28, 48, 40, 19, 86, 27, 28, 48]
+        },
+        {
+          label               : 'Customer',
+          backgroundColor     : 'rgba(210, 214, 222, 1)',
+          borderColor         : 'rgba(210, 214, 222, 1)',
+          pointRadius         : false,
+          pointColor          : 'rgba(210, 214, 222, 1)',
+          pointStrokeColor    : '#c1c7d1',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(220,220,220,1)',
+          data                : [12, 40, 21, 34, 67, 23, 54, 23, 89, 21, 37, 55
+                                ,34, 75, 43, 45, 73, 46, 28, 23]
+        },
+    
+      ]
+    }
+
     var barChartCanvas = $('#barChart').get(0).getContext('2d')
-    var barChartData = $.extend(true, {}, areaChartData)
-    var temp0 = areaChartData.datasets[0]
-    var temp1 = areaChartData.datasets[1]
-    barChartData.datasets[0] = temp1
-    barChartData.datasets[1] = temp0
+    var temp0 = BarData.datasets[0]
+    var temp1 = BarData.datasets[1]
+    BarData.datasets[0] = temp0
+    BarData.datasets[1] = temp1
 
     var barChartOptions = {
       responsive              : true,
@@ -374,7 +413,7 @@
 
     new Chart(barChartCanvas, {
       type: 'bar',
-      data: barChartData,
+      data: BarData,
       options: barChartOptions
     })
 
