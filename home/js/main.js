@@ -323,59 +323,9 @@
             });
         }
 
-         //Selects A seats
-         var selectedSeats = []; // Array to store selected seats
-
-         function addToCart() {
-           var selectedSeatElements = document.querySelectorAll('.seat.selected'); // Get all selected seats
-       
-           // Iterate over selected seat elements and perform desired actions
-           for (var i = 0; i < selectedSeatElements.length; i++) {
-             var seatElement = selectedSeatElements[i];
-             var seat = seatElement.textContent;
-             selectedSeats.push(seat); // Add seat to selectedSeats array
-             seatElement.classList.remove('selected'); // Reset the selected class
-       
-             // Display the selected seat in the cart container
-             var cartList = document.getElementById('cartList');
-             var listItem = document.createElement('li');
-             listItem.textContent = seat;
-             cartList.appendChild(listItem);
-           }
-         }
-       
-         // Event listener for the Add to Cart button
-         var addToCartBtn = document.getElementById('addToCartBtn');
-         addToCartBtn.addEventListener('click', addToCart);
           
     });
 
 
-
-    const quantityInput = document.getElementById('quantity');
-  
-    // Get the increment and decrement buttons
-    const incrementButton = document.getElementById('increment');
-    const decrementButton = document.getElementById('decrement');
-    
-    // Add event listeners to the buttons
-    incrementButton.addEventListener('click', () => {
-        quantityInput.value = parseInt(quantityInput.value) + 1;
-    });
-    
-    decrementButton.addEventListener('click', () => {
-        const currentValue = parseInt(quantityInput.value);
-        if (currentValue > 0) {
-        quantityInput.value = currentValue - 1;
-        }
-    });
-    
-    // Handle submit button click
-    const submitButton = document.getElementById('submit');
-    submitButton.addEventListener('click', () => {
-        const quantity = parseInt(quantityInput.value);
-        alert(`Submitted quantity: ${quantity}`);
-        // Add your logic for handling the submission here
-    });
    
 })(jQuery);
