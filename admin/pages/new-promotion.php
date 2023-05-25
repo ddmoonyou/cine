@@ -64,6 +64,15 @@
             </div>
             <div class="card-body">
               <div class="form-group">
+              <label for="inputSnackImage">Promotion image</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                          <input name="promotion_img" type="file" class="custom-file-input" id="inputPromotionImage" accept="image/jpeg, image/png, image/jpg">
+                          <label class="custom-file-label" for="inputSnackImage">Choose promotion image</label>
+                      </div>
+                    </div>
+              </div>
+              <div class="form-group">
                 <label for="inputPromotion">Promotion Code</label>
                 <input name="promotion_code" type="text" id="inputPromotion" class="form-control" placeholder="CHRISTMAS">
               </div>
