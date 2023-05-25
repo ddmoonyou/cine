@@ -215,7 +215,7 @@
 
             </ul>
           </li>
-          <li class="nav-header">SETTINGS</li>
+          <li class="nav-header">SETTING</li>
           <li class="nav-item">
             <a href="pages/edit-staff.php" class="nav-link">
               <i class="nav-icon fas fa-file"></i>

@@ -208,7 +208,7 @@
               
             </ul>
           </li>
-          <li class="nav-header">SETTINGS</li>
+          <li class="nav-header">SETTING</li>
           <li class="nav-item">
             <a href="../pages/edit-staff.php" class="nav-link active">
               <i class="nav-icon fas fa-file"></i>
@@ -390,11 +390,13 @@
   </div>
   <!-- /.content-wrapper -->
 
+  <!-- Main Footer -->
   <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
+    <strong>Copyright &copy; 2022-2023 <a href="#">CINE (BEST CINEMA IN SEA)</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 3.2.0
     </div>
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->
