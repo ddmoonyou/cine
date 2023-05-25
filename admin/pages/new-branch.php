@@ -64,6 +64,15 @@
             </div>
             <div class="card-body">
               <div class="form-group">
+                <label for="inputSnackImage">Branch image</label>
+                      <div class="input-group">
+                        <div class="custom-file">
+                            <input name="branch_img" type="file" class="custom-file-input" id="inputBranchImage" accept="image/jpeg, image/png, image/jpg">
+                            <label class="custom-file-label" for="inputSnackImage">Choose branch image</label>
+                        </div>
+                      </div>
+                </div>
+              <div class="form-group">
                 <label for="branchName">Branch Name</label>
                 <input type="text" id="branchName" name="branchname" class="form-control" placeholder="Bang Mod Flag Ship Cinema">
               </div>
@@ -197,9 +206,17 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<!-- bs-custom-file-input -->
+<script src="../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+<!-- Page specific script -->
 
 
 <script>
+
+$(function () {
+  bsCustomFileInput.init();
+});
+
 $(document).ready(function() {
   var i = 1;
   $("#add_row").click(function() {
@@ -227,6 +244,8 @@ $(document).ready(function() {
   });
 });
 </script>
+
+
 
 </body>
 </html>

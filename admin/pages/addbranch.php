@@ -18,7 +18,8 @@
 	$objQuery = mysqli_query($con,$strSQL);
 	$objResult = mysqli_fetch_array($objQuery,MYSQLI_ASSOC);
 
-    if(empty($_POST["branchname"]) || empty($_POST["branchaddress"])
+    if($_FILES['promotion_img']['name'] == ''
+    ||empty($_POST["branchname"]) || empty($_POST["branchaddress"])
     || empty($_POST["branchtel"]) || empty($_POST["layout0"])
     || empty($_POST["system0"])
     )
@@ -65,6 +66,10 @@
             }
             $i++;
         }
+        
+        $filename = $_FILES["branch_img"]["name"];
+        $path = "../../home/img/theater/".$id.".jpg";
+        move_uploaded_file($_FILES['branch_img']['tmp_name'],$path);
 
         echo "<script> alert('Add new branch successful!'); window.location.href='new-branch.php'; </script>";
     } 

@@ -281,7 +281,7 @@
             </div>
         </div>
 
-        <div class="col-3"> <img src="./img/icon/seat_price.png">  <button type="submit" class="primary-btn" id="submit"> Book </button> </form> </div>
+        <div class="col-3"> <img src="./img/icon/seat_price.png">  <button type="submit" class="primary-btn" id="submit"> Book </button>  </div>
         
     </div>
     <div class="col-lg-9 md-8">
@@ -366,39 +366,33 @@
                               
                         ?>
                                 <div class="col-lg-3 col-md-6 col-sm-6 mix new-arrivals">
-                                        
-                                            <div class="product__item">
-                                                <div class="product__item__pic set-bg" data-setbg="./img/snack/<?php echo $food_type; ?>.png">  
-                                                </div>
-                                                
-                                                <div class="product__item__text">
-                                                    <h5><?php echo $food_type; ?></h5>
-                                                    <p><?php echo $description; ?></p>
+                                    <div class="product__item">
+                                        <div class="product__item__pic set-bg" data-setbg="./img/snack/<?php echo $food_type; ?>.png">   </div>
+                                            <div class="product__item__text">
+                                                <h5><?php echo $food_type; ?></h5>
+                                                <p><?php echo $description; ?></p>
                                                                             
-                                                    <select name="select_size" id="select_size">
-                                                        <option selected disabled>Select Size</option>
-                                                            <?php
-                                                                foreach($price as $p)
-                                                                {
-                                                                    $food_id = $p["food_id"];
-                                                                    $size = $p["size"];
-                                                                    $price = $p["price"];
-                                                                    //echo "ID: $food_id size: $size price: $price";
-                                                                    echo "<option value=$food_id>$size: $price</option>";
-                                                                }
-                                                            ?>
-                                                    </select>
                                                     
-                                                    
-                                                </div> 
-                                           
-                                            </div>
-                                  
-                                </div> 
+                                                        <!-- <option selected disabled>Select Size</option> -->
+                                                        <?php
+                                                        $quantity = 0;
+                                                        foreach($price as $p) {
+                                                            $food_id = $p["food_id"];
+                                                            $size = $p["size"];
+                                                            $price = $p["price"];
+                                                            echo "<div class='col-3'> <div class='row'>";
+                                                            echo "<span>$size: $price</span>";
+                                                            echo "<input type='number' id='quantity' name='select_seat[]' value='$quantity' min='0' max='10'>";
+                                                            echo "<input type='hidden' name='select_seat[]' value='$food_id'>";
+                                                            echo "</div></div> </form>";
+                                                        }
+                                                        ?>
+                                            </div> 
+                                        </div>
+                                    </div> 
                         <?php } ?>
+                                </div>
                     </div>
-                </div>
-                            
                 </div>
             </div>
                     

@@ -19,7 +19,8 @@
 	$objResult = mysqli_fetch_array($objQuery,MYSQLI_ASSOC);
 
     //empty($_POST["inputPosterImage"]) || empty($_POST["inputPromoteImage"]) || 
-    if(empty($_POST["promotion_code"]) || empty($_POST["discount_percent"])
+    if($_FILES['branch_img']['name'] == ''
+    ||   empty($_POST["promotion_code"]) || empty($_POST["discount_percent"])
     || empty($_POST["description_promotion"]) || empty($_POST["seat_type"])
     || empty($_POST["system_type"]) || empty($_POST["s_date"])
     || empty($_POST["e_date"]) 
@@ -64,6 +65,9 @@
         if (!mysqli_query($con, $sql)) {
 			die('Error: ' . mysqli_error($con));
 		}
+        $filename = $_FILES["promotion_img"]["name"];
+        $path = "../../home/img/blog/".$promotion_code.".jpg";
+        move_uploaded_file($_FILES['promotion_img']['tmp_name'],$path);
 
         echo "<script> alert('Add new promotion succesful!'); window.location.href='new-promotion.php'; </script>";
     } 
