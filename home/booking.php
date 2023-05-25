@@ -98,7 +98,7 @@
       <div class="container" style="margin-top: 30px;">
             <div class="col-lg-12">
                   <div class="filter__controls">
-                  <h3>Booking Confirmation</h3>
+                  <h3>Order Confirmation</h3>
                   </div>
             </div>
       </div>
@@ -125,11 +125,14 @@
                 $column = $data["seat_column"];
                 $seat_price = $data["price"];
                 $seat_type = $data["seat_type"];
+                //$food_id = $data["food_id"];
+                //<h6>Food: <?php echo$food_id></h4>
                 ?>
                   <div class="row justify-content-center">
                         <div class="col-2 align-item-center">
                               <div class="container" style="margin:1%">
                                     <h6>Seat: <?php echo $row.$column.'  '.$seat_type?></h4>
+                                    
                               </div>
                         </div>
                         
