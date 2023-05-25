@@ -257,7 +257,7 @@
     <form action="edit-staff-sql.php" method="POST" enctype="multipart/form-data">
       <div class="row">
         <div class="col-md-6">
-          <div class="card card-primary">
+          <div class="card card-warning">
             <div class="card-header">
               <h3 class="card-title">Information</h3>
 
@@ -345,7 +345,7 @@
         <div class="col-md-6">
           <div class="card card-teal">
             <div class="card-header">
-              <h3 class="card-title">Security</h3>
+              <h3 class="card-title">Reset Password</h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -354,18 +354,18 @@
               </div>
             </div>
             <div class="card-body">
-            <label for="inputMovieID">Password</label>
+            <label for="inputMovieID">New Password</label>
               <div class="input-group mb-3">
-                <input name="passwords" id="pswd1"type="password" class="form-control" placeholder="Password" maxlength=30>
+                <input name="passwords" id="pswd1"type="password" class="form-control" placeholder="New Password" maxlength=30>
                 <div class="input-group-append">
                   <div class="input-group-text">
                     <span class="fas fa-lock"></span>
                   </div>
                 </div>
               </div>
-              <label for="inputMovieID">Retype Password</label>
+              <label for="inputMovieID">Retype New Password</label>
               <div class="input-group mb-3">
-                <input name="passwords2" id="pswd2" type="password" class="form-control" placeholder="Retype password" maxlength=30>
+                <input name="passwords2" id="pswd2" type="password" class="form-control" placeholder="Retype New Password" maxlength=30>
                 <div class="input-group-append">
                   <div class="input-group-text">
                     <span class="fas fa-lock"></span>
