@@ -99,7 +99,7 @@
           <img src="../dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block"><?php echo $objResult["staff_first_name"]. " ".$objResult["staff_last_name"] ;?></a>
+          <a href="./edit-staff.php" class="d-block"><?php echo $objResult["staff_first_name"]. " ".$objResult["staff_last_name"] ;?></a>
         </div>
       </div>
       <!-- ./welcome-user -->
@@ -224,11 +224,11 @@
 
             </ul>
           </li>
-          <li class="nav-header">MISCELLANEOUS</li>
+          <li class="nav-header">SETTINGS</li>
           <li class="nav-item">
-            <a href="https://adminlte.io/docs/3.1/" class="nav-link">
+            <a href="./edit-staff.php" class="nav-link">
               <i class="nav-icon fas fa-file"></i>
-              <p>Documentation</p>
+              <p>Edit Profile</p>
             </a>
           </li>
 
