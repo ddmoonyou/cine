@@ -161,7 +161,6 @@
                         $movie_name = $row['movie_name'];
                         $releasedate = $row['releaseDate'];
                         $movie_length = $row['movie_length'];
-                        $movie_poster = $row['movie_poster'];
                         $formatted_date = date("d M Y", strtotime($releasedate));
                         $movie_id = $row['movie_id'];
                         $director = $row['director_info'];
@@ -215,7 +214,6 @@
                         $movie_name = $row['movie_name'];
                         $releasedate = $row['releaseDate'];
                         $movie_length = $row['movie_length'];
-                        $movie_poster = $row['movie_poster'];
                         $formatted_date = date("d M Y", strtotime($releasedate));
                         $movie_id = $row['movie_id'];
                         $director = $row['director_info'];
