@@ -105,7 +105,7 @@
 <form action="booking.php" method="POST"> 
     <?php
 
-
+    
     $showingID = $_GET['showing_id'];
 
     $sql = "SELECT * FROM showings
@@ -152,6 +152,7 @@
     }
     ?>
 
+<input type="hidden" name='showing_id' value= <?php echo $showingID; ?> >
 
 
 <div class="container">

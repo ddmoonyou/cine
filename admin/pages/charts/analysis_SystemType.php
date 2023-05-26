@@ -19,7 +19,7 @@
   <!-- Main content -->
   
     <!-- PIE CHART -->
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="card card-danger">
         <div class="card-header">
           <h3 class="card-title">System Type</h3>

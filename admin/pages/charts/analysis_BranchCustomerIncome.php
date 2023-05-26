@@ -18,31 +18,53 @@
 
   <!-- Main content -->
   
-    <!-- BAR CHART -->
-    <div class="col-md-10">
-      <div class="card card-success">
-        <div class="card-header">
-          <h3 class="card-title">Branch Customer&Income</h3>
+   <!-- BAR CHART -->
+   <div class="row">
+            <div class="col-md-6">
+              <div class="card card-success">
+                <div class="card-header">
+                  <h3 class="card-title">Branch Income</h3>
 
-          <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse">
-              <i class="fas fa-minus"></i>
-            </button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove">
-              <i class="fas fa-times"></i>
-            </button>
+                  <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="chart">
+                    <canvas id="incomeChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                  </div>
+                </div>
+                <!-- /.card-body -->
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card card-success">
+                <div class="card-header">
+                  <h3 class="card-title">Branch Customer</h3>
+
+                  <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="chart">
+                    <canvas id="customerChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                  </div>
+                </div>
+                <!-- /.card-body -->
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="card-body">
-          <div class="chart">
-            <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-          </div>
-        </div>
-        <!-- /.card-body -->
-      </div>
-    </div>
-      <!-- /.card -->
-  
 
 
   <!-- Control Sidebar -->
@@ -69,10 +91,10 @@
      * Here we will create a few charts using ChartJS
      */
 
-    //-------------
+        //-------------
     //- BAR CHART -
     //-------------
-    var BarData = {
+    var BarData1 = {
       labels  : ['1001', '1002', '1003', '1004', '1005', '1006', '1007', '1008', '1009', 
       '1010', '1011', '1012', '1013', '1014', '1015', '1016', '1017', '1018', '1019','1020'],
       datasets: [
@@ -88,6 +110,14 @@
           data                : [28, 48, 40, 19, 86, 27, 28, 48, 40, 19, 86, 27
                                 ,28, 48, 40, 19, 86, 27, 28, 48]
         },
+    
+      ]
+    }
+
+    var BarData2 = {
+      labels  : ['1001', '1002', '1003', '1004', '1005', '1006', '1007', '1008', '1009', 
+      '1010', '1011', '1012', '1013', '1014', '1015', '1016', '1017', '1018', '1019','1020'],
+      datasets: [
         {
           label               : 'Customer',
           backgroundColor     : 'rgba(210, 214, 222, 1)',
@@ -104,11 +134,10 @@
       ]
     }
 
-    var barChartCanvas = $('#barChart').get(0).getContext('2d')
-    var temp0 = BarData.datasets[0]
-    var temp1 = BarData.datasets[1]
-    BarData.datasets[0] = temp0
-    BarData.datasets[1] = temp1
+    var barChartCanvas = $('#incomeChart').get(0).getContext('2d')
+    var temp1 = BarData1
+    incomeData= temp1
+    
 
     var barChartOptions = {
       responsive              : true,
@@ -118,10 +147,26 @@
 
     new Chart(barChartCanvas, {
       type: 'bar',
-      data: BarData,
+      data: incomeData,
       options: barChartOptions
     })
 
+    var barChartCanvas = $('#customerChart').get(0).getContext('2d')
+    var temp2 = BarData2
+    customerData= temp2
+    
+
+    var barChartOptions = {
+      responsive              : true,
+      maintainAspectRatio     : false,
+      datasetFill             : false
+    }
+
+    new Chart(barChartCanvas, {
+      type: 'bar',
+      data: customerData,
+      options: barChartOptions
+    })
   })
 </script>
 </body>

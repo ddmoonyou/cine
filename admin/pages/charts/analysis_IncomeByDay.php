@@ -19,7 +19,11 @@
   <!-- Main content -->
   
     <!-- DONUT CHART -->
+<<<<<<< HEAD
     <div class="col-md-4">
+=======
+    <div class="col-md-3">
+>>>>>>> 445da9404e3a0f562bdba521097aa85994f69757
       <div class="card card-danger">
         <div class="card-header">
           <h3 class="card-title">Income By Day</h3>
@@ -38,8 +42,13 @@
         </div>
         <!-- /.card-body -->
       </div>
+<<<<<<< HEAD
       <!-- /.card -->
     </div>
+=======
+    </div>
+      <!-- /.card -->
+>>>>>>> 445da9404e3a0f562bdba521097aa85994f69757
   
 
 
