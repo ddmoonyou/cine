@@ -298,30 +298,9 @@
             });
         });
 
-        // Handle the showing selection with AJAX
-        $('#showings-container').on('click', 'a', function (event) {
-            event.preventDefault();
-
-            // Retrieve the selected showing ID
-            var showingID = $(this).data('showing-id');
-
-            // Update the available seats for the selected showing with AJAX
-            updateAvailableSeats(showingID);
-        });
-
-        // Function to update the available seats for a showing with AJAX
-        function updateAvailableSeats(showingID) {
-            // Send an AJAX request to retrieve the available seats for the selected showing
-            $.ajax({
-                url: 'reservation.php',
-                method: 'POST',
-                data: { showingID: showingID },
-                success: function (seatsHtml) {
-                    // Update the available seats container with the HTML code returned by the server
-                    $('#seats-container').html(seatsHtml);
-                }
-            });
-        }
+       function showSelectedPromotion(select) {
+        var selectedOption = select.options[select.selectedIndex].text;
+        alert("Selected promotion: " + selectedOption);
 
           
     });

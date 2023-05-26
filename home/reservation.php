@@ -102,7 +102,7 @@
             </div>
       </div>
 
-<form action="booking.php" method="POST"> 
+<form action="order_confirmation.php" method="POST"> 
     <?php
 
     
@@ -128,7 +128,7 @@
     <div class="row justify-content-center">
         <div class="col-7">
             <h4>Showings Information</h4>
-            <ul>Theater No: <?php echo $theater.' '.$system_type?></ul>
+            <ul>Theater No: <?php echo $theater.' System:'.$system_type?></ul>
             <ul>Branch: <?php echo $branch_name?></ul>
             <ul>Date: <?php echo $f_date?></ul><br>
         </div>

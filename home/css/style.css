@@ -195,6 +195,7 @@ ol {
 	color: #ffffff;
 	background: #000000;
 	letter-spacing: 4px;
+
 }
 
 .site-btn {
@@ -3923,6 +3924,13 @@ ol {
 			margin: 5%;
 			padding-bottom: 40px;
 		}
+
+		.payment img{
+			width:20px;
+			
+		}
+
+		
 
 		
 
