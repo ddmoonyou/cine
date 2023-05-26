@@ -14,7 +14,7 @@
   <!-- Main content -->
   
     <!-- FOOD CHART -->
-    <div class="col-md-5">
+    <div class="col-md-4">
       <div class="card card-info">
         <div class="card-header">
           <h3 class="card-title">Food Chart</h3>
@@ -92,35 +92,35 @@
       datasets: [
         {
           label               : 'S',
-          backgroundColor     : 'rgba(60,141,188,0.9)',
-          borderColor         : 'rgba(60,141,188,0.8)',
+          backgroundColor     : 'rgba(190,119,74,0.9)',
+          borderColor         : 'rgba(190,119,74,0.8)',
           pointRadius          : false,
-          pointColor          : '#3b8bba',
-          pointStrokeColor    : 'rgba(60,141,188,1)',
+          pointColor          : '#be774a',
+          pointStrokeColor    : 'rgba(190,119,74,1)',
           pointHighlightFill  : '#fff',
-          pointHighlightStroke: 'rgba(60,141,188,1)',
+          pointHighlightStroke: 'rgba(190,119,74,1)',
           data                : <?php echo "[" . implode(", ",$total_food_s) . "]"; ?>
         },
         {
           label               : 'M',
-          backgroundColor     : 'rgba(210, 214, 222, 1)',
-          borderColor         : 'rgba(210, 214, 222, 1)',
+          backgroundColor     : 'rgba(119, 219, 219, 1)',
+          borderColor         : 'rgba(119, 219, 219, 1)',
           pointRadius         : false,
-          pointColor          : 'rgba(210, 214, 222, 1)',
-          pointStrokeColor    : '#c1c7d1',
+          pointColor          : 'rgba(119, 219, 219, 1)',
+          pointStrokeColor    : '#77dbdb',
           pointHighlightFill  : '#fff',
-          pointHighlightStroke: 'rgba(220,220,220,1)',
+          pointHighlightStroke: 'rgba(119,219,219,1)',
           data                : <?php echo "[" . implode(", ",$total_food_m) . "]"; ?>
         },
         {
           label               : 'L',
-          backgroundColor     : 'rgba(20, 230, 125, 1)',
-          borderColor         : 'rgba(20, 230, 125, 1)',
+          backgroundColor     : 'rgba(245, 233, 158, 1)',
+          borderColor         : 'rgba(245, 233, 158, 1)',
           pointRadius         : false,
-          pointColor          : 'rgba(20, 230, 125, 1)',
-          pointStrokeColor    : '#c1a1f1',
+          pointColor          : 'rgba(245, 233, 158, 1)',
+          pointStrokeColor    : '#f5e99e',
           pointHighlightFill  : '#fee',
-          pointHighlightStroke: 'rgba(20, 230, 125, 1)',
+          pointHighlightStroke: 'rgba(245, 233, 158, 1)',
           data                : <?php echo "[" . implode(", ",$total_food_l) . "]"; ?>
         },
     

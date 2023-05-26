@@ -123,7 +123,7 @@
       datasets: [
         {
           data: <?php echo "[" . implode(", ",$income_by_day) . "]"; ?>,
-          backgroundColor : ['#FF4500', '#FFD700', '#FFC0CB', '#7CFC00', '#FFA500', '#00BFFF', '#8A2BE2'],
+          backgroundColor : ['#ff5952', '#ffd656', '#FFC0CB', '#4fc775', '#FFA500', '#3e77e9', '#644ca2'],
         }
       ]
     }

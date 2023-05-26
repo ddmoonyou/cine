@@ -96,7 +96,7 @@
       datasets: [
         {
           data: <?php echo "[" . implode(", ",$number) . ",0]"; ?>,
-          backgroundColor : ['#00FFFF', '#DC143C', '#DCDCDC', '#DAA520'],
+          backgroundColor : ['#00e6e6', '#DC143C', '#ff90b3', '#6e44ff'],
         }
       ]
     }

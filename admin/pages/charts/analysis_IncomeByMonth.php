@@ -22,7 +22,7 @@
     <div class="col-md-5">
       <div class="card card-primary">
         <div class="card-header">
-          <h3 class="card-title">Income By Month(Mar-Aug) Chart</h3>
+          <h3 class="card-title">Income By Month</h3>
 
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -131,10 +131,10 @@
         {
           label               : '2023',
           backgroundColor: 'tansparent',
-          pointBorderColor: '#007bff',
-          pointBackgroundColor: '#007bff',
-          backgroundColor     : '#9acbff',
-          borderColor         : '#007bff',
+          pointBorderColor: '#77aaff',
+          pointBackgroundColor: '#77aaff',
+          backgroundColor     : '#99ccff',
+          borderColor         : '#77aaff',
           pointColor          : '#fffff',
           fill: true,
           data                :  <?php echo "[" . implode(", ",$total_array) . "]"; ?>

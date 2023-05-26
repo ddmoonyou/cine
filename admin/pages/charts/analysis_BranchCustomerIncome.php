@@ -156,11 +156,11 @@
       datasets: [
         {
           label               : 'Income',
-          backgroundColor     : 'rgba(60,141,188,0.9)',
-          borderColor         : 'rgba(60,141,188,0.8)',
+          backgroundColor     : 'rgba(255,165,0,0.9)',
+          borderColor         : 'rgba(255,165,0,0.8)',
           pointRadius          : false,
-          pointColor          : '#3b8bba',
-          pointStrokeColor    : 'rgba(60,141,188,1)',
+          pointColor          : '#e59400',
+          pointStrokeColor    : 'rgba(255,165,0,1)',
           pointHighlightFill  : '#fff',
           pointHighlightStroke: 'rgba(60,141,188,1)',
           data                : <?php echo "[" . implode(", ",$total_income_array) . ",0]"; ?>
@@ -174,13 +174,13 @@
       datasets: [
         {
           label               : 'Reservations',
-          backgroundColor     : 'rgba(210, 214, 222, 1)',
-          borderColor         : 'rgba(210, 214, 222, 1)',
+          backgroundColor     : 'rgba(60,141,188,1)',
+          borderColor         : 'rgba(60,141,188,1)',
           pointRadius         : false,
-          pointColor          : 'rgba(210, 214, 222, 1)',
-          pointStrokeColor    : '#c1c7d1',
+          pointColor          : 'rgba(60,141,188,1)',
+          pointStrokeColor    : '#3b8bba',
           pointHighlightFill  : '#fff',
-          pointHighlightStroke: 'rgba(220,220,220,1)',
+          pointHighlightStroke: 'rgba(60,141,188,1)',
           data                : <?php echo "[" . implode(", ",$total_reserve_array) . ",0]"; ?>
         },
     
