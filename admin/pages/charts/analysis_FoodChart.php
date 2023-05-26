@@ -44,6 +44,37 @@
   <!-- /.control-sidebar -->
 
 <!-- Page specific script -->
+
+<?php
+
+  $total_food_s = array();
+  $total_food_m = array();
+  $total_food_l = array();
+
+  $count = 0;
+
+  $sql = "SELECT fsize.food_type,fsize.size ,SUM(res.quantity) as total FROM reservefood res, foodsize fsize
+          WHERE res.food_id = fsize.food_id
+          GROUP BY res.food_id;";
+  $res = mysqli_query($con, $sql);
+  if (!$res) {
+      die('Error: ' . mysqli_error($con));
+  }
+  foreach($res as $a)
+  {
+      $total_food = $a["total"];
+      $cursize = $a["size"];
+      if ($cursize == "S"){
+        array_push($total_food_s,$total_food);
+      }else if ($cursize == "M"){
+        array_push($total_food_m,$total_food);
+      }else if ($cursize == "L"){
+        array_push($total_food_l,$total_food);
+      }
+      
+  }
+?>
+
 <script>
   $(function () {
     /* ChartJS
@@ -68,8 +99,7 @@
           pointStrokeColor    : 'rgba(60,141,188,1)',
           pointHighlightFill  : '#fff',
           pointHighlightStroke: 'rgba(60,141,188,1)',
-          data                : [28, 48, 40, 0, 86, 27, 28, 48, 0, 0, 86, 27
-                                ,28, 48, 40, 19, 0, 0]
+          data                : <?php echo "[" . implode(", ",$total_food_s) . "]"; ?>
         },
         {
           label               : 'M',
@@ -80,8 +110,7 @@
           pointStrokeColor    : '#c1c7d1',
           pointHighlightFill  : '#fff',
           pointHighlightStroke: 'rgba(220,220,220,1)',
-          data                : [12, 40, 21, 34, 67, 23, 54, 12, 32, 21, 37, 55
-                                ,76, 65, 43, 45, 73, 46]
+          data                : <?php echo "[" . implode(", ",$total_food_m) . "]"; ?>
         },
         {
           label               : 'L',
@@ -92,8 +121,7 @@
           pointStrokeColor    : '#c1a1f1',
           pointHighlightFill  : '#fee',
           pointHighlightStroke: 'rgba(20, 230, 125, 1)',
-          data                : [12, 40, 43, 34, 67, 35, 54, 23, 98, 23, 37, 55
-                                ,34, 21, 43, 59, 73, 32]
+          data                : <?php echo "[" . implode(", ",$total_food_l) . "]"; ?>
         },
     
       ]

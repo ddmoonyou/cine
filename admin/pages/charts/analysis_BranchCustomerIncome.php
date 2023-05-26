@@ -75,6 +75,8 @@
 
   $total_income_array = array();
 
+  $branch_array = array();
+
   $sql = "SELECT showings.branch_id, SUM(b.net) as total FROM showings,
         (
             SELECT a.reserve_id, a.total*(100 - IFNULL(a.discount_percent,0))/100 as net, a.showing_id FROM
@@ -115,7 +117,9 @@
   foreach($res as $a)
   {
       $total_income = $a["total"];
+      $branch = $a["branch_id"];
       array_push($total_income_array,$total_income);
+      array_push($branch_array,$branch);
   }
 
   $total_reserve_array = array();
@@ -148,8 +152,7 @@
     //- BAR CHART -
     //-------------
     var BarData1 = {
-      labels  : ['1001', '1002', '1003', '1004', '1005', '1006', '1007', '1008', '1009', 
-      '1010', '1011', '1012', '1013', '1014', '1015', '1016', '1017', '1018', '1019','1020'],
+      labels  : <?php echo "[" . implode(", ",$branch_array) . "]"; ?>,
       datasets: [
         {
           label               : 'Income',
@@ -167,8 +170,7 @@
     }
 
     var BarData2 = {
-      labels  : ['1001', '1002', '1003', '1004', '1005', '1006', '1007', '1008', '1009', 
-      '1010', '1011', '1012', '1013', '1014', '1015', '1016', '1017', '1018', '1019','1020'],
+      labels  : <?php echo "[" . implode(", ",$branch_array) . "]"; ?>,
       datasets: [
         {
           label               : 'Reservations',
