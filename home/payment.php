@@ -24,7 +24,6 @@
     <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
@@ -276,12 +275,12 @@
             
 
                 <div class="form-group">
-                    <label for="system_type">Promotion</label>
+                    <label for="system_type">Promotion Code</label>
                     <select name="promotion_code" id="promotion_code"  onchange="showSelectedPromotion(this)">
                         <option selected disabled>Select one</option>
                             <?php
                             $sql = "SELECT * FROM promotion";
-                            $res = mysqli_query($con, $sql);
+                            $res = mysqli_query($conn, $sql);
                             while ($data = mysqli_fetch_assoc($res)) {
                                 $p_c = $data['promotion_code'];
                                 echo "<option value=$p_c>$p_c</option>";
