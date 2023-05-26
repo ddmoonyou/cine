@@ -40,7 +40,7 @@
             <div class="col-md-6">
               <div class="card card-success">
                 <div class="card-header">
-                  <h3 class="card-title">Branch Customer</h3>
+                  <h3 class="card-title">Branch Reservations</h3>
 
                   <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -70,6 +70,73 @@
 
 
 <!-- Page specific script -->
+
+<?php
+
+  $total_income_array = array();
+
+  $sql = "SELECT showings.branch_id, SUM(b.net) as total FROM showings,
+        (
+            SELECT a.reserve_id, a.total*(100 - IFNULL(a.discount_percent,0))/100 as net, a.showing_id FROM
+            (
+                SELECT res_info.reserve_id, f.net_food, s.seat_net, IFNULL(f.net_food,0) +s.seat_net as total,pm.discount_percent,res_info.showing_id FROM reserveinfo res_info
+                LEFT JOIN
+                (
+                    SELECT food.reserve_id, SUM(food.food_net) as net_food FROM
+                    (
+                        SELECT fsize.food_id, res_f.reserve_id, res_f.quantity, fsize.price,fsize.price*res_f.quantity as food_net FROM reservefood res_f,foodsize fsize
+                        WHERE fsize.food_id = res_f.food_id  
+                    ) as food
+                    GROUP BY reserve_id
+                ) as f ON f.reserve_id = res_info.reserve_id
+                LEFT JOIN
+                (
+                    SELECT res_s.reserve_id,SUM(p.price) AS seat_net FROM reserveseats res_s,
+                    (   
+                        SELECT lay.seat_id, pr.price FROM seatlayout lay, seatprice pr
+                        WHERE lay.seat_type = pr.seat_type
+                    ) AS p
+                    WHERE res_s.seat_id = p.seat_id  
+                    GROUP BY res_s.reserve_id
+                ) as s ON s.reserve_id = res_info.reserve_id
+                LEFT JOIN 
+                (
+                    SELECT reserve_id,promotion.discount_percent FROM reserveinfo
+                    LEFT JOIN promotion on reserveinfo.promotion_code = promotion.promotion_code
+                ) as pm ON pm.reserve_id = res_info.reserve_id
+            ) as a
+        ) as b
+        WHERE showings.showing_id=b.showing_id
+        GROUP BY showings.branch_id;";
+  $res = mysqli_query($con, $sql);
+  if (!$res) {
+      die('Error: ' . mysqli_error($con));
+  }
+  foreach($res as $a)
+  {
+      $total_income = $a["total"];
+      array_push($total_income_array,$total_income);
+  }
+
+  $total_reserve_array = array();
+
+  $sql = "SELECT branch_id,COUNT(reserve_id) as cnt FROM 
+          (
+              SELECT sh.branch_id, res.reserve_id FROM reserveinfo res, showings sh
+              WHERE res.showing_id = sh.showing_id
+          )AS a
+          GROUP BY(branch_id);";
+  $res = mysqli_query($con, $sql);
+  if (!$res) {
+      die('Error: ' . mysqli_error($con));
+  }
+  foreach($res as $a)
+  {
+      $total_reserve = $a["cnt"];
+      array_push($total_reserve_array,$total_reserve);
+  }
+?>
+
 <script>
   $(function () {
     /* ChartJS
@@ -93,8 +160,7 @@
           pointStrokeColor    : 'rgba(60,141,188,1)',
           pointHighlightFill  : '#fff',
           pointHighlightStroke: 'rgba(60,141,188,1)',
-          data                : [28, 48, 40, 19, 86, 27, 28, 48, 40, 19, 86, 27
-                                ,28, 48, 40, 19, 86, 27, 28, 48]
+          data                : <?php echo "[" . implode(", ",$total_income_array) . ",0]"; ?>
         },
     
       ]
@@ -105,7 +171,7 @@
       '1010', '1011', '1012', '1013', '1014', '1015', '1016', '1017', '1018', '1019','1020'],
       datasets: [
         {
-          label               : 'Customer',
+          label               : 'Reservations',
           backgroundColor     : 'rgba(210, 214, 222, 1)',
           borderColor         : 'rgba(210, 214, 222, 1)',
           pointRadius         : false,
@@ -113,8 +179,7 @@
           pointStrokeColor    : '#c1c7d1',
           pointHighlightFill  : '#fff',
           pointHighlightStroke: 'rgba(220,220,220,1)',
-          data                : [12, 40, 21, 34, 67, 23, 54, 23, 89, 21, 37, 55
-                                ,34, 75, 43, 45, 73, 46, 28, 23]
+          data                : <?php echo "[" . implode(", ",$total_reserve_array) . ",0]"; ?>
         },
     
       ]
