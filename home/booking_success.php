@@ -118,6 +118,56 @@
       //     die('Error: ' . $conn->error);
       // }
       
+
+
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        if (isset($_POST['select_seat'])) {
+
+            $showingID = $_POST['showing_id'];
+            $payment = $_POST['payment_method'];
+            $promotionCode = $_POST["promotion_code"];
+            
+ 
+            foreach ($_POST['select_seat'] as $selectedSeat) {
+                // Access the seat information
+                $seatID = $selectedSeat;
+
+                //echo "ID: ".$seatID."  ";
+                $sql = "INSERT INTO `reserveinfo`(`reserve_id`,`showing_id`,`promotion_code`,`payment_method`) VALUES (NULL,'$showingID','$promotionCode','$payment')";
+                  
+                $result = mysqli_query($conn, $sql);
+                if (!$result) {
+                    die('Invalid query: ' . mysqli_error($conn));
+                }
+                else{
+                  echo "add reserveinfo success";
+                }
+                
+                
+
+             }
+        } 
+
+        foreach (array_combine($_POST['food_id'], $_POST['quantity']) as $id => $quantity) {
+            $sql = "INSERT INTO `reservefood`(`reserve_id`,`food_id`,`quantity`) VALUES (NULL,'$id','$quantity')";
+
+            $result = mysqli_query($conn, $sql);
+            if (!$result) {
+                die('Invalid query: ' . mysqli_error($conn));
+            }
+            else{
+                  echo "Add reservefood success";
+            }
+
+           }
+        }
+
+        ?>
+      
+
+    <?php 
+
+    
       
       
       // Close the database connection

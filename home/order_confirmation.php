@@ -218,10 +218,21 @@
 
           }
       ?>
-      
+
     <div class="container">
         <div class="col-lg-10">
+            <div class="row justify-content-start">
+                <div class="col-10" style="margin:10px"> <h4>Promotion Code:</h4>
+                    <!-- <input type="hidden" name="promotion_code" id="promotion_code" value="CODE"> -->
+                    <input type="text" name="promotion_code" id="promotion_code" placeholder="Please Enter Promotion Code">
+                </div>
+            </div>
         </div>
+    </div>
+
+    <div class="container">
+        <div class="col-lg-10">
+        </div>             
             <div class="row justify-content-end">
                 <div class="col-3" style="margin:10px"> <h4>Total <?php echo $total;?> THB </h4></div>
                 <div class="col-lg-1">
@@ -231,5 +242,5 @@
     </div>
         
     
-        </form>
+</form>
 </body>
