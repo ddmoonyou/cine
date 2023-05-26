@@ -90,7 +90,7 @@
       <!-- Welcome user to AdminCINE -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="../dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
+          <img src="../dist/img/avatar_anonymous.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="../pages/edit-staff.php" class="d-block"><?php echo $objResult["staff_first_name"]. " ".$objResult["staff_last_name"] ;?></a>
@@ -117,8 +117,8 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item">
             <a href="../index.php" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>Dashboard</p>
+              <i class="nav-icon fas fa-tree"></i>
+              <p>Home</p>
             </a>
           </li>
 

@@ -195,6 +195,7 @@ ol {
 	color: #ffffff;
 	background: #000000;
 	letter-spacing: 4px;
+
 }
 
 .site-btn {
@@ -1359,7 +1360,7 @@ ol {
 	margin-bottom: 0;
 }
 
-.shop__product__option__right .nice-select {
+/* .shop__product__option__right .nice-select {
 	float: none;
 	display: inline-block;
 	padding: 0;
@@ -1385,7 +1386,7 @@ ol {
 
 .shop__product__option__right .nice-select .list {
 	border-radius: 0;
-}
+} */
 
 .product__pagination {
 	padding-top: 25px;
@@ -3923,6 +3924,13 @@ ol {
 			margin: 5%;
 			padding-bottom: 40px;
 		}
+
+		.payment img{
+			width:20px;
+			
+		}
+
+		
 
 		
 
