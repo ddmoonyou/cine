@@ -303,8 +303,8 @@
         alert("Selected promotion: " + selectedOption);
 
           
-    });
-
+    }});
+    
 
    
 })(jQuery);
