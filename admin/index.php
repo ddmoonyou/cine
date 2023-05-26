@@ -329,9 +329,6 @@
           <!-- /.col -->
           <div class="col-md-9">
             <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Carousel</h3>
-              </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
