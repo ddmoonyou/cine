@@ -131,10 +131,10 @@
         {
           label               : '2023',
           backgroundColor: 'tansparent',
-          pointBorderColor: '#0056b3',
-          pointBackgroundColor: '#0056b3',
-          backgroundColor     : '#4da3ff',
-          borderColor         : '#0f7fff',
+          pointBorderColor: '#007bff',
+          pointBackgroundColor: '#007bff',
+          backgroundColor     : '#9acbff',
+          borderColor         : '#007bff',
           pointColor          : '#fffff',
           fill: true,
           data                :  <?php echo "[" . implode(", ",$total_array) . "]"; ?>
