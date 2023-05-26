@@ -84,39 +84,6 @@
                 <label for="inputDescriptionPM">Promotion Description</label>
                 <input name="description_promotion" type="text" id="inputDescriptionPM" class="form-control" placeholder="Christmas Party, discount 50% for two days">
               </div>
-              <h4>Terms of Use</h4>
-              <div class="form-group">
-                <label for="seat_type">Seat type</label>
-                <select name="seat_type" id="seat_type" class="form-control custom-select">
-                  <option selected disabled>Select one</option>
-                  <option value="none">All</option>
-                  <?php
-                    $sql = "SELECT DISTINCT seat_type FROM seatprice";
-                    $res = mysqli_query($con,$sql);
-                    foreach($res as $seat)
-                    {
-                      $s= $seat['seat_type'];
-                      echo "<option value=$s>$s</option>";
-                    }
-                  ?>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="system_type">System type</label>
-                <select name="system_type" id="system_type" class="form-control custom-select">
-                  <option selected disabled>Select one</option>
-                  <option value="none">All</option>
-                  <?php
-                    $sql = "SELECT DISTINCT system_type FROM systemtype";
-                    $res = mysqli_query($con,$sql);
-                    foreach($res as $sys)
-                    {
-                      $s= $sys['system_type'];
-                      echo "<option value=$s>$s</option>";
-                    }
-                  ?>
-                </select>
-              </div>
               <h4>Promotion period</h4>
               <div class="form-group">
                 <label for="inputShowingDate">Start Date</label>

@@ -147,7 +147,7 @@
                     </table>
                   </div>
                 </div>
-                <button id="add_row" type="button" class="btn btn-primary btn-lg pull-left"><i class="fas fa-plus"></i> Add new row</button>
+                <button id="add_row" type="button" class="btn btn-primary btn-lg pull-left"><i class="fas fa-plus"></i> New Row</button>
               </div>
           <!-- /.card -->
         </div>

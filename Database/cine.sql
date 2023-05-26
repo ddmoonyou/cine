@@ -235,8 +235,6 @@ CREATE TABLE `promotion` (
   `discount_percent` float NOT NULL,
   `start_date` datetime NOT NULL,
   `end_date` datetime NOT NULL,
-  `seat_type` char(50) DEFAULT NULL,
-  `system_type` char(50) DEFAULT NULL,
   `description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -244,13 +242,13 @@ CREATE TABLE `promotion` (
 -- Dumping data for table `promotion`
 --
 
-INSERT INTO `promotion` (`promotion_code`, `discount_percent`, `start_date`, `end_date`, `seat_type`, `system_type`, `description`) VALUES
-('AIS15', 15, '2023-01-01 00:00:00', '2023-12-31 23:59:59', NULL, NULL, 'Special 15% discount for AIS customers with no restrictions, applicable to all system type and all types of seats'),
-('BLOCKBUSTER', 15, '2023-01-01 00:00:00', '2023-12-31 23:59:59', 'Premium Bed', 'Bed Cinema', 'Watch Blockbuster Movies at BED CINEMAget a 15% discount throughout the year.'),
-('CHRISTMAS', 50, '2022-12-24 00:00:00', '2022-12-25 23:59:59', NULL, NULL, 'Christmas Party, discount 50% for two days'),
-('DTAC20', 20, '2023-01-01 00:00:00', '2023-12-31 23:59:59', 'Honeymoon Seat', NULL, 'Special 20% discount for DTAC customers applicable to Honeymoon seat for all system type.'),
-('STUDENT20', 20, '2023-01-01 00:00:00', '2023-12-31 23:59:59', NULL, NULL, 'Just show your student ID card and get a 20% discount for all movies and all types of seats, for every showtime.'),
-('SUMMER10', 10, '2023-03-01 00:00:00', '2023-05-31 23:59:59', 'Premium Seat', 'Laser', 'Special 10% discount For Summer 2003, usable for Premium Seat, Laser system type');
+INSERT INTO `promotion` (`promotion_code`, `discount_percent`, `start_date`, `end_date`,  `description`) VALUES
+('AIS15', 15, '2023-01-01 00:00:00', '2023-12-31 23:59:59', 'Special 15% discount for AIS customers with no restrictions, applicable to all system type and all types of seats'),
+('BLOCKBUSTER', 15, '2023-01-01 00:00:00', '2023-12-31 23:59:59', 'Watch Blockbuster Movies at BED CINEMAget a 15% discount throughout the year.'),
+('CHRISTMAS', 50, '2022-12-24 00:00:00', '2022-12-25 23:59:59', 'Christmas Party, discount 50% for two days'),
+('DTAC20', 20, '2023-01-01 00:00:00', '2023-12-31 23:59:59', 'Special 20% discount for DTAC customers applicable to Honeymoon seat for all system type.'),
+('STUDENT20', 20, '2023-01-01 00:00:00', '2023-12-31 23:59:59', 'Just show your student ID card and get a 20% discount for all movies and all types of seats, for every showtime.'),
+('SUMMER10', 10, '2023-03-01 00:00:00', '2023-05-31 23:59:59', 'Special 10% discount For Summer 2003, usable for Premium Seat, Laser system type');
 
 -- --------------------------------------------------------
 
@@ -116236,9 +116234,7 @@ ALTER TABLE `movieinfo`
 -- Indexes for table `promotion`
 --
 ALTER TABLE `promotion`
-  ADD PRIMARY KEY (`promotion_code`),
-  ADD UNIQUE KEY `seat_type` (`seat_type`),
-  ADD UNIQUE KEY `system_type` (`system_type`) USING BTREE;
+  ADD PRIMARY KEY (`promotion_code`);
 
 --
 -- Indexes for table `reservefood`
@@ -116366,13 +116362,6 @@ ALTER TABLE `staffinfo`
 --
 ALTER TABLE `foodsize`
   ADD CONSTRAINT `foodsize_foodinfo` FOREIGN KEY (`food_type`) REFERENCES `foodinfo` (`food_type`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `promotion`
---
-ALTER TABLE `promotion`
-  ADD CONSTRAINT `promotion_ibfk_1` FOREIGN KEY (`seat_type`) REFERENCES `seatprice` (`seat_type`),
-  ADD CONSTRAINT `promotion_ibfk_2` FOREIGN KEY (`system_type`) REFERENCES `systemtype` (`system_type`);
 
 --
 -- Constraints for table `reservefood`
