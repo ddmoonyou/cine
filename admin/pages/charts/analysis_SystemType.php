@@ -17,7 +17,7 @@
     <div class="col-md-3">
       <div class="card card-danger">
         <div class="card-header">
-          <h3 class="card-title">System Type</h3>
+          <h3 class="card-title">Number of seat of each System Type</h3>
 
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -46,6 +46,37 @@
 
 
 <!-- Page specific script -->
+
+<?php
+
+  $system_type = array();
+  $number = array();
+
+  $sql = "SELECT result.system_type,count(*) as count FROM
+          (
+              SELECT s.showing_id, t.system_type FROM showings s
+              LEFT JOIN theaterinfo t ON t.branch_id = s.branch_id AND t.theater_no = s.theater_no
+              LEFT JOIN
+              (
+                  SELECT res.showing_id, seat.reserve_id FROM reserveseats seat,reserveinfo res
+                  WHERE res.reserve_id = seat.reserve_id
+              ) AS a ON a.showing_id  = s.showing_id
+          ) AS result
+          GROUP BY result.system_type;";
+
+  $res = mysqli_query($con, $sql);
+  if (!$res) {
+      die('Error: ' . mysqli_error($con));
+  }
+  foreach($res as $a)
+  {
+      $s = $a["system_type"];
+      $data = $a["count"];
+      array_push($system_type,$s);
+      array_push($number,$data);
+  }
+
+?>
 <script>
   $(function () {
     /* ChartJS
@@ -60,11 +91,11 @@
     // Get context with jQuery - using jQuery's .get() method.
     var pieData        = {
       labels: [
-          'TEST','IMAX','LASER','Bed Cinema'
+          '<?php echo implode("',' ",$system_type); ?>'
       ],
       datasets: [
         {
-          data: [32,42,150,21],
+          data: <?php echo "[" . implode(", ",$number) . ",0]"; ?>,
           backgroundColor : ['#00FFFF', '#DC143C', '#DCDCDC', '#DAA520'],
         }
       ]
