@@ -107,6 +107,7 @@
      if ($_SERVER["REQUEST_METHOD"] === "POST") {
            if (isset($_POST['select_seat'])) {
              // Loop through the selected seats
+             $total =0;
              foreach ($_POST['select_seat'] as $selectedSeat) {
                // Access the seat information
                $seatID = $selectedSeat;
@@ -153,7 +154,7 @@
              echo "No seats selected";
            }
 
-           foreach (array_combine($_POST['food_id'],$_POST['food_quantity']) as $id => $quantity)
+           foreach (array_combine($_POST['food_id'],$_POST['quantity']) as $id => $quantity)
            { 
                $sql = "SELECT * FROM foodsize
                        WHERE food_id = $id";
@@ -193,7 +194,7 @@
 
          }
      ?>
-    
+
     <div class="row justify-content-center">
         <div class="col-7">
             <h4>Showings Information</h4>

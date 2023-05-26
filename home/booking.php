@@ -53,6 +53,7 @@
 
 </head>
 
+<form action="payment.php" method="POST"> 
 <body>
     <!-- Page Preloder -->
     <!-- <div id="preloder">
@@ -117,11 +118,12 @@
                 </div>
                 <div class="col-2 align-item-left">
                     <div class="container" style="margin:1%">
-                        <h4><element class="bold">Subtotal</element></h4>
+                        <h4><element class="bold">Subtotal </element></h4>
                     </div>
                 </div>
             </div>
         </div>
+        <input type="hidden" name='showing_id' value= <?php echo $_POST['showing_id']; ?> >  
       <?php
      
       if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -168,6 +170,7 @@
                               </div>
                         </div>
                   </div>
+                  <input type="hidden" name='select_seat[]' value= <?php echo $selectedSeat; ?> >
             <?php  }
             } else {
               echo "No seats selected";
@@ -206,6 +209,8 @@
                                     <?php $total = $total + $food_price*$quantity ;?>
                               </div>
                         </div>
+                        <input type="hidden" name='food_id[]' value= <?php echo $id; ?> > 
+                        <input type="hidden" name='quantity[]' value= <?php echo $quantity; ?> > 
                 </div>
                   
                 
@@ -220,11 +225,11 @@
             <div class="row justify-content-end">
                 <div class="col-3" style="margin:10px"> <h4>Total <?php echo $total;?> THB </h4></div>
                 <div class="col-lg-1">
-                   <form action="payment.php" method="POST"> <button type="confirm" class="primary-btn" id="confirm"> Confirm </button> </form>
+                   <button type="submit" class="primary-btn" id="confirm"> Confirm </button> 
                 </div>
             </div>
     </div>
-
-   
+        
     
+        </form>
 </body>
