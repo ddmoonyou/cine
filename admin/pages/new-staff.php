@@ -294,6 +294,18 @@ $(function () {
 
     // When the user starts to type something inside the password field
     myInput1.onkeyup = function() {
+      if(myInput2.value == myInput1.value) {
+        pswd1.classList.remove("is-invalid");
+        pswd1.classList.add("is-valid");
+        pswd2.classList.remove("is-invalid");
+        pswd2.classList.add("is-valid");
+      } else {
+        pswd1.classList.remove("is-valid");
+        pswd1.classList.add("is-invalid");
+        pswd2.classList.remove("is-valid");
+        pswd2.classList.add("is-invalid");
+
+      }
       // Validate lowercase letters
       var lowerCaseLetters = /[a-z]/g;
       if(myInput1.value.match(lowerCaseLetters)) {
