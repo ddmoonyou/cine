@@ -152,12 +152,20 @@
                 <label for="inputPosterImage">Poster image(Edit)</label>
                   <div class="input-group">
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" name="movie_poster"id="inputPosterImage" accept="image/jpeg, image/png, image/jpg">
-                        <label class="custom-file-label" for="inputPosterImage">Choose promote image</label>
+                        <input type="file" class="custom-file-input" name="inputPosterImage"id="inputPosterImage" accept="image/jpeg, image/png, image/jpg">
+                        <label class="custom-file-label" for="inputPosterImage">Choose Poster image</label>
                     </div>
                   </div>
               </div>
-
+            <div class="form-group">
+              <label for="inputPosterImage">Promote image(Edit)</label>
+                <div class="input-group">
+                  <div class="custom-file">
+                      <input type="file" class="custom-file-input" name="inputPromoteImage"id="inputPromoteImage" accept="image/jpeg, image/png, image/jpg">
+                      <label class="custom-file-label" for="inputPromoteImage">Choose Promote image</label>
+                  </div>
+                </div>
+              </div>
               <!-- Date -->
               <div class="form-group">
                 <label>Release Date(Edit)</label>
