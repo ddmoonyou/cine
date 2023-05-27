@@ -33,6 +33,32 @@ function fetchemp(){
   })
 }
 
+function fetchTheater(){
+  var id = document.getElementById("movie_id").value;
+
+  $.ajax({
+    url:"../pages/showMovieinfo.php",
+    method:"POST",
+    data:{
+      x : id
+    },
+    dataType: "JSON",
+
+    success: function(data){
+      document.getElementById("movie_name").value = data.name;
+      document.getElementById("movie_description").value = data.description;
+      document.getElementById("movie_trailer").value = data.trailer;
+      document.getElementById("director_info").value = data.director;
+      document.getElementById("movie_length").value = data.length;
+      document.getElementById("releaseDate").value = data.releaseDate;
+      document.getElementById("start_promote").value = data.startpromote;
+      document.getElementById("end_promote").value = data.endpromote;
+
+    }
+
+  })
+}
+
 (function ($) {
   'use strict'
 
