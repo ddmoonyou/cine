@@ -1995,6 +1995,7 @@ pre code {
 
       padding: auto;
       padding-bottom: 5%;
+      
 }
 
 
@@ -2002,7 +2003,7 @@ pre code {
 .table th {
       padding: .5rem;
       vertical-align: top;
-      /* border-top: 1px solid #000000 */
+      border: 1px solid #000000
       
 }
 
