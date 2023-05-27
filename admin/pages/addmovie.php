@@ -20,7 +20,7 @@
 
     //empty($_POST["inputPosterImage"]) || empty($_POST["inputPromoteImage"]) || 
     if($_FILES['inputPosterImage']['name'] == '' || $_FILES['inputPromoteImage']['name'] == ''
-    ||    empty($_POST["name"]) || empty($_POST["lenght"])
+    ||    empty($_POST["name"]) || empty($_POST["length"])
     || empty($_POST["description"]) || empty($_POST["director"])
     || empty($_POST["start_promote"]) || empty($_POST["end_promote"]) || empty($_POST["branch_id"])
     || empty($_POST["theater"]) || empty($_POST["time"])
@@ -32,7 +32,7 @@
     else
     {
         $name =  mysqli_real_escape_string($con,$_POST["name"]);
-        $length =  $_POST["lenght"];
+        $length =  $_POST["length"];
         $description =  mysqli_real_escape_string($con,$_POST["description"]);
         $movie_trailer = mysqli_real_escape_string($con,$_POST["movie_trailer"]);
         $director =  mysqli_real_escape_string($con,$_POST["director"]);

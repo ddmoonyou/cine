@@ -64,7 +64,7 @@
         <div class="col-md-6">
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">Information</h3>
+              <h3 class="card-title">Movie Information</h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -97,8 +97,8 @@
                 <input name="name" type="text" id="inputMovieName" class="form-control" placeholder="Avengers: Endgame">
               </div>
               <div class="form-group">
-                <label for="inputName">Movie lenght</label>
-                <input name="lenght" type="number" id="inputLenght" class="form-control" placeholder="182(min)" min=10>
+                <label for="inputName">Movie Length (min)</label>
+                <input name="length" type="number" id="inputLenght" class="form-control" placeholder="182" min=10>
               </div>
               <div class="form-group">
                 <label for="inputDescription">Movie Description</label>
@@ -129,9 +129,9 @@
           <!-- /.card -->
         </div>
         <div class="col-md-6">
-          <div class="card card-secondary">
+          <div class="card card-danger">
             <div class="card-header">
-              <h3 class="card-title">Premiere ticket</h3>
+              <h3 class="card-title">Set Premiere ticket</h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -191,11 +191,14 @@
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <input type="submit" value="Submit" class="btn btn-success float-right">
+
+          <!-- Submit button -->
+          <div class="row">
+            <div class="col-12">
+              <input type="submit" value="Submit" class="btn btn-success float-right">
+            </div>
+          </div>
+
         </div>
       </div>
     </form>
