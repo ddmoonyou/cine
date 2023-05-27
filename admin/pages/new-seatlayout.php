@@ -57,13 +57,7 @@
         <div class="col-md-6">
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">General</h3>
-
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                  <i class="fas fa-minus"></i>
-                </button>
-              </div>
+              <h3 class="card-title">Geneal</h3>
             </div>
             <div class="card-body">
               <div class="form-group">
@@ -95,12 +89,6 @@
           <div class="card card-secondary">
             <div class="card-header">
               <h3 class="card-title">Add Row</h3>
-
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                  <i class="fas fa-minus"></i>
-                </button>
-              </div>
             </div>
             <div class="card-body">
               <div class="container">

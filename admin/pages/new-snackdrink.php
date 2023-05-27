@@ -55,13 +55,7 @@
         <div class="col-md-6">
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">Information</h3>
-
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                  <i class="fas fa-minus"></i>
-                </button>
-              </div>
+              <h3 class="card-title">Snack Information</h3>
             </div>
             <div class="card-body">
               <div class="form-group">
@@ -100,12 +94,6 @@
           <div class="card card-danger">
             <div class="card-header">
               <h3 class="card-title">Set Price</h3>
-
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                  <i class="fas fa-minus"></i>
-                </button>
-              </div>
             </div>
             <div class="card-body">
               <div class="form-group">

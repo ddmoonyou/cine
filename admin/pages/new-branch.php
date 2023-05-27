@@ -56,12 +56,6 @@
           <div class="card card-primary">
             <div class="card-header">
               <h3 class="card-title">Branch Information</h3>
-
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                  <i class="fas fa-minus"></i>
-                </button>
-              </div>
             </div>
             <div class="card-body">
               <div class="form-group">
@@ -94,12 +88,6 @@
           <div class="card card-secondary">
             <div class="card-header">
               <h3 class="card-title">Add Theater</h3>
-
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                  <i class="fas fa-minus"></i>
-                </button>
-              </div>
             </div>
             <div class="card-body">
               <div class="container">

@@ -107,12 +107,6 @@
           <div class="card card-primary">
             <div class="card-header">
               <h3 class="card-title">Staff Information</h3>
-
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                  <i class="fas fa-minus"></i>
-                </button>
-              </div>
             </div>
             <div class="card-body">
               <div class="form-group">
@@ -159,16 +153,8 @@
           <div class="card card-teal">
             <div class="card-header">
               <h3 class="card-title">Set Password</h3>
-
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                  <i class="fas fa-minus"></i>
-                </button>
-              </div>
             </div>
-
             <div class="card-body">
-
               <div class="form-group">
                 <?php
                     $sql = "SELECT staff_id FROM staffinfo";
@@ -192,9 +178,6 @@
                 </div>
               </div>
               </div>
-
-              
-
               <label for="inputMovieID">Password</label>
               <div class="input-group mb-3">
                 <input name="pswd1" id="pswd1"type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" class="form-control" placeholder="Password" maxlength=30>
@@ -204,7 +187,6 @@
                   </div>
                 </div>
               </div>
-
               <label label for="inputMovieID">Retype Password</label>
               <div class="input-group mb-3">
                 <input name="pswd2" id="pswd2" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" class="form-control" placeholder="Retype password" maxlength=30>
@@ -214,15 +196,13 @@
                   </div>
                 </div>
               </div>
-
               <div id="message">
-              <h4>Password must contain the following:</h4>
-              <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
-              <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
-              <p id="number" class="invalid">A <b>number</b></p>
-              <p id="length" class="invalid">Minimum <b>8 characters</b></p>
-            </div>
-
+                <h4>Password must contain the following:</h4>
+                <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+                <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+                <p id="number" class="invalid">A <b>number</b></p>
+                <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+              </div>
             </div>
             <!-- /.card-body -->
           </div>

@@ -89,11 +89,6 @@
           <div class="card card-warning">
             <div class="card-header">
               <h3 class="card-title">Movie Information</h3>
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                  <i class="fas fa-minus"></i>
-                </button>
-              </div>
             </div>
             <div class="card-body">
               <div class="form-group">
@@ -142,9 +137,6 @@
             <div class="card-header">
               <h3 class="card-title">Date</h3>
               <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                  <i class="fas fa-minus"></i>
-                </button>
               </div>
             </div>
             <div class="card-body">
@@ -202,7 +194,7 @@
 
       </div>
       <div class="row">
-        <div class="col-6">
+        <div class="col-12">
           <input type="submit" value="Submit" class="btn btn-success float-right">
         </div>
       </div>

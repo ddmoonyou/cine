@@ -17,6 +17,9 @@
         $data['length'] = $rows["movie_length"];
         $data['releaseDate'] = $rows["releaseDate"];
         $data['startpromote'] = $rows["start_promote"];
+
+        // $start_promote = date ('Y-m-d H:i:s', strtotime($sp_date));
+
         $data['endpromote'] = $rows["end_promote"];
 
 

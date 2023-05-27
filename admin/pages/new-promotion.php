@@ -55,12 +55,7 @@
         <div class="col-md-6">
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">Information</h3>
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                  <i class="fas fa-minus"></i>
-                </button>
-              </div>
+              <h3 class="card-title">Promotion Details</h3>
             </div>
             <div class="card-body">
               <div class="form-group">
@@ -98,9 +93,40 @@
           </div>
           <!-- /.card -->
         </div>
+
+        <div class="col-md-6">
+          <div class="card card-secondary">
+            <div class="card-header">
+              <h3 class="card-title">Date</h3>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+              <label for="inputSnackImage">Promotion image</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                          <input name="promotion_img" type="file" class="custom-file-input" id="inputPromotionImage" accept="image/jpeg, image/png, image/jpg">
+                          <label class="custom-file-label" for="inputSnackImage">Choose promotion image</label>
+                      </div>
+                    </div>
+              </div>
+              <h4>Promotion period</h4>
+              <div class="form-group">
+                <label for="inputShowingDate">Start Date</label>
+                <input name="s_date" type="datetime-local" id="inputShowingDate" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="inputShowingDate">End Date</label>
+                <input name="e_date" type="datetime-local" id="inputShowingDate" class="form-control">
+              </div>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+
       </div>
       <div class="row">
-        <div class="col-6">
+        <div class="col-12">
           <input type="submit" value="Submit" class="btn btn-success float-right">
         </div>
       </div>
