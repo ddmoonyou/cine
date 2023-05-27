@@ -219,7 +219,7 @@
                 ?>
                   <div class="row justify-content-center">
                         <div class="col-4 align-item-center">
-                              <div class="container" style="margin:1.5%">
+                              <div class="container" style="margin:1%">
                                     <h5>Seat: <?php echo $row.$column.'  '.$seat_type?></h5>
                                     
                               </div>

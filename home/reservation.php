@@ -313,7 +313,7 @@
             </div>
             
         </div> 
-
+    </div>
         <div class="row justify-content-center">
             <table style="border-spacing:20px">
                 <tr>
@@ -323,7 +323,7 @@
                 </tr>
             </table>
         </div>
-    </div>
+    
         
 
 
