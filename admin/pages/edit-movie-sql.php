@@ -5,6 +5,9 @@
 
 	if(!isset($_SESSION['staff_id']))
 	{
+        $_SESSION['status'] = 'Please login!';
+        $_SESSION['status_text'] = ' ';
+        $_SESSION['status_code'] = 'warning';
         header('Location: http://localhost/cine/admin/login.php');
 		exit();
 	}
@@ -135,6 +138,10 @@
     }
     
 
-    echo "<script> alert('Edit Movie Information succesful!'); </script>";
+    $_SESSION['status'] = 'Successful!';
+    $_SESSION['status_text'] = 'Edited movie information';
+    $_SESSION['status_code'] = 'success';
+    header('Location: edit-movie.php');
+    // echo "<script> alert('Edit Movie Information succesful!'); </script>";
 
 ?>

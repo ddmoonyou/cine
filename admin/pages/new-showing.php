@@ -237,5 +237,10 @@ $(document).ready(function() {
   });
 });
 </script>
+
+<?php
+  include('../script.php');
+?>
+
 </body>
 </html>

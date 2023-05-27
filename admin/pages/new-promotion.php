@@ -79,7 +79,7 @@
                 <label for="inputDescriptionPM">Promotion Description</label>
                 <input name="description_promotion" type="text" id="inputDescriptionPM" class="form-control" placeholder="Christmas Party, discount 50% for two days">
               </div>
-              <h4>Promotion period</h4>
+              <!-- <h4>Promotion period</h4>
               <div class="form-group">
                 <label for="inputShowingDate">Start Date</label>
                 <input name="s_date" type="datetime-local" id="inputShowingDate" class="form-control">
@@ -87,7 +87,7 @@
               <div class="form-group">
                 <label for="inputShowingDate">End Date</label>
                 <input name="e_date" type="datetime-local" id="inputShowingDate" class="form-control">
-              </div>
+              </div> -->
             </div>
             <!-- /.card-body -->
           </div>
@@ -100,15 +100,6 @@
               <h3 class="card-title">Date</h3>
             </div>
             <div class="card-body">
-              <div class="form-group">
-              <label for="inputSnackImage">Promotion image</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                          <input name="promotion_img" type="file" class="custom-file-input" id="inputPromotionImage" accept="image/jpeg, image/png, image/jpg">
-                          <label class="custom-file-label" for="inputSnackImage">Choose promotion image</label>
-                      </div>
-                    </div>
-              </div>
               <h4>Promotion period</h4>
               <div class="form-group">
                 <label for="inputShowingDate">Start Date</label>
@@ -169,6 +160,10 @@ $(function () {
   bsCustomFileInput.init();
 });
 </script>
+
+<?php
+  include('../script.php');
+?>
 
 </body>
 </html>

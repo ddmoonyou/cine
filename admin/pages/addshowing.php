@@ -30,7 +30,11 @@
     || empty($_POST["audio"]) || empty($_POST["subtitle"])
     )
     {
-        echo "<script> alert('Data is invalid!'); window.location.href='new-showing.php'; </script>";
+        $_SESSION['status'] = 'Data is invalid!';
+        $_SESSION['status_text'] = 'Please try again';
+        $_SESSION['status_code'] = 'error';
+        header('Location: new-showing.php');
+        // echo "<script> alert('Data is invalid!'); window.location.href='new-showing.php'; </script>";
     }
     else
     {
@@ -113,7 +117,12 @@
                 }
             }
 
-            echo "<script> alert('Add new showing succesful!'); window.location.href='new-showing.php'; </script>";
+            $_SESSION['status'] = 'Successful!';
+            $_SESSION['status_text'] = 'Added new showing';
+            $_SESSION['status_code'] = 'success';
+            header('Location: new-showing.php');
+
+            // echo "<script> alert('Add new showing succesful!'); window.location.href='new-showing.php'; </script>";
             
         }
         

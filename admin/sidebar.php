@@ -4,6 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<!-- SweetAlert2 -->
+<link rel="stylesheet" href="../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+
 
   <!-- Connect to database -->
   <?php
@@ -238,6 +241,10 @@
 
 
 <!-- ./wrapper -->
+
+<!-- SweetAlert2 -->
+<script src="../plugins/sweetalert2/sweetalert2.min.js"></script>
+
 
 </body>
 </html>

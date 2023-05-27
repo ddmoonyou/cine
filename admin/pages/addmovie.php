@@ -27,7 +27,11 @@
     || empty($_POST["audio"]) || empty($_POST["subtitle"]) || empty($_POST["release"])
     )
     {
-        echo "<script> alert('Data is invalid!'); window.location.href='new-movie.php'; </script>";
+        $_SESSION['status'] = 'Data is invalid!';
+        $_SESSION['status_text'] = 'Please try again';
+        $_SESSION['status_code'] = 'error';
+        header('Location: new-movie.php');
+        // echo "<script> alert('Data is invalid!'); window.location.href='new-movie.php'; </script>";
     }
     else
     {
@@ -99,7 +103,11 @@
 		    	die('Error: ' . mysqli_error($con));
 		    }
 
-            echo "<script> alert('Add new movie successful!'); window.location.href='new-movie.php'; </script>";
+            $_SESSION['status'] = 'Successful!';
+            $_SESSION['status_text'] = 'Added new movie';
+            $_SESSION['status_code'] = 'success';
+            header('Location: new-movie.php');
+            // echo "<script> alert('Add new movie successful!'); window.location.href='new-movie.php'; </script>";
         }
 
     }

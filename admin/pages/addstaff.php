@@ -30,7 +30,11 @@
     || empty($_POST["pswd1"]) || empty($_POST["branch_id"])
     )
     {
-        echo "<script> alert('Data is invalid!'); window.location.href='new-staff.php'; </script>";
+        $_SESSION['status'] = 'Data is invalid';
+        $_SESSION['status_text'] = 'Please try again';
+        $_SESSION['status_code'] = 'error';
+        header('Location: new-staff.php');
+        // echo "<script> alert('Data is invalid!'); window.location.href='new-staff.php'; </script>";
     }
     else
     {
@@ -48,7 +52,11 @@
 			die('Error: ' . mysqli_error($con));
 		}
 
-        echo "<script> alert('Add new staff succesful!'); window.location.href='new-staff.php'; </script>";
+        $_SESSION['status'] = 'Successful!';
+        $_SESSION['status_text'] = 'Added new staff';
+        $_SESSION['status_code'] = 'success';
+        header('Location: new-staff.php');
+        // echo "<script> alert('Add new staff succesful!'); window.location.href='new-staff.php'; </script>";
     } 
     
 

@@ -157,5 +157,10 @@ $(function () {
   bsCustomFileInput.init();
 });
 </script>
+
+<?php
+  include('../script.php');
+?>
+
 </body>
 </html>

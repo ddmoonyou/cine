@@ -12,6 +12,9 @@
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+  
 
   <!-- Connect to database -->
   <?php
@@ -24,6 +27,7 @@
 		// echo "<a href=\"login.php\" class=\"nav-link\"><button type=\"submit\">  Please Login!</button></a>";
 		exit();
 	}
+
 	
 	//*** Update Last Stay in Login System
 	$sql = "UPDATE staffinfo SET session = NOW() WHERE staff_id = '".$_SESSION["staff_id"]."' ";
@@ -417,7 +421,7 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <input type="submit" value="Submit" class="btn btn-success float-right">
+          <input name="submit" type="submit" value="Submit" class="btn btn-success float-right">
         </div>
       </div>
     </form>
@@ -453,6 +457,9 @@
 <script src="../dist/js/demo.js"></script>
 <!-- bs-custom-file-input -->
 <script src="../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+<!-- SweetAlert2 -->
+<script src="../plugins/sweetalert2/sweetalert2.min.js"></script>
+
 <!-- Page specific script -->
 <script>
     var myInput1 = document.getElementById("pswd1");
@@ -539,12 +546,13 @@
         pswd1.classList.add("is-invalid");
         pswd2.classList.remove("is-valid");
         pswd2.classList.add("is-invalid");
-
       }
     }
-
-
 </script>
+
+<?php
+  include('../script.php');
+?>
 
 </body>
 </html>

@@ -25,7 +25,11 @@
     &&   (empty($_POST["l_check"]) || empty($_POST["l"])))
     )
     {
-        echo "<script> alert('Data is invalid!'); window.location.href='new-snackdrink.php'; </script>";
+        $_SESSION['status'] = 'Data is invalid!';
+        $_SESSION['status_text'] = 'Please try again';
+        $_SESSION['status_code'] = 'error';
+        header('Location: new-snackdrink.php');
+        // echo "<script> alert('Data is invalid!'); window.location.href='new-snackdrink.php'; </script>";
     }
     else
     {
@@ -74,6 +78,10 @@
         $path = "../../home/img/snack/".$snack_name.".png";
         move_uploaded_file($_FILES['snack_img']['tmp_name'],$path);
         
-        echo "<script> alert('Add new snack or drink succesful!'); window.location.href='new-snackdrink.php'; </script>";
+        $_SESSION['status'] = 'Successful';
+        $_SESSION['status_text'] = 'Added new snack&drink';
+        $_SESSION['status_code'] = 'success';
+        header('Location: new-snackdrink.php');
+        // echo "<script> alert('Add new snack or drink succesful!'); window.location.href='new-snackdrink.php'; </script>";
     } 
 ?>

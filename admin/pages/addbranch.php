@@ -24,7 +24,11 @@
     || empty($_POST["system0"])
     )
     {
-        echo "<script> alert('Data is invalid!'); window.location.href='new-branch.php'; </script>";
+        $_SESSION['status'] = 'Data is invalid!';
+        $_SESSION['status_text'] = 'Please try again';
+        $_SESSION['status_code'] = 'error';
+        header('Location: new-branch.php');
+        // echo "<script> alert('Data is invalid!'); window.location.href='new-branch.php'; </script>";
     }
     else
     {
@@ -71,7 +75,11 @@
         $path = "../../home/img/theater/".$id.".jpg";
         move_uploaded_file($_FILES['branch_img']['tmp_name'],$path);
 
-        echo "<script> alert('Add new branch successful!'); window.location.href='new-branch.php'; </script>";
+        $_SESSION['status'] = 'Successful!';
+        $_SESSION['status_text'] = 'Added new branch';
+        $_SESSION['status_code'] = 'success';
+        header('Location: new-branch.php');
+        // echo "<script> alert('Add new branch successful!'); window.location.href='new-branch.php'; </script>";
     } 
 
 ?>

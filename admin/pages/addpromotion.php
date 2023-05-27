@@ -25,7 +25,11 @@
     || empty($_POST["e_date"]) 
     )
     {
-        echo "<script> alert('Data is invalid!'); window.location.href='new-promotion.php'; </script>";
+        $_SESSION['status'] = 'Data is invalid!';
+        $_SESSION['status_text'] = 'Please try again';
+        $_SESSION['status_code'] = 'error';
+        header('Location: new-promotion.php');
+        // echo "<script> alert('Data is invalid!'); window.location.href='new-promotion.php'; </script>";
     }
     else
     {
@@ -36,7 +40,11 @@
 
         if($end_date < $start_date)
         {
-            echo "<script> alert('End date must be after start date!'); window.location.href='new-promotion.php'; </script>";
+            $_SESSION['status'] = 'End date must be after start date!';
+            $_SESSION['status_text'] = 'Please try again';
+            $_SESSION['status_code'] = 'warning';
+            header('Location: new-promotion.php');
+            // echo "<script> alert('End date must be after start date!'); window.location.href='new-promotion.php'; </script>";
         } else{
 
             $promotion_code = mysqli_real_escape_string($con,$_POST["promotion_code"]);
@@ -75,7 +83,11 @@
             $path = "../../home/img/blog/".$promotion_code.".jpg";
             move_uploaded_file($_FILES['promotion_img']['tmp_name'],$path);
 
-            echo "<script> alert('Add new promotion succesful!'); window.location.href='new-promotion.php'; </script>";
+            $_SESSION['status'] = 'Successful!';
+            $_SESSION['status_text'] = 'Added new promotion';
+            $_SESSION['status_code'] = 'success';
+            header('Location: new-promotion.php');
+            // echo "<script> alert('Add new promotion succesful!'); window.location.href='new-promotion.php'; </script>";
         }
     }
 ?>

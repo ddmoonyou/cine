@@ -21,7 +21,11 @@
     //empty($_POST["inputPosterImage"]) || empty($_POST["inputPromoteImage"]) || 
     if( empty($_POST["type_name"]) || empty($_POST["columns"]) || empty($_POST["seat_type"]))
     {
-        echo "<script> alert('Data is invalid!'); window.location.href='new-seatlayout.php'; </script>";
+        $_SESSION['status'] = 'Data is invalid!';
+        $_SESSION['status_text'] = 'Please try again';
+        $_SESSION['status_code'] = 'error';
+        header('Location: new-seatlayout.php');
+        // echo "<script> alert('Data is invalid!'); window.location.href='new-seatlayout.php'; </script>";
     }
     else
     {
@@ -51,8 +55,11 @@
 
             $row++;
         }
-        
 
-        echo "<script> alert('Add new seat layout succesful!'); window.location.href='new-seatlayout.php'; </script>";
+        $_SESSION['status'] = 'Successful!';
+        $_SESSION['status_text'] = 'Added new seat layout';
+        $_SESSION['status_code'] = 'success';
+        header('Location: new-seatlayout.php');
+        // echo "<script> alert('Add new seat layout succesful!'); window.location.href='new-seatlayout.php'; </script>";
     } 
 ?>

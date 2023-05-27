@@ -29,6 +29,8 @@
   <link rel="stylesheet" href="../plugins/dropzone/min/dropzone.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 
@@ -194,7 +196,7 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <input type="submit" value="Submit" class="btn btn-success float-right">
+          <input name="submit" type="submit" value="Submit" class="btn btn-success float-right">
         </div>
       </div>
     </form>
@@ -233,13 +235,12 @@
 <script src="../plugins/inputmask/jquery.inputmask.min.js"></script>
 <!-- date-range-picker -->
 <script src="../plugins/daterangepicker/daterangepicker.js"></script>
-<!-- bootstrap color picker -->
-<script src="../plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 <!-- bs-custom-file-input -->
 <script src="../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
-
+<!-- SweetAlert2 -->
+<script src="../plugins/sweetalert2/sweetalert2.min.js"></script>
 
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
@@ -305,6 +306,10 @@ $(function () {
 }
 );
 </script>
+
+<?php
+  include('../script.php');
+?>
 
 </body>
 </html>
