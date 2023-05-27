@@ -95,14 +95,23 @@
     </header>
     <!-- Header Section End -->
 
-   
-      <div class="container" style="margin-top: 30px;">
-            <div class="col-lg-12">
-                  <div class="filter__controls">
-                  <h3>Order Confirmation</h3>
-                  </div>
+      <section class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__text">
+                        <h4>Order Confirmation</h4>
+                        <div class="breadcrumb__links">
+                            <a href="./index.php">Home</a>
+                            <a> Reservation</a>
+                            <span>Order Confirmation</span>
+                            
+                        </div>
+                    </div>
+                </div>
             </div>
-      </div>
+        </div>
+        </section>
     
         <div class="container">
             <div class="row justify-content-center">
