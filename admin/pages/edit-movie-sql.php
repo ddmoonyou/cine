@@ -118,7 +118,7 @@
       $filename = $_FILES["inputPosterImage"]["movie_name"];
       $path = "../../home/img/poster/".$id.".jpg";
       move_uploaded_file($_FILES['inputPosterImage']['tmp_name'],$path);
-      echo "<script> alert('Edit inputPosterImage Information succesful!'); </script>";
+      
   
     }
 
@@ -130,7 +130,7 @@
       $filename = $_FILES["inputPromoteImage"]["movie_name"];
       $path = "../../home/img/promote/".$id.".jpg";
       move_uploaded_file($_FILES['inputPromoteImage']['tmp_name'],$path);
-      echo "<script> alert('Edit inputPosterImage Information succesful!'); </script>";
+      
   
     }
     
