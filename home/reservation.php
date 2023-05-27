@@ -163,7 +163,6 @@
                 <?php // generate all avialable seats
                 while ($row = mysqli_fetch_assoc($result)) {
 
-
                     $seat_row = $row['seat_row'];
                     $seat_type = $row['seat_type'];
                     ?>
@@ -210,8 +209,7 @@
                                     AND theater_no = $theater
                                 )
                                 AND seat_row = '" . $seat_row . "'
-                            ) AS a
-                            ;";
+                            ) AS a;";
 
                                 $column_res = mysqli_query($conn, $sql);
                                 if (!$column_res) {
