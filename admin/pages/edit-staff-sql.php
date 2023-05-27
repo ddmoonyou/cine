@@ -20,7 +20,7 @@
 
     //empty($_POST["inputPosterImage"]) || empty($_POST["inputPromoteImage"]) || 
     
-    if( !($_POST["passwords"] == $_POST["passwords2"]))
+    if( !($_POST["pswd1"] == $_POST["pswd2"]))
     {
         echo "<script> alert('Password must match!'); window.location.href='edit-staff.php'; </script>";
     }
@@ -71,11 +71,11 @@
 		    }
         }
 
-        if(!empty($_POST["passwords"]))
+        if(!empty($_POST["pswd1"]))
         {
-            $passwords =  $_POST["passwords"];
+            $pswd1 =  $_POST["pswd1"];
             $sql =  "UPDATE staffinfo
-                    SET password= '$passwords'
+                    SET password= '$pswd1'
                     WHERE staff_id = '$_SESSION[staff_id]';";
         
             if (!mysqli_query($con, $sql)) {

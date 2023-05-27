@@ -121,7 +121,7 @@
 
                             <?php
                               /* layout type drown down query from db */
-                              $result = mysqli_query($con,'SELECT DISTINCT layout_type FROM theaterinfo');
+                              $result = mysqli_query($con,'SELECT DISTINCT layout_type FROM seatlayout');
                               foreach ($result as $row){
                                 echo "<option value=$row[layout_type]>$row[layout_type]</option>"; 
                                 }
@@ -134,7 +134,7 @@
 
                             <?php
                               /* system type drown down query from db */
-                              $result = mysqli_query($con,'SELECT DISTINCT system_type FROM theaterinfo');
+                              $result = mysqli_query($con,'SELECT DISTINCT system_type FROM systemtype');
                               foreach ($result as $row){
                                 echo "<option value=$row[system_type]>$row[system_type]</option>"; 
                                 }

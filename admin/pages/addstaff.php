@@ -27,7 +27,7 @@
 
     if( empty($_POST["firstname"]) || empty($_POST["lastname"])
     || empty($_POST["telephone"]) || empty($_POST["staff_role"])
-    || empty($_POST["passwords"]) || empty($_POST["branch_id"])
+    || empty($_POST["pswd1"]) || empty($_POST["branch_id"])
     )
     {
         echo "<script> alert('Data is invalid!'); window.location.href='new-staff.php'; </script>";
@@ -38,11 +38,11 @@
         $lastname =  $_POST["lastname"];
         $telephone =  $_POST["telephone"];
         $branch_id = $_POST["branch_id"];
-        $pswd =  $_POST["pswd1"];
+        $pswd =  mysqli_real_escape_string($con,$_POST["pswd1"]);
         $staff_role =  mysqli_real_escape_string($con,$_POST["staff_role"]);
 
         $sql ="INSERT INTO staffinfo(branch_id,staff_role,staff_first_name,staff_last_name,staff_tel,password)
-                VALUES ('$branch_id','$staff_role','$firstname','$lastname','$telephone',$pswd);";
+                VALUES ('$branch_id','$staff_role','$firstname','$lastname','$telephone','$pswd');";
         
         if (!mysqli_query($con, $sql)) {
 			die('Error: ' . mysqli_error($con));

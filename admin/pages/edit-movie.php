@@ -75,13 +75,6 @@
     </section>
 
     <!-- Main content -->
-    <?php
-      $sql = "SELECT movie_id,movie_name FROM movieinfo;";
-      $result = mysqli_query($con, $sql);
-      if (!$result) {
-          die('Invalid query: ' . mysqli_error($con));
-      }
-    ?>
     <section class="content">
     <form action="edit-movie-sql.php" method="POST" enctype="multipart/form-data">
       <div class="row">
@@ -96,6 +89,12 @@
                   <select name="movie_id" id="movie_id" onchange="fetchemp()" class="form-control custom-select">
                     <option selected disabled>Select one</option>
                     <?php
+                      $sql = "SELECT movie_id,movie_name FROM movieinfo;";
+                      $result = mysqli_query($con, $sql);
+                      if (!$result) {
+                          die('Invalid query: ' . mysqli_error($con));
+                      }
+
                       foreach($result as $branch)
                       {
                         $b_id = $branch['movie_id'];
@@ -238,6 +237,8 @@
 <script src="../plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- bs-custom-file-input -->
+<script src="../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 
 
 <!-- AdminLTE App -->
@@ -248,6 +249,8 @@
 <!-- Page specific script -->
 <script>
 $(function () {
+
+  bsCustomFileInput.init();
   
   //Initialize Select2 Elements
   $('.select2').select2()

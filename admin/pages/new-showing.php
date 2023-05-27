@@ -49,13 +49,6 @@
     </section>
 
     <!-- Main content -->
-    <?php
-      $sql = "SELECT branch_id,branch_name FROM branchinfo;";
-      $result = mysqli_query($con, $sql);
-      if (!$result) {
-          die('Invalid query: ' . mysqli_error($con));
-      }
-    ?>
     <section class="content">
     <form action="addshowing.php" method="POST" enctype="multipart/form-data">
       <div class="row">
@@ -65,15 +58,35 @@
               <h3 class="card-title">Showing Information</h3>
             </div>
             <div class="card-body">
-              <div class="form-group">
+            <div class="form-group">
                 <label for="inputMovieID">Movie ID</label>
-                <input name="movie_id" type="number" min = "100000001"id="inputMovieID" class="form-control" placeholder="100000012">
+                  <select name="movie_id" id="movie_id" class="form-control custom-select">
+                    <option selected disabled>Select one</option>
+                    <?php
+                      $sql = "SELECT movie_id,movie_name FROM movieinfo;";
+                      $result = mysqli_query($con, $sql);
+                      if (!$result) {
+                          die('Invalid query: ' . mysqli_error($con));
+                      }
+                      foreach($result as $branch)
+                      {
+                        $b_id = $branch['movie_id'];
+                        $b_name = $branch['movie_name'];
+                        echo "<option value=$b_id>$b_id: $b_name</option>";
+                      }
+                    ?>
+                  </select>
               </div>
               <div class="form-group">
               <label for="inputBranchID">Branch</label>
                 <select name="branch_id" id="branchID" class="form-control custom-select">
                   <option selected disabled>Select one</option>
                   <?php
+                    $sql = "SELECT branch_id,branch_name FROM branchinfo;";
+                    $result = mysqli_query($con, $sql);
+                    if (!$result) {
+                        die('Invalid query: ' . mysqli_error($con));
+                    }
                     foreach($result as $branch)
                     {
                       $b_id = $branch['branch_id'];
@@ -169,7 +182,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-6">
+        <div class="col-12">
           <input type="submit" value="Submit" class="btn btn-success float-right">
         </div>
       </div>
