@@ -26,7 +26,7 @@
 	}
 	
 	//*** Update Last Stay in Login System
-	$sql = "UPDATE staffinfo SET session = NOW() WHERE staff_id = '".$_SESSION["staff_id"]."' ";
+	$sql = "UPDATE staffinfo SET session = NOW(), loginstatus = 1 WHERE staff_id = '".$_SESSION["staff_id"]."' ";
 	$query = mysqli_query($con,$sql);
 
 	//*** Get User Login
