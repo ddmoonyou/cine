@@ -113,7 +113,16 @@
         </div>
         </section>
     
-        <div class="container">
+        
+          
+      <?php
+     
+      if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            if (isset($_POST['select_seat'])) {
+
+    ?> 
+    <input type="hidden" name='showing_id' value= <?php echo $_POST['showing_id']; ?> >
+    <div class="container">
             <div class="row justify-content-center">
                 <div class="col-5 align-item-center">
                     <div class="container" style="margin:1%">
@@ -132,11 +141,7 @@
                 </div>
             </div>
         </div>
-        <input type="hidden" name='showing_id' value= <?php echo $_POST['showing_id']; ?> >  
-      <?php
-     
-      if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            if (isset($_POST['select_seat'])) {
+    <?php
               // Loop through the selected seats
               foreach ($_POST['select_seat'] as $selectedSeat) {
                 // Access the seat information
@@ -181,9 +186,7 @@
                   </div>
                   <input type="hidden" name='select_seat[]' value= <?php echo $selectedSeat; ?> >
             <?php  }
-            } else {
-              echo "No seats selected";
-            }
+            
 
             foreach (array_combine($_POST['food_id'],$_POST['food_quantity']) as $id => $quantity)
             { 
@@ -225,7 +228,6 @@
                 
            <?php }}
 
-          }
       ?>
 
     <div class="container">
@@ -249,6 +251,15 @@
                 </div>
             </div>
     </div>
+    <?php }
+    else
+    {
+        ?>
+        <br><br><br><br>
+        <h1><center><a href="reservation.php?showing_id= <?php echo $_POST['showing_id']; ?>"> No seat select! <br> Click here to go back! <center></h1></a>  
+        <?php 
+    }
+} ?>
         
     
 </form>
