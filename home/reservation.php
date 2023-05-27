@@ -93,89 +93,62 @@
     </header>
     <!-- Header Section End -->
 
-    
+    <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-option">
-    <form action="order_confirmation.php" method="POST"> 
-            <?php
-                $showingID = $_GET['showing_id'];
-                  
-                $sql = "SELECT * FROM showings
-                JOIN branchinfo ON branchinfo.branch_id = showings.branch_id
-                JOIN theaterinfo ON theaterinfo.branch_id = showings.branch_id AND 
-                                    theaterinfo.theater_no = showings.theater_no
-                JOIN movieinfo ON movieinfo.movie_id = showings.movie_id
-                WHERE showing_id=$showingID;";
-                $result = mysqli_query($conn, $sql);
-                if (!$result) {
-                    die('Invalid query: ' . mysqli_error($conn));
-                }
-                  $result = mysqli_query($conn, $sql);
-                  $row = mysqli_fetch_assoc($result);
-                  //Movie information
-                  $movie_name = $row['movie_name'];
-                  $description = $row['movie_description'];
-                  $movie_length = $row['movie_length'];
-                  $director = $row['director_info'];
-                  $_start_date = $row['releaseDate'];
-                  $_start_date = date('d M Y', strtotime($_start_date));
-                  $trailer = $row['movie_trailer'];
-                  $movie_id = $row['movie_id'];
-                //Showings Information
-                $b_id = $row["branch_id"];
-                $theater = $row["theater_no"];
-                $branch_name = $row["branch_name"];
-                $date = $row["date_time"];
-                $f_date = date("F d, Y", strtotime($date));
-                $system_type = $row["system_type"];
-                $time = date("H:i", strtotime($date));
-            ?>
-
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb__text">
-                    <div class="container">
-                            <h4>Reservation</h4>
-                            <div class="breadcrumb__links">
-                                <a href="./index.php">Home</a>
-                                <a>Showings</a>
-                                <span> Reservation</span>
-                                
-                                
-                            </div>
-                        </div>
-                        <div style="padding-top:20px">
-                        <div class="row">
-                              <div class="image-container">
-                                    <img src ="./img/poster/<?php echo $movie_id ?>.jpg" alt="Movie Poster" width="200" height="225"
-                                    class="movie-poster" style="padding-left:20px">
-                            </div>
-                            <div class="col-lg-8 md-6 xd-6 d-flex align-items-center">
-                                <ul><h4 class="h2-movie"> <?php echo $movie_name ?></h4><ul>
-                                        <ul>
-                                            <h6>Showings Information</h6>
-                                            <ul><img src="./img/icon/video-camera.png" width=25px height=25px>Theater No: <?php echo $theater ?> System: <?php echo $system_type ?></ul>
-                                            <ul><img src="./img/icon/location.png" width=20px height=20px>Branch: <?php echo $branch_name ?></ul>
-                                            <ul><img src="./img/icon/clock.png" width=25px height=25px>Time: <?php echo $time.' '.$f_date?></ul><br>
-                                        <ul>
-                            </div>
-                        </div>
+                        <h4>Reservation</h4>
+                        <div class="breadcrumb__links">
+                            
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
-        </div>
-        </div>
     </section>
+    <!-- Breadcrumb Section End -->
 
-    
-    
+    <!-- Top-Content Section -->
+    <div class="container" style="margin-top: 30px;"> 
+            <div class="col-lg-12">
+                  <div class="filter__controls">
+                  <h3>Reservation</h3>
+                  </div>
+            </div>
+      </div>
+
+    <form action="order_confirmation.php" method="POST"> 
     <div class="row justify-content-md-center">
+        <?php
+        $showingID = $_GET['showing_id'];
+
+        $sql = "SELECT * FROM showings
+                JOIN branchinfo ON branchinfo.branch_id = showings.branch_id
+                JOIN theaterinfo ON theaterinfo.branch_id = showings.branch_id AND 
+                                    theaterinfo.theater_no = showings.theater_no
+                WHERE showing_id=$showingID;";
+        $result = mysqli_query($conn, $sql);
+        if (!$result) {
+            die('Invalid query: ' . mysqli_error($conn));
+        }
+        $data = mysqli_fetch_assoc($result);
+        $b_id = $data["branch_id"];
+        $theater = $data["theater_no"];
+        $branch_name = $data["branch_name"];
+        $date = $data["date_time"];
+        $f_date = date("F d, Y", strtotime($date));
+        $system_type = $data["system_type"]; ?>
         
-        
-      
+        <div class="row justify-content-md-center">
+            <div class="col-7">
+                <h4>Showings Information</h4>
+                <ul>Theater No: <?php echo $theater . ' System:' . $system_type ?></ul>
+                <ul>Branch: <?php echo $branch_name ?></ul>
+                <ul>Date: <?php echo $f_date ?></ul><br>
+            </div>
+        </div>
 
         <?php
         $sql = "SELECT DISTINCT seat_row,seat_type FROM
@@ -196,11 +169,16 @@
         ?>
 
     <input type="hidden" name='showing_id' value= <?php echo $showingID; ?> >
+
+
+    
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-9">
+                <div class="text-center">
                 <table class="table">
                 <?php // generate all avialable seats
                 while ($row = mysqli_fetch_assoc($result)) {
+
                     $seat_row = $row['seat_row'];
                     $seat_type = $row['seat_type'];
                     ?>
@@ -314,21 +292,13 @@
                     <?php } ?>
 
                 </table>
-            
-                
+            </div>
+                <div class="col-lg-9 md-8">
+                    <div class="row"> <img src="./img/icon/screen.png" height="50px"></div>
+                </div>
             </div>
             
         </div> 
-
-        <div class="row justify-content-center">
-            <table style="border-spacing:20px">
-                <tr>
-                    <td><img src="./img/icon/sofa-bed.png" width="30px"> Premium Bed 2500THB    </td>
-                    <td><img src="./img/icon/chair.png" width="20px"> Honeymoon Seat 400THB   </td>
-                    <td><img src="./img/icon/chair2.png" width="20px"> Premium Seat 180THB   </td>
-                </tr>
-            </table>
-        </div>
     </div>
         
 

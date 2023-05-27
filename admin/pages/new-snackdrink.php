@@ -75,7 +75,7 @@
               </div>
               <div class="form-group">
                 <label for="inputSnackName">Snack Name</label>
-                <input type ="text" name="snack_name" id="inputSnackName" class="form-control" placeholder="PopcornCheese">
+                <input type ="text" name="snack_name" id="inputSnackName" class="form-control" placeholder="Cheese-Popcorn">
               </div>
               <div class="form-group">
                 <label for="inputSnackDescription">Snack Description</label>
@@ -97,7 +97,7 @@
           <!-- /.card -->
 
           <div class="col-md-6">
-          <div class="card card-secondary">
+          <div class="card card-danger">
             <div class="card-header">
               <h3 class="card-title">Set Price</h3>
 
@@ -168,8 +168,6 @@
 $(function () {
   bsCustomFileInput.init();
 });
-</script>
-
 </script>
 </body>
 </html>

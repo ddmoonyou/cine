@@ -26,6 +26,49 @@
         die('Invalid query: ' . mysqli_error($con));
     }
   ?>
+
+  <!-- Check Password is valid type -->
+  <style>
+  /* Style all input fields */
+
+  /* The message box is shown when the user clicks on the password field */
+  #message {
+    display:none;
+    background: #f1f1f1;
+    color: #000;
+    position: relative;
+    padding: 20px;
+    margin-top: 10px;
+  }
+
+  #message p {
+    padding: 10px 35px;
+    font-size: 18px;
+  }
+
+  /* Add a green text color and a checkmark when the requirements are right */
+  .valid {
+    color: green;
+  }
+
+  .valid:before {
+    position: relative;
+    left: -35px;
+    content: "✔";
+  }
+
+  /* Add a red text color and an "x" when the requirements are wrong */
+  .invalid {
+    color: red;
+  }
+
+  .invalid:before {
+    position: relative;
+    left: -35px;
+    content: "✖";
+  }
+  </style>
+
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -63,7 +106,7 @@
         <div class="col-md-6">
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">Information</h3>
+              <h3 class="card-title">Staff Information</h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -115,7 +158,7 @@
         <div class="col-md-6">
           <div class="card card-teal">
             <div class="card-header">
-              <h3 class="card-title">Security</h3>
+              <h3 class="card-title">Set Password</h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -123,25 +166,63 @@
                 </button>
               </div>
             </div>
+
             <div class="card-body">
-            <label for="inputMovieID">Password</label>
+
+              <div class="form-group">
+                <?php
+                    $sql = "SELECT staff_id FROM staffinfo";
+                    $res = mysqli_query($con, $sql);
+                    if (!$res) {
+                      die('Invalid query: ' . mysqli_error($con));
+                    }
+                    foreach($res as $id)
+                    {
+                      $staff_id = $id['staff_id'];
+                    }
+                    $staff_id++;
+                ?>
+                <label for="inputName">ID</label>
+                <div class="input-group mb-3">
+                <input type="text" name="staff_id" id="inputID" class="form-control" readonly="readonly" value='<?php echo $staff_id;?>'> 
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <span class="fas fa-user"></span>
+                  </div>
+                </div>
+              </div>
+              </div>
+
+              
+
+              <label for="inputMovieID">Password</label>
               <div class="input-group mb-3">
-                <input name="passwords" id="pswd1"type="password" class="form-control" placeholder="Password" maxlength=30>
+                <input name="pswd1" id="pswd1"type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" class="form-control" placeholder="Password" maxlength=30>
                 <div class="input-group-append">
                   <div class="input-group-text">
                     <span class="fas fa-lock"></span>
                   </div>
                 </div>
               </div>
-              <label for="inputMovieID">Retype Password</label>
+
+              <label label for="inputMovieID">Retype Password</label>
               <div class="input-group mb-3">
-                <input name="passwords2" id="pswd2" type="password" class="form-control" placeholder="Retype password" maxlength=30>
+                <input name="pswd2" id="pswd2" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" class="form-control" placeholder="Retype password" maxlength=30>
                 <div class="input-group-append">
                   <div class="input-group-text">
                     <span class="fas fa-lock"></span>
                   </div>
                 </div>
               </div>
+
+              <div id="message">
+              <h4>Password must contain the following:</h4>
+              <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+              <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+              <p id="number" class="invalid">A <b>number</b></p>
+              <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+            </div>
+
             </div>
             <!-- /.card-body -->
           </div>
@@ -192,6 +273,96 @@
 $(function () {
   bsCustomFileInput.init();
 });
+
+    var myInput1 = document.getElementById("pswd1");
+    var myInput2 = document.getElementById("pswd2");
+
+    var letter = document.getElementById("letter");
+    var capital = document.getElementById("capital");
+    var number = document.getElementById("number");
+    var length = document.getElementById("length");
+
+    // When the user clicks on the password field, show the message box
+    // myInput1.onfocus = function() {
+      document.getElementById("message").style.display = "block";
+    // }
+
+    // When the user clicks outside of the password field, hide the message box
+    // myInput1.onblur = function() {
+    //   document.getElementById("message").style.display = "none";
+    // }
+
+    // When the user starts to type something inside the password field
+    myInput1.onkeyup = function() {
+      if(myInput2.value == myInput1.value) {
+        pswd1.classList.remove("is-invalid");
+        pswd1.classList.add("is-valid");
+        pswd2.classList.remove("is-invalid");
+        pswd2.classList.add("is-valid");
+      } else {
+        pswd1.classList.remove("is-valid");
+        pswd1.classList.add("is-invalid");
+        pswd2.classList.remove("is-valid");
+        pswd2.classList.add("is-invalid");
+
+      }
+      // Validate lowercase letters
+      var lowerCaseLetters = /[a-z]/g;
+      if(myInput1.value.match(lowerCaseLetters)) {
+        letter.classList.remove("invalid");
+        letter.classList.add("valid");
+      } else {
+        letter.classList.remove("valid");
+        letter.classList.add("invalid");
+    }
+
+      // Validate capital letters
+      var upperCaseLetters = /[A-Z]/g;
+      if(myInput1.value.match(upperCaseLetters)) {
+        capital.classList.remove("invalid");
+        capital.classList.add("valid");
+      } else {
+        capital.classList.remove("valid");
+        capital.classList.add("invalid");
+      }
+
+      // Validate numbers
+      var numbers = /[0-9]/g;
+      if(myInput1.value.match(numbers)) {
+        number.classList.remove("invalid");
+        number.classList.add("valid");
+      } else {
+        number.classList.remove("valid");
+        number.classList.add("invalid");
+      }
+
+      // Validate length
+      if(myInput1.value.length >= 8) {
+        length.classList.remove("invalid");
+        length.classList.add("valid");
+      } else {
+        length.classList.remove("valid");
+        length.classList.add("invalid");
+      }
+    }
+
+
+    myInput2.onkeyup = function(){
+      if(myInput2.value == myInput1.value) {
+        pswd1.classList.remove("is-invalid");
+        pswd1.classList.add("is-valid");
+        pswd2.classList.remove("is-invalid");
+        pswd2.classList.add("is-valid");
+      } else {
+        pswd1.classList.remove("is-valid");
+        pswd1.classList.add("is-invalid");
+        pswd2.classList.remove("is-valid");
+        pswd2.classList.add("is-invalid");
+
+      }
+    }
+
+
 </script>
 
 </body>
