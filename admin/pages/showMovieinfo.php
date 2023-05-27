@@ -15,6 +15,10 @@
         $data['trailer'] = $rows["movie_trailer"];
         $data['director'] = $rows["director_info"];
         $data['length'] = $rows["movie_length"];
+        $data['releaseDate'] = $rows["releaseDate"];
+        $data['startpromote'] = $rows["start_promote"];
+        $data['endpromote'] = $rows["end_promote"];
+
 
     }
 

@@ -27,9 +27,11 @@
     $r_Date = $_POST["releaseDate"];
     $sp_date = $_POST["start_promote"];
     $np_date = $_POST["end_promote"];
-    $releaseDate = date ('Y-m-d H:i:s', strtotime($r_Date));
-    $start_promote = date ('Y-m-d H:i:s', strtotime($sp_date));
-    $end_promote = date ('Y-m-d H:i:s', strtotime($np_date));
+    // $releaseDate = date ('Y-m-d H:i:s', strtotime($r_Date));
+
+    $releaseDate = date ('Y-m-d', strtotime($r_Date));
+    $start_promote = date ('Y-m-d', strtotime($sp_date));
+    $end_promote = date ('Y-m-d', strtotime($np_date));
 
     if(!empty($_POST["movie_name"]))
     {
@@ -125,6 +127,6 @@
     $path = "../../home/img/promote/".$id.".jpg";
     move_uploaded_file($_FILES['inputPromoteImage']['tmp_name'],$path);
 
-    echo "<script> alert('Edit Movie Information succesful!'); window.location.href='edit-movie.php'; </script>";
+    echo "<script> alert('Edit Movie Information succesful!'); </script>";
 
 ?>

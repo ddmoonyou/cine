@@ -24,6 +24,9 @@ function fetchemp(){
       document.getElementById("movie_trailer").value = data.trailer;
       document.getElementById("director_info").value = data.director;
       document.getElementById("movie_length").value = data.length;
+      document.getElementById("releaseDate").value = data.releaseDate;
+      document.getElementById("start_promote").value = data.startpromote;
+      document.getElementById("end_promote").value = data.endpromote;
 
     }
 
