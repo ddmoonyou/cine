@@ -103,7 +103,7 @@
         </div>
     </div>
 
-
+    <form action="booking_success.php" method="POST">
     <?php
 
 
@@ -150,6 +150,7 @@
             <?php
             foreach ($_POST['select_seat'] as $selectedSeat) {
                 // Access the seat information
+                echo "<input type='hidden' name='select_seat[]' value=$selectedSeat>";
                 $seatID = $selectedSeat;
 
                 //echo "ID: ".$seatID."  ";
@@ -198,7 +199,13 @@
             echo "No seats selected";
         }
 
+        if(!empty($_POST['food_id']))
+        {
         foreach (array_combine($_POST['food_id'], $_POST['quantity']) as $id => $quantity) {
+
+            echo "<input type='hidden' name='food_id[]' value=$id>";
+            echo "<input type='hidden' name='quantity[]' value=$quantity>";
+
             $sql = "SELECT * FROM foodsize
                        WHERE food_id = $id";
 
@@ -243,19 +250,60 @@
                             <?php $total = $total + $food_price * $quantity; ?>
                         </div>
                     </div>
+
                 </div>
 
 
             <?php }
-        }
-
+           
+        } 
     }
+       
+        ?>
+        
+        <div class="container">
+            <?php
+             if ($_SERVER["REQUEST_METHOD"] === "POST") {
+                $inputCode = $_POST['promotion_code'];
+                // Perform database query to check if the input value exists
+                // Assuming you have a database connection established
+        
+                // Example query using MySQLi
+                $query = "SELECT * FROM promotion";
+                $result = mysqli_query($conn, $query);
+                $discountAmount = 0;
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $promoCode = $row['promotion_code'];
+                    if (strcmp($promoCode, $inputCode) == 0) {
+                        $discountAmount = $row['discount_percent'];
+                        echo "<br><br><h5>Congratulations! You get a $discountAmount% discount!</h5>";
+                        echo "<input type='hidden' name='promotion_code' value=$promoCode>";
+                    }    
+                }
+            }
+
+            if ($discountAmount > 0) {
+                $total = $total * (1-($discountAmount/100));
+                $discountRate = $total*($discountAmount/100);
+                echo "<h5>Discount $discountAmount% by $discountRate THB</h5>";
+
+            } else {
+                // The input value does not exist in the database
+                echo "<h5>Sorry, we don't have $inputCode promotion code !</h5>";
+                $promoCode = 0;
+            }
+            ?>
+        </div>
+
+    <?php }
+
     ?>
-    <form action="booking_success.php" method="POST">
+
+    
         <input type="hidden" name='showing_id' value=<?php echo $_POST['showing_id']; ?>>
-        <input type="hidden" name='select_seat[]' value=<?php echo $selectedSeat; ?>>
-        <input type="hidden" name='food_id[]' value=<?php echo $id; ?>>
-        <input type="hidden" name='quantity[]' value=<?php echo $quantity; ?>>
+        
+        
+        
 
         <div class="container">
             <div class="col-lg-10">
@@ -270,27 +318,6 @@
             </div>
         </div>
 
-
-        <div class="container">
-            
-
-                <div class="form-group">
-                    <label for="system_type">Promotion Code</label>
-                    <select name="promotion_code" id="promotion_code"  onchange="showSelectedPromotion(this)">
-                        <option selected disabled>Select one</option>
-                            <?php
-                            $sql = "SELECT * FROM promotion";
-                            $res = mysqli_query($conn, $sql);
-                            while ($data = mysqli_fetch_assoc($res)) {
-                                $p_c = $data['promotion_code'];
-                                echo "<option value=$p_c>$p_c</option>";
-                            }
-                            ?>
-                    </select>
-                </div>
-
-
-        </div>
 
 
         <div class="container">
