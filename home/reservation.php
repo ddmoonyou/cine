@@ -134,32 +134,32 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb__text">
-                    <div class="container">
-                            <h4>Reservation</h4>
-                            <div class="breadcrumb__links">
-                                <a href="./index.php">Home</a>
-                                <a>Showings</a>
-                                <span> Reservation</span>
-                                
-                                
+                        <div class="container">
+                                <h4>Reservation</h4>
+                                <div class="breadcrumb__links">
+                                    <a href="./index.php">Home</a>
+                                    <a>Showings</a>
+                                    <span> Reservation</span>
+                                    
+                                    
+                                </div>
                             </div>
-                        </div>
-                        <div style="padding-top:20px">
-                        <div class="row">
-                              <div class="image-container">
-                                    <img src ="./img/poster/<?php echo $movie_id ?>.jpg" alt="Movie Poster" width="200" height="225"
-                                    class="movie-poster" style="padding-left:20px">
+                            <div style="padding-top:20px"> </div>
+                            <div class="row">
+                                <div class="image-container">
+                                        <img src ="./img/poster/<?php echo $movie_id ?>.jpg" alt="Movie Poster" width="190" height="225"
+                                        class="movie-poster" style="padding-left:20px">
+                                </div>
+                                <div class="col-lg-8 md-6 xd-6 d-flex align-items-center">
+                                    <ul><h4 class="h2-movie"> <?php echo $movie_name ?></h4><ul>
+                                            <ul>
+                                                <h6>Showings Information</h6>
+                                                <ul><img src="./img/icon/video-camera.png" width=25px height=25px>Theater No: <?php echo $theater ?> System: <?php echo $system_type ?></ul>
+                                                <ul><img src="./img/icon/location.png" width=20px height=20px>Branch: <?php echo $branch_name ?></ul>
+                                                <ul><img src="./img/icon/clock.png" width=25px height=25px>Time: <?php echo $time.' '.$f_date?></ul><br>
+                                            <ul>
+                                </div>
                             </div>
-                            <div class="col-lg-8 md-6 xd-6 d-flex align-items-center">
-                                <ul><h4 class="h2-movie"> <?php echo $movie_name ?></h4><ul>
-                                        <ul>
-                                            <h6>Showings Information</h6>
-                                            <ul><img src="./img/icon/video-camera.png" width=25px height=25px>Theater No: <?php echo $theater ?> System: <?php echo $system_type ?></ul>
-                                            <ul><img src="./img/icon/location.png" width=20px height=20px>Branch: <?php echo $branch_name ?></ul>
-                                            <ul><img src="./img/icon/clock.png" width=25px height=25px>Time: <?php echo $time.' '.$f_date?></ul><br>
-                                        <ul>
-                            </div>
-                        </div>
                         </div>
                     </div>
                 </div>
@@ -314,8 +314,9 @@
                     <?php } ?>
 
                 </table>
-            
-                
+                <div class="row justify-content-center" style="margin-bottom:20px">
+                    <h6><b>SCREEN IS HERE</b></h6>
+                </div>
             </div>
             
         </div> 
