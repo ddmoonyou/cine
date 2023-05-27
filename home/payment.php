@@ -325,7 +325,7 @@
                         $discountAmount = $row['discount_percent']; ?>
                   
                     <h5>Congratulations! You get a discount for </h5>
-                    <input type='hidden' name='promotion_code' value=$promoCode>
+                    <input type='hidden' name='promotion_code' value= '<?php echo $promoCode; ?>' >
             <?php        
                     }    
                 }
