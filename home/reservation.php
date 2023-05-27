@@ -319,6 +319,16 @@
             </div>
             
         </div> 
+
+        <div class="row justify-content-center">
+            <table style="border-spacing:20px">
+                <tr>
+                    <td><img src="./img/icon/sofa-bed.png" width="30px"> Premium Bed 2500THB    </td>
+                    <td><img src="./img/icon/chair.png" width="20px"> Honeymoon Seat 400THB   </td>
+                    <td><img src="./img/icon/chair2.png" width="20px"> Premium Seat 180THB   </td>
+                </tr>
+            </table>
+        </div>
     </div>
         
 
@@ -327,26 +337,15 @@
 
     
 <!-- Snack Section -->
-
+<section class="shop snack" >
     <div class="container" style="margin-top: 100px;"> 
             <div class="col-lg-12">
                   <div class="filter__controls">
-                  <h3>Snack & Drink List</h3>
-                  </div>
-            </div>
-      </div>
-
-      <section class="shop snack" id="popcorn">
-       <div class="container">
-           
-                <div class="col-lg-12">
+                    <h4><b>Snack & Drink List</b></h4>
                     <div class="shop__sidebar">
                         <div class="shop__sidebar__accordion">
                             <div class="accordion" id="accordionExample">
                                 <div class="card">
-                                    <div class="card-heading">
-                                        <a data-toggle="collapse" data-target="#collapseSix">Tags</a>
-                                    </div>
                                     <div id="collapseSix" class="collapse show" data-parent="#accordionExample">
                                         <div class="card-body">
                                             <div class="shop__sidebar__tags">
@@ -361,7 +360,12 @@
                         </div>
                     </div>
                 </div>
+                  </div>
+            </div>
+      </div>
 
+      
+       <div class="container" id="popcorn">
                 <div class="col-lg-12">
                     <div class="container">
                     <div class="row">
@@ -408,8 +412,7 @@
                                             <div class="product__item__text">
                                                 <h5><?php echo $food_type; ?></h5>
                                                 <p><?php echo $description; ?></p>
-                                                                            
-                                                    
+                                                        
                                                         <!-- <option selected disabled>Select Size</option> -->
                                                         <?php
                                                         $quantity = 0;
@@ -417,8 +420,8 @@
                                                             $food_id = $p["food_id"];
                                                             $size = $p["size"];
                                                             $price = $p["price"];
-                                                            echo "<div class='col-3'> <div class='row'>";
-                                                            echo "<span>$size: $price</span>";
+                                                            echo "<div class='row'><div class='col-5'> ";
+                                                            echo "<span>$size: $price THB</span>";
                                                             echo "<input type='number' id='quantity' name='food_quantity[]' value='$quantity' min='0' max='10'>";
                                                             echo "<input type='hidden' name='food_id[]' value='$food_id'>";
                                                             echo "</div></div>";

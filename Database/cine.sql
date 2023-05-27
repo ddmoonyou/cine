@@ -105395,7 +105395,7 @@ CREATE TABLE `seatprice` (
 --
 
 INSERT INTO `seatprice` (`seat_type`, `price`) VALUES
-('Honeymoon Seat', 400),
+('Honeymoon Seat', 250),
 ('Premium Bed', 2500),
 ('Premium Seat', 180);
 

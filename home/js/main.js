@@ -309,19 +309,8 @@
             updateAvailableSeats(showingID);
         });
 
-        // Function to update the available seats for a showing with AJAX
-        function updateAvailableSeats(showingID) {
-            // Send an AJAX request to retrieve the available seats for the selected showing
-            $.ajax({
-                url: 'reservation.php',
-                method: 'POST',
-                data: { showingID: showingID },
-                success: function (seatsHtml) {
-                    // Update the available seats container with the HTML code returned by the server
-                    $('#seats-container').html(seatsHtml);
-                }
-            });
-        }
+       
+        
 
           
     });
