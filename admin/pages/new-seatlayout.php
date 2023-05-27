@@ -105,7 +105,7 @@
                             Row
                           </th>
                           <th class="text-center">
-                            Date & Time
+                            System Type
                           </th>
                         </tr>
                       </thead>
