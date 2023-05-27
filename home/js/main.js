@@ -309,8 +309,6 @@
             updateAvailableSeats(showingID);
         });
 
-       
-        
 
           
     });

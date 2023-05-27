@@ -77,41 +77,98 @@
                         <ul>
                             <li><a href="./index.php">Home</a></li>
                             <li><a href="./theatre.php">Branch</a></li>
-                            <li class="active"><a href="./index.php">Movie</a></li>
                             <li><a href="./promotion.php">Promotion</a></li>
-                            <li><a href="./#">Snack&Drink</a></li>
+                            <li><a href="./snack.php">Snack&Drink</a></li>
                         </ul>
                     </nav>
-                </div>
-                <div class="col-lg-2 col-md-2">
-                    <div class="header__nav__option">
-                        <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-                        <a href="#"><img src="img/icon/cart.png" alt=""></a>
-                    </div>
                 </div>
             </div>
             <div class="canvas__open"><i class="fa fa-bars"></i></div>
         </div>
     </header>
     <!-- Header Section End -->
+    <section class="breadcrumb-option">
+    
+            <?php
+                $showingID = $_POST['showing_id'];
+                  
+                $sql = "SELECT * FROM showings
+                JOIN branchinfo ON branchinfo.branch_id = showings.branch_id
+                JOIN theaterinfo ON theaterinfo.branch_id = showings.branch_id AND 
+                                    theaterinfo.theater_no = showings.theater_no
+                JOIN movieinfo ON movieinfo.movie_id = showings.movie_id
+                WHERE showing_id=$showingID;";
+                $result = mysqli_query($conn, $sql);
+                if (!$result) {
+                    die('Invalid query: ' . mysqli_error($conn));
+                }
+                $result = mysqli_query($conn, $sql);
+                $row = mysqli_fetch_assoc($result);
+                //Movie information
+                $movie_name = $row['movie_name'];
+                $description = $row['movie_description'];
+                $movie_length = $row['movie_length'];
+                $director = $row['director_info'];
+                $_start_date = $row['releaseDate'];
+                $_start_date = date('d M Y', strtotime($_start_date));
+                $trailer = $row['movie_trailer'];
+                $movie_id = $row['movie_id'];
+                //Showings Information
+                $b_id = $row["branch_id"];
+                $theater = $row["theater_no"];
+                $branch_name = $row["branch_name"];
+                $date = $row["date_time"];
+                $f_date = date("F d, Y", strtotime($date));
+                $system_type = $row["system_type"];
+                $time = date("H:i", strtotime($date));
+                ?>
 
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__text">
+                        <div class="container">
+                                <h4>Booking Success</h4>
+                                <div class="breadcrumb__links">
+                                    <a href="./index.php">Home</a>
+                                    <a>Showings</a>
+                                    <a>Reservation</a>
+                                    <a>Order Confirmation</a>
+                                    <a>Payment Information</a>
+                                    <span>Booking Success</span>
+                                    
+                                    
+                                </div>
+                            </div>
+                            <div style="padding-top:20px"> </div>
+                            <div class="row">
+                                <div class="image-container">
+                                        <img src ="./img/poster/<?php echo $movie_id ?>.jpg" alt="Movie Poster" width="190" height="225"
+                                        class="movie-poster" style="padding-left:20px">
+                                </div>
+                                <div class="col-lg-8 md-6 xd-6 d-flex align-items-center">
+                                    <ul><h4 class="h2-movie"> <?php echo $movie_name ?></h4><ul>
+                                            <ul>
+                                                <h6>Showings Information</h6>
+                                                <ul><img src="./img/icon/video-camera.png" width=25px height=25px>Theater No: <?php echo $theater ?> System: <?php echo $system_type ?></ul>
+                                                <ul><img src="./img/icon/location.png" width=20px height=20px>Branch: <?php echo $branch_name ?></ul>
+                                                <ul><img src="./img/icon/clock.png" width=25px height=25px>Time: <?php echo $time.' '.$f_date?></ul><br>
+                                            <ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+        </div>
+    </section>
 
+    <section class="shop spad">
     <?php 
-      // $showingID = $_POST['showing_id'];
-      // $sql = "INSERT INTO showings (showing_id) VALUES $showingID";
-      // if ($conn->query($sql) === false) {
-      //     die('Error: ' . $conn->error);
-      // }
       
-      // // Insert into the reserveinfo table
-      // $paymentMethod = $_POST['payment_method'];
-      // $sql = "INSERT INTO reserveinfo (showing_id, payment_method) VALUES ('$showingID', '$paymentMethod')";
-      // if ($conn->query($sql) === false) {
-      //     die('Error: ' . $conn->error);
-      // }
-      
-
-
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if (isset($_POST['select_seat'])) {
 
@@ -137,9 +194,15 @@
                     $status=1;
                     echo "<div class='container' style='margin-top: 30px;'>
                             <div class='col-lg-12'>
-                                <div class='filter__controls'>
-                                    <h3>Payment Failed</h3>
-                                    <h4>Seat unavailabe</h3>
+                                <div class='filter__controls'><li>
+                                    <ul><h3>Payment Failed</h3></ul>
+                                    <ul><h6>We regret to inform you that the selected seat is currently unavailable.</h6></ul>
+                                    <ul><h6>Please choose another seat for your convenience.</h6></ul>
+                                    <ul><h6>We apologize for any inconvenience caused.</ul></h6>
+                                    <br>
+                                    <form action='./index.php'>
+                                        <button class='primary-btn' type='submit'>Book a new seat</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>";
@@ -193,63 +256,33 @@
                             die('Error: ' . mysqli_error($conn));
                         }  
                     }
-                }
+                }  ?>
 
-                echo "<div class='container' style='margin-top: 30px;'>
+                        <div class='container' style='margin-top: 30px;'>
                             <div class='col-lg-12'>
                                 <div class='filter__controls'>
-                                    <h3>Payment Success</h3>
+                                    <h3>Payment successful. </h3>
+                                    <h4>Please show this screen to the staff.</h4>
+                                    <h6>Thank you for choosing to book with us.</h6>
+                                    <h6>We sincerely hope that you enjoy the movie and have a pleasant experience with our services.</h6>
                                 </div>
                             </div>
-                        </div>";
+                        </div>
 
+ </section>
+   <?php 
             }
             
-            /*
-            foreach ($_POST['select_seat'] as $selectedSeat) {
-                // Access the seat information
-                $seatID = $selectedSeat;
-
-                //echo "ID: ".$seatID."  ";
-                $sql = "INSERT INTO `reserveinfo`(`reserve_id`,`showing_id`,`promotion_code`,`payment_method`) VALUES (NULL,'$showingID','$promotionCode','$payment')";
-                  
-                $result = mysqli_query($conn, $sql);
-                if (!$result) {
-                    die('Invalid query: ' . mysqli_error($conn));
-                }
-                else{
-                  echo "add reserveinfo success";
-                }
-                
-                
-
-             }*/
         } 
-/*
-        foreach (array_combine($_POST['food_id'], $_POST['quantity']) as $id => $quantity) {
-            $sql = "INSERT INTO `reservefood`(`reserve_id`,`food_id`,`quantity`) VALUES (NULL,'$id','$quantity')";
-
-            $result = mysqli_query($conn, $sql);
-            if (!$result) {
-                die('Invalid query: ' . mysqli_error($conn));
-            }
-            else{
-                  echo "Add reservefood success";
-            }
-
-           }*/
         }
 
-        ?>
+       
       
-
-    <?php 
 
     
-      
-      
       // Close the database connection
       $conn->close();
+      include('footer.php');
     ?>
 
 </html>
