@@ -207,16 +207,7 @@
 
     <?php include('footer.php'); ?>
 
-    <!-- Search Begin -->
-    <div class="search-model">
-        <div class="h-100 d-flex align-items-center justify-content-center">
-            <div class="search-close-switch">+</div>
-            <form class="search-model-form">
-                <input type="text" id="search-input" placeholder="Search here.....">
-            </form>
-        </div>
-    </div>
-    <!-- Search End -->
+   
 
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
@@ -234,10 +225,3 @@
 </html>
 
 
-
-
-<!-- SELECT s.*, b.branch_name, t.* FROM showings s 
-            INNER JOIN branchinfo b ON s.branch_id = b.branch_id 
-            INNER JOIN theaterinfo t ON s.theater_no = t.theater_no            
-            WHERE s.date_time >= CURDATE() AND s.date_time < DATE_ADD(CURDATE(), INTERVAL 1 DAY) 
-            AND s.movie_id = $movie_id -->

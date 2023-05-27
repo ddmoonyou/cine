@@ -45,7 +45,7 @@
                     
                     </div>
                 </div>
-                <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
+                <div class="col-lg-3 offset-lg-1 col-md-3 col-sm-6">
                     <div class="footer__widget">
                         <h6>Menu</h6>
                         <ul>
@@ -54,27 +54,6 @@
                             <li><a href="#">Promotion</a></li>
                             <li><a href="#">Snack&Drink</a></li>
                         </ul>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-3 col-sm-6">
-                    <div class="footer__widget">
-                        <h6>Shopping</h6>
-                        <ul>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#">Payment Methods</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 offset-lg-1 col-md-6 col-sm-6">
-                    <div class="footer__widget">
-                        <h6>NewsLetter</h6>
-                        <div class="footer__newslatter">
-                            <p>Be the first to know about new movies & promos!</p>
-                            <form action="#">
-                                <input type="text" placeholder="Your email">
-                                <!-- <button type="submit"><span class="icon_mail_alt"></span></button> -->
-                            </form>
-                        </div>
                     </div>
                 </div>
             </div>

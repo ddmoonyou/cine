@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css"type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
 
@@ -75,17 +75,10 @@
                         <ul>
                             <li><a href="./index.php">Home</a></li>
                             <li><a href="./theatre.php">Branch</a></li>
-                            <li class="active"><a href="./index.php">Movie</a></li>
                             <li><a href="./promotion.php">Promotion</a></li>
-                            <li><a href="./#">Snack&Drink</a></li>
+                            <li><a href="./snack.php">Snack&Drink</a></li>
                         </ul>
                     </nav>
-                </div>
-                <div class="col-lg-2 col-md-2">
-                    <div class="header__nav__option">
-                        <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-                        <a href="#"><img src="img/icon/cart.png" alt=""></a>
-                    </div>
                 </div>
             </div>
             <div class="canvas__open"><i class="fa fa-bars"></i></div>
@@ -616,16 +609,7 @@
     <!-- Footer Section -->
     <?php include('footer.php'); ?>
 
-    <!-- Search Begin -->
-    <div class="search-model">
-        <div class="h-100 d-flex align-items-center justify-content-center">
-            <div class="search-close-switch">+</div>
-            <form class="search-model-form">
-                <input type="text" id="search-input" placeholder="Search here.....">
-            </form>
-        </div>
-    </div>
-    <!-- Search End -->
+   
 
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>

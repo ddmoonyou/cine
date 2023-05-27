@@ -76,34 +76,116 @@
                         <ul>
                             <li><a href="./index.php">Home</a></li>
                             <li><a href="./theatre.php">Branch</a></li>
-                            <li class="active"><a href="./index.php">Movie</a></li>
                             <li><a href="./promotion.php">Promotion</a></li>
-                            <li><a href="./#">Snack&Drink</a></li>
+                            <li><a href="./snack.php">Snack&Drink</a></li>
                         </ul>
                     </nav>
                 </div>
-                <div class="col-lg-2 col-md-2">
-                    <div class="header__nav__option">
-                        <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-                        <a href="#"><img src="img/icon/cart.png" alt=""></a>
-                    </div>
-                </div>
+               
             </div>
             <div class="canvas__open"><i class="fa fa-bars"></i></div>
         </div>
     </header>
     <!-- Header Section End -->
 
+    <section class="breadcrumb-option">
+    <form action="booking_success.php" method="POST"> 
+            <?php
+                $showingID = $_POST['showing_id'];
+                  
+                $sql = "SELECT * FROM showings
+                JOIN branchinfo ON branchinfo.branch_id = showings.branch_id
+                JOIN theaterinfo ON theaterinfo.branch_id = showings.branch_id AND 
+                                    theaterinfo.theater_no = showings.theater_no
+                JOIN movieinfo ON movieinfo.movie_id = showings.movie_id
+                WHERE showing_id=$showingID;";
+                $result = mysqli_query($conn, $sql);
+                if (!$result) {
+                    die('Invalid query: ' . mysqli_error($conn));
+                }
+                $result = mysqli_query($conn, $sql);
+                $row = mysqli_fetch_assoc($result);
+                //Movie information
+                $movie_name = $row['movie_name'];
+                $description = $row['movie_description'];
+                $movie_length = $row['movie_length'];
+                $director = $row['director_info'];
+                $_start_date = $row['releaseDate'];
+                $_start_date = date('d M Y', strtotime($_start_date));
+                $trailer = $row['movie_trailer'];
+                $movie_id = $row['movie_id'];
+                //Showings Information
+                $b_id = $row["branch_id"];
+                $theater = $row["theater_no"];
+                $branch_name = $row["branch_name"];
+                $date = $row["date_time"];
+                $f_date = date("F d, Y", strtotime($date));
+                $system_type = $row["system_type"];
+                $time = date("H:i", strtotime($date));
+                ?>
 
-    <div class="container" style="margin-top: 30px;">
-        <div class="col-lg-12">
-            <div class="filter__controls">
-                <h3>Payment Information</h3>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__text">
+                        <div class="container">
+                                <h4>Payment Information</h4>
+                                <div class="breadcrumb__links">
+                                    <a href="./index.php">Home</a>
+                                    <a>Showings</a>
+                                    <a>Reservation</a>
+                                    <a>Order Confirmation</a>
+                                    <span>Payment Information</span>
+                                    
+                                    
+                                </div>
+                            </div>
+                            <div style="padding-top:20px"> </div>
+                            <div class="row">
+                                <div class="image-container">
+                                        <img src ="./img/poster/<?php echo $movie_id ?>.jpg" alt="Movie Poster" width="190" height="225"
+                                        class="movie-poster" style="padding-left:20px">
+                                </div>
+                                <div class="col-lg-8 md-6 xd-6 d-flex align-items-center">
+                                    <ul><h4 class="h2-movie"> <?php echo $movie_name ?></h4><ul>
+                                            <ul>
+                                                <h6>Showings Information</h6>
+                                                <ul><img src="./img/icon/video-camera.png" width=25px height=25px>Theater No: <?php echo $theater ?> System: <?php echo $system_type ?></ul>
+                                                <ul><img src="./img/icon/location.png" width=20px height=20px>Branch: <?php echo $branch_name ?></ul>
+                                                <ul><img src="./img/icon/clock.png" width=25px height=25px>Time: <?php echo $time.' '.$f_date?></ul><br>
+                                            <ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-
+        </div>
+        </div>
+        </div>
+    </section>
+<section class="shop spad">
     <form action="booking_success.php" method="POST">
+    <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-5 align-item-center">
+                    <div class="container" style="margin:1%">
+                        <h4><element class="bold">Product</element></h4>
+                    </div>
+                </div>
+                <div class="col-4 align-item-center">
+                    <div class="container" style="margin:1%">
+                        <h4><element class="bold">Quantity</element></h4>
+                    </div>
+                </div>
+                <div class="col-2 align-item-left">
+                    <div class="container" style="margin:1%">
+                        <h4><element class="bold">Subtotal </element></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
     <?php
 
 
@@ -112,42 +194,6 @@
             // Loop through the selected seats
             $total = 0;
 
-            $showingID = $_POST['showing_id'];
-
-            $sql = "SELECT * FROM showings
-                    JOIN branchinfo ON branchinfo.branch_id = showings.branch_id
-                    JOIN theaterinfo ON theaterinfo.branch_id = showings.branch_id AND 
-                                        theaterinfo.theater_no = showings.theater_no
-                    WHERE showing_id=$showingID;";
-            $result = mysqli_query($conn, $sql);
-            if (!$result) {
-                die('Invalid query: ' . mysqli_error($conn));
-            }
-            $data = mysqli_fetch_assoc($result);
-            $b_id = $data["branch_id"];
-            $theater = $data["theater_no"];
-            $branch_name = $data["branch_name"];
-            $date = $data["date_time"];
-            $f_date = date("F d, Y", strtotime($date));
-            $system_type = $data["system_type"]; ?>
-
-            <div class="row justify-content-center">
-                <div class="col-7">
-                    <h4>Showings Information</h4>
-                    <ul>Theater No:
-                        <?php echo $theater . ' System:' . $system_type ?>
-                    </ul>
-                    <ul>Branch:
-                        <?php echo $branch_name ?>
-                    </ul>
-                    <ul>Date:
-                        <?php echo $f_date ?>
-                    </ul><br>
-                </div>
-            </div>
-
-
-            <?php
             foreach ($_POST['select_seat'] as $selectedSeat) {
                 // Access the seat information
                 echo "<input type='hidden' name='select_seat[]' value=$selectedSeat>";
@@ -172,7 +218,7 @@
                 ?>
                 <div class="row justify-content-center">
                     <div class="col-4 align-item-center">
-                        <div class="container" style="margin:1.5%">
+                        <div class="container" style="margin:1%">
                             <h5>Seat:
                                 <?php echo $row . $column . '  ' . $seat_type ?>
                             </h5>
@@ -222,7 +268,7 @@
             if ($quantity > 0) { ?>
                 <div class="row justify-content-center">
                     <div class="col-4 align-item-center">
-                        <div class="container" style="margin:1.5%">
+                        <div class="container" style="margin:1%">
                             <h5>Food:
                                 <?php {
                                     echo $food_type;
@@ -261,7 +307,8 @@
        
         ?>
         
-        <div class="container">
+    <div class="container">
+        <div class="row justify-content-start">
             <?php
              if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $inputCode = $_POST['promotion_code'];
@@ -275,9 +322,11 @@
                 while ($row = mysqli_fetch_assoc($result)) {
                     $promoCode = $row['promotion_code'];
                     if (strcmp($promoCode, $inputCode) == 0) {
-                        $discountAmount = $row['discount_percent'];
-                        echo "<br><br><h5>Congratulations! You get a $discountAmount% discount!</h5>";
-                        echo "<input type='hidden' name='promotion_code' value=$promoCode>";
+                        $discountAmount = $row['discount_percent']; ?>
+                  
+                    <h5>Congratulations! You get a discount for </h5>
+                    <input type='hidden' name='promotion_code' value=$promoCode>
+            <?php        
                     }    
                 }
             }
@@ -285,63 +334,62 @@
             if ($discountAmount > 0) {
                 $total = $total * (1-($discountAmount/100));
                 $discountRate = $total*($discountAmount/100);
-                echo "<h5>Discount $discountAmount% by $discountRate THB</h5>";
-
-            } else {
+                ?>
+                <h5> <?php  echo " $discountRate THB"; ?> </h5>
+                       
+            <?php } 
+            else {
                 // The input value does not exist in the database
-                echo "<h5>Sorry, we don't have $inputCode promotion code !</h5>";
-                $promoCode = 0;
-            }
+                
+                $promoCode = 0;?>
+                    <div class="col-6 align-item-center">
+                        <div class="container" style="margin:1.5%">
+                            <h5> <?php echo "<h5>No Discount</h5>"; ?> </h5>
+                        </div>
+                    </div> 
+                    
+           <?php }
             ?>
+      
         </div>
-
-    <?php }
-
-    ?>
+    <?php } ?>
 
     
         <input type="hidden" name='showing_id' value=<?php echo $_POST['showing_id']; ?>>
-        
-        
-        
-
-        <div class="container">
-            <div class="col-lg-10">
-            </div>
-            <div class="row justify-content-end">
-                <div class="col-3" style="margin:10px">
-                    <h4>Total
-                        <?php echo $total; ?> THB
-                    </h4>
-                </div>
-
+        <div class="row justify-content-end">
+            <div class="col-3" style="margin:10px">
+                <h4>Total
+                    <?php echo $total; ?> THB
+                </h4>
             </div>
         </div>
 
+    </div>
 
 
         <div class="container">
             <div class="row justify-content-start">
-                <div class="col-5">
-                    <h4> Select Payment Method </h4>
+                <div class="col-5" style="padding-bottom:20px">
+                    <h4><b> Select Payment Method </b></h4>
                 </div>
                 <div class="container">
                     <div class="row justify-content-center">
-                        <button type="submit" name="payment_method" value="Online-payment" class="primary-btn"
+                        <button type="submit" name="payment_method" value="Online-payment" class="pay-btn"
                             id="Online-Payment"> Online-Payment </button>
-                        <button type="submit" name="payment_method" value="Credit-cards" class="primary-btn"
+                        <button type="submit" name="payment_method" value="Credit-cards" class="pay-btn"
                             id="Credit-Cards"><img src="./img/icon/visa.png" width="40px"> <img
                                 src="./img/icon/mastercard.png" width="30px"> Credit-Cards </button>
-                        <button type="submit" name="payment_method" value="Debit-cards" class="primary-btn"
+                        <button type="submit" name="payment_method" value="Debit-cards" class="pay-btn"
                             id="Debit-cards"><img src="./img/icon/visa.png" width="40px"> <img
                                 src="./img/icon/mastercard.png" width="30px"> Debit-cards </button>
-                        <button type="submit" name="payment_method" value="Paypal" class="primary-btn" id="Paypal"><img
+                        <button type="submit" name="payment_method" value="Paypal" class="pay-btn" id="Paypal"><img
                                 src="./img/icon/paypal.png" width="40px"> Paypal </button>
                     </div>
                 </div>
             </div>
         </div>
     </form>
+</section>
 
 
 
