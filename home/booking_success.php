@@ -96,14 +96,6 @@
     <!-- Header Section End -->
 
 
-    <div class="container" style="margin-top: 30px;">
-        <div class="col-lg-12">
-            <div class="filter__controls">
-                <h3>Payment Success</h3>
-            </div>
-        </div>
-    </div>
-
     <?php 
       // $showingID = $_POST['showing_id'];
       // $sql = "INSERT INTO showings (showing_id) VALUES $showingID";
@@ -125,9 +117,95 @@
 
             $showingID = $_POST['showing_id'];
             $payment = $_POST['payment_method'];
-            $promotionCode = $_POST["promotion_code"];
+          //  $promotionCode = $_POST["promotion_code"];
+
+            $sql = "SELECT seat.seat_id FROM reserveinfo info,reserveseats seat
+                    WHERE info.reserve_id = seat.reserve_id
+                    AND info.showing_id = $showingID;";
+
+            $result = mysqli_query($conn, $sql);
+            $status = 0;
+            if (!$result) {
+                die('Invalid query: ' . mysqli_error($conn));
+            }
             
- 
+           
+            foreach ($result as $reserve_seat)
+            {
+                if($status==0 && in_array($reserve_seat['seat_id'],$_POST['select_seat']))
+                {
+                    $status=1;
+                    echo "<div class='container' style='margin-top: 30px;'>
+                            <div class='col-lg-12'>
+                                <div class='filter__controls'>
+                                    <h3>Payment Failed</h3>
+                                    <h4>Seat unavailabe</h3>
+                                </div>
+                            </div>
+                        </div>";
+
+                        
+                }
+                
+                        
+            }
+
+            if($status==0 )
+            {
+                if(!empty($_POST['promotion_code']))
+                {
+                    $code = $_POST['promotion_code'];
+                    $sql = "INSERT INTO reserveinfo(showing_id,promotion_code,payment_method)
+                            VALUES ($showingID,'$code','$payment');";
+                          
+                }
+                else
+                {
+                    $sql = "INSERT INTO reserveinfo(showing_id,payment_method)
+                            VALUES ($showingID,'$payment');";
+                }
+
+
+                if (!mysqli_query($conn, $sql)) {
+                    die('Error: ' . mysqli_error($conn));
+                }
+
+                $last_insert = mysqli_insert_id($conn);
+                
+
+                foreach($_POST['select_seat'] as $selectedSeat)
+                {
+                    $sql = "INSERT INTO reserveseats(reserve_id,seat_id)
+                            VALUE ($last_insert,$selectedSeat);";
+                    if(!mysqli_query($conn, $sql)) {
+                        die('Error: ' . mysqli_error($conn));
+                    }        
+                }
+
+                if(!empty($_POST['food_id']))
+                {
+                    foreach (array_combine($_POST['food_id'], $_POST['quantity']) as $id => $quantity)
+                    {
+                        $sql = "INSERT INTO reservefood(reserve_id,food_id,quantity)
+                                VALUE ($last_insert,$id,$quantity);";
+
+                        if(!mysqli_query($conn, $sql)) {
+                            die('Error: ' . mysqli_error($conn));
+                        }  
+                    }
+                }
+
+                echo "<div class='container' style='margin-top: 30px;'>
+                            <div class='col-lg-12'>
+                                <div class='filter__controls'>
+                                    <h3>Payment Success</h3>
+                                </div>
+                            </div>
+                        </div>";
+
+            }
+            
+            /*
             foreach ($_POST['select_seat'] as $selectedSeat) {
                 // Access the seat information
                 $seatID = $selectedSeat;
@@ -145,9 +223,9 @@
                 
                 
 
-             }
+             }*/
         } 
-
+/*
         foreach (array_combine($_POST['food_id'], $_POST['quantity']) as $id => $quantity) {
             $sql = "INSERT INTO `reservefood`(`reserve_id`,`food_id`,`quantity`) VALUES (NULL,'$id','$quantity')";
 
@@ -159,7 +237,7 @@
                   echo "Add reservefood success";
             }
 
-           }
+           }*/
         }
 
         ?>
