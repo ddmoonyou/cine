@@ -123,9 +123,9 @@
             <?php } ?>
         </div>
     </section>
-    <!-- Hero Section End -->
+    <!-- Hero SDATEDIFF(ection End ,
 
-    <!-- Product Section Begin -->
+    <!--) > = Product Section Begin -->
     <section class="product spad">
         <div class="container">
             <div class="row">
@@ -133,7 +133,7 @@
                     <div class="filter__controls">
 
                         <?php
-                        $sql = "SELECT * FROM movieinfo WHERE DATEDIFF(CURRENT_DATE(),releaseDate)<=60 and DATEDIFF(CURRENT_DATE(),releaseDate)>0;";
+                        $sql = "SELECT * FROM movieinfo WHERE DATEDIFF(CURRENT_DATE(),releaseDate)<=60 and DATEDIFF(CURRENT_DATE(),releaseDate)>=0;";
                         $result = mysqli_query($conn, $sql);
 
                         if (!$result) {
@@ -187,7 +187,7 @@
                 <div class="col-lg-12">
                     <ul class="filter__controls">
                         <?php
-                        $sql = "SELECT * FROM movieinfo  WHERE releaseDate >= CURDATE()";
+                        $sql = "SELECT * FROM movieinfo  WHERE DATEDIFF(releaseDate, CURDATE()) > 0";
                         $result = mysqli_query($conn, $sql);
 
                         if (!$result) {
