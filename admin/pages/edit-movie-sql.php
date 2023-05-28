@@ -5,11 +5,11 @@
 
 	if(!isset($_SESSION['staff_id']))
 	{
-        $_SESSION['status'] = 'Please login!';
-        $_SESSION['status_text'] = ' ';
-        $_SESSION['status_code'] = 'warning';
-        header('Location: http://localhost/cine/admin/login.php');
-		exit();
+      $_SESSION['status'] = 'Please login!';
+      $_SESSION['status_text'] = ' ';
+      $_SESSION['status_code'] = 'warning';
+      header('Location: http://localhost/cine/admin/login.php');
+      exit();
 	}
 	
 	//*** Update Last Stay in Login System
@@ -112,8 +112,8 @@
       $id = $a["movie_id"];
     }
 
-
-    if($_FILES['inputPosterImage']['movie_name'] == '')
+    //If proster image file was uploaded (size != 0)
+    if($_FILES['inputPosterImage']['size'] != 0)
     {
       $filename = "../../home/img/poster/".$id.".jpg";
       unlink($filename);
@@ -121,11 +121,10 @@
       $filename = $_FILES["inputPosterImage"]["movie_name"];
       $path = "../../home/img/poster/".$id.".jpg";
       move_uploaded_file($_FILES['inputPosterImage']['tmp_name'],$path);
-      
-  
     }
 
-    if($_FILES['inputPosterImage']['movie_name'] == '')
+    //If promote image file was uploaded (size != 0)
+    if($_FILES['inputPromoteImage']['size'] != 0)
     {
       $filename = "../../home/img/promote/".$id.".jpg";
       unlink($filename);    
@@ -133,8 +132,6 @@
       $filename = $_FILES["inputPromoteImage"]["movie_name"];
       $path = "../../home/img/promote/".$id.".jpg";
       move_uploaded_file($_FILES['inputPromoteImage']['tmp_name'],$path);
-      
-  
     }
     
 

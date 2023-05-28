@@ -151,7 +151,7 @@
                   </div>
               </div>
             <div class="form-group">
-              <label for="inputPosterImage">Promote image(Edit)</label>
+              <label for="inputPromoteImage">Promote image(Edit)</label>
                 <div class="input-group">
                   <div class="custom-file">
                       <input type="file" class="custom-file-input" name="inputPromoteImage"id="inputPromoteImage" accept="image/jpeg, image/png, image/jpg">
