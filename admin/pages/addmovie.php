@@ -19,7 +19,7 @@
 	$objResult = mysqli_fetch_array($objQuery,MYSQLI_ASSOC);
 
     //empty($_POST["inputPosterImage"]) || empty($_POST["inputPromoteImage"]) || 
-    if($_FILES['inputPosterImage']['name'] == '' || $_FILES['inputPromoteImage']['name'] == ''
+    if($_FILES['inputPosterImage']['size'] == 0 || $_FILES['inputPromoteImage']['size'] == 0
     ||    empty($_POST["name"]) || empty($_POST["length"])
     || empty($_POST["description"]) || empty($_POST["director"])
     || empty($_POST["start_promote"]) || empty($_POST["end_promote"]) || empty($_POST["branch_id"])

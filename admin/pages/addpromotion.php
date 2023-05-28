@@ -19,7 +19,7 @@
 	$objResult = mysqli_fetch_array($objQuery,MYSQLI_ASSOC);
 
     //empty($_POST["inputPosterImage"]) || empty($_POST["inputPromoteImage"]) || 
-    if($_FILES['promotion_img']['name'] == ''
+    if($_FILES['promotion_img']['size'] == 0
     || empty($_POST["promotion_code"]) || empty($_POST["discount_percent"])
     || empty($_POST["description_promotion"]) || empty($_POST["s_date"])
     || empty($_POST["e_date"]) 

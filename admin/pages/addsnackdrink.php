@@ -18,7 +18,7 @@
 	$objQuery = mysqli_query($con,$strSQL);
 	$objResult = mysqli_fetch_array($objQuery,MYSQLI_ASSOC);
  
-    if($_FILES['snack_img']['name'] == '' ||empty($_POST["snack_name"])
+    if($_FILES['snack_img']['size'] == 0 ||empty($_POST["snack_name"])
     || empty($_POST["snack_description"]) || empty($_POST["snack_category"])
     || ( (empty($_POST["s_check"]) || empty($_POST["s"])) 
     &&   (empty($_POST["m_check"]) || empty($_POST["m"]))

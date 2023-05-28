@@ -18,7 +18,7 @@
 	$objQuery = mysqli_query($con,$strSQL);
 	$objResult = mysqli_fetch_array($objQuery,MYSQLI_ASSOC);
 
-    if($_FILES['branch_img']['name'] == ''
+    if($_FILES['branch_img']['size'] == 0
     ||empty($_POST["branchname"]) || empty($_POST["branchaddress"])
     || empty($_POST["branchtel"]) || empty($_POST["layout0"])
     || empty($_POST["system0"])

@@ -105,7 +105,7 @@
                             Row
                           </th>
                           <th class="text-center">
-                            System Type
+                            Seat Type
                           </th>
                         </tr>
                       </thead>
