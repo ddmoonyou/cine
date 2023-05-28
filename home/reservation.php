@@ -382,7 +382,7 @@
                     <div class="row product__filter">
                         
                         <?php   
-                            // Loop through the result set and generate HTML code for each movie    url('<?php echo $movie_poster;
+                          
                             
                             while ($row = mysqli_fetch_assoc($result)) {
                                 $food_type = $row['food_type'];
@@ -459,7 +459,6 @@
                     <div class="row product__filter">
                         
                         <?php   
-                            // Loop through the result set and generate HTML code for each movie    url('<?php echo $movie_poster;
                             
                             while ($row = mysqli_fetch_assoc($result)) {
                                 $food_type = $row['food_type'];
@@ -539,7 +538,6 @@
                     <div class="row product__filter">
                         
                         <?php   
-                            // Loop through the result set and generate HTML code for each movie    url('<?php echo $movie_poster;
                             
                             while ($row = mysqli_fetch_assoc($result)) {
                                 $food_type = $row['food_type'];

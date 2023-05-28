@@ -23,7 +23,6 @@
     <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
@@ -67,7 +66,7 @@
     
 
     <!-- Header Section Begin -->
-    <header class="header">
+    <header class="header" id="myHeader">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-3">
@@ -137,24 +136,37 @@
     </section>
     <!-- Breadcrumb Section End -->
 
-    <!-- Query a showings of each movie -->
-    <?php
-    $sql = "SELECT DISTINCT * FROM showings s,theaterinfo t,branchinfo b
-    where s.theater_no = t.theater_no
-    and s.branch_id = t.branch_id
-    and b.branch_id = s.branch_id
-    and s.movie_id = $movie_id
-    and date(s.date_time) = CURRENT_DATE()
-    ORDER BY s.date_time ASC;
-    ";
-    $result = mysqli_query($conn, $sql);
-    $displayed_date = null;
-    ?>
-
-
-
+    
+<form action="reservation.php" method="POST">
+    <h4>Thailand Branch</h4>
+                <select id="selectBranch"> 
+            <?php
+            $sql = "SELECT * FROM branchinfo WHERE branch_address LIKE '%Thailand%' ORDER BY branch_name";
+            $result = mysqli_query($conn, $sql);
+            while ($row = mysqli_fetch_assoc($result)) {
+            $branch_name = $row['branch_name'];
+            $branch_id = $row['branch_id'];
+            echo '<button type="button" class="second-btn" value='.$branch_id.'>' . $branch_name . ' </button>';
+            ?>
+            </select> 
+            <?php } ?>
     <section class="blog spad">
-            <?php       // generate each showing
+            
+
+            <!-- Query a showings of each movie -->
+            <?php 
+            $sql = "SELECT DISTINCT * FROM showings s,theaterinfo t,branchinfo b
+            where s.theater_no = t.theater_no
+            and s.branch_id = t.branch_id
+            and b.branch_id = s.branch_id
+            and s.movie_id = $movie_id
+            and date(s.date_time) = CURRENT_DATE()
+            and b.branch_address LIKE '%Thailand%'
+            ORDER BY s.date_time ASC;
+            ";
+            $result = mysqli_query($conn, $sql);
+            $displayed_date = null;
+            // generate each showing
                 while ($row = mysqli_fetch_assoc($result)) {
                     $showingID = $row['showing_id'];
                     $branch_name = $row['branch_name'];
@@ -165,19 +177,22 @@
                     $language_sub = $row['language_sub'];
                     $language_dub = $row['language_dub'];
                     $system_type = $row['system_type'];
+                
                     
                     if ($date !== $displayed_date) {
                         // display the date and mark it as displayed
                         $displayed_date = $date;
-                        echo '<div class="blog__alt"><div class="blog__item__alt"><h3>' . $date . '</h3></div></div>';
+                        echo '<div class="blog__alt"><div class="blog__item__alt"><h3>' . $date . '<br>Cinema in Thailand </h3></div></div>';
                     }
             ?>
             
             <div class="container">
+            
                 <div class="row no-gutters">
                     <div class="col-lg-12 md-8 xs-3">
                         <div class="showings-container" data-movie-id="<?php echo $showingID; ?>">
                         <div class="blog__item__text">
+                            
                             <div class="blog__item__text"> <img src="./img/icon/clock.png" width=25px height=25px>
                                 <a href="reservation.php?showing_id=<?php echo $showingID; ?>"> 
                                             <button class="btn site-btn" data-showingid="<?php echo $showingID?>"> 
@@ -194,7 +209,7 @@
                 </div>
             </div>
         </div>
-       
+
         <?php } ?>
     </section>
     <!-- Product Section End -->

@@ -313,6 +313,16 @@
           
     });
 
+    const branchButtons = document.querySelectorAll('.branch-button');
+
+    branchButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const branchId = button.getAttribute('data-branch-id');
+        console.log(branchId);
+        // Perform further operations with the selected branch ID
+    });
+    });
+
 
    
 })(jQuery);
