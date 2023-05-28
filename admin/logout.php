@@ -1,3 +1,8 @@
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+
 <?php
 	session_start();
 
@@ -8,5 +13,17 @@
 	$query = mysqli_query($con,$sql);
 
 	session_destroy();
-	header("location:login.php");
+	echo "<script>
+			$(document).ready(function() {
+				Swal.fire({
+					title: 'Logout Successful!',
+					text: 'Wait a moment...',
+					icon: 'success',
+					timer: 5000,
+					showConfirmButton: false
+				});
+			});
+	</script>";
+	header('refresh:2.3; url=login.php');
+	// header("location:login.php");
 ?>

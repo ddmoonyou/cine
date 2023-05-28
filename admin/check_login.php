@@ -1,3 +1,8 @@
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+
 <?php
 	session_start();
 	
@@ -13,15 +18,47 @@
 	$objResult = mysqli_fetch_array($objQuery);
 	if(!$objResult)
 	{
-		echo "<script> alert('Username or Password Incorrect!'); window.location.href='login.php'; </script>";
-		exit();
+		// $_SESSION['status'] = 'Username or Password Incorrect!';
+		// $_SESSION['status_text'] = 'Please try again';
+		// $_SESSION['status_code'] = 'error';
+		echo "<script>
+				$(document).ready(function() {
+					Swal.fire({
+						title: 'Wrong Staff ID or Password!',
+						text: 'Please try again',
+						icon: 'error',
+						timer: 5000,
+						showConfirmButton: false
+					});
+				});
+		</script>";
+		header('refresh:2.3; url=login.php');
+		exit ();
+		// echo "<script> alert('Username or Password Incorrect!'); window.location.href='login.php'; </script>";
+		// exit();
 	}
 	else
 	{
 		if($objResult["loginstatus"] == 1)
 		{
-			echo "<script> alert('$strUsername already loged in!'); window.location.href='login.php'; </script>";
-			exit();
+			// $_SESSION['status'] = 'This account is currently being logged in!';
+			// $_SESSION['status_text'] = 'Please try again';
+			// $_SESSION['status_code'] = 'warning';
+			echo "<script>
+					$(document).ready(function() {
+						Swal.fire({
+							title: 'This account is already logged in!',
+							text: 'Please try again',
+							icon: 'warning',
+							timer: 5000,
+							showConfirmButton: false
+						});
+					});
+			</script>";
+			header('refresh:2.8; url=login.php');
+			exit ();
+			// echo "<script> alert('$strUsername already loged in!'); window.location.href='login.php'; </script>";
+			// exit();
 		}
 		else
 		{
@@ -34,9 +71,27 @@
 			session_write_close();
 
 			//*** Go to Main page
-			header("location:index.php");
+			// $_SESSION['status'] = 'Successfully!';
+			// $_SESSION['status_text'] = 'login success';
+			// $_SESSION['status_code'] = 'success';
+			echo "<script>
+					$(document).ready(function() {
+						Swal.fire({
+							title: 'Login Successful!',
+							text: 'Wait a moment...',
+							icon: 'success',
+							timer: 5000,
+							showConfirmButton: false
+						});
+					});
+			</script>";
+			header('refresh:2.3; url=index.php');
+			exit ();
+			// header("location:index.php");
+			// exit ();
 		}
 			
 	}
 	mysqli_close($con);
+	
 ?>
