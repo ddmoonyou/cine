@@ -263,6 +263,19 @@ ol {
 	border-radius: 10%;
     }
 
+.showing-time-btn {
+	width: 70px;
+	height: 35px;
+	border-radius: 0;
+	background-color: rgb(0, 0, 0);
+	color: white;
+	border-color: rgb(255, 255, 255);
+	font-size: 15px;
+	display: inline-block;
+	margin: 1%;
+	border-radius: 10%;
+	}
+
 /* Preloder */
 
 #preloder {
@@ -2006,7 +2019,7 @@ ol {
 -----------------------*/
 
 .breadcrumb-option {
-	background: #f3f2ee;
+	background: #eeeeee;
 	padding: 40px 0;
 }
 
