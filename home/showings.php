@@ -161,7 +161,6 @@
             and b.branch_id = s.branch_id
             and s.movie_id = $movie_id
             and date(s.date_time) = CURRENT_DATE()
-            and b.branch_address LIKE '%Thailand%'
             ORDER BY s.date_time ASC;
             ";
             $result = mysqli_query($conn, $sql);
@@ -182,7 +181,7 @@
                     if ($date !== $displayed_date) {
                         // display the date and mark it as displayed
                         $displayed_date = $date;
-                        echo '<div class="blog__alt"><div class="blog__item__alt"><h3>' . $date . '<br>Cinema in Thailand </h3></div></div>';
+                        echo '<div class="blog__alt"><div class="blog__item__alt"><h3>' . $date . '</h3></div></div>';
                     }
             ?>
             
