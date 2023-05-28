@@ -111,12 +111,11 @@
 
                 
 
-                $len = mysqli_fetch_assoc($result)['movie_length'];
 
                 $mysqltime = date ('Y-m-d H:i:s', strtotime($time));
                 $temp = array();
                 $temp['date_time'] = $mysqltime;
-                $temp['len'] = $len;
+                $temp['len'] = $length;
                 $temp['new'] = 1;
                 array_push($all_time,$temp);
                 
@@ -166,7 +165,7 @@
                     if (!mysqli_query($con, $sql)) {
                         die('Error: ' . mysqli_error($con));
                     }
-                    $id = mysqli_insert_id($conn);
+                    $id = mysqli_insert_id($con);
 
                     $filename = $_FILES["inputPosterImage"]["name"];
                     $path = "../../home/img/poster/".$id.".jpg";
