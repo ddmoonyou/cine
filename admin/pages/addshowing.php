@@ -46,85 +46,114 @@
         $subtitle =  $_POST["subtitle"];    
         
 
-        $sql ="SELECT date_time FROM showings
-                WHERE movie_id = $movie_id AND branch_id = $branch_id AND theater_no = $theater_no";
+        $sql = "SELECT theater_no FROM theaterinfo
+                WHERE branch_id = $branch_id;";
+
+        
 
         $result = mysqli_query($con, $sql);
         if (!$result) {
             die('Error: ' . mysqli_error($con));
         }
-        $all_time = array();
-        foreach($result as $time)
+        $teather = array();
+        foreach($result as $t_no)
         {
-            array_push($all_time,$time['date_time']);
+            array_push($teather,$t_no['theater_no']);
         }
 
-        foreach($t as $time)
+        if(in_array($theater_no,$teather))
         {
-            $mysqltime = date ('Y-m-d H:i:s', strtotime($time));
-            array_push($all_time,$mysqltime);
-        }
-
-        function compareDates($date1, $date2){
-            return strtotime($date1) - strtotime($date2);
-         }
-
-        usort($all_time, "compareDates");
-
-
-        $sql ="SELECT movie_length FROM movieinfo
-                WHERE movie_id = $movie_id";
-        $result = mysqli_query($con, $sql);
-        if (!$result) {
-            die('Error: ' . mysqli_error($con));
-        }
-
-        $len = mysqli_fetch_assoc($result)['movie_length'];
-        $status = 0;
-        $i=0;
-        foreach($all_time as $time)
-        {
-            if($i>0)
-            {
-                $date1 = strtotime($all_time[$i-1]);
-                $date2 = strtotime($time);
-                $interval = $date2 - $date1;
-                $minutes = floor($interval  / 60);
-                if($minutes<$len)
-                {
-                    $status = 1;
-                }
+            $sql ="SELECT date_time FROM showings
+            WHERE movie_id = $movie_id AND branch_id = $branch_id AND theater_no = $theater_no";
+            $result = mysqli_query($con, $sql);
+            if (!$result) {
+                die('Error: ' . mysqli_error($con));
             }
-            $i++;
-            
-        }
+            $all_time = array();
+            foreach($result as $time)
+            {
+                array_push($all_time,$time['date_time']);
+            }
 
-        if($status==1)
-        {
-            echo "<script> alert('Showing time invalid!'); window.location.href='new-showing.php'; </script>";
+            foreach($t as $time)
+            {
+                $mysqltime = date ('Y-m-d H:i:s', strtotime($time));
+                array_push($all_time,$mysqltime);
+            }
+
+            function compareDates($date1, $date2){
+                return strtotime($date1) - strtotime($date2);
+            }
+
+            usort($all_time, "compareDates");
+
+
+            $sql ="SELECT movie_length FROM movieinfo
+                    WHERE movie_id = $movie_id";
+            $result = mysqli_query($con, $sql);
+            if (!$result) {
+                die('Error: ' . mysqli_error($con));
+            }
+
+            $len = mysqli_fetch_assoc($result)['movie_length'];
+            $status = 0;
+            $i=0;
+            foreach($all_time as $time)
+            {
+                if($i>0)
+                {
+                    $date1 = strtotime($all_time[$i-1]);
+                    $date2 = strtotime($time);
+                    $interval = $date2 - $date1;
+                    $minutes = floor($interval  / 60);
+                    if($minutes<$len)
+                    {
+                        $status = 1;
+                    }
+                }
+                $i++;
+                
+            }
+
+            if($status==1)
+            {
+                $_SESSION['status'] = 'Showing time overlaps!';
+                $_SESSION['status_text'] = 'Please try again';
+                $_SESSION['status_code'] = 'error';
+                header('Location: new-showing.php');
+            }
+            else
+            {
+                foreach($t as $time)
+                {
+                    
+                    $mysqltime = date ('Y-m-d H:i:s', strtotime($time));
+                // echo "<p> $mysqltime</p>";
+                    $sql ="INSERT INTO showings(movie_id,branch_id,theater_no,date_time,language_dub,language_sub)
+                            VALUES ($movie_id,$branch_id,$theater_no,'$mysqltime','$audio','$subtitle');";
+                    if ($mysqltime!='1970-01-01 01:00:00' &&!mysqli_query($con, $sql)) {
+                        die('Error: ' . mysqli_error($con));
+                    }
+                }
+
+                $_SESSION['status'] = 'Successful!';
+                $_SESSION['status_text'] = 'Added new showing';
+                $_SESSION['status_code'] = 'success';
+                header('Location: new-showing.php');
+
+                // echo "<script> alert('Add new showing succesful!'); window.location.href='new-showing.php'; </script>";
+                
+            }
         }
         else
         {
-            foreach($t as $time)
-            {
-                
-                $mysqltime = date ('Y-m-d H:i:s', strtotime($time));
-               // echo "<p> $mysqltime</p>";
-                $sql ="INSERT INTO showings(movie_id,branch_id,theater_no,date_time,language_dub,language_sub)
-                        VALUES ($movie_id,$branch_id,$theater_no,'$mysqltime','$audio','$subtitle');";
-                if ($mysqltime!='1970-01-01 01:00:00' &&!mysqli_query($con, $sql)) {
-                    die('Error: ' . mysqli_error($con));
-                }
-            }
-
-            $_SESSION['status'] = 'Successful!';
-            $_SESSION['status_text'] = 'Added new showing';
-            $_SESSION['status_code'] = 'success';
+            $_SESSION['status'] = 'Theater number not found!';
+            $_SESSION['status_text'] = 'Please try again';
+            $_SESSION['status_code'] = 'error';
             header('Location: new-showing.php');
-
-            // echo "<script> alert('Add new showing succesful!'); window.location.href='new-showing.php'; </script>";
-            
         }
+
+       
         
     } 
     
