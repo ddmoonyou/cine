@@ -74,17 +74,7 @@
             if (!mysqli_query($con, $sql)) {
 		    	die('Error: ' . mysqli_error($con));
 		    }
-            $sql = "SELECT movie_id FROM movieinfo
-                    WHERE movie_name = '$name' AND movie_length = $length AND movie_description = '$description';";
-
-            $res = mysqli_query($con, $sql);
-            if (!$res) {
-		    	die('Error: ' . mysqli_error($con));
-		    }
-            foreach($res as $a)
-            {
-                $id = $a["movie_id"];
-            }
+            $id = mysqli_insert_id($conn);
 
             $filename = $_FILES["inputPosterImage"]["name"];
             $path = "../../home/img/poster/".$id.".jpg";
