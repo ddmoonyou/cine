@@ -72,7 +72,7 @@
         }
         
         $filename = $_FILES["branch_img"]["name"];
-        $path = "../../home/img/theater/".$id.".jpg";
+        $path = "../../home/img/theatre/".$id.".jpg";
         move_uploaded_file($_FILES['branch_img']['tmp_name'],$path);
 
         $_SESSION['status'] = 'Successful!';
