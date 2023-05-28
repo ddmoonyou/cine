@@ -32,7 +32,7 @@
     print_r($promotion_codes);
     echo count($promotion_codes);*/
 
-    for ($showings = 481005446; $showings <= 481010763; $showings++) {
+    for ($showings = 481023655; $showings <= 481031447; $showings++) {
         $sql = "SELECT theaterinfo.layout_type FROM theaterinfo
                 INNER JOIN showings ON showings.branch_id = theaterinfo.branch_id AND showings.theater_no = theaterinfo.theater_no
                 WHERE showing_id = '$showings'

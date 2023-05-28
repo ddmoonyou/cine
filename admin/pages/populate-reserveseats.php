@@ -13,7 +13,7 @@
     $showing_id_memory = 0;
     $seat_range = array(range(300001, 300012), range(300013, 300028), range(300029, 300048), range(300049, 300072), range(300073, 300147), range(300148, 300273));
     
-    for ($reserve = 11; $reserve <= 28274; $reserve++) {
+    for ($reserve = 28276; $reserve <= 68798; $reserve++) {
         $sql = "SELECT theaterinfo.layout_type FROM theaterinfo
                 INNER JOIN showings ON showings.branch_id = theaterinfo.branch_id AND showings.theater_no = theaterinfo.theater_no
                 INNER JOIN reserveinfo ON showings.showing_id = reserveinfo.showing_id
