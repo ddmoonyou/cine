@@ -316,18 +316,24 @@
                 // Assuming you have a database connection established
         
                 // Example query using MySQLi
-                $query = "SELECT * FROM promotion";
+                $query = "SELECT * FROM promotion ";
                 $result = mysqli_query($conn, $query);
                 $discountAmount = 0;
                 while ($row = mysqli_fetch_assoc($result)) {
                     $promoCode = $row['promotion_code'];
-                    if (strcmp($promoCode, $inputCode) == 0) {
-                        $discountAmount = $row['discount_percent']; ?>
-                  
-                    <h5>Congratulations! You get a discount for </h5>
+                    $start_date = $row['start_date'];
+                    $end_date = $row['end_date'];
+                    $current_date = date("Y-m-d");
+
+                    if ($current_date >= $start_date && $current_date <= $end_date) {
+                        if (strcmp($promoCode, $inputCode) == 0) {
+                            $discountAmount = $row['discount_percent']; ?>
+                    
+                    <h5>Congratulations! You get a discount for </ h5>
                     <input type='hidden' name='promotion_code' value= '<?php echo $promoCode; ?>' >
+
             <?php        
-                    }    
+                    } }    
                 }
             }
 
