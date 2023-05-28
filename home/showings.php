@@ -137,9 +137,10 @@
     <!-- Breadcrumb Section End -->
 
     
-<form action="reservation.php" method="POST">
+
+
     <h4>Thailand Branch</h4>
-                <select id="selectBranch"> 
+            <select id="selectBranch"> 
             <?php
             $sql = "SELECT * FROM branchinfo WHERE branch_address LIKE '%Thailand%' ORDER BY branch_name";
             $result = mysqli_query($conn, $sql);
@@ -186,29 +187,29 @@
             ?>
             
             <div class="container">
-            
                 <div class="row no-gutters">
                     <div class="col-lg-12 md-8 xs-3">
                         <div class="showings-container" data-movie-id="<?php echo $showingID; ?>">
-                        <div class="blog__item__text">
-                            
-                            <div class="blog__item__text"> <img src="./img/icon/clock.png" width=25px height=25px>
-                                <a href="reservation.php?showing_id=<?php echo $showingID; ?>"> 
-                                            <button class="btn site-btn" data-showingid="<?php echo $showingID?>"> 
-                                                <?php echo $time; ?>
-                                        </button> </a>
-                                        <h6><img src="./img/icon/location.png" width=20px height=20px> <?php echo $branch_name; ?></h6>
-                                        <p>Theatre No: <?php echo $theatre_no; ?> </p>
-                                        <p><img src="./img/icon/video-camera.png" width=20px height=20px> System Type: <?php echo $system_type ?> </p>   
+                            <div class="blog__item__text">
+                                <div class="card-showing"> 
+                                    <div class="card-top-showing">
+                                        <h6 align='left' style="color:white"><img src="./img/icon/location.png" width=20px height=24px> <?php  echo $branch_name; ?></h6>
                                     </div>
+                                        <p>Theatre No: <?php echo $theatre_no; ?> </p>
+                                        <p><img src="./img/icon/video-camera.png" width=20px height=20px> System Type: <?php echo $system_type ?> </p>
+                                        <img src="./img/icon/clock.png" width=25px height=25px>
+                                        <a href="reservation.php?showing_id=<?php echo $showingID; ?>"> 
+                                        <button class="btn-light showing-time-btn" data-showingid="<?php echo $showingID?>"> 
+                                            <?php echo $time; ?>
+                                        </button> 
+                                    </a>
                                 </div>
-                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
+        
         <?php } ?>
     </section>
     <!-- Product Section End -->

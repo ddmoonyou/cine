@@ -5320,6 +5320,21 @@ input[type=submit].btn-block {
       border-radius: 10px
 }
 
+.card-showing {
+      padding: .75rem .75rem;
+      margin-bottom: 0;
+      background-color: rgba(240, 240, 240, 0.959);
+      border-radius: 10px;
+      box-shadow: 5px 10px #888888
+}
+.card-top-showing {
+      padding: .75rem 1.25rem;
+      margin-bottom: 0;
+      background-color: rgba(139, 139, 139, 0.959);
+      z-index: 10;
+      border-radius: 10px
+}
+
 .card-header:first-child {
       border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0
 }
