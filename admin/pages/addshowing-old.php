@@ -61,12 +61,10 @@
             array_push($teather,$t_no['theater_no']);
         }
 
-        
         if(in_array($theater_no,$teather))
         {
-            $sql ="SELECT s.showing_id,s.date_time,s.movie_id,m.movie_length FROM showings s
-                LEFT JOIN movieinfo m ON s.movie_id = m.movie_id
-                WHERE s.branch_id = $branch_id AND s.theater_no = $theater_no;";
+            $sql ="SELECT date_time FROM showings
+            WHERE movie_id = $movie_id AND branch_id = $branch_id AND theater_no = $theater_no";
             $result = mysqli_query($con, $sql);
             if (!$result) {
                 die('Error: ' . mysqli_error($con));
@@ -74,12 +72,21 @@
             $all_time = array();
             foreach($result as $time)
             {
-                $temp = array();
-                $temp['date_time'] = $time['date_time'];
-                $temp['len'] = $time['movie_length'];
-                $temp['new'] = 0;
-                array_push($all_time,$temp);
+                array_push($all_time,$time['date_time']);
             }
+
+            foreach($t as $time)
+            {
+                $mysqltime = date ('Y-m-d H:i:s', strtotime($time));
+                array_push($all_time,$mysqltime);
+            }
+
+            function compareDates($date1, $date2){
+                return strtotime($date1) - strtotime($date2);
+            }
+
+            usort($all_time, "compareDates");
+
 
             $sql ="SELECT movie_length FROM movieinfo
                     WHERE movie_id = $movie_id";
@@ -89,48 +96,25 @@
             }
 
             $len = mysqli_fetch_assoc($result)['movie_length'];
-
-            foreach($t as $time)
-            {
-                $mysqltime = date ('Y-m-d H:i:s', strtotime($time));
-                $temp = array();
-                $temp['date_time'] = $mysqltime;
-                $temp['len'] = $len;
-                $temp['new'] = 1;
-                array_push($all_time,$temp);
-            }
-            
-
-            function compareDates($date1, $date2){
-                return strtotime($date1['date_time']) - strtotime($date2['date_time']);
-            }
-
-            usort($all_time, "compareDates");
-           
-            
             $status = 0;
-            $count = count($all_time);
-            for($i=0;$i<$count-1;$i++)
+            $i=0;
+            foreach($all_time as $time)
             {
-                
-                $date1 = strtotime($all_time[$i]['date_time']);
-                
-                $date2 = strtotime($all_time[$i+1]['date_time']);
-                $interval = $date2 - $date1;
-                $minutes = floor($interval  / 60);
-                if($i>0 && ($all_time[$i]['new']==1 ||$all_time[$i+1]['new']==1 ))
+                if($i>0)
                 {
-                    if($minutes<$all_time[$i]['len'])
+                    $date1 = strtotime($all_time[$i-1]);
+                    $date2 = strtotime($time);
+                    $interval = $date2 - $date1;
+                    $minutes = floor($interval  / 60);
+                    if($minutes<$len)
                     {
-                        echo $i."<br>".$all_time[$i]['date_time']."  ".$all_time[$i+1]['date_time']." ".$all_time[$i]['len'] ."<br>";
                         $status = 1;
                     }
                 }
-                
-            
+                $i++;
                 
             }
-            
+
             if($status==1)
             {
                 $_SESSION['status'] = 'Showing time overlaps!';
@@ -160,13 +144,20 @@
                 // echo "<script> alert('Add new showing succesful!'); window.location.href='new-showing.php'; </script>";
                 
             }
-        } 
+        }
         else
         {
             $_SESSION['status'] = 'Theater number not found!';
             $_SESSION['status_text'] = 'Please try again';
             $_SESSION['status_code'] = 'error';
             header('Location: new-showing.php');
-        }     
+        }
+
+       
+        
     } 
+    
+    
+
+
 ?>
