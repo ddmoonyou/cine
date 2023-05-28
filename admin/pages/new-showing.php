@@ -106,9 +106,9 @@
                 <label for="inputAudio">Audio</label>
                 <select name="audio" id="inputAudio" class="form-control custom-select">
                   <option selected disabled>Select one</option>
-                  <option value="ENG">ENG</option>
+                  <option value="EN">EN</option>
                   <option value="TH">TH</option>
-                  <option value="JPN">JPN</option>
+                  <option value="JP">JP</option>
                   <option value="KR">KR</option>
                   <option value="RU">RU</option>
                 </select>
@@ -117,9 +117,9 @@
                 <label for="inputSubtitle">Subtitle</label>
                 <select name="subtitle" id="inputSubtitle" class="form-control custom-select">
                   <option selected disabled>Select one</option>
-                  <option value="ENG">ENG</option>
+                  <option value="EN">EN</option>
                   <option value="TH">TH</option>
-                  <option value="JPN">JPN</option>
+                  <option value="JP">JP</option>
                   <option value="KR">KR</option>
                   <option value="RU">RU</option>
                 </select>
