@@ -58,24 +58,24 @@
               <h3 class="card-title">Showing Information</h3>
             </div>
             <div class="card-body">
-            <div class="form-group">
-                <label for="inputMovieID">Movie ID</label>
-                  <select name="movie_id" id="movie_id" class="form-control custom-select">
-                    <option selected disabled>Select one</option>
-                    <?php
-                      $sql = "SELECT movie_id,movie_name FROM movieinfo;";
-                      $result = mysqli_query($con, $sql);
-                      if (!$result) {
-                          die('Invalid query: ' . mysqli_error($con));
-                      }
-                      foreach($result as $branch)
-                      {
-                        $b_id = $branch['movie_id'];
-                        $b_name = $branch['movie_name'];
-                        echo "<option value=$b_id>$b_id: $b_name</option>";
-                      }
-                    ?>
-                  </select>
+              <div class="form-group">
+                  <label for="inputMovieID">Movie ID</label>
+                    <select name="movie_id" id="movie_id" class="form-control custom-select">
+                      <option selected disabled>Select one</option>
+                      <?php
+                        $sql = "SELECT movie_id,movie_name FROM movieinfo;";
+                        $result = mysqli_query($con, $sql);
+                        if (!$result) {
+                            die('Invalid query: ' . mysqli_error($con));
+                        }
+                        foreach($result as $movie)
+                        {
+                          $m_id = $movie['movie_id'];
+                          $m_name = $movie['movie_name'];
+                          echo "<option value=$m_id>$m_id: $m_name</option>";
+                        }
+                      ?>
+                    </select>
               </div>
               <div class="form-group">
               <label for="inputBranchID">Branch</label>

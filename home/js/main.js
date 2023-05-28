@@ -9,6 +9,39 @@
 
 'use strict';
 
+/* หาค่าจาก GET Method เช่น ?movie_id = 100000001 จะได้ค่า 100000001 */
+function findGetParameter(parameterName) {
+    var result = null,
+        tmp = [];
+    location.search
+        .substr(1)
+        .split("&")
+        .forEach(function (item) {
+          tmp = item.split("=");
+          if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+        });
+    return result;
+}
+
+function selectBranch(){
+    var x = document.getElementById("BranchID").value; // id="BranchID"
+    var y = findGetParameter("movie_id"); // GET movie_id
+
+    $.ajax({
+        url:"selectbranch.php",
+        method: "POST",
+        data:{
+            b_id : x,
+            m_id : y
+        },
+        success:function(data){
+            $("#showbranch").html(data);
+        }
+    })
+
+}
+
+
 (function ($) {
 
     /*------------------

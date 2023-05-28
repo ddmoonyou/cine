@@ -696,6 +696,8 @@ pre code {
 .col-lg-10,
 .col-lg-11,
 .col-lg-12,
+.col-lg-13,
+.col-lg-14,
 .col-lg-2,
 .col-lg-3,
 .col-lg-4,
@@ -1614,6 +1616,16 @@ pre code {
             -ms-flex: 0 0 100%;
             flex: 0 0 100%;
             max-width: 100%
+      }
+      .col-lg-13 {
+            -ms-flex: 0 0 110%;
+            flex: 0 0 110%;
+            max-width: 110%
+      }
+      .col-lg-14 {
+            -ms-flex: 0 0 120%;
+            flex: 0 0 120%;
+            max-width: 120%
       }
 
       .order-lg-first {
