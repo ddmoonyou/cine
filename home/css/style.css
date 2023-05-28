@@ -211,6 +211,19 @@ ol {
 
 }
 
+.second-btn {
+	display: inline-block;
+	font-size: 13px;
+	font-weight: 700;
+	text-transform: uppercase;
+	padding: 0.5rem;
+	margin: 2%;
+	color: #ffffff;
+	background: #000000;
+	letter-spacing: 2px;
+
+}
+
 .site-btn {
 	font-size: 15px;
 	font-size: 14px;
