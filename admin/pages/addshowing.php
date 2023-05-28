@@ -107,7 +107,6 @@
 
             usort($all_time, "compareDates");
            
-
             
             $status = 0;
             $count = count($all_time);
@@ -119,7 +118,7 @@
                 $date2 = strtotime($all_time[$i+1]['date_time']);
                 $interval = $date2 - $date1;
                 $minutes = floor($interval  / 60);
-                if($i>0 && ($all_time[$i-1]['new']==1 || $all_time[$i]['new']==1 ||$all_time[$i+1]['new']==1 ))
+                if($i>0 && ($all_time[$i]['new']==1 ||$all_time[$i+1]['new']==1 ))
                 {
                     if($minutes<$all_time[$i]['len'])
                     {
@@ -161,23 +160,13 @@
                 // echo "<script> alert('Add new showing succesful!'); window.location.href='new-showing.php'; </script>";
                 
             }
-            
-        }
+        } 
         else
         {
             $_SESSION['status'] = 'Theater number not found!';
             $_SESSION['status_text'] = 'Please try again';
             $_SESSION['status_code'] = 'error';
             header('Location: new-showing.php');
-        }
-       
-        
-
-       
-        
+        }     
     } 
-    
-    
-
-
 ?>
