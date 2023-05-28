@@ -190,14 +190,13 @@
                 <div class="row no-gutters">
                     <div class="col-lg-12 md-8 xs-3">
                         <div class="showings-container" data-movie-id="<?php echo $showingID; ?>">
-                            <div class="blog__item__text">
+                            <div class="blog__item">
                                 <div class="card-showing"> 
                                     <div class="card-top-showing">
-                                        <h6 style="align:left" style="color:white"><img src="./img/icon/location.png" width=20px height=24px> <?php  echo $branch_name; ?></h6>
-                                    </div>
-                                        <p>Theatre No: <?php echo $theatre_no; ?> </p>
+                                        <h6 style="color:white"><img src="./img/icon/location.png" width=20px height=24px> <?php  echo $branch_name; ?></h6>
+                                    </div><br>
                                         <p><img src="./img/icon/video-camera.png" width=20px height=20px> System Type: <?php echo $system_type ?> </p>
-                                        <p><img src="./img/icon/audio.png" width=25px><?php echo $language_dub.'/'.$language_sub ?></p>
+                                        <p><img src="./img/icon/audio.png" width=25px> <?php echo $language_dub.'/'.$language_sub ?></p>
                                         <img src="./img/icon/clock.png" width=25px height=25px>
                                         <a href="reservation.php?showing_id=<?php echo $showingID; ?>"> 
                                         

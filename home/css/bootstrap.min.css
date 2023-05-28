@@ -5323,16 +5323,16 @@ input[type=submit].btn-block {
 .card-showing {
       padding: .75rem .75rem;
       margin-bottom: 0;
-      background-color: rgba(240, 240, 240, 0.959);
-      border-radius: 10px;
-      box-shadow: 5px 10px #888888
+      background-color: rgba(236, 236, 236, 0.959);
+      border-radius: 3px
+
 }
 .card-top-showing {
       padding: .75rem 1.25rem;
       margin-bottom: 0;
       background-color: rgba(139, 139, 139, 0.959);
       z-index: 10;
-      border-radius: 10px
+      border-radius: 3px
 }
 
 .card-header:first-child {
