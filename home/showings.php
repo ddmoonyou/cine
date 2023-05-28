@@ -116,9 +116,9 @@
                         <div class="row">
                               <div class="image-container">
                                     <img src ="./img/poster/<?php echo $movie_id?>.jpg" alt="Movie Poster" width="240" height="320" class="movie-poster">
-                                    <!-- <iframe width="560" height="315" src="<?php echo $trailer; ?>" 
+                                    <iframe width="560" height="315" src="<?php echo $trailer; ?>" 
                                     frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    allowfullscreen></iframe> -->
+                                    allowfullscreen></iframe>
                               </div>
                               <div class="col-lg-8 md-6 xd-6 d-flex align-items-center">
                                     <ul><h2 class="h2-movie"><?php echo $movie_name ?></h2><ul>
