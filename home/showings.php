@@ -200,7 +200,7 @@
                                         <img src="./img/icon/clock.png" width=25px height=25px>
                                         <a href="reservation.php?showing_id=<?php echo $showingID; ?>"> 
                                         
-                                        <button class="btn-light showing-time-btn" data-showingid="<?php echo $showingID?>"> 
+                                        <button class="btn showing-time-btn" data-showingid="<?php echo $showingID?>"> 
                                             <?php echo $time; ?>
                                         </button> 
                                     </a>
