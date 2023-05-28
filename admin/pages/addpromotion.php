@@ -19,7 +19,7 @@
 	$objResult = mysqli_fetch_array($objQuery,MYSQLI_ASSOC);
 
     //empty($_POST["inputPosterImage"]) || empty($_POST["inputPromoteImage"]) || 
-    if($_FILES['promotion_img']['name'] == ''
+    if($_FILES['promotion_img']['size'] == 0
     || empty($_POST["promotion_code"]) || empty($_POST["discount_percent"])
     || empty($_POST["description_promotion"]) || empty($_POST["s_date"])
     || empty($_POST["e_date"]) 
@@ -50,31 +50,9 @@
             $promotion_code = mysqli_real_escape_string($con,$_POST["promotion_code"]);
             $discount_percent = $_POST["discount_percent"];
             $description_promotion = mysqli_real_escape_string($con,$_POST["description_promotion"]);
-            $seat_type = mysqli_real_escape_string($con,$_POST["seat_type"]);
-            $system_type = mysqli_real_escape_string($con,$_POST["system_type"]);
-            
 
-            if(strcmp($seat_type,"none")==0 && strcmp($system_type,"none")==0)
-            {
-                $sql ="INSERT INTO promotion(promotion_code,discount_percent,description,start_date,end_date)
-                    VALUES ('$promotion_code',$discount_percent,'$description_promotion','$start_date','$end_date');";
-
-            }
-            else if(strcmp($seat_type,"none")!=0 && strcmp($system_type,"none")==0)
-            {
-                $sql ="INSERT INTO promotion(promotion_code,discount_percent,description,start_date,end_date,seat_type)
-                VALUES ('$promotion_code',$discount_percent,'$description_promotion','$start_date','$end_date','$seat_type');";
-            }
-            else if(strcmp($seat_type,"none")==0 && strcmp($system_type,"none")!=0)
-            {
-                $sql ="INSERT INTO promotion(promotion_code,discount_percent,description,start_date,end_date,system_type)
-                VALUES ('$promotion_code',$discount_percent,'$description_promotion','$start_date','$end_date','$system_type');";
-            }
-            else if(strcmp($seat_type,"none")!=0 && strcmp($system_type,"none")!=0)
-            {
-                $sql ="INSERT INTO promotion(promotion_code,discount_percent,description,start_date,end_date,seat_type,system_type)
-                VALUES ('$promotion_code',$discount_percent,'$description_promotion','$start_date','$end_date','$seat_type','$system_type');";
-            }
+            $sql ="INSERT INTO promotion(promotion_code,discount_percent,description,start_date,end_date)
+                VALUES ('$promotion_code',$discount_percent,'$description_promotion','$start_date','$end_date');";
 
             if (!mysqli_query($con, $sql)) {
 	    		die('Error: ' . mysqli_error($con));

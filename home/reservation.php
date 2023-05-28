@@ -62,7 +62,7 @@
     
 
     <!-- Header Section Begin -->
-    <header class="header">
+    <header class="header" id="myHeader">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-3">
@@ -308,7 +308,11 @@
 
                 </table>
                 <div class="row justify-content-center" style="margin-bottom:20px">
-                    <h6><b>SCREEN IS HERE</b></h6>
+                    <div class="col-lg-12">
+                        <div class="card-screen">
+                            <h6 align='center' style='color:#3a3a3b' class="card-title">SCREEN IS HERE</h6>
+                        </div>
+                    </div>
                 </div>
             </div>
             
