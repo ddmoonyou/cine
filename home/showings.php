@@ -137,8 +137,7 @@
     <!-- Breadcrumb Section End -->
 
     
-<form action="reservation.php" method="POST">
-    <h4>Thailand Branch</h4>
+    <div class="container"><h4>Thailand Branch</h4>
                 <select id="selectBranch"> 
             <?php
             $sql = "SELECT * FROM branchinfo WHERE branch_address LIKE '%Thailand%' ORDER BY branch_name";
@@ -146,7 +145,7 @@
             while ($row = mysqli_fetch_assoc($result)) {
             $branch_name = $row['branch_name'];
             $branch_id = $row['branch_id'];
-            echo '<button type="button" class="second-btn" value='.$branch_id.'>' . $branch_name . ' </button>';
+            echo '<button type="button" class="second-btn" value= data-branch-id='.$branch_id.'>' . $branch_name . ' </button>';
             ?>
             </select> 
             <?php } ?>
@@ -161,6 +160,7 @@
             and b.branch_id = s.branch_id
             and s.movie_id = $movie_id
             and date(s.date_time) = CURRENT_DATE()
+            and b.branch_address LIKE '%Thailand%'
             ORDER BY s.date_time ASC;
             ";
             $result = mysqli_query($conn, $sql);
@@ -181,7 +181,7 @@
                     if ($date !== $displayed_date) {
                         // display the date and mark it as displayed
                         $displayed_date = $date;
-                        echo '<div class="blog__alt"><div class="blog__item__alt"><h3>' . $date . '</h3></div></div>';
+                        echo '<div class="blog__alt"><div class="blog__item__alt"><h3>' . $date . '<br>Cinema in Thailand </h3></div></div>';
                     }
             ?>
             
@@ -208,7 +208,7 @@
                 </div>
             </div>
         </div>
-
+       
         <?php } ?>
     </section>
     <!-- Product Section End -->
