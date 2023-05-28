@@ -114,17 +114,18 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb__text">
                         <div class="row">
-                              <div class="image-container">
-                                    <img src ="./img/poster/<?php echo $movie_id?>.jpg" alt="Movie Poster" width="240" height="320" class="movie-poster">
-                                    
+                              <div class="image-container" style="margin-right:60px">
+                                    <img src ="./img/poster/<?php echo $movie_id?>.jpg" alt="Movie Poster" width="240" height="320" class="movie-poster" style="margin-left: 10px;margin-bottom: 20px";>
                               </div>
                                                       
-                              <div class="col-lg-8 md-7 xd-6 d-flex align-items-center">
+                              <div class="col">
                                 <iframe width="560" height="315" src="<?php echo $trailer; ?>" 
                                     frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                     allowfullscreen></iframe>
                               </div>
-                              <div class="col-lg-8 md-6 xd-6 d-flex align-items-center">
+                        </div>
+                        <div class="row"> 
+                              <div class="col-lg-12 md-9 xd-9 d-flex">
                                     <ul><h2 class="h2-movie"><?php echo $movie_name ?></h2><ul>
                                     <ul><p> <?php echo $description ?><p><ul>
                                     <ul><p>Release Date: <?php echo $_start_date ?><p><ul>
