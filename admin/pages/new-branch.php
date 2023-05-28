@@ -215,14 +215,14 @@ $(document).ready(function() {
   /* add button functionality */
   $('#addr' + i).html("<td>" + (i + 1) + "</td> <td> <select class=\"form-control custom-select\" name=layout" + i + ">Layout Type</option> <?php
     /* repeat code from earlier as string in html()*/
-    $result = mysqli_query($con,'SELECT DISTINCT layout_type FROM theaterinfo');    
+    $result = mysqli_query($con,'SELECT DISTINCT layout_type FROM seatlayout');    
     foreach ($result as $row){
       echo "<option value=$row[layout_type]>$row[layout_type]</option>"; 
     }
     echo '</select>';
     ?>
     </td>  <td> <select class=\"form-control custom-select\"  name=system" + i + ">System Type</option> <?php
-    $result = mysqli_query($con,'SELECT DISTINCT system_type FROM theaterinfo');    
+    $result = mysqli_query($con,'SELECT DISTINCT system_type FROM systemtype');    
     foreach ($result as $row){
       echo "<option value=$row[system_type]>$row[system_type]</option>"; 
     }
