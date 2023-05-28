@@ -261,7 +261,7 @@
                         <div class='container' style='margin-top: 30px;'>
                             <div class='col-lg-12'>
                                 <div class='filter__controls'>
-                                    <h3>Payment successful. </h3>
+                                    <h3>Payment successful. Your ID is <?php echo $last_insert?></h3>
                                     <h4>Please show this screen to the staff.</h4>
                                     <h6>Thank you for choosing to book with us.</h6>
                                     <h6>We sincerely hope that you enjoy the movie and have a pleasant experience with our services.</h6>

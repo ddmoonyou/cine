@@ -50,9 +50,8 @@
                         <h6>Menu</h6>
                         <ul>
                             <li><a href="theatre.php">Theatre</a></li>
-                            <li><a href="#">Movie</a></li>
-                            <li><a href="#">Promotion</a></li>
-                            <li><a href="#">Snack&Drink</a></li>
+                            <li><a href="promotion.php">Promotion</a></li>
+                            <li><a href="snack.php">Snack&Drink</a></li>
                         </ul>
                     </div>
                 </div>
