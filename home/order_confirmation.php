@@ -150,9 +150,9 @@
                                     <ul><h4 class="h2-movie"> <?php echo $movie_name ?></h4><ul>
                                             <ul>
                                                 <h6>Showings Information</h6>
-                                                <ul><img src="./img/icon/video-camera.png" width=25px height=25px>Theater No: <?php echo $theater ?> System: <?php echo $system_type ?></ul>
-                                                <ul><img src="./img/icon/location.png" width=20px height=20px>Branch: <?php echo $branch_name ?></ul>
-                                                <ul><img src="./img/icon/clock.png" width=25px height=25px>Time: <?php echo $time.' '.$f_date?></ul><br>
+                                                <ul><img src="./img/icon/video-camera.png" width=25px height=25px> Theater No: <?php echo $theater ?> System: <?php echo $system_type ?></ul>
+                                                <ul><img src="./img/icon/location-black.png" height=20px> Branch: <?php echo $branch_name ?></ul>
+                                                <ul><img src="./img/icon/clock.png" width=20px height=20px> Time: <?php echo $time.' '.$f_date?></ul><br>
                                             <ul>
                                 </div>
                             </div>
@@ -284,12 +284,27 @@
       ?>
 
     <div class="container">
-        <div class="col-lg-10">
+        <div class="col-lg-6">
             <div class="row justify-content-start">
-                <h4>Promotion Code:</h4>
-                    <!-- <input type="hidden" name="promotion_code" id="promotion_code" value="CODE"> -->
-                   <h6> <input type="text" name="promotion_code" id="promotion_code" placeholder="Enter Promotion Code"> </h6>
-                
+                <!-- <h5 style="margin-right:10px"> Promotion Code: </h5>
+                   <h5> <input type="text" class="form-control" name="promotion_code" id="promotion_code" placeholder="Enter Promotion Code"> </h5> -->
+                   <h5 style="margin-right:10px"><label for="promotionCode">Select Promotion: </label></h5>
+                                    <select name="promotionCode" id="promotionCode" class="form-control custom-select" style="width:50%">
+                                        <option selected disabled>Select one</option>
+                                        <?php
+                                        $sql = "SELECT * FROM promotion WHERE CURRENT_DATE() BETWEEN start_date AND end_date ";
+                                        $result = mysqli_query($conn, $sql);
+                                        if (!$result) {
+                                            die('Invalid query: ' . mysqli_error($con));
+                                        }
+                                        foreach($result as $p)
+                                        {
+                                            $promotionCode = $p['promotion_code'];
+                                            echo "<option value=$promotionCode>$promotionCode</option>";
+                                        }
+                                        ?>
+                                        <input type="hidden" name='promotionCode' value= <?php echo $promotionCode; ?> > 
+                                    </select>
             </div>
         </div>
     </div>

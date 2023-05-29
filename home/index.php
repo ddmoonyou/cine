@@ -123,7 +123,7 @@
             <?php } ?>
         </div>
     </section>
-    <!-- Hero SDATEDIFF(ection End ,
+    <!-- Hero SDATEDIFF(section End -->
 
     <!--) > = Product Section Begin -->
     <section class="product spad">
