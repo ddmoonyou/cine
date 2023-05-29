@@ -310,24 +310,53 @@
     <div class="container">
         <div class="row justify-content-start">
             <?php
-            if ($_SERVER["REQUEST_METHOD"] === "POST") {
-                $inputCode = $_POST['promotionCode'];
-                $query = "SELECT * FROM promotion WHERE promotion_code = '$inputCode' ";
+             if ($_SERVER["REQUEST_METHOD"] === "POST") {
+                $inputCode = $_POST['promotion_code'];
+                // Perform database query to check if the input value exists
+                // Assuming you have a database connection established
+        
+                // Example query using MySQLi
+                $query = "SELECT * FROM promotion ";
                 $result = mysqli_query($conn, $query);
-                $data = mysqli_fetch_assoc($result);
-                $code = $data['promotion_code'];
-                $discount = $data['discount_percent'];
-                $totalDiscount = $total*($discount/100);
-                $total = $total-$totalDiscount;
-                if($inputCode != NULL){
-                    echo "<h5>Discount Code is ".$inputCode.". Enjoy ". $totalDiscount." THB off!</ h5>";
+                $discountAmount = 0;
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $promoCode = $row['promotion_code'];
+                    $start_date = $row['start_date'];
+                    $end_date = $row['end_date'];
+                    $current_date = date("Y-m-d");
+
+                    if ($current_date >= $start_date && $current_date <= $end_date) {
+                        if (strcmp($promoCode, $inputCode) == 0) {
+                            $discountAmount = $row['discount_percent']; ?>
+                    
+                    <h5>Discount Code: <?php echo $inputCode ?> Enjoy the discount  </h5>
+                    <input type='hidden' name='promotion_code' value= '<?php echo $promoCode; ?>' >
+
+            <?php        
+                    } }    
                 }
-                else{
-                    echo "<h5>No discount for your booking.</h5>";
-                } 
-            } 
+            }
+
+            if ($discountAmount > 0) {
+                $total = $total * (1-($discountAmount/100));
+                $discountRate = $total*($discountAmount/100);
+                ?>
+                <h5> <?php  echo " $discountRate THB"; ?> </h5>
+                       
+            <?php } 
+            else {
+                // The input value does not exist in the database
+                
+                $promoCode = 0;?>
+                    <div class="col-6 align-item-center">
+                        <div class="container" style="margin:1.5%">
+                            <h5> <?php echo "<h5>No Discount</h5>"; ?> </h5>
+                        </div>
+                    </div> 
+                    
+           <?php }
             ?>
-            <input type='hidden' name='promotion_code' value= '<?php echo $code; ?>' >
+      
         </div>
    
 
