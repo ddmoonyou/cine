@@ -34,42 +34,24 @@ function fetchemp(){
 }
 
 function fetchTheater(){
-  var id = document.getElementById("movie_id").value;
+  var x = document.getElementById("branch_id").value;
 
   $.ajax({
-    url:"../pages/showMovieinfo.php",
-    method:"POST",
-    data:{
-      x : id
-    },
-    dataType: "JSON",
-
-    success: function(data){
-      document.getElementById("movie_name").value = data.name;
-      document.getElementById("movie_description").value = data.description;
-      document.getElementById("movie_trailer").value = data.trailer;
-      document.getElementById("director_info").value = data.director;
-      document.getElementById("movie_length").value = data.length;
-      document.getElementById("releaseDate").value = data.releaseDate;
-      document.getElementById("start_promote").value = data.startpromote;
-      document.getElementById("end_promote").value = data.endpromote;
-
-    }
-
+      url:"showTheaterNo.php",
+      method: "POST",
+      data:{
+          b_id : x
+      },
+      success:function(data){
+          $("#theater_no").html(data);
+      }
   })
 }
 
+
+
 (function ($) {
   'use strict'
-
-  // setTimeout(function () {
-  //   if (window.___browserSync___ === undefined && Number(localStorage.getItem('AdminLTE:Demo:MessageShowed')) < Date.now()) {
-  //     localStorage.setItem('AdminLTE:Demo:MessageShowed', (Date.now()) + (15 * 60 * 1000))
-  //     // eslint-disable-next-line no-alert
-  //     alert('You load AdminLTE\'s "demo.js", \nthis file is only created for testing purposes!')
-  //   }
-  // }, 1000)
-
 
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1)

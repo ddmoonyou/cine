@@ -40,7 +40,6 @@ function selectBranchDate(){
             $("#showbranch").html(data);
         }
     })
-
 }
 
 

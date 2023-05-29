@@ -2,6 +2,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
+<link rel = "icon" href = "./dist/img/AdminLTELogo.png" type = "image/x-icon">
 
 <?php
 	session_start();

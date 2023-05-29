@@ -78,8 +78,8 @@
                     </select>
               </div>
               <div class="form-group">
-              <label for="inputBranchID">Branch</label>
-                <select name="branch_id" id="branchID" class="form-control custom-select">
+              <label for="branch_id">Branch</label>
+                <select name="branch_id" id="branch_id" onchange="fetchTheater()" class="form-control custom-select">
                   <option selected disabled>Select one</option>
                   <?php
                     $sql = "SELECT branch_id,branch_name FROM branchinfo;";
@@ -99,8 +99,12 @@
                 
               </div>
               <div class="form-group">
-                <label for="inputTheaterNo">Theater No.</label>
-                <input name="theater_no" type="number" min="1" max="20" id="inputTheaterNo" class="form-control" placeholder="1">
+                <label for="theater_no">Theater No.</label>
+                <select name="theater_no" id="theater_no" class="form-control custom-select">
+                  <option value="" selected disabled>Select one</option>
+                  
+                </select>
+                <!-- <input name="theater_no" type="number" min="1" max="20" id="inputTheaterNo" class="form-control" placeholder="1"> -->
               </div>
               <div class="form-group">
                 <label for="inputAudio">Audio</label>
@@ -225,19 +229,19 @@ $(function () {
   bsCustomFileInput.init();
 });
 </script>
+
 <script>
-$(document).ready(function() {
-  var i = 1;
-  $("#add_row").click(function() {
- 
-    $('#addr' + i).html("<td>" + (i + 1) + "</td><td><input type='datetime-local' name=\"time[]\" placeholder='Date' class='form-control input-md'/></td>");
+  $(document).ready(function() {
+    var i = 1;
+    $("#add_row").click(function() {
+  
+      $('#addr' + i).html("<td>" + (i + 1) + "</td><td><input type='datetime-local' name=\"time[]\" placeholder='Date' class='form-control input-md'/></td>");
 
-    $('#tab_logic').append('<tr id="addr' + (i + 1) + '"></tr>');
-    i++;
+      $('#tab_logic').append('<tr id="addr' + (i + 1) + '"></tr>');
+      i++;
+    });
   });
-});
 </script>
-
 <?php
   include('../script.php');
 ?>
