@@ -150,9 +150,9 @@
                                     <ul><h4 class="h2-movie"> <?php echo $movie_name ?></h4><ul>
                                             <ul>
                                                 <h6>Showings Information</h6>
-                                                <ul><img src="./img/icon/video-camera.png" width=25px height=25px>Theater No: <?php echo $theater ?> System: <?php echo $system_type ?></ul>
-                                                <ul><img src="./img/icon/location.png" width=20px height=20px>Branch: <?php echo $branch_name ?></ul>
-                                                <ul><img src="./img/icon/clock.png" width=25px height=25px>Time: <?php echo $time.' '.$f_date?></ul><br>
+                                                <ul><img src="./img/icon/video-camera.png" width=25px height=25px> Theater No: <?php echo $theater ?> System: <?php echo $system_type ?></ul>
+                                                <ul><img src="./img/icon/location-black.png" height=20px> Branch: <?php echo $branch_name ?></ul>
+                                                <ul><img src="./img/icon/clock.png" width=20px height=20px> Time: <?php echo $time.' '.$f_date?></ul><br>
                                             <ul>
                                 </div>
                             </div>
@@ -218,6 +218,7 @@
                 if(!empty($_POST['promotion_code']))
                 {
                     $code = $_POST['promotion_code'];
+                    
                     $sql = "INSERT INTO reserveinfo(showing_id,promotion_code,payment_method)
                             VALUES ($showingID,'$code','$payment');";
                           

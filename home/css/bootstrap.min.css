@@ -2355,7 +2355,7 @@ pre code {
 }
 
 .form-control {
-      display: block;
+      display: flex;
       width: 100%;
       height: calc(1.5em + .75rem + 2px);
       padding: .375rem .75rem;
