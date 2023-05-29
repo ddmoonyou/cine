@@ -153,7 +153,9 @@
                                                 <ul><img src="./img/icon/video-camera.png" width=25px height=25px> Theater No: <?php echo $theater ?> System: <?php echo $system_type ?></ul>
                                                 <ul><img src="./img/icon/location-black.png" height=20px> Branch: <?php echo $branch_name ?></ul>
                                                 <ul><img src="./img/icon/clock.png" width=20px height=20px> Time: <?php echo $time.' '.$f_date?></ul><br>
+                                                <ul><img src="./img/icon/audio.png" width=25px> Audio: <?php $language_dub ?> Subtitle: <?php $language_sub ?></ul>
                                             <ul>
+
                                 </div>
                             </div>
                         </div>
@@ -291,7 +293,7 @@
                     <div class="col-2">
                         <div class="container" style="margin:1%">
                             <h5>
-                                <?php echo $food_price * $quantity ?>THB
+                                <?php echo $food_price * $quantity ?> THB
                             </h5>
                             <?php $total = $total + $food_price * $quantity; ?>
                         </div>
