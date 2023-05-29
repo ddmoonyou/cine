@@ -42,6 +42,8 @@
   $total_food_m = array();
   $total_food_l = array();
 
+  $food_type_labels = array();
+
   $count = 0;
 
   $sql = "SELECT fsize.food_type,fsize.size ,SUM(res.quantity) as total FROM reservefood res, foodsize fsize
@@ -54,16 +56,18 @@
   foreach($res as $a)
   {
       $total_food = $a["total"];
+      $types = $a["food_type"];
       $cursize = $a["size"];
       if ($cursize == "S"){
         array_push($total_food_s,$total_food);
+        array_push($food_type_labels,$types);
       }else if ($cursize == "M"){
         array_push($total_food_m,$total_food);
       }else if ($cursize == "L"){
         array_push($total_food_l,$total_food);
       }
-      
   }
+
 ?>
 
 <script>
@@ -78,8 +82,7 @@
     //--------------
 
     var FoodData = {
-      labels  : ['Pepsi', 'Pepsi-Max', 'Coca-Cola', 'Coca-Cola-Zero','Sprite', 'Lemon-Soda', 'Mineral-Water', 'Fanta-Strawberry-Soda', 'Fanta-Orange', 'Fanta-Grape', 
-      'Salty-Popcorn', 'Caramel-Popcorn', 'Cheese-Popcorn', 'BBQ-Popcorn', 'Lay-Nori-seaweed', 'Lay-BBQ', 'Cornae', 'Pringles'],
+      labels  : <?php  echo "['" . implode("', '",$food_type_labels) . "']"; ?>,
       datasets: [
         {
           label               : 'S',

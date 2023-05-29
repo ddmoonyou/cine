@@ -23,6 +23,7 @@
     // echo ($sql);
     $displayed_date = null;
     $row = mysqli_fetch_assoc($res);
+
     // $date_time = $row['date_time'];
     // $date = date('d M Y', strtotime($date_time));
 
@@ -46,7 +47,7 @@
                             <div class="blog__item">
                                 <div class="card-showing"> 
                                     <div class="card-top-showing">
-                                        <h6 style="color:white"><img src="./img/icon/location.png" width=20px height=24px> <?php  echo $row['branch_name']; ?></h6>
+                                        <h6 style="color:white"><img src="./img/icon/location.png" width=20px height=24px > <?php  echo $row['branch_name']; ?></h6>
                                     </div>
                                     
                                     <?php
@@ -111,7 +112,7 @@
     }
     else {
         ?>
-            <h3 align="center"><img src="./img/icon/video-camera.png" width=50px height=50px> No movie in theater</h3>
+            <div class="row justify-content-center"><h6><img src="./img/icon/video-camera.png" width=50px height=50px> We regret to inform you that there are no movie showings at the selected branch or on the specified date.</h6> </div>
         
         <?php
     }
