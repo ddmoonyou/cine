@@ -137,7 +137,7 @@
                     $date2 = strtotime($all_time[$i+1]['date_time']);
                     $interval = $date2 - $date1;
                     $minutes = floor($interval  / 60);
-                    if($i>0 && ($all_time[$i]['new']==1 ||$all_time[$i+1]['new']==1 ))
+                    if(($all_time[$i]['new']==1 ||$all_time[$i+1]['new']==1 ))
                     {
                         if($minutes<$all_time[$i]['len'])
                         {
