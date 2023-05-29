@@ -594,7 +594,7 @@
 
    <div class="container" style="padding-bottom:30px"> 
         <div class="row justify-content-end"><div class="col-1">  
-    <button type="submit" class="primary-btn" id="submit"> Book </button>
+        <button type="submit" class="primary-btn" id="submit"> Book </button>
     </div></div></div>
 </form>
 

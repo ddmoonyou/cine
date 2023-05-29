@@ -150,7 +150,7 @@
                             <div class="blog__item">
                                 <div class="card-showing">
                                     <label for="BranchID">Select Branch</label>
-                                    <select name="BranchID" id="BranchID" onchange="selectBranch()" class="form-control custom-select">
+                                    <select name="BranchID" id="BranchID"  class="form-control custom-select">
                                         <option selected disabled>Select one</option>
                                         <?php
                                         $sql = "SELECT * FROM branchinfo WHERE branch_address ORDER BY branch_id;";
@@ -166,7 +166,13 @@
                                         }
                                         ?>
                                     </select>
+                                    <label for="select_date">Select Date</label>
+                                    <input name="select_date"  type="date" id="select_date" class="form-control custom-select">
+                                    <div class="row justify-content-end">  
+                                    <button type="submit" onclick="selectBranchDate()" class="btn showing-time-btn" id="submit"> Search </button>
                                 </div>
+                                </div>
+                        
                             </div>
                         </div>
                     </div>

@@ -23,16 +23,18 @@ function findGetParameter(parameterName) {
     return result;
 }
 
-function selectBranch(){
+function selectBranchDate(){
     var x = document.getElementById("BranchID").value; // id="BranchID"
     var y = findGetParameter("movie_id"); // GET movie_id
+    var z = document.getElementById("select_date").value;
 
     $.ajax({
         url:"selectbranch.php",
         method: "POST",
         data:{
             b_id : x,
-            m_id : y
+            m_id : y,
+            d_id : z
         },
         success:function(data){
             $("#showbranch").html(data);

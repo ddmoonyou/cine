@@ -2,24 +2,39 @@
 	require_once("./connect_db.php");
     $branchID = $_POST['b_id'];
     $movieID = $_POST['m_id'];
+    $dateID = $_POST['d_id'];
     $branchID = trim($branchID);
     $movieID = trim($movieID);
-
+    $dateID = trim($dateID);
+    // $dateID = date('Y-m-d' , strtotime($dateID));
     
     $sql = "SELECT DISTINCT * FROM showings s,theaterinfo t,branchinfo b
                 where s.theater_no = t.theater_no
                 and s.branch_id = t.branch_id
                 and b.branch_id = s.branch_id
                 and s.movie_id = $movieID
-                and date(s.date_time) = CURRENT_DATE()
+                and date(s.date_time) = date($dateID)
                 and b.branch_id = $branchID
                 ORDER BY s.date_time ASC;
                 ";
     $res = mysqli_query($conn, $sql);
+    echo ($sql);
     $displayed_date = null;
-    $row = mysqli_fetch_assoc($res)
-    ?>
-    <div class="container">
+    $row = mysqli_fetch_assoc($res);
+    $date_time = $row['date_time'];
+    $date = date('d M Y', strtotime($date_time));
+
+    echo ($row['date_time']);
+    ?><br><?php
+    // echo ($date);
+    ?><br><?php
+    echo ($dateID);
+
+    if($row != "" )
+    {
+
+        ?>
+            <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-10 md-6 xs-3">
                         <div class="showings-container">
@@ -60,7 +75,14 @@
                     </div>
                 </div>
             </div>
-    <?php
+        <?php
+    }
+    else {
+        ?>
+            <h3 align="center"><img src="./img/icon/video-camera.png" width=50px height=50px> No movie in theater</h3>
+        
+        <?php
+    }
     // while($rows = mysqli_fetch_array($res)){
     // }
 
