@@ -2,15 +2,12 @@
 
 function showTimeByType($row, $res, $systemtype, $subtitle, $audio) {
     ?>
+    
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-lg-10 md-6 xs-3">
+                    <div class="col-lg-12 md-6 xs-3">
                         <div class="showings-container">
-                            <div class="blog__item">
-                                <div class="card-showing"> 
-                                    <div class="card-top-showing">
-                                        <h6 style="color:white"><img src="./img/icon/location.png" width=20px height=24px > <?php  echo $row['branch_name']; ?></h6>
-                                    </div>
+                            
                                     
                                     <?php
                                     /* print ข้างนอกก่อน 1 รอบ */
@@ -49,8 +46,8 @@ function showTimeByType($row, $res, $systemtype, $subtitle, $audio) {
                                         }                          
                                         ?>
                                             </div>
-                                </div>
-                            </div>
+                                
+                            
                         </div>
                     </div>
                 </div>
@@ -71,7 +68,7 @@ function showTimeByType($row, $res, $systemtype, $subtitle, $audio) {
             
             $possible_combos = array();
 
-            $sql = "SELECT DISTINCT s.language_sub, s.language_dub, t.system_type FROM showings s,theaterinfo t,branchinfo b
+            $sql = "SELECT DISTINCT s.language_sub, s.language_dub, t.system_type, b.branch_name FROM showings s,theaterinfo t,branchinfo b
             where s.theater_no = t.theater_no
             and b.branch_id = $branchID
             and t.branch_id = $branchID
@@ -83,6 +80,21 @@ function showTimeByType($row, $res, $systemtype, $subtitle, $audio) {
             ORDER BY s.date_time ASC;
             ";
             $res = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_assoc($res);
+            if(!empty($row)) {
+                ?>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-10 md-6 xs-3">
+                            <div class="showings-container">
+                                <div class="blog__item">
+                                    <div class="card-showing"> 
+                                        <div class="card-top-showing">
+                                            <h6 style="color:white"><img src="./img/icon/location.png" width=20px height=24px > <?php  echo $row['branch_name']; ?></h6>
+                                        </div>
+                        
+                <?php
+            }
 
             foreach($res as $row)
             {
@@ -107,7 +119,17 @@ function showTimeByType($row, $res, $systemtype, $subtitle, $audio) {
                 $res = mysqli_query($conn, $sql);
                 $displayed_date = null;
                 $row = mysqli_fetch_assoc($res);
-                showTimeByType($row, $res, '4D', $row['language_sub'], $row['language_dub']);
+                
+                showTimeByType($row, $res, $row['system_type'], $row['language_sub'], $row['language_dub']);
+            }
+            if(!empty($row)) {
+            ?>                      </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php
             }
 
             if (empty($possible_combos)){
