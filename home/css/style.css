@@ -295,6 +295,7 @@ ol {
 	left: 0;
 	z-index: 999999;
 	background: #000;
+	opacity: .65;
 }
 
 .loader {

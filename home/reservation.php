@@ -29,8 +29,6 @@
 
     <link rel="icon" href="img/about/icon.png">
 
-    <script src="main.js"></script>
-
     <!-- Connect to database -->
     <?php
     $servername = "127.0.0.1";  
@@ -420,7 +418,7 @@
                                                             $price = $p["price"];
                                                             echo "<div class='row'><div class='col-5'> ";
                                                             echo "<span>$size: $price THB</span>";
-                                                            echo "<input type='number' id='quantity' name='food_quantity[]' value='$quantity' min='0' max='10'>";
+                                                            echo "<input type='number' class='form-control' id='quantity' name='food_quantity[]' value='$quantity' min='0' max='10'>";
                                                             echo "<input type='hidden' name='food_id[]' value='$food_id'>";
                                                             echo "</div></div>";
                                                         }
@@ -495,9 +493,9 @@
                                                             $food_id = $p["food_id"];
                                                             $size = $p["size"];
                                                             $price = $p["price"];
-                                                            echo "<div class='col-3'> <div class='row'>";
-                                                            echo "<span>$size: $price</span>";
-                                                            echo "<input type='number' id='quantity' name='food_quantity[]' value='$quantity' min='0' max='10'>";
+                                                            echo "<div class='col-5'> <div class='row'>";
+                                                            echo "<span>$size: $price THB</span>";
+                                                            echo "<input type='number' class='form-control' id='quantity' name='food_quantity[]' value='$quantity' min='0' max='10'>";
                                                             echo "<input type='hidden' name='food_id[]' value='$food_id'>";
                                                             echo "</div></div>";
                                                         }
@@ -572,9 +570,9 @@
                                                             $food_id = $p["food_id"];
                                                             $size = $p["size"];
                                                             $price = $p["price"];
-                                                            echo "<div class='col-3'> <div class='row'>";
-                                                            echo "<span>$size: $price</span>";
-                                                            echo "<input type='number' id='quantity' name='food_quantity[]' value='$quantity' min='0' max='10'>";
+                                                            echo "<div class='col-5'> <div class='row '>";
+                                                            echo "<span>$size: $price THB</span>";
+                                                            echo "<input type='number' class='form-control' id='quantity' name='food_quantity[]' value='$quantity' min='0' max='10'>";
                                                             echo "<input type='hidden' name='food_id[]' value='$food_id'>";
                                                             echo "</div></div>";
                                                         }
