@@ -155,7 +155,7 @@
                                                 <select name="BranchID" id="BranchID"  class="form-control custom-select">
                                                     <option selected disabled>Select one</option>
                                                     <?php
-                                                    $sql = "SELECT * FROM branchinfo WHERE branch_address ORDER BY branch_id;";
+                                                    $sql = "SELECT * FROM branchinfo ORDER BY branch_id;";
                                                     $result = mysqli_query($conn, $sql);
                                                     if (!$result) {
                                                         die('Invalid query: ' . mysqli_error($con));
