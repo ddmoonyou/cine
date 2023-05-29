@@ -286,25 +286,9 @@
     <div class="container">
         <div class="col-lg-6">
             <div class="row justify-content-start">
-                <!-- <h5 style="margin-right:10px"> Promotion Code: </h5>
-                   <h5> <input type="text" class="form-control" name="promotion_code" id="promotion_code" placeholder="Enter Promotion Code"> </h5> -->
-                   <h5 style="margin-right:10px"><label for="promotionCode">Select Promotion: </label></h5>
-                                    <select name="promotionCode" id="promotionCode" class="form-control custom-select" style="width:50%">
-                                        <option selected disabled>Select one</option>
-                                        <?php
-                                        $sql = "SELECT * FROM promotion WHERE CURRENT_DATE() BETWEEN start_date AND end_date ";
-                                        $result = mysqli_query($conn, $sql);
-                                        if (!$result) {
-                                            die('Invalid query: ' . mysqli_error($con));
-                                        }
-                                        foreach($result as $p)
-                                        {
-                                            $promotionCode = $p['promotion_code'];
-                                            echo "<option value=$promotionCode>$promotionCode</option>";
-                                        }
-                                        ?>
-                                        <input type="hidden" name='promotionCode' value= <?php echo $promotionCode; ?> > 
-                                    </select>
+                <h5 style="margin-right:10px"> Promotion Code: </h5>
+                   <h5> <input type="text" class="form-control" name="promotion_code" id="promotion_code" placeholder="Enter Promotion Code"> </h5>
+                   
             </div>
         </div>
     </div>
