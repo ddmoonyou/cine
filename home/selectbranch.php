@@ -116,11 +116,11 @@ function showTimeByType($row, $res, $systemtype, $subtitle, $audio) {
                 <?php
             }
 
-        }
-else {
-    ?>
-        <div class="row justify-content-center"><h6><img src="./img/icon/video-camera.png" width=50px height=50px> Please select the branch and time you want to watch the movie. </h6> </div>
-    <?php
-    exit();
-}
+    }
+    else {
+        ?>
+            <div class="row justify-content-center"><h6><img src="./img/icon/video-camera.png" width=50px height=50px> Please select the branch and time you want to watch the movie. </h6> </div>
+        <?php
+        exit();
+    }
 ?>
