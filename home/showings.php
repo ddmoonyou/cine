@@ -115,7 +115,7 @@
                     <div class="breadcrumb__text">
                         <div class="row">
                               <div class="image-container" style="margin-right:60px">
-                                    <img src ="./img/poster/<?php echo $movie_id?>.jpg" alt="Movie Poster" width="240" height="320" class="movie-poster" style="margin-left: 10px;margin-bottom: 20px";>
+                                    <img src ="./img/poster/<?php echo $movie_id?>.jpg"  width="240" height="320" class="movie-poster" style="margin-left: 10px;margin-bottom: 20px";>
                               </div>
                                                       
                               <div class="col">
@@ -145,34 +145,40 @@
         <div class="card-body">
             <div class="form-group">
                 <div class="row justify-content-center">
-                    <div class="col-lg-5 md-5 xs-3 ">
+                    <div class="col-md-5 xs-3 ">
                         <div class="showings-container" >
                             <div class="blog__item">
                                 <div class="card-showing">
-                                    <label for="BranchID">Select Branch</label>
-                                    <select name="BranchID" id="BranchID"  class="form-control custom-select">
-                                        <option selected disabled>Select one</option>
-                                        <?php
-                                        $sql = "SELECT * FROM branchinfo WHERE branch_address ORDER BY branch_id;";
-                                        $result = mysqli_query($conn, $sql);
-                                        if (!$result) {
-                                            die('Invalid query: ' . mysqli_error($con));
-                                        }
-                                        foreach($result as $branch)
-                                        {
-                                            $b_id = $branch['branch_id'];
-                                            $b_name = $branch['branch_name'];
-                                            echo "<option value=$b_id>$b_id: $b_name</option>";
-                                        }
-                                        ?>
-                                    </select>
-                                    <label for="select_date">Select Date</label>
-                                    <input name="select_date"  type="date" id="select_date" class="form-control custom-select">
+                                    <div class="form-row justify-content-center">
+                                        <div class="form-group col-md-7">
+                                            <h6><b><label for="BranchID">Select Branch</label></b></h6>
+                                                <select name="BranchID" id="BranchID"  class="form-control custom-select">
+                                                    <option selected disabled>Select one</option>
+                                                    <?php
+                                                    $sql = "SELECT * FROM branchinfo WHERE branch_address ORDER BY branch_id;";
+                                                    $result = mysqli_query($conn, $sql);
+                                                    if (!$result) {
+                                                        die('Invalid query: ' . mysqli_error($con));
+                                                    }
+                                                    foreach($result as $branch)
+                                                    {
+                                                        $b_id = $branch['branch_id'];
+                                                        $b_name = $branch['branch_name'];
+                                                        echo "<option value=$b_id> $b_name </option>";
+                                                    }
+                                                    ?>
+                                                </select>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <h6><label for="select_date"><b>Select Date</b></label></h6>
+                                            <input name="select_date"  type="date" id="select_date" class="form-control custom-select">
+                                        </div>
+                                    </div>
                                     <div class="row justify-content-end">  
-                                    <button type="submit" onclick="selectBranchDate()" class="btn showing-time-btn" id="submit"> Search </button>
+                                        <button type="submit" onclick="selectBranchDate()" class="btn showing-time-btn" id="submit" ><b> Search </b></button>
+                                    </div>
                                 </div>
-                                </div>
-                        
+                                
                             </div>
                         </div>
                     </div>
