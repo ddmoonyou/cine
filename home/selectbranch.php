@@ -13,22 +13,24 @@
                 and s.branch_id = t.branch_id
                 and b.branch_id = s.branch_id
                 and s.movie_id = $movieID
-                and date(s.date_time) = date($dateID)
+                and date(s.date_time) = date('$dateID')
                 and b.branch_id = $branchID
                 ORDER BY s.date_time ASC;
                 ";
     $res = mysqli_query($conn, $sql);
-    echo ($sql);
+    // echo ($sql);
     $displayed_date = null;
     $row = mysqli_fetch_assoc($res);
-    $date_time = $row['date_time'];
-    $date = date('d M Y', strtotime($date_time));
+    // $date_time = $row['date_time'];
+    // $date = date('d M Y', strtotime($date_time));
 
+    /*
     echo ($row['date_time']);
     ?><br><?php
     // echo ($date);
     ?><br><?php
     echo ($dateID);
+    */
 
     if($row != "" )
     {
