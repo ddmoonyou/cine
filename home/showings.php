@@ -145,7 +145,7 @@
         <div class="card-body">
             <div class="form-group">
                 <div class="row justify-content-center">
-                    <div class="col-lg-8 md-8 xs-3 ">
+                    <div class="col-lg-5 md-5 xs-3 ">
                         <div class="showings-container" >
                             <div class="blog__item">
                                 <div class="card-showing">

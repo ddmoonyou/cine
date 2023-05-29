@@ -20,39 +20,39 @@
     $row = mysqli_fetch_assoc($res)
     ?>
     <div class="container">
-                <div class="row no-gutters">
-                    <div class="col-lg-13 md-8 xs-3">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 md-6 xs-3">
                         <div class="showings-container">
                             <div class="blog__item">
                                 <div class="card-showing"> 
                                     <div class="card-top-showing">
                                         <h6 style="color:white"><img src="./img/icon/location.png" width=20px height=24px> <?php  echo $row['branch_name']; ?></h6>
-                                        </div><br>
+                                    </div>
+                                        
+
+                        <?php
+
+                        while ($row = mysqli_fetch_assoc($res)) {
+                            $showingID = $row['showing_id'];
+                            $branch_name = $row['branch_name'];
+                            $date_time = $row['date_time'];
+                            $time = date('H:i', strtotime($date_time));
+                            $date = date('d M Y', strtotime($date_time));
+                            $theatre_no = $row['theater_no'];
+                            $language_sub = $row['language_sub'];
+                            $language_dub = $row['language_dub'];
+                            $system_type = $row['system_type'];
+
+                            ?>          
+                                        <div class="card-showing-alt">
                                         <p><img src="./img/icon/video-camera.png" width=20px height=20px> System Type: <?php echo  $row['system_type']; ?> </p>
                                         <p><img src="./img/icon/audio.png" width=25px> <?php echo $row['language_dub'].'/'.$row['language_sub']; ?></p>
                                         <img src="./img/icon/clock.png" width=25px height=25px>
-                                        <a href="reservation.php?showing_id=<?php echo $row['showing_id']; ?>"> 
-
-    <?php
-
-    while ($row = mysqli_fetch_assoc($res)) {
-        $showingID = $row['showing_id'];
-        $branch_name = $row['branch_name'];
-        $date_time = $row['date_time'];
-        $time = date('H:i', strtotime($date_time));
-        $date = date('d M Y', strtotime($date_time));
-        $theatre_no = $row['theater_no'];
-        $language_sub = $row['language_sub'];
-        $language_dub = $row['language_dub'];
-        $system_type = $row['system_type'];
-
-        ?>                                                
+                                        <a href="reservation.php?showing_id=<?php echo $row['showing_id']; ?>">                                      
                                         <button class="btn showing-time-btn" data-showingid="<?php echo $showingID?>"> 
                                             <?php echo $time; ?>
-                                        </button> 
-        <?php
-    }
-    ?>
+                                        </button> </div>
+                        <?php }  ?>
                                     </a>
                                 </div>
                             </div>

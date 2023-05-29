@@ -382,7 +382,7 @@ h5,
 h6 {
       margin-bottom: .5rem;
       font-weight: 500;
-      line-height: 1.2
+      line-height: 2
 }
 
 .h1,
@@ -4375,26 +4375,28 @@ input[type=submit].btn-block {
       padding: .375rem 1.75rem .375rem .75rem;
       font-size: 1rem;
       font-weight: 400;
-      line-height: 1.5;
+      line-height: 1.5; 
       color: #495057;
       vertical-align: middle;
       background: #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right .75rem center/8px 10px;
-      border: 1px solid #ced4da;
-      border-radius: .25rem;
+      border: 1px solid #3d3d3d;
+      border-radius: .75rem;
       -webkit-appearance: none;
       -moz-appearance: none;
-      appearance: none
+      appearance: none;
+      
 }
 
+
 .custom-select:focus {
-      border-color: #80bdff;
+      border-color: #7ea9d6;
       outline: 0;
-      box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25)
+      box-shadow: 0 0 0 .2rem rgba(92, 94, 97, 0.25)
 }
 
 .custom-select:focus::-ms-value {
-      color: #495057;
-      background-color: #fff
+      color: #9ec6ee;
+      background-color: #ffffff
 }
 
 .custom-select[multiple],
@@ -5294,11 +5296,13 @@ input[type=submit].btn-block {
       -ms-flex: 1 1 auto;
       flex: 1 1 auto;
       min-height: 1px;
-      padding: 1.25rem
+      padding: 1.25rem;
+      align-items :center;
+      
 }
 
 .card-title {
-      margin-bottom: .75rem
+      margin-bottom: .5rem
 }
 
 .card-subtitle {
@@ -5333,18 +5337,41 @@ input[type=submit].btn-block {
 }
 
 .card-showing {
-      padding: .75rem .75rem;
+      padding: .5rem .5rem;
       margin-bottom: 0;
-      background-color: rgba(236, 236, 236, 0.959);
-      border-radius: 3px
+      background-color: rgba(255, 255, 255, 0.959);
+      border-radius: .75rem;
+      border-style: solid;
+      border-color: rgb(106, 106, 106);
+      border-width: thin;
+      
 
 }
+
+.card-showing-alt {
+      padding: 2%;
+      margin:2.5%;
+      background-color: rgba(235, 233, 233, 0.185);
+      border-radius: .75rem;
+      border-style: solid;
+      border-color: rgb(106, 106, 106);
+      border-width: thin;
+
+}
+
+.card-showing-alt:hover{
+      -webkit-box-shadow: 0px 7px 25px rgba(97, 95, 95, 0.119);
+	box-shadow: 0px 7px 25px rgba(49, 48, 48, 0.437);
+      
+}
+
 .card-top-showing {
       padding: .75rem 1.25rem;
       margin-bottom: 0;
-      background-color: rgba(139, 139, 139, 0.959);
+      background-color: rgb(0, 0, 0);
       z-index: 10;
-      border-radius: 3px
+      border-radius: .75rem
+      
 }
 
 .card-header:first-child {
