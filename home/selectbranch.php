@@ -6,22 +6,30 @@
     $branchID = trim($branchID);
     $movieID = trim($movieID);
     $dateID = trim($dateID);
-    // $dateID = date('Y-m-d' , strtotime($dateID));
-    
-    $sql = "SELECT DISTINCT * FROM showings s,theaterinfo t,branchinfo b
-                where s.theater_no = t.theater_no
-                and b.branch_id = $branchID
-                and t.branch_id = $branchID
-                and s.branch_id = $branchID
-                and s.branch_id = t.branch_id
-                and b.branch_id = s.branch_id
-                and s.movie_id = $movieID
-                and date(s.date_time) = date('$dateID') /* original: CURRENT_DATE() */
-                ORDER BY s.date_time ASC;
-                ";
-    $res = mysqli_query($conn, $sql);
-    $displayed_date = null;
-    $row = mysqli_fetch_assoc($res);
+
+    // ถ้าลูกค้าเลือก Branch กับ Date
+    if($branchID != "" || $dateID != "") {
+        $sql = "SELECT DISTINCT * FROM showings s,theaterinfo t,branchinfo b
+        where s.theater_no = t.theater_no
+        and b.branch_id = $branchID
+        and t.branch_id = $branchID
+        and s.branch_id = $branchID
+        and s.branch_id = t.branch_id
+        and b.branch_id = s.branch_id
+        and s.movie_id = $movieID
+        and date(s.date_time) = date('$dateID') /* original: CURRENT_DATE() */
+        ORDER BY s.date_time ASC;
+        ";
+        $res = mysqli_query($conn, $sql);
+        $displayed_date = null;
+        $row = mysqli_fetch_assoc($res);
+    }
+    else {
+        ?>
+            <div class="row justify-content-center"><h6><img src="./img/icon/video-camera.png" width=50px height=50px> Please select the branch and time you want to watch the movie.</h6> </div>
+        <?php
+        exit();
+    }
 
 
     if($row != "")
@@ -103,9 +111,4 @@
         
         <?php
     }
-    // while($rows = mysqli_fetch_array($res)){
-    // }
-
-    // echo $sql;
-    
 ?>

@@ -153,7 +153,7 @@
                                         <div class="form-group col-md-7">
                                             <h6><b><label for="BranchID">Select Branch</label></b></h6>
                                                 <select name="BranchID" id="BranchID"  class="form-control custom-select">
-                                                    <option selected disabled>Select one</option>
+                                                    <option value="" selected disabled>Select one</option>
                                                     <?php
                                                     $sql = "SELECT * FROM branchinfo ORDER BY branch_id;";
                                                     $result = mysqli_query($conn, $sql);
@@ -171,7 +171,7 @@
                                         </div>
                                         <div class="form-group col-md-4">
                                             <h6><label for="select_date"><b>Select Date</b></label></h6>
-                                            <input name="select_date"  type="date" id="select_date" class="form-control custom-select">
+                                            <input value="" name="select_date"  type="date" id="select_date" class="form-control custom-select">
                                         </div>
                                     </div>
                                     <div class="row justify-content-end">  
