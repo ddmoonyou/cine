@@ -269,8 +269,8 @@
                               </div>
                         </div>
                         <div class="col-2">
-                              <div class="container" style="margin:1%">
-                                    <h5> <?php echo $food_price*$quantity ?>THB</h5>
+                              <div class="container " style="margin:1%">
+                                    <h5> <?php echo $food_price*$quantity ?> THB</h5>
                                     <?php $total = $total + $food_price*$quantity ;?>
                               </div>
                         </div>
