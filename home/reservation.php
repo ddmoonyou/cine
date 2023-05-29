@@ -51,10 +51,6 @@
 </head>
 
 <body>
-    <!-- Page Preloder -->
-    <!-- <div id="preloder">
-        <div class="loader"></div>
-    </div> -->
 
 
     
@@ -149,8 +145,8 @@
                                                 <h6>Showings Information</h6>
                                                 <ul><img src="./img/icon/video-camera.png" width=25px height=25px> Theater No: <?php echo $theater ?> System: <?php echo $system_type ?></ul>
                                                 <ul><img src="./img/icon/location-black.png" height=20px> Branch: <?php echo $branch_name ?></ul>
-                                                <ul><img src="./img/icon/clock.png" width=20px height=20px> Time: <?php echo $time.' '.$f_date?></ul><br>
-                                                <ul><img src="./img/icon/audio.png" width=25px> Audio: <?php $language_dub ?> Subtitle: <?php $language_sub ?></ul>
+                                                <ul><img src="./img/icon/clock.png" width=20px height=20px> Time: <?php echo $time.' '.$f_date?></ul>
+                                                <ul><img src="./img/icon/audio.png" width=25px> Audio: <?php echo $language_dub ?> Subtitle: <?php echo $language_sub ?></ul><br>
                                             <ul>
                                 </div>
                             </div>

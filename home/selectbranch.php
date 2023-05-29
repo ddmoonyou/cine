@@ -76,8 +76,7 @@ function showTimeByType($row, $res, $systemtype, $subtitle, $audio) {
             and s.branch_id = t.branch_id
             and b.branch_id = s.branch_id
             and s.movie_id = $movieID
-            and date(s.date_time) = date('$dateID')
-            ORDER BY s.date_time ASC;
+            and date(s.date_time) = date('$dateID');
             ";
             $res = mysqli_query($conn, $sql);
             $row = mysqli_fetch_assoc($res);
