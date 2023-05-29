@@ -16,29 +16,16 @@
                 and s.branch_id = t.branch_id
                 and b.branch_id = s.branch_id
                 and s.movie_id = $movieID
-                and date(s.date_time) = date('$dateID') /* CURRENT_DATE() */
+                and date(s.date_time) = date('$dateID') /* original: CURRENT_DATE() */
                 ORDER BY s.date_time ASC;
                 ";
     $res = mysqli_query($conn, $sql);
-    // echo ($sql);
     $displayed_date = null;
     $row = mysqli_fetch_assoc($res);
 
-    // $date_time = $row['date_time'];
-    // $date = date('d M Y', strtotime($date_time));
-
-    
-    // echo ($row['']);
-    ?><br><?php
-    // echo ($date);
-    ?><br><?php
-    echo ($dateID);
-    
 
     if($row != "")
     {
-        echo $sql;
-
         ?>
             <div class="container">
                 <div class="row justify-content-center">
