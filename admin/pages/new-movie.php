@@ -130,8 +130,8 @@
             </div>
             <div class="card-body">
               <div class="form-group">
-                <label for="inputBranchID">Branch ID</label>
-                <select name="branch_id" id="branchID" class="form-control custom-select">
+                <label for="branch_id">Branch ID</label>
+                <select name="branch_id" id="branch_id" onchange="fetchTheater()" class="form-control custom-select">
                   <option selected disabled>Select one</option>
                   <?php
                     foreach($result as $branch)
@@ -145,8 +145,10 @@
 
               </div>
               <div class="form-group">
-                <label for="inputSpentBudget">Theater No.</label>
-                <input name="theater" type="number" id="inputTheaterNo" class="form-control">
+              <label for="theater_no">Theater No.</label>
+                <select name="theater" id="theater_no" class="form-control custom-select">
+                  <option value="" selected disabled>Select branch first</option>
+                </select>
               </div>
               <div class="form-group">
                 <label for="inputShowingDate">Datetime</label>

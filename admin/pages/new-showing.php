@@ -101,10 +101,9 @@
               <div class="form-group">
                 <label for="theater_no">Theater No.</label>
                 <select name="theater_no" id="theater_no" class="form-control custom-select">
-                  <option value="" selected disabled>Select one</option>
+                  <option value="" selected disabled>Select branch first</option>
                   
                 </select>
-                <!-- <input name="theater_no" type="number" min="1" max="20" id="inputTheaterNo" class="form-control" placeholder="1"> -->
               </div>
               <div class="form-group">
                 <label for="inputAudio">Audio</label>
