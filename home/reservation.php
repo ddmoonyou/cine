@@ -531,7 +531,7 @@
                                     die('Invalid query: ' . mysqli_error($conn));
                                 }
                                 ?>
-                                <h4 class="active" data-filter="*">Popcorn List</h4>
+                                <h4 class="active" data-filter="*">Snacks</h4>
                             </ul>
                         </div>
                     </div>

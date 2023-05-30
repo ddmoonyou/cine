@@ -96,10 +96,11 @@
               </div>
               <div class="form-group">
                 <label for="inputDescription">Movie Description</label>
-                <input name="description" type="text" id="inputDescription" class="form-control" placeholder="Avengers: ENDGAME  เรื่องราวการปิดจักรวาลมาร์เวลเฟส 3 เหตุการณ์ภายหลังจากที่ธานอสดีดนิ้วล้างครึ่งจักรวาล เหล่าฮีโร่ที่เหลือรอดจะหาทางกอบกู้จักรวาลนี้คืนมาได้อย่างไร โดยในภาคนี้จะมีตัวเด็ดอย่างกัปตันมาร์เวลมาร่วมเสริมทัพด้วย">  </div>
+                <input name="description" type="text" id="inputDescription" class="form-control" placeholder="Avengers: ENDGAME  เรื่องราวการปิดจักรวาลมาร์เวลเฟส 3 เหตุการณ์ภายหลังจากที่ธานอสดีดนิ้วล้างครึ่งจักรวาล เหล่าฮีโร่ที่เหลือรอดจะหาทางกอบกู้จักรวาลนี้คืนมาได้อย่างไร โดยในภาคนี้จะมีตัวเด็ดอย่างกัปตันมาร์เวลมาร่วมเสริมทัพด้วย">
+              </div>
               <div class="form-group">
                 <label for="inputMovieTrailer">Movie Trailer URL</label>
-                <input name="movie_trailer" type="text" id="inputMovieDescription" class="form-control"  >
+                <input name="movie_trailer" type="text" id="inputMovieDescription" class="form-control" placeholder="https://www.youtube.com/embed/HGvv-Hhft3U?autoplay=1&mute=1">
               </div>
               <div class="form-group">
                 <label for="inputDirector">Director Info</label>
