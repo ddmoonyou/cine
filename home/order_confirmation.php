@@ -34,20 +34,8 @@
 
     <!-- Connect to database -->
     <?php
-    $servername = "127.0.0.1";  
-    $username = "root";   
-    $password = "";    
-    $dbname = "cine"; 
+        require_once("connect_db.php");
 
-    // Create a connection to MySQL database
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
-
-    // Check if the connection is successful
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-
-    //echo "Connected successfully";
     $total = 0;
     ?> 
 

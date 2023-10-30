@@ -1,10 +1,7 @@
 <?php
-// connect to the database
-$servername = "127.0.0.1";
-$username = "root";
-$password = "";
-$dbname = "cine";
-$conn = mysqli_connect($host, $user, $password, $database);
+// Connect to database
+require_once("connect_db.php");
+
 
 // get the movie ID from the GET parameter
 $movieID = $_GET["movie_id"];
